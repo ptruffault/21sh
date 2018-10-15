@@ -19,11 +19,10 @@ FILES		=		check_cmd.c \
 					main.c \
 					correct_input.c \
 					disp.c\
-					run_cmd.c
-TOOLS			=	tenvv_tools_2.c \
-					tenvv_tools.c \
-					tools.c 
-BUILTINS		=	builtins.c \
+					run_cmd.c \
+
+TOOLS			=	
+BUILTINS		=	ft_echo.c \
 					ft_cd.c \
 					run_builtin.c \
 					ft_env.c
@@ -49,22 +48,22 @@ all: bin $(NAME)
 $(NAME): $(OBJ) Makefile
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
-	@gcc $(OBJ) -I includes/ -Llibft -lft -o $(NAME)
+	@gcc $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
 	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
 
 bin:
 	@mkdir $@
 
 bin/%.o: srcs/%.c 
-	@gcc $(FLAG) -I includes/ -c $< -o $@
+	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
 bin/%.o: srcs/tools/%.c
-	@gcc $(FLAG) -I includes/ -c $< -o $@		
+	@gcc $(FLAG) -I includes -c $< -o $@		
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
 bin/%.o: srcs/builtins/%.c
-	@gcc $(FLAG) -I includes/ -c $< -o $@		
+	@gcc $(FLAG) -I includes -c $< -o $@		
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                   \r"
 
 clear:
@@ -102,9 +101,13 @@ save: clear fclean
 	@git push
 	@echo "$(DONE)"
 
-load:
-	@rm -rf *
-	@echo "$(COLOR)download $(NAME) from github$(NO_COLOR)"
-	@git clone $(GIT) TMP && mv TMP/* . && rm -rf TMP libft
+delete_all:
+	rm -rf *
+
+libft:
 	@echo "$(COLOR)download libft from github$(NO_COLOR)"
 	@git clone https://github.com/ptruffault/libft.git
+
+load: delete_all libft
+	@echo "$(COLOR)download $(NAME) from github$(NO_COLOR)"
+	@git clone $(GIT) TMP && mv TMP/* . && rm -rf TMP 

@@ -12,41 +12,15 @@
 
 #include "../includes/21sh.h"
 
-static int	envv_len(t_envv *envv)
+static int		check_void_input(char *s)
 {
-	t_envv	*tmp;
-	int		i;
+	int i;
 
 	i = 0;
-	tmp = envv;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-static char	**put_in_tab(t_envv *envv)
-{
-	char	**tab;
-	t_envv	*tmp;
-	int		i;
-	int		len;
-
-	i = 0;
-	tmp = envv;
-	len = envv_len(envv) - 1;
-	if (!(tab = (char **)malloc(sizeof(char *) * len + 1)))
-		return (NULL);
-	while (i < len)
-	{
-		if ((tab[i] = get_equal(tmp->name, tmp->value)))
-			i++;
-		tmp = tmp->next;
-	}
-	tab[i] = NULL;
-	return (tab);
+	while (s[i])
+		if (!IS_SPACE(s[i++]))
+			return (0);
+	return (1);
 }
 
 static int	ft_exec(char *path, char **args, t_envv *envv)
@@ -54,7 +28,7 @@ static int	ft_exec(char *path, char **args, t_envv *envv)
 	pid_t	pid;
 	char	**arr;
 
-	arr = put_in_tab(envv);
+	arr = tenvv_to_tab(envv);
 	if ((pid = fork()) == 0)
 	{
 		execve(path, args, arr);
@@ -89,10 +63,7 @@ t_envv		*read_cmd(t_envv *envv, char *input, char **arr)
 	if (check_void_input(input))
 		return (envv);
 	else if (!(cmd = ft_correct(ft_strsplit_word(input), envv)))
-	{
-		printf("wygrqu\n");
 		return (envv);
-	}
 	inf = check_builtin(cmd);
 	if (inf == 1)
 		envv = run_builtin(cmd, envv, arr);

@@ -12,25 +12,6 @@
 
 #include "../includes/21sh.h"
 
-char	*get_input(void)
-{
-	char	*input;
-	char	buf;
-	int		i;
-
-	if (!(input = ft_strnew(1)))
-		return (NULL);
-	i = 0;
-	while ((read(0, &buf, 1)) && buf != '\n')
-	{
-		input[i++] = buf;
-		input = ft_realloc(input, i, i + 1);
-	}
-	input[i] = '\0';
-	return (input);
-}
-
-
 int		main(int argc, char **argv, char **envv)
 {
 	t_envv	*my_envv;
@@ -44,7 +25,7 @@ int		main(int argc, char **argv, char **envv)
 	while (1)
 	{
 		ft_disp(my_envv, argc, argv);
-		s = get_input();
+		s = get_input(envv);
 		input = ft_strsplit(s, ';');
 		ft_strdel(&s);
 		i = 0;
