@@ -33,14 +33,14 @@ static char	*check_exe(char *bin_path, struct stat inf)
 	return (NULL);
 }
 
-static char	*local_try(char **input, t_envv *envv)
+static char	*local_try(char *input, t_envv *envv)
 {
 	char		*path;
 	struct stat	inf;
 
-	if (lstat(input[0], &inf) == -1)
+	if (lstat(input, &inf) == -1)
 	{
-		path = ft_new_path(get_tenvv_val(envv, "PWD"), input[0]);
+		path = ft_new_path(get_tenvv_val(envv, "PWD"), input);
 		if (lstat(path, &inf) == -1)
 		{
 			ft_strdel(&path);
@@ -48,11 +48,11 @@ static char	*local_try(char **input, t_envv *envv)
 		}
 	}
 	else
-		path = ft_strdup(input[0]);
+		path = ft_strdup(input);
 	return (check_exe(path, inf));
 }
 
-static char	*check_path(char **input, char **path)
+static char	*check_path(char *input, char **path)
 {
 	int			i;
 	char		*bin_path;
@@ -61,7 +61,7 @@ static char	*check_path(char **input, char **path)
 	i = 0;
 	while (path[i])
 	{
-		bin_path = ft_new_path(path[i], input[0]);
+		bin_path = ft_new_path(path[i], input);
 		if (lstat(bin_path, &inf) == -1)
 			ft_strdel(&bin_path);
 		else
@@ -75,7 +75,7 @@ static char	*check_path(char **input, char **path)
 	return (NULL);
 }
 
-char		*check_bin(char **input, t_envv *envv)
+char		*check_bin(char *input, t_envv *envv)
 {
 	char			*bin_path;
 	char			**path;

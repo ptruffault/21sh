@@ -12,69 +12,37 @@
 
 #include "../includes/21sh.h"
 
-
-t_token *new_token(t_token *prev)
+t_instruct *init_instructions(char *input)
 {
-	t_token *new;
-
-	if (!(new = (t_token *)malloc(sizeof(t_token))))
-		return (NULL);
-	new->t = NULL;
-	new->cmd = NULL;
-	new->prev = prev;
-	new->next = NULL;
-	return (new);
-}
-
-void check_token(char *s, t_redirect)
-{
-	if (*s == '>' && *(s + 1) == '>')
-		r->t = >>;
-	else if (*s == '>')
-		r->t = >;
-	else if (*s == '<' && *s == '<')
-		r->t = <<;
-	else if (*s == '<')
-		r->t = <;
-	else if (*s == '|')
-		r->t = |;
-	else
-		r->t = ?;
-}
-
-t_token *ft_addtoken(t_token *t, char *input, int i)
-{
-	if (IS_REDIRECTION(input[i]))
-	{
-
-	}
-}
-
-t_token *init_token(char *input, envv)
-{
-	t_token *t;
+	t_instruct *new;
+	t_bool first_word;
+	char **t;
 	int i;
 
-	i = 0;
-	if (!(t = new_token(NULL)))
+	if (!(new = (t_instruct *)malloc(sizeof(t_instruct))))
 		return (NULL);
-	while (input[i])
+	if (!(t = ft_correct(ft_strsplit_word(input), envv)))
+		return (new);
+	i = 0;
+	first_word = TRUE;
+	while (new[i])
 	{
-		if (IS_TOKEN(input[i]))
+		if (first_word)
 		{
-			t = ft_addtoken(t, input, i);
-			t->next = new_token(t);
-			t = t->next;
+			new->bin_path = check_bin(new[i], envv) 
+			first_word = FALSE;
 		}
-		i++;
+
 	}
 }
 
-t_token *get_token(char *input, t_envv *envv)
+int main(int ac, char **av, char **e)
 {
-	t_token *t;
-	char **words;
+	t_instruct *i;
 
-	t = init_token(input, envv);
-	return (t);
+	while (42)
+	{
+		s = correct_syntax(get_input(e));
+		i = init_instructions(s);
+	}
 }

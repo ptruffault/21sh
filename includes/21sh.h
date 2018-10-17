@@ -26,10 +26,11 @@
 void	ft_disp(t_envv *envv, int argc, char **argv);
 void	run_bin(char **args, t_envv *envv);
 char	**ft_correct(char **input, t_envv *envv);
+char	*correct_syntax(char *s);
 t_envv	*read_cmd(t_envv *my_envv, char *input, char **arr);
 char	*ft_get_input(void);
 int		check_cmd(char *input, t_envv *envv);
-char	*check_bin(char **input, t_envv *envv);
+char	*check_bin(char *input, t_envv *envv);
 int		check_builtin(char **input);
 t_envv	*run_builtin(char **input, t_envv *envv, char **arr);
 t_envv	*ft_cd(char **input, t_envv *envv);
