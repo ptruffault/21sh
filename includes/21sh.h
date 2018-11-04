@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   21sh.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -20,7 +20,30 @@
 # include <signal.h>
 # include <dirent.h>
 # include "../libft/includes/libft.h"
+# define IS_PIPE(x) (ft_strequ(x, "|"))
+# define IS_EOI(x)  (ft_strequ(x, ";"))
+# define IS_RED(x) (IS_RIGHT_RED(x) || IS_LEFT_RED(x))
+# define IS_RIGHT_RED(x) ((ft_strchr(x, '>')))
+# define IS_LEFT_RED(x) ((ft_strchr(x, '<')))
+# define IS_SYNTAX(x) (IS_PIPE(x) || IS_EOI(x) || IS_RED(x))
 
+typedef struct s_tree
+{
+	char 			*p; //path || builtin name
+	char 			**a; //args
+	char 			*r; // redirection [X]>[>][&Y]
+	char 			*r_path;
+	char			l;    //next cmd link | or ;
+	struct s_tree	*next; 
+}				t_tree;
+
+
+
+t_tree *get_redirection(t_tree *t ,char **input, int *i);
+char  **get_arguments(char **input, int *i, t_envv *e);
+void ft_free_tree(t_tree *t);
+t_tree *init_tree(char **input);
+void print_tree(t_tree *t);
 
 
 void	ft_disp(t_envv *envv, int argc, char **argv);

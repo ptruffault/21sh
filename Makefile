@@ -20,6 +20,8 @@ FILES		=		check_cmd.c \
 					correct_input.c \
 					disp.c\
 					run_cmd.c \
+					tree_tools.c \
+					get_arg.c
 
 TOOLS			=	
 BUILTINS		=	ft_echo.c \
@@ -83,16 +85,11 @@ re: clear fclean all
 
 fre: clear sclean all
 
-exe: all
+exe: fre
 	./$(NAME)
 
-test:
-	sudo mkdir /tmp /tmp/bin
-	echo "#include <unistd.h>\nint main(void)\n 	{\n 	write(1, \"KO\", \"2\");\nreturn 0;\n}" > /tmp/bin/test.c
-	gcc /tmp/bin/test.c -c /tmp/bin/test_exec_rights		
-
 chmod:
-	@chmod 777 * $(SRC) includes/$(NAME).h 
+	chmod +x $(SRC) includes/$(NAME).h libft libft/*
 	@make -C ./libft chmod
 
 save: clear fclean
@@ -101,7 +98,7 @@ save: clear fclean
 	@git push
 	@echo "$(DONE)"
 
-delete_all:
+delete_all: clear
 	rm -rf *
 
 libft:

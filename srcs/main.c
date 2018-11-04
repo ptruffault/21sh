@@ -12,64 +12,75 @@
 
 #include "../includes/21sh.h"
 
-char *ft_straddchar_at(char *str, char c, int pos)
-{
-	int i;
-	int len;
+// HISTORY BUG
 
-	if (!str)
-		return (ft_char_to_str(c));
-	if (pos > (int)ft_strlen(str) || pos < 0)
-		return (str);
-	len  = ft_strlen(str);
-	i = len + 1;
-	while (i > pos)
-	{
-		str[i] = str[i - 1];
-		i--;	
-	}
-	str[pos] = c;
-	str = ft_realloc(str, len + 1, len + 2);
-	return (str);
+// malloc.c:2401: sysmalloc: Assertion `(old_top == initial_top (av) && old_size =
+// = 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned
+// long) old_end & (pagesize - 1)) == 0)' failed.
+//Aborted (core dumped)
+
+
+char *get_binpath(char **input, t_envv *e, int *i)
+{
+	int inf;
+	char *ret;
+
+	inf = check_builtin(&input[*i]);
+	if (inf == 1)
+		 ret = ft_strdup(input[*i]);
+	else if (inf == 0)
+		 ret = check_bin(input[*i], e);
+	*i = *i + 1;
+	if (!ret)
+		while ((input[*i]) && !IS_EOI(input[*i]) && !IS_PIPE(input[*i]))
+			*i = *i + 1;
+	return (ret);
 }
 
-char *correct_syntax(char *s)
+void eval_tree(t_tree *t, char **input, t_envv *e)
 {
+	t_tree *tmp;
+	int arr_len;
 	int i;
-	int sa;
 
 	i = 0;
-	while (s[i])
+	tmp = t;
+	arr_len = ft_strarrlen(input);
+	while (i < arr_len)
 	{
-		if (s[i] == '|' || s[i] == '>' || s[i] == '<')
+		if ((tmp->p = get_binpath(input, e, &i)))
 		{
-			sa = i;
-			if (s[i] == '>' && i > 0 && ft_isdigit(s[i - 1]))
-			{
-				while (ft_isdigit(s[i - 1]))
-					i--;
-			}
-			if (!IS_SPACE(s[i - 1]))
-				s = ft_straddchar_at(s, ' ', i);
-			i = sa + 1;
-			while ((s[i] == s[sa] || 
-			((s[sa] == '>' || s[sa] == '<') && (s[i] == '&' || ft_isdigit(s[i])))))
-				i++;
-			if (!IS_SPACE(s[i]))
-				s = ft_straddchar_at(s, ' ', i);
+			tmp->a = get_arguments(input , &i, e);
+			tmp = get_redirection(tmp, input, &i);
 		}
-		i++;
+		print_tree(tmp);
+		if (t->l &&  (tmp->next))
+		{
+			tmp = tmp->next;
+			i++;
+		}
 	}
-	return (s);
 }
 
+t_tree *get_tree(char *input, t_envv *e)
+{
+	t_tree	*tree;
+	char 	**t;
+
+	if (!(input = correct_syntax(input)))
+		return (NULL);
+	t = ft_correct(ft_strsplit_word(input), e);
+	ft_strdel(&input);
+	if ((tree = init_tree(t)))
+		eval_tree(tree, t, e);
+	ft_freestrarr(t);
+	return (tree);
+}
 
 int		main(int argc, char **argv, char **envv)
 {
 	t_envv	*my_envv;
-	char	**input;
-	char	*s;
-	int		i;
+	t_tree	*t;
 
 	if (!(my_envv = new_tenvv()))
 		return (-1);
@@ -77,13 +88,8 @@ int		main(int argc, char **argv, char **envv)
 	while (42)
 	{
 		ft_disp(my_envv, argc, argv);
-		s = correct_syntax(get_input(envv));
-		input = ft_strsplit(s, ';');
-		ft_strdel(&s);
-		i = 0;
-		while (input[i])
-			my_envv = read_cmd(my_envv, input[i++], input);
-		ft_freestrarr(input);
+		if ((t = get_tree(get_input(envv), my_envv)))
+			ft_free_tree(t);
 	}
 	return (0);
 }

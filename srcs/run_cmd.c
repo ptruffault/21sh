@@ -48,11 +48,10 @@ void		run_bin(char **args, t_envv *envv)
 {
 	char *bin_path;
 
-	if ((bin_path = check_bin(args[0], envv))
-	&& (ft_exec(bin_path, args, envv) > 0))
-		ft_strdel(&bin_path);
-	else if (!bin_path)
+	if (!(bin_path = check_bin(args[0], envv)))
 		error("command not found", *args);
+	ft_exec(bin_path, args, envv);
+	ft_strdel(&bin_path);
 }
 
 t_envv		*read_cmd(t_envv *envv, char *input, char **arr)
