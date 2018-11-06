@@ -42,8 +42,8 @@ t_envv			*ft_cd(char **input, t_envv *envv)
 	if (!get_tenvv(envv, "OLDPWD"))
 		envv = ft_setenv(envv, "OLDPWD", cwd);
 	if (!get_tenvv(envv, "HOME"))
-		envv = ft_setenv(envv, "HOME", "/home");
-	if (!(input[1]))
+		warning("envvironnement \'$HOME\' var not set", NULL);
+	else if (!(input[1]))
 		return (change_dir(get_tenvv_val(envv, "HOME"), cwd, envv));
 	else if (input[1][0] == '-' && input[1][1] == '\0')
 		return (envv = change_dir(get_tenvv_val(envv, "OLDPWD"), cwd, envv));

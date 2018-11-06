@@ -19,7 +19,6 @@ FILES		=		check_cmd.c \
 					main.c \
 					correct_input.c \
 					disp.c\
-					run_cmd.c \
 					tree_tools.c \
 					get_arg.c
 

@@ -30,6 +30,11 @@ void print_tree(t_tree *t)
 			ft_putendl(t->r_path);
 		}
 	}
+	if (t->l)
+	{
+		printf("link %c\n", t->l);
+		
+	}
 	ft_putchar('\n');
 }
 

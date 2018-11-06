@@ -37,7 +37,7 @@ typedef struct s_tree
 }				t_tree;
 
 
-
+void exec_instruction(t_tree *t, char **envv);
 t_tree *get_redirection(t_tree *t ,char **input, int *i);
 char  **get_arguments(char **input, int *i, t_envv *e);
 void ft_free_tree(t_tree *t);
