@@ -61,6 +61,7 @@ static char **my_get_input(t_envv *e, char *s)
 		if (!(ret[i] = get_input(env)) || ft_strequ(ret[i], s))
 		{
 			ft_freestrarr(env);
+			ret[i] = NULL;
 			return (ret);
 		}
 		i++;

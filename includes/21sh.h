@@ -29,8 +29,7 @@
 
 typedef struct s_tree
 {
-	char 			*p; //path || builtin name
-	char 			**a; //args
+	char 			**arr; //args
 	char 			*r; // redirection [X]>[>][&Y]
 	char 			*r_path;
 	char			l;    //next cmd link | or ;
@@ -42,7 +41,7 @@ typedef struct s_tree
 t_tree *get_redirection(t_tree *t ,char **input, int *i);
 char  **get_arguments(char **input, int *i, t_envv *e);
 void ft_free_tree(t_tree *t);
-t_tree *init_tree(char **input);
+t_tree *get_tree(char *input, t_envv *e);
 void print_tree(t_tree *t);
 
 

@@ -72,7 +72,7 @@ clear:
 	@clear
 
 sclean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ) $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
@@ -89,8 +89,8 @@ exe: fre
 	./$(NAME)
 
 chmod:
-	chmod +x $(SRC) includes/$(NAME).h libft libft/*
-	@make -C ./libft chmod
+	@sudo chmod 777 $(SRC) includes/$(NAME).h libft libft/Makefile
+	@sudo make -C ./libft chmod
 
 save: clear fclean
 	@git add * srcs/* includes/*
