@@ -69,16 +69,15 @@ static t_envv	*change_envv(char **input, t_envv *envv)
 	return (envv);
 }
 
-t_envv			*run_builtin(char **input, t_envv *envv, char **arr)
+t_envv			*run_builtin(char **input, t_envv *envv)
 {
 	if (!(input[0]))
 		return (envv);
 	else if (ft_strequ(input[0], "exit"))
 	{
-		ft_freestrarr(arr);
 		ft_freestrarr(input);
 		ft_free_tenvv(envv);
-		ft_putendl("\033[00;31mminishell get killed\033[00m");
+		ft_putendl("\033[00;31m21sh get killed\033[00m");
 		exit(0);
 	}
 	else if (ft_strequ(input[0], "pwd"))

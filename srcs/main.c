@@ -13,25 +13,29 @@
 #include "../includes/21sh.h"
 
 
-static int	ft_exec(char **args, char **envv)
+static int	ft_exec(char **args, t_envv *envv)
 {
 	pid_t	pid;
+	char 	**e;
 
+	e = tenvv_to_tab(envv);
 	if ((pid = fork()) == 0)
-		execve(args[0], args, envv);
+		execve(args[0], args, e);
 	else if (pid < 0)
 	{
 		error("Fork failed to create a new process", *args);
 		return (-1);
 	}
+	ft_freestrarr(e);
 	wait(&pid);
 	return (1);
 }
 
-static int ft_exec_pipe(t_tree *t, char **envv)
+static int ft_exec_pipe(t_tree *t, t_envv *e)
 {
 	int			pipes[2];
 	int			pid[2];
+
 
 	if (pipe(pipes) != 0)
 		ft_putendl_fd("pipe error", 2);
@@ -39,16 +43,16 @@ static int ft_exec_pipe(t_tree *t, char **envv)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		ft_exec(t->arr, envv);
+		exec_instruction(t, e);
 		exit(0);
 	}
 	if ((pid[1] = fork()) == 0)
 	{
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
-		exec_instruction(t->next, envv);
+		exec_instruction(t->next, e);
 		exit(0);
-	}
+	} 
 	close(pipes[0]);
 	close(pipes[1]);
 	waitpid(-1, 0, 0);
@@ -56,21 +60,28 @@ static int ft_exec_pipe(t_tree *t, char **envv)
 	return (0);
 }
 
-void exec_instruction(t_tree *t, char **envv)
+void exec_instruction(t_tree *t, t_envv *e)
 {
-
 	if (t->arr)
 	{
-		 if (t->l == '|')
-		{
-			if (t->next->arr)
-				ft_exec_pipe(t, envv);
-		}
+		if (check_builtin(t->arr))
+			run_builtin(t->arr, e);
 		else
-			ft_exec(t->arr, envv);
+		{
+			if (t->l == '|')
+			{
+				if (t->next->arr)
+				{
+					t->l = '.';
+					ft_exec_pipe(t, e);
+				}
+			}
+			else
+				ft_exec(t->arr, e);
+		}
 	}
 	if (t->l == ';')
-		exec_instruction(t->next, envv);
+		exec_instruction(t->next, e);
 }
 
 int		main(int argc, char **argv, char **envv)
@@ -86,7 +97,7 @@ int		main(int argc, char **argv, char **envv)
 		ft_disp(my_envv, argc, argv);
 		if ((t = get_tree(get_input(envv), my_envv)))
 		{
-			exec_instruction(t, envv);
+			exec_instruction(t, my_envv);
 			ft_free_tree(t);
 		}
 	}

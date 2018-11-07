@@ -15,28 +15,29 @@ GIT 		=		https://github.com/ptruffault/21sh.git
 
 FLAG		=		-Wall -Wextra -Werror
 
-FILES		=		check_cmd.c \
-					main.c \
+FILES		=		main.c \
 					correct_input.c \
 					disp.c\
-					tree_tools.c \
-					get_arg.c
 
-TOOLS			=	
+EVAL			=	check_cmd.c \
+					eval_tools.c \
+					get_instruction.c \
+					instruction_parseur.c
+
 BUILTINS		=	ft_echo.c \
 					ft_cd.c \
 					run_builtin.c \
 					ft_env.c
 FILE_FOLDER		= 	./srcs/
-TOOLS_FOLDER	= 	./srcs/tools/
+EVAL_FOLDER	= 	./srcs/eval/
 BUILTINS_FOLDER	=	./srcs/builtins/
 
 OBJ_FOLDER 	= 		./bin/
 SRC			= 		$(addprefix $(FILE_FOLDER), $(FILES)) \
-					$(addprefix $(TOOLS_FOLDER), $(TOOLS)) \
+					$(addprefix $(EVAL_FOLDER), $(EVAL)) \
 					$(addprefix $(BUILTINS_FOLDER), $(BUILTINS))  	
 OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(TOOLS:.c=.o)) \
+					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o))
 
 COLOR		= \033[01;34m
@@ -59,7 +60,7 @@ bin/%.o: srcs/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
-bin/%.o: srcs/tools/%.c
+bin/%.o: srcs/eval/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@		
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 

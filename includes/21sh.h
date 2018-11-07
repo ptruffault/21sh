@@ -37,9 +37,9 @@ typedef struct s_tree
 }				t_tree;
 
 
-void exec_instruction(t_tree *t, char **envv);
-t_tree *get_redirection(t_tree *t ,char **input, int *i);
-char  **get_arguments(char **input, int *i, t_envv *e);
+void exec_instruction(t_tree *t, t_envv *envv);
+char **get_cmd_and_arg(char **input, t_envv *e, int *i);
+t_tree *new_tree(void);
 void ft_free_tree(t_tree *t);
 t_tree *get_tree(char *input, t_envv *e);
 void print_tree(t_tree *t);
@@ -54,7 +54,7 @@ char	*ft_get_input(void);
 int		check_cmd(char *input, t_envv *envv);
 char	*check_bin(char *input, t_envv *envv);
 int		check_builtin(char **input);
-t_envv	*run_builtin(char **input, t_envv *envv, char **arr);
+t_envv	*run_builtin(char **input, t_envv *envv);
 t_envv	*ft_cd(char **input, t_envv *envv);
 
 void	ft_echo(char **input);
