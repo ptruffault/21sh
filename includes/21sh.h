@@ -37,7 +37,7 @@ typedef struct s_tree
 }				t_tree;
 
 
-void exec_instruction(t_tree *t, t_envv *envv);
+t_envv *exec_instruction(t_tree *t, t_envv *envv);
 char **get_cmd_and_arg(char **input, t_envv *e, int *i);
 t_tree *new_tree(void);
 void ft_free_tree(t_tree *t);
@@ -54,12 +54,12 @@ char	*ft_get_input(void);
 int		check_cmd(char *input, t_envv *envv);
 char	*check_bin(char *input, t_envv *envv);
 int		check_builtin(char **input);
-t_envv	*run_builtin(char **input, t_envv *envv);
+t_envv	*run_builtin(t_tree *t, t_envv *envv);
 t_envv	*ft_cd(char **input, t_envv *envv);
 
 void	ft_echo(char **input);
 
 
-void	ft_env(char **input, t_envv *envv);
+void	ft_env(t_tree *t, t_envv *envv);
 
 #endif

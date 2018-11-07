@@ -18,8 +18,9 @@ void		ft_echo(char **input)
 	i = 0;
 	while (input[i])
 	{
+		if (i > 0)
+			ft_putchar('\t');
 		ft_putstr(input[i++]);
-		ft_putchar('\t');
 	}
 	ft_putchar('\n');
 }

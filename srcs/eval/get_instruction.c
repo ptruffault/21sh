@@ -71,7 +71,8 @@ static void eval_tree(t_tree *t, char **input, t_envv *e)
 	{
 		if ((tmp->arr = get_cmd_and_arg(input, e, &i)))
 			tmp = get_redirection(tmp, input, &i);
-		print_tree(tmp);
+		else
+			error("command not found", *input);
 		if (t->l &&  (tmp->next))
 		{
 			tmp = tmp->next;

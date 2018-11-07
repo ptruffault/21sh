@@ -95,6 +95,7 @@ char **get_cmd_and_arg(char **input, t_envv *e, int *i)
 	if (!(ret = (char **)malloc(sizeof(char *) *(len + 1)))
 	|| (!(ret[0] = get_binpath(input, e, i))))
 	{
+		ft_freestrarr(ret);
 		*i = *i + len;
 		return (NULL);
 	}
