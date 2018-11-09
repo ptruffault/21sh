@@ -1,3 +1,72 @@
+echo lola | rev 
+echo lol
+ech jaifaim
+ls > file
+ls
+ls
+clear
+ls | cat -e | rev 
+ls <<
+ls > file
+clear
+ls
+ls <<
+ls < file
+ls > file
+clear
+ls
+ls < file
+ls < file
+ls < file
+ls >> file
+ls > file
+clear
+ls
+
+ks
+ls >
+ls << file
+ls
+ls << l
+ls >> l
+ls > l
+clear
+ls
+ls
+ls << file
+ls > file
+ls
+ls -la > file
+ls -la > file
+ls -la
+ls
+ls -la > l
+ls -la
+ls
+ls
+ls
+ls
+ls
+setenv test MERDE ; env | grep test | rev 
+setenv test MERDE ; env | grep test 
+setenv test MERDE ; env | grep test | cat -e 
+setenv test MERDE ; env | grep test | cat -e | rev
+setenv test MERDE ; env | rev | cat -e | rev
+clear
+ls
+cd ezr r
+echo lol
+ls
+setenv test merde ; env | cat -e
+setenv test merde ; env 
+ls
+ls | cat -e
+ls ; clear
+ls
+rm -rf GITED
+ls
+clear
+ls
 env ls
 env -i ls
 ls

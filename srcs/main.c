@@ -31,7 +31,12 @@ static int	ft_exec(char **args, t_envv *envv)
 	wait(&pid);
 	return (1);
 }
+/*
+static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
+{
 
+}
+*/
 static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 {
 	int			pipes[2];
@@ -73,6 +78,8 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 			t->l = '.';
 			e = ft_exec_pipe(t, e);
 		}
+		/*else if (t->r && t->l != '.')
+			e = ft_exec_redirection(t, e);*/
 		else if (check_builtin(t->arr))
 			e = run_builtin(t , e);
 		else if (t->arr)

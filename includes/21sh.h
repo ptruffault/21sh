@@ -20,18 +20,35 @@
 # include <signal.h>
 # include <dirent.h>
 # include "../libft/includes/libft.h"
-# define IS_PIPE(x) (ft_strequ(x, "|"))
-# define IS_EOI(x)  (ft_strequ(x, ";"))
-# define IS_RED(x) (IS_RIGHT_RED(x) || IS_LEFT_RED(x))
-# define IS_RIGHT_RED(x) ((ft_strchr(x, '>')))
-# define IS_LEFT_RED(x) ((ft_strchr(x, '<')))
+# define IS_PIPE(x) (x &&ft_strequ(x, "|"))
+# define IS_EOI(x)  (x &&ft_strequ(x, ";"))
+# define IS_RED(x) (x && (IS_RIGHT_RED(x) || IS_LEFT_RED(x)))
+# define IS_RIGHT_RED(x) (x && (ft_strchr(x, '>')))
+# define IS_LEFT_RED(x) ((x && ft_strchr(x, '<')))
 # define IS_SYNTAX(x) (IS_PIPE(x) || IS_EOI(x) || IS_RED(x))
+
+typedef enum red_type
+{
+	UK = 0,
+	R = 1,
+	DR = 2,
+	L = 3,
+	DL = 4 ,
+}			t_redtype;
+
+typedef struct s_redirect
+{
+	char *s;
+	t_redtype t;
+	char *path;
+	int from;
+	int to;
+}				t_redirect;
 
 typedef struct s_tree
 {
 	char 			**arr; //args
-	char 			*r; // redirection [X]>[>][&Y]
-	char 			*r_path;
+	t_redirect		r;
 	char			l;    //next cmd link | or ;
 	struct s_tree	*next; 
 }				t_tree;

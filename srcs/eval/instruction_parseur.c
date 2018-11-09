@@ -60,26 +60,3 @@ char **my_get_input(t_envv *e, char *s)
 	return (NULL);
 }
 
-t_tree *get_redirection(t_tree *t ,char **input, int *i)
-{
-	char *ptr;
-
-	if (!(input[*i]) || !(ptr = ft_strchr(input[*i], '>')))
-		return (t);
-	t->r = ft_strdup(input[*i]);
-	if (*(ptr + 1) == 0 || (*(ptr + 1) == '>' && *(ptr + 2) == 0))
-	{
-		if (!input[*i + 1])
-		{
-			warning("redirection need an argument", ">[&Y] [file]");
-			ft_strdel(&t->r);
-		}
-		else
-		{
-			*i = *i + 1;
-			t->r_path = ft_strdup(input[*i]);
-		}
-	}
-	*i = *i + 1;
-	return (t);
-}

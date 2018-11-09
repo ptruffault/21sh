@@ -12,46 +12,16 @@
 
 #include "../includes/21sh.h"
 
-static int		check_arg(char **input, int n)
-{
-	int i;
-
-	if (input[n] && !(input[n + 1]))
-		return (1);
-	else
-	{
-		ft_putstr_fd("\033[00;31mUsage : \033[00m", 2);
-		ft_putstr_fd(input[0], 2);
-		i = 0;
-		if (n == 0)
-			ft_putstr_fd("\t\033[04m (void) \033[00m", 2);
-		while (i++ < n)
-			ft_putstr_fd("\t\033[04m [arg] \033[00m", 2);
-		ft_putchar('\n');
-	}
-	return (-1);
-}
-
 int				check_builtin(char **input)
 {
-	if (!input[0])
+
+	if (input[0] && (ft_strequ(input[0], "env") || ft_strequ(input[0], "exit")
+	|| ft_strequ(input[0], "pwd") || ft_strequ(input[0], "unsetenv") 
+	|| ft_strequ(input[0], "unset") || ft_strequ(input[0], "setenv") 
+	|| ft_strequ(input[0], "export")|| ft_strequ(input[0], "cd") 
+	|| ft_strequ(input[0], "echo")))
 		return (1);
-	if (ft_strequ(input[0], "env"))
-		return (1);
-	else if (ft_strequ(input[0], "exit"))
-		return (check_arg(input, 0));
-	else if (ft_strequ(input[0], "pwd"))
-		return (check_arg(input, 0));
-	else if (ft_strequ(input[0], "unsetenv") || ft_strequ(input[0], "unset"))
-		return (check_arg(input, 1));
-	else if (ft_strequ(input[0], "setenv") || ft_strequ(input[0], "export"))
-		return (check_arg(input, 2));
-	else if (ft_strequ(input[0], "cd"))
-		return (1);
-	else if (ft_strequ(input[0], "echo"))
-		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 static t_envv	*change_envv(t_tree *t, t_envv *envv)

@@ -11,27 +11,42 @@
 /* ************************************************************************** */
 #include "../includes/21sh.h"
 
+static void	find_type(char *s, t_tree *t)
+{
+	char *ptr;
+
+	if ((ptr = ft_strchr(s, '>')))
+		t->r.t = (*(ptr + 1) == '>' ? DR : R);
+	else if ((ptr = ft_strchr(s, '<')))
+		t->r.t = (*(ptr + 1) == '<' ? DL : L);
+	else
+		t->r.t = UK;
+}	
+
 static t_tree *get_redirection(t_tree *t ,char **input, int *i)
 {
 	char *ptr;
 
-	if (!(input[*i]) || !(ptr = ft_strchr(input[*i], '>')))
-		return (t);
-	t->r = ft_strdup(input[*i]);
-	if (*(ptr + 1) == 0 || (*(ptr + 1) == '>' && *(ptr + 2) == 0))
-	{
-		if (!input[*i + 1])
-		{
-			warning("redirection need an argument", ">[&Y] [file]");
-			ft_strdel(&t->r);
-		}
-		else
-		{
-			*i = *i + 1;
-			t->r_path = ft_strdup(input[*i]);
-		}
-	}
+	find_type(input[*i], t);
+	t->r.s = ft_strdup(input[*i]);
 	*i = *i + 1;
+	if (t->r.t == R || t->r.t == DR)
+	{
+		t->r.from = (ft_isdigit(*t->r.s) ? ft_atoi(t->r.s) : 1);
+		if ((ptr = ft_strchr(t->r.s, '&')) && ft_isdigit(*(ptr + 1)))
+			t->r.to = ft_atoi(ptr + 1);
+	}
+	if (input[*i] && (t->r.t == L ||
+		((t->r.t == R || t->r.t == DR) && t->r.to == -2)))
+	{
+		t->r.path = ft_strdup(input[*i]);
+		*i = *i + 1;
+	}
+	else if (!(t->r.t == DL))
+	{
+		warning("redirection need an argument", ">[&Y] [file]");
+		ft_strdel(&t->r.s);
+	}
 	return (t);
 }
 
@@ -69,11 +84,14 @@ static void eval_tree(t_tree *t, char **input, t_envv *e)
 	arr_len = ft_strarrlen(input);
 	while (i < arr_len)
 	{
-		if ((tmp->arr = get_cmd_and_arg(input, e, &i)))
+		if ((tmp->arr = get_cmd_and_arg(input, e, &i)) &&
+		IS_RED(input[i]))	
 			tmp = get_redirection(tmp, input, &i);
-		else
+		if (!tmp->arr)
 			error("command not found", *input);
-		if (t->l &&  (tmp->next))
+		else
+			print_tree(t);
+		if (t->l && (tmp->next))
 		{
 			tmp = tmp->next;
 			i++;

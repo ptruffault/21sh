@@ -19,8 +19,8 @@ void ft_free_tree(t_tree *t)
 	while (t)
 	{
 		ft_freestrarr(t->arr);
-		ft_strdel(&t->r);
-		ft_strdel(&t->r_path);
+		ft_strdel(&t->r.s);
+		ft_strdel(&t->r.path);
 		tmp = t->next;
 		free(t);
 		t = tmp;
@@ -32,14 +32,15 @@ void print_tree(t_tree *t)
 	ft_putstr("instruc = ");
 	ft_putstrarr(t->arr);
 	ft_putchar('\n');
-	if (t->r)
+	if (t->r.s)
 	{
 		ft_putstr("redirection = ");
-		ft_putstr(t->r);
-		if (t->r_path)
+		ft_putstr(t->r.s);
+		printf("from %i -> to %i\n",t->r.from, t->r.to );
+		if (t->r.path)
 		{
 			ft_putchar('\t');
-			ft_putendl(t->r_path);
+			ft_putendl(t->r.path);
 		}
 	}
 	if (t->l)
@@ -57,9 +58,11 @@ t_tree *new_tree(void)
 	if (!(n = (t_tree *)malloc(sizeof(t_tree))))
 		return (NULL);
 	n->arr = NULL;
-	n->r = NULL;
+	n->r.s = NULL;
+	n->r.to = -2;
+	n->r.from = 1;
 	n->l = 0;
-	n->r_path = NULL;
+	n->r.path = NULL;
 	n->next = NULL;
 	return (n);
 }
