@@ -1,3 +1,481 @@
+ls
+
+
+
+
+
+
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+7[C8[Ml8[C[C8[Mls8[C
+21sh
+Makefile
+auteur
+bin
+file
+history
+includes
+libft
+srcs
+test.c
+[1;32m21sh[00m:[[01;34m[04m/home/ptruffau/21sh[00m]
+7v
+cat file -e
+cat file
+echo $PWD > file ; 
+echo $PWD > file ; cat -e file
+echo $PWD > file ; cat -e file | grep "/" 
+echo $PWD > file ; cat -e file | grep "/" | rev
+echo $PWD > file ; cat -e file | grep "/"
+echo $PWD > file ; cat -e file 
+echo $PWD > file ; cat -e file | grep "/" | rev
+clear
+ls
+rm -rf "file;"
+ls
+rm -rf file
+ls
+rm -rf file;echo $PWD > file; cat -e file | grep "/" | rev
+rm -rf file;echo $PWD > file; cat -e file | grep "/" | rev
+cleqr
+ls
+ls
+ls
+rm -rf |
+ls
+ls
+rm -rf t '|'
+ls
+cat t
+ls > t
+
+
+
+
+
+
+
+
+echo "lol" > file ; cat file -e 2>&- ; cat Makefile | grep NAME | rev > t ; cat t 
+echo "lol" > file ; cat file -e 2>&- ; cat Makefile | grep NAME | rev > t ; cat t 
+echo "lol" > file ; cat file -e 2>&- 
+echo "lol" > file ; cat file -e
+echo "lol" > file ; cat file -e 2>&- 
+echo "lol" > file ; cat file -e 2>- 
+echo "lol" > file ; cat file -e 2>- | rev
+echo "lol" > file ; cat file -e
+echo "lol" > file ; cat file
+echo "lol" > file ;
+echo "lol" > file ; cat file
+echo "lol" > file ; cat -e file 
+cat file
+echo "lol" > file ; cat -e file | rev >> file
+rm -rf file
+cat file
+ls
+echo "lol" > file ; cat -e file | rev >> file
+ls
+cat file
+rm -rf file
+cat file
+echo "lol" > file ; cat -e file | rev >> file
+cat file
+echo "lol" > file ; cat -e file | rev >> file
+ls
+rm -rf 11 f file test
+ls
+clear
+cat file
+ls >> file
+cat file
+ls r 2> file
+ls >&2
+ls
+echo "lol mdr" | rev | cat -e > file
+echo "lol mdr" | rev | cat -e > f
+echo "lol mdr" | rev | cat -e > f
+cat f
+echo "lol mdr" | rev | cat -e > f
+echo "lol mdr" | rev | cat -e > f
+echo "lol mdr" | rev | cat -e > f
+echo "lol mdr" | rev | cat -e > file
+echo "lol mdr" | rev | cat -e > file
+echo "lol mdr" | rev | cat -e > file
+echo "lol mdr" | rev | cat -e > file
+ls
+clear
+ls
+cleqr
+env
+ef
+ls
+clear
+ls
+ms
+ls -lRa 
+ls
+clear
+cat file
+ls zae | rev 2> file ; cat file
+ls zae 2> file ; cat file | rev ; 
+
+ls zae 2> file ; cat file | rev ; 
+ls zae 2> file ; cat file | rev
+ls zae | rev 2> file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat filecat file
+cat file
+ls > file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file ; cat file
+ls > file
+cat file
+ls > file
+ls > file
+cat file
+ls > file
+ls > file ; cat -e file
+ls > file ; cat -e file
+ls > file ; cat -e file
+ls > file
+cat file | grep "ptruffau" | rev > file
+cat file
+ls > file
+ls > file
+ls > file
+cat file
+ls > file
+ls
+./21
+cat file
+ls > file
+ls
+ls > file
+ls
+ls > file
+ls > file
+ls >&-
+ls &-
+ls > file
+ls > file
+
+
+
+
+
+ls > file
+
+
+
+
+ls > file
+ls
+ls > file
+ls > file
+ls > file
+ls
+
+
+ls > file
+ls > file
+
+
+ls > file
+ls
+ls
+els
+e
+
+
+
+
+l
+ls > file
+
+
+
+ls > file
+
+
+
+ls > file
+
+ls > file
+ls
+
+
+ls > file
+ls
+ls >&4
+ls >&4
+ls >&4
+ls
+ls >&0
+ls >&3
+ls >&2
+ls >&2
+ls >&2
+ls > file
+ls -la | rev >&2
+ls -la | rev >&3
+ls -la | rev >&0
+ls -la | rev >&1
+ls
+ls -la | rev > 11  
+ls -la | rev >&2  
+cat file
+ls > file
+ls
+mkdir test ; cd test ; ls -la ; ls | cate | wc -c > fifi ; cat fifi
+clear
+cat file
+ls  2> file
+ls  2>2
+ls  >&2
+ls  >&1
+ls  >&6
+ls rez >&6
+ls rez 2>&6
+ls rez 2>&-1
+ls ez 2>&-1
+ls ez 2>-1
+ls ez
+cat file
+ls > file
+ls
+cat ez
+cat /dev/null
+ls -la ezrf 2>&-1
+ls -la ezrf 2>&-1
+ls -la ezrf 2>&-1
+ls -la ezrf 2>&-1
+cat file
+ls -la ezrf 2> file
+ls -la
+ls
+rm -rf fil file
+ls
+ls | rev | rev | rev | rev > fil
+cat file
+ls | rev | rev | rev | rev > file
+ls | rev | rev | rev | rev
+ls | rev | cat -e 
+ls | rev | cat -e | rev
+ls | rev | cat -e | rev
+ls
+cat file
+cat file
+cat file | grep "ptruffau" | rev > file
+cat file | grep "ptruffau" | rev
+cat file
+ls -lRa > file
+ls > file
+ls
+clear
+ls | cat -e | rev > file ; cat -e file
+cat file
+ls | cat -e | rev > file
+ls | cat -e | rev 
+cat file
+ls | cat -e > file
+ls > file
+ls
+
+
+
+ls > file
+cat file
+ls -la > file ; cat file -e | rev > file
+ls -la > file ; cat file -e | rev 
+cat file
+
+
+ls -la > file ; cat file -e | rev > file ; cat file
+cat file -e
+ls > file
+
+cat file
+ls > file
+ls
+clear
+cat auteur
+clear
+
+echo ptruff > auteur
+cat auteur
+ls
+rm -rf fil a.out test.c
+ls
+rm -rf file
+cat file
+ls > file
+clear
+ls > file
+
+ls > file
+ls
+./21
+ls
+ls
+clear
+
+clear
+
+
+
+
+
+ls > file
+ls > file
+clear
+ls
+ls > file
+clear
+clear 
+clear 
+clear
+ls > file
+cat file
+
+
+ls > file
+clear
+ls
+ls > file
+ls
+
+
+
+
+ls > file
+
+
+
+
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file | clear ; echo lol | cat -e > file
+ls > file
+clear
+ls
+ls > file
+ls
+ls > file
+ls
+ls > file
+ls > file
+ls < file
+ls
+ls > file
+ls
+ls > fil
+ls
+ls > file
+ls
+ ls > file
+ls
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls > fil
+ls
+ls > file
+ls > file
+ls
+ls > file
+ls > file
+ls > file
+man close
+echo lol > file
+ls > file
+ls > file
+ls > file
+ls
+ls > file
+cd
+ls
+cd
+cd 
+ls > file
+ls > file
+ls
+
+ls  > file ; cat file -e
+ls  > file ; cat file -e
+ls
+ls  > file ; cat file -e
+ls  > file ; cat file -e
+ls  > file ; cat file -e
+ls  > file ; cat file -e
+ls  > file
+ls  > file
+ls  > file
+ls er > file
+ls er 2> file
+ls er 2>&1
+ls 2>&1
+ls 2>&1
+./21
+ls 2>&1
+ls 2>1
+ls 2>
+ls &aze 2> file
+ls &aze 2> file
+ls &aze 2>&1
+ls 2>&1
+ls 2>1
+ls >&2
+ls >&2
+ls >&1
+ls > file
+ls > file
+ls > file
+lq
+ls > file
+ls > file
+ls > file
+ls
+ls > file
+ls > file
+ls > file
+ls
+man dup2
+ls
+ls > file
+ls > file
+ls
+ls
+ls
+clear
 echo lola | rev 
 echo lol
 ech jaifaim

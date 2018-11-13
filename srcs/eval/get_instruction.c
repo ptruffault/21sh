@@ -33,16 +33,16 @@ static t_tree *get_redirection(t_tree *t ,char **input, int *i)
 	if (t->r.t == R || t->r.t == DR)
 	{
 		t->r.from = (ft_isdigit(*t->r.s) ? ft_atoi(t->r.s) : 1);
-		if ((ptr = ft_strchr(t->r.s, '&')) && ft_isdigit(*(ptr + 1)))
-			t->r.to = ft_atoi(ptr + 1);
+		if ((ptr = ft_strchr(t->r.s, '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
+			t->r.to = (ft_isdigit(*(ptr + 1)) ? ft_atoi(ptr + 1) : -1);
 	}
-	if (input[*i] && (t->r.t == L ||
-		((t->r.t == R || t->r.t == DR) && t->r.to == -2)))
+	if (input[*i] &&  t->r.to == -2 && 
+	(t->r.t == L || ((t->r.t == R || t->r.t == DR))))
 	{
 		t->r.path = ft_strdup(input[*i]);
 		*i = *i + 1;
 	}
-	else if (!(t->r.t == DL))
+	else if (t->r.to == -2)
 	{
 		warning("redirection need an argument", ">[&Y] [file]");
 		ft_strdel(&t->r.s);
@@ -89,8 +89,6 @@ static void eval_tree(t_tree *t, char **input, t_envv *e)
 			tmp = get_redirection(tmp, input, &i);
 		if (!tmp->arr)
 			error("command not found", *input);
-		else
-			print_tree(t);
 		if (t->l && (tmp->next))
 		{
 			tmp = tmp->next;

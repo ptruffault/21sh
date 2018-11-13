@@ -13,30 +13,63 @@
 #include "../includes/21sh.h"
 
 
-static int	ft_exec(char **args, t_envv *envv)
+static t_envv	*ft_exec(t_tree *t, t_envv *envv)
 {
 	pid_t	pid;
 	char 	**e;
 
-	
+	if (check_builtin(t->arr))
+		return (run_builtin(t , envv));
 	e = tenvv_to_tab(envv);
-	if ((pid = fork()) == 0)
-		execve(args[0], args, e);
+	if ((pid = fork()) == 0 && execve(t->arr[0], t->arr, e) == -1)
+		warning(t->arr[0], "fucked up");
 	ft_freestrarr(e);
-	if (pid < 0)
-	{
-		error("Fork failed to create a new process", *args);
-		return (-1);
-	}
-	wait(&pid);
-	return (1);
+	if (pid > 0)
+		wait(&pid);
+	else
+		error("Fork failed to create a new process", *t->arr);
+	return (envv);
 }
-/*
+
+static void get_destination_fd(t_tree *t)
+{	
+	if (t->r.to == -2 && ((t->r.t == R && (t->r.to = open(t->r.path, O_WRONLY | O_TRUNC | O_CREAT , S_IRWXU)) == -1)
+	|| (t->r.t == DR && (t->r.to = open(t->r.path, O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) == -1)))
+		warning("can't open/create this file", t->r.path);
+	else if (t->r.to < 0 && (t->r.to = open("/dev/null", O_WRONLY | O_CREAT, S_IRWXU)) == -1)
+		warning("can't write in /dev/null file", NULL);
+}
+
 static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 {
+	int save;
+//	pid_t pid;
 
+	if (t->r.to < 0)
+		get_destination_fd(t);
+	if (t->r.to >= 0)
+	{
+		save = dup(t->r.from);
+		ft_strdel(&t->r.s);
+		if (dup2(t->r.to, t->r.from) == -1)
+			warning("dup2 failed", NULL);
+		else if (close(t->r.to) == -1)
+			warning("close failed", NULL);
+		else
+		{
+			e = ft_exec(t, e);
+	//		exit(0);
+			dup2(t->r.from, save);
+		}
+		if (close(t->r.from) == -1)
+			warning("close failed", t->r.path);
+//		wait(&pid);
+	}
+	return (e);
 }
-*/
+
+
+
 static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 {
 	int			pipes[2];
@@ -52,14 +85,14 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		e = exec_instruction(t, e);
+		e = ft_exec(t, e);
 		exit(0);
 	}
 	if ((pid[1] = fork()) == 0)
 	{
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
-		e = exec_instruction(t->next, e);
+		e = ft_exec(t->next, e);
 		exit(0);
 	} 
 	close(pipes[0]);
@@ -78,14 +111,10 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 			t->l = '.';
 			e = ft_exec_pipe(t, e);
 		}
-		/*else if (t->r && t->l != '.')
-			e = ft_exec_redirection(t, e);*/
-		else if (check_builtin(t->arr))
-			e = run_builtin(t , e);
+		else if (t->r.s && t->l != '.')
+			e = ft_exec_redirection(t, e);
 		else if (t->arr)
-			ft_exec(t->arr, e);
-
-
+			ft_exec(t, e);
 	}
 	if (t->l == ';')
 		e = exec_instruction(t->next, e);
