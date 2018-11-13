@@ -23,7 +23,7 @@ static int		check_void_input(char *s)
 	return (1);
 }
 
-static int	ft_exec(char *path, char **args, t_envv *envv)
+static int	ft_exec_old(char *path, char **args, t_envv *envv)
 {
 	pid_t	pid;
 	char	**arr;
