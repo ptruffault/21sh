@@ -12,6 +12,10 @@
 
 #include "../includes/21sh.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 static t_envv	*ft_exec(t_tree *t, t_envv *envv)
 {
 	pid_t	pid;
@@ -20,6 +24,7 @@ static t_envv	*ft_exec(t_tree *t, t_envv *envv)
 	if (check_builtin(t->arr))
 		return (run_builtin(t , envv));
 	e = tenvv_to_tab(envv);
+<<<<<<< HEAD
 	if ((pid = fork()) == -1)
 		warning(t->arr[0], "fork failed");
 	else if (execve(*t->arr , t->arr, e) == -1)
@@ -27,6 +32,15 @@ static t_envv	*ft_exec(t_tree *t, t_envv *envv)
 	ft_freestrarr(e);
 	wait(&pid);
 	ft_putendl_fd("LOOOL", 2);
+=======
+	if ((pid = fork()) == 0 && execve(t->arr[0], t->arr, e) == -1)
+		warning(t->arr[0], "fucked up");
+	ft_freestrarr(e);
+	if (pid > 0)
+		wait(&pid);
+	else
+		error("Fork failed to create a new process", *t->arr);
+>>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 	return (envv);
 }
 
@@ -41,14 +55,21 @@ static void get_destination_fd(t_tree *t)
 
 static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 {
+<<<<<<< HEAD
 	pid_t pid;
 	int save;
 
 	save = 0;
+=======
+	int save;
+//	pid_t pid;
+
+>>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 	if (t->r.to < 0)
 		get_destination_fd(t);
 	if (t->r.to >= 0)
 	{
+<<<<<<< HEAD
 		if ((pid = fork()) == -1)
 			error("fork failed", NULL);
 		else if ((save = dup(t->r.from)) == -1)
@@ -66,6 +87,23 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 				warning("impossible to load old fd", "from_save");
 		}
 		wait(&pid);
+=======
+		save = dup(t->r.from);
+		ft_strdel(&t->r.s);
+		if (dup2(t->r.to, t->r.from) == -1)
+			warning("dup2 failed", NULL);
+		else if (close(t->r.to) == -1)
+			warning("close failed", NULL);
+		else
+		{
+			e = ft_exec(t, e);
+	//		exit(0);
+			dup2(t->r.from, save);
+		}
+		if (close(t->r.from) == -1)
+			warning("close failed", t->r.path);
+//		wait(&pid);
+>>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 	}
 	return (e);
 }
@@ -94,7 +132,7 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 	{
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
-		e = exec_instruction(t->next, e);
+		e = ft_exec(t->next, e);
 		exit(0);
 	} 
 	close(pipes[0]);
