@@ -31,11 +31,10 @@ void print_tree(t_tree *t)
 {
 	ft_putstr("instruc = ");
 	ft_putstrarr(t->arr);
-	ft_putchar('\n');
 	if (t->r.s)
 	{
 		ft_putstr("redirection = ");
-		ft_putstr(t->r.s);
+		ft_putendl(t->r.s);
 		printf("from %i -> to %i\n",t->r.from, t->r.to );
 		if (t->r.path)
 		{
@@ -45,8 +44,8 @@ void print_tree(t_tree *t)
 	}
 	if (t->l)
 	{
-		printf("link %c\n", t->l);
-		
+		ft_putstr("link : ");
+		ft_putchar(t->l);
 	}
 	ft_putchar('\n');
 }

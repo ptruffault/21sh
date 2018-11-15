@@ -12,35 +12,29 @@
 
 #include "../includes/21sh.h"
 
-<<<<<<< HEAD
-=======
+pid_t ft_exec_pid(t_tree *t, t_envv *envv)
+{
+	char **e;
+	pid_t pid;
 
->>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
+	e = tenvv_to_tab(envv);
+	if ((pid = fork()) == 0 && execve(t->arr[0], t->arr, e) == -1)
+			warning("execve fucked up", *t->arr);
+	 ft_freestrarr(e);
+	 return (pid);
+}
+
+
 static t_envv	*ft_exec(t_tree *t, t_envv *envv)
 {
 	pid_t	pid;
-	char **e;
 
 	if (check_builtin(t->arr))
-		return (run_builtin(t , envv));
-	e = tenvv_to_tab(envv);
-<<<<<<< HEAD
-	if ((pid = fork()) == -1)
-		warning(t->arr[0], "fork failed");
-	else if (execve(*t->arr , t->arr, e) == -1)
-		warning(t->arr[0], "fucked up");
-	ft_freestrarr(e);
-	wait(&pid);
-	ft_putendl_fd("LOOOL", 2);
-=======
-	if ((pid = fork()) == 0 && execve(t->arr[0], t->arr, e) == -1)
-		warning(t->arr[0], "fucked up");
-	ft_freestrarr(e);
-	if (pid > 0)
+		return (envv = run_builtin(t , envv));
+	 if ((pid = ft_exec_pid(t, envv)) != -1)
 		wait(&pid);
 	else
 		error("Fork failed to create a new process", *t->arr);
->>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 	return (envv);
 }
 
@@ -55,24 +49,15 @@ static void get_destination_fd(t_tree *t)
 
 static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 {
-<<<<<<< HEAD
-	pid_t pid;
 	int save;
 
 	save = 0;
-=======
-	int save;
-//	pid_t pid;
 
->>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 	if (t->r.to < 0)
 		get_destination_fd(t);
 	if (t->r.to >= 0)
 	{
-<<<<<<< HEAD
-		if ((pid = fork()) == -1)
-			error("fork failed", NULL);
-		else if ((save = dup(t->r.from)) == -1)
+		if ((save = dup(t->r.from)) == -1)
 			error("impossible to save file descriptor (dup)", "from");
 		else if (dup2(t->r.to, t->r.from) == -1)
 			warning("dup2 failed", NULL);
@@ -86,28 +71,9 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 			if ((t->r.from = dup(save)) == -1)
 				warning("impossible to load old fd", "from_save");
 		}
-		wait(&pid);
-=======
-		save = dup(t->r.from);
-		ft_strdel(&t->r.s);
-		if (dup2(t->r.to, t->r.from) == -1)
-			warning("dup2 failed", NULL);
-		else if (close(t->r.to) == -1)
-			warning("close failed", NULL);
-		else
-		{
-			e = ft_exec(t, e);
-	//		exit(0);
-			dup2(t->r.from, save);
-		}
-		if (close(t->r.from) == -1)
-			warning("close failed", t->r.path);
-//		wait(&pid);
->>>>>>> 2644964041ce6d04b52664b6a899643b14287c12
 	}
 	return (e);
 }
-
 
 
 static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
@@ -137,10 +103,9 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 	} 
 	close(pipes[0]);
 	close(pipes[1]);
-	waitpid(-1, 0, 0);
-	waitpid(-1, 0, 0);
 	return (e);
 }
+
 
 t_envv *exec_instruction(t_tree *t, t_envv *e)
 {
@@ -156,7 +121,7 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 		else if (t->arr)
 			ft_exec(t, e);
 	}
-	if (t->l == ';')
+	if (t->l && t->next->arr)
 		e = exec_instruction(t->next, e);
 	return (e);
 }

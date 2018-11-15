@@ -95,10 +95,10 @@ static char *correct_0(char *s, int *i)
 		s = ft_straddchar_at(s, ' ', *i);
 	*i = sa + 1;
 	while (s[*i] && (s[*i] == '>' || s[*i] == '<' ||
-	s[*i] == '&' || ft_isdigit(s[*i]) || s[*i == '-']))
+	s[*i] == '&' || ft_isdigit(s[*i]) || s[*i] == '-'))
 		*i = *i + 1;
 	if (!IS_SPACE(s[*i]))
-		s = ft_straddchar_at(s, ' ', *i++);
+		s = ft_straddchar_at(s, ' ', *i);
 	return (s);
 }
 
@@ -180,5 +180,6 @@ char *correct_syntax(char *s)
 			s = correct_2(s, &i);
 		i++;
 	}
+	printf("corected input -> %s\n",s );
 	return (s);
 }
