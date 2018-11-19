@@ -49,6 +49,7 @@ typedef struct s_tree
 {
 	char 			**arr; //args
 	t_redirect		r;
+	int				ret;
 	char			l;    //next cmd link | or ;
 	struct s_tree	*next; 
 }				t_tree;

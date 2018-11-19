@@ -180,6 +180,5 @@ char *correct_syntax(char *s)
 			s = correct_2(s, &i);
 		i++;
 	}
-	printf("corected input -> %s\n",s );
 	return (s);
 }

@@ -78,18 +78,21 @@ static void eval_tree(t_tree *t, char **input, t_envv *e)
 	t_tree *tmp;
 	int arr_len;
 	int i;
+	int s;
 
 	i = 0;
 	tmp = t;
 	arr_len = ft_strarrlen(input);
 	while (i < arr_len)
 	{
+		s = i;
 		if ((tmp->arr = get_cmd_and_arg(input, e, &i)) &&
-		IS_RED(input[i]))	
+		IS_RED(input[i]))
 			tmp = get_redirection(tmp, input, &i);
 		if (!tmp->arr)
-			error("command not found", *input);
-		print_tree(tmp);
+			error("command not found", input[s]);
+	/*	else
+			print_tree(tmp);*/
 		if (t->l && (tmp->next))
 		{
 			tmp = tmp->next;

@@ -61,6 +61,7 @@ t_tree *new_tree(void)
 	n->r.to = -2;
 	n->r.from = 1;
 	n->l = 0;
+	n->ret = 0;
 	n->r.path = NULL;
 	n->next = NULL;
 	return (n);
