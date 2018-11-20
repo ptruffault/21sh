@@ -12,18 +12,18 @@
 
 #include "../includes/21sh.h"
 
-int ft_exec(t_tree *t, t_envv *envv)
+int ft_exec(char **arr, t_envv *envv)
 {
 	char **e;
 	int pid;
 
 	e = tenvv_to_tab(envv);
 	if ((pid = fork()) == -1)
-		warning("fork failed to create a new process", *t->arr);
-	else if (pid == 0 && (t->ret = execve(*t->arr, t->arr, e) == -1))
-		warning("execve fucked up", *t->arr);	
+		warning("fork failed to create a new process", *arr);
+	if (pid == 0 && execve(*arr, arr, e) == -1)
+		warning("execve fucked up", *arr);
 	ft_freestrarr(e);
-	wait(&pid);
+	waitpid(pid, 0, 0);
 	return (pid);
 }
 
@@ -54,7 +54,7 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 			warning("close failed", NULL);
 		{
 			ft_strdel(&t->r.s);
-			t->ret = ft_exec(t, e);
+			t->ret = ft_exec(t->arr, e);
 			if (close(t->r.from) == -1)
 				warning("can't close", NULL);
 			if ((t->r.from = dup(save)) == -1)
@@ -63,31 +63,6 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 	}
 	return (e);
 }
-
-
-/*
-    if (argc != 3) usage();
-    int pd[2]; //Pipe descriptor
-    pipe(pd);
-    int pid = fork();
-    if (pid < 0) 
-    	perror("Something failed on trying to create a child process!\n");
-    else if (pid == 0) { //Child
-    dup2(pd[0], 0); 
-    close(pd[0]);
-    close(pd[1]);
-    execlp("wc", "wc", "-l", (char *)NULL);
-    fprintf(stderr, "Failed to execute 'wc'\n");
-    exit(1);
-	}
-    else { //Parent
-        dup2(pd[0], 1);
-        close(pd[0]);
-        close(pd[1]);
-        execlp("grep", "grep", argv[1], argv[2], (char *)NULL);
-    }
-}
-*/
 
 static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 {
@@ -101,17 +76,17 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 	}
 	if ((pid[0] = fork()) == 0)
 	{
-		dup2(pipes[1], STDOUT_FILENO);
 		if (close(pipes[0] == -1))
 			warning("cant close", "pipe[0] || STDOUT");
+		dup2(pipes[1], STDOUT_FILENO);
 		e = exec_instruction(t, e);
 		exit(0);
 	}
 	if ((pid[1] = fork()) == 0)
 	{
-		dup2(pipes[0], STDIN_FILENO);
 		if (close(pipes[1] == -1))
 			warning("cant close", "pipe[1]");
+		dup2(pipes[0], STDIN_FILENO);
 		e = exec_instruction(t->next, e);
 		exit(0);
 	}
@@ -136,7 +111,7 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 			e = ft_exec_redirection(t, e);
 		else if (check_builtin(t->arr))
 			e = run_builtin(t , e);
-		else if ((t->ret = ft_exec(t, e)) == -1)
+		else if ((t->ret = ft_exec(t->arr, e)) == -1)
 			warning("-1 value returned by ft_exec", *t->arr);
 	}
 	if (t->l == ';' && t->next->arr)

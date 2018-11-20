@@ -61,7 +61,7 @@ t_tree *new_tree(void);
 void ft_free_tree(t_tree *t);
 t_tree *get_tree(char *input, t_envv *e);
 void print_tree(t_tree *t);
-
+int ft_exec(char **arr, t_envv *envv);
 
 void	ft_disp(t_envv *envv, int argc, char **argv);
 void	run_bin(char **args, t_envv *envv);

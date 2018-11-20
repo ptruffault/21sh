@@ -1,3 +1,51 @@
+ls | rev
+ls | rev
+env -i ls
+env
+ls
+ls | rev
+ls
+ls | rev
+ls
+env -i ls
+ls
+env -i name=lol ls
+env -i name=lol
+env -i
+ls
+ls
+env -i ls
+env -i ls
+ls ; echo lol
+ls
+env -i ls
+
+env -i
+env -i ls
+env -i
+ls
+clear
+env
+ls
+unset test
+setenv test merde ; env
+ls
+ls ; echo lol
+ls
+ls
+ls
+ls
+clear
+ls
+clear
+examshell
+ls ; echo lol 
+ls
+ls | rev
+env
+ls
+clear
+ls
 make save
 ls | rev
 ls | rev

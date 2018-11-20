@@ -82,7 +82,7 @@ void			ft_env(t_tree *t, t_envv *envv)
 			tmp = ft_tmpsetenv(tmp, t->arr[i]);
 		else
 		{
-			ft_free_tenvv(exec_instruction(t, tmp));
+			ft_exec(&t->arr[i], tmp);
 			return ;
 		}
 		i++;
