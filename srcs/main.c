@@ -14,17 +14,19 @@
 
 int ft_exec(char **arr, t_envv *envv)
 {
+	int ret;
 	char **e;
 	int pid;
 
+	ret = 0;
 	e = tenvv_to_tab(envv);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", *arr);
-	if (pid == 0 && execve(*arr, arr, e) == -1)
+	if (pid == 0 && (ret = execve(*arr, arr, e) == -1))
 		warning("execve fucked up", *arr);
 	ft_freestrarr(e);
-	waitpid(pid, 0, 0);
-	return (pid);
+	wait(&pid);
+	return (ret);
 }
 
 static void get_destination_fd(t_tree *t)
@@ -76,24 +78,24 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 	}
 	if ((pid[0] = fork()) == 0)
 	{
+		dup2(pipes[1], STDOUT_FILENO);
 		if (close(pipes[0] == -1))
 			warning("cant close", "pipe[0] || STDOUT");
-		dup2(pipes[1], STDOUT_FILENO);
 		e = exec_instruction(t, e);
 		exit(0);
 	}
 	if ((pid[1] = fork()) == 0)
 	{
+		dup2(pipes[0], STDIN_FILENO);
 		if (close(pipes[1] == -1))
 			warning("cant close", "pipe[1]");
-		dup2(pipes[0], STDIN_FILENO);
 		e = exec_instruction(t->next, e);
 		exit(0);
 	}
 	close(pipes[0]);
 	close(pipes[1]);
-	waitpid(-1, 0, 0);
-	waitpid(-1, 0, 0); 
+	wait(&pid[0]);
+	wait(&pid[1]); 
 	return (e);
 }
 

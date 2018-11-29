@@ -1,3 +1,92 @@
+make save
+ls
+rm -rf GIT
+rm -rf file
+rm -rf filr
+rm -rf filr
+cat file
+ls eqrgq 2> file
+ls wrg
+ls ; echo lol 
+ls | rev
+ls | rev
+ls
+ls | rev
+ls | rev
+clear
+ls
+ls
+rev file
+rev "lola"
+ls | rev
+ls
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+
+
+ls | rev
+ls | rev
+ls
+ls | rev
+ls
+ls | rev
+ls | rev
+ls > file ; cat file ; rm -rf file
+ls > file ; cat file ; rm -rf file
+cat file
+ls > file
+cat file
+cat file
+ls > file
+cat file
+echo lol > file
+echo lol
+echo lol
+echo lol f
+cat file
+echo lol > file
+";
+ .0-
+ls -R
+ls
+ls -R > file ; cat file
+cat file
+ls -R > file
+ls -R > file ; cat -e file ;  rm -rf file
+rm -rf file
+ls > file
+ls | rev
+ls | rev
+ls
+ls ; echo lol > file
+ls ; echo lol > file
+ls ; echo lol
+echo lol
+ls ; echo lol > file ; cat file ; rm -rf file
+ls | rev
+ls
+ls | rev
+ls
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls
+ls | rev
+ls | rev
+ls | rev
+ls
+clear
+ls
+ls | rev
+ls
 ls | rev
 ls | rev
 env -i ls

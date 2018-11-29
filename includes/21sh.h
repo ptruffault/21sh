@@ -55,7 +55,7 @@ typedef struct s_tree
 }				t_tree;
 
 
-t_envv *exec_instruction(t_tree *t, t_envv *envv);
+t_envv *exec_instruction(t_tree *t, t_envv *e);
 char **get_cmd_and_arg(char **input, t_envv *e, int *i);
 t_tree *new_tree(void);
 void ft_free_tree(t_tree *t);
