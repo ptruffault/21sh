@@ -12,21 +12,23 @@
 
 #include "../includes/21sh.h"
 
-int ft_exec(char **arr, t_envv *envv)
+t_envv *ft_exec(t_tree *t, t_envv *envv)
 {
 	int ret;
 	char **e;
 	int pid;
 
 	ret = 0;
+	if (check_builtin(t->arr))
+		return (run_builtin(t, envv));
 	e = tenvv_to_tab(envv);
 	if ((pid = fork()) == -1)
-		warning("fork failed to create a new process", *arr);
-	if (pid == 0 && (ret = execve(*arr, arr, e) == -1))
-		warning("execve fucked up", *arr);
+		warning("fork failed to create a new process", *t->arr);
+	if (pid == 0 && (ret = execve(*t->arr, t->arr, e) == -1))
+		warning("execve fucked up", *t->arr);
 	ft_freestrarr(e);
 	wait(&pid);
-	return (ret);
+	return (envv);
 }
 
 static void get_destination_fd(t_tree *t)
@@ -56,7 +58,7 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 			warning("close failed", NULL);
 		{
 			ft_strdel(&t->r.s);
-			t->ret = ft_exec(t->arr, e);
+			e = ft_exec(t, e);
 			if (close(t->r.from) == -1)
 				warning("can't close", NULL);
 			if ((t->r.from = dup(save)) == -1)
@@ -81,7 +83,7 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 		dup2(pipes[1], STDOUT_FILENO);
 		if (close(pipes[0] == -1))
 			warning("cant close", "pipe[0] || STDOUT");
-		e = exec_instruction(t, e);
+		e = ft_exec(t, e);
 		exit(0);
 	}
 	if ((pid[1] = fork()) == 0)
@@ -111,10 +113,8 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 		}
 		else if (t->r.s && t->l != '.')
 			e = ft_exec_redirection(t, e);
-		else if (check_builtin(t->arr))
-			e = run_builtin(t , e);
-		else if ((t->ret = ft_exec(t->arr, e)) == -1)
-			warning("-1 value returned by ft_exec", *t->arr);
+		else 
+			e = ft_exec(t, e);
 	}
 	if (t->l == ';' && t->next->arr)
 		return (exec_instruction(t->next, e));

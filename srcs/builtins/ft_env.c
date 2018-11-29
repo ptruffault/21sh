@@ -12,6 +12,27 @@
 
 #include "../includes/21sh.h"
 
+static void ft_env_exec(char **arr, t_envv *envv)
+{
+	char **e;
+	char *path;
+	int pid;
+
+	e = tenvv_to_tab(envv);
+	if (!(path = check_bin(*arr, envv)))
+	{
+		warning("{env} unknow cmd ", *arr);
+		return ;
+	}
+	if ((pid = fork()) == -1)
+		warning("fork failed to create a new process", *arr);
+	if (pid == 0 && execve(path, arr, e) == -1)
+		warning("{env} execve fucked up", *arr);
+	ft_strdel(&path);
+	ft_freestrarr(e);
+	wait(&pid);
+}
+
 static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
 {
 	t_envv	*ret;
@@ -82,7 +103,8 @@ void			ft_env(t_tree *t, t_envv *envv)
 			tmp = ft_tmpsetenv(tmp, t->arr[i]);
 		else
 		{
-			ft_exec(&t->arr[i], tmp);
+			ft_env_exec(&t->arr[i], tmp);
+			ft_free_tenvv(tmp);
 			return ;
 		}
 		i++;

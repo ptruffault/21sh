@@ -1,3 +1,37 @@
+echo 'lol mdr
+echo 'lol
+echo "loooooooool"
+echo "lol
+ls
+ls | rev
+rm -rf file
+cat file
+ls > file
+ls -R
+env ls
+ls
+env -i ls
+env -i ls
+env ls
+env -i ls
+env ls
+env -i ls
+env
+env ls
+env ls
+env ls
+env ;s
+env -i ls
+echo lol > file ; cat file
+cat file
+cat file
+echo lol > file
+echo lol
+echo lol > file ; cat -e file ; rm -rf file
+echo lol > file ; cat -e file ; rm -rf file
+echo lol > file ; cat -e file ; rm -rf file
+ls ; echo lol
+ls
 make save
 ls
 rm -rf GIT
