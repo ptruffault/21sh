@@ -1,3 +1,118 @@
+ls | rev
+ls | ref
+ls | rev
+ls | rev | cat -e 
+ls | rev
+ls | re 
+ls
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | REV
+ls | rev
+ls | rev
+ls | rev | cat -e
+ls | rev
+ls | rev
+ls
+ls ; echo lol > f ; cat f ; rm -rf f
+ls
+clear
+env
+ls | rev
+ls | rev |cat -e
+ls | rev
+clear
+env | rev
+env | grep 
+ls
+env
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls
+rm -rf file
+cat file
+ls wef > file
+ls wef
+ls
+rm -rf file
+cat file
+ls
+ls wef >> file
+ls wef >>
+ls wef >>&
+ls wef 2>>&
+ls wef 2>>&-
+ls wef 2>&-
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls > file
+ls
+clear
+ls
+ls -Ra
+ls -R
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev | cat | cat -e
+ls | rev | cat
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls
+ls | rev
+ls | rv
+ls | cat
+ls | rev
+ls
+ls | rev | cat -e
+ls | rev
+ls | rev
+
+
+
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls
+ls | rev
+ls
+ls | rev
+ls | rev
+ls | rev
+ls
+ls | rev
+ls ; echo lol 
+ls
+ls | rev
+ls
+ls | rev
+ls
+sl
+ls | rev
+ls | rev
+ls | rev
+ls
+ls | rev
+ls | rev
+ls
+ls | rev
+ls | rev
+ls | rev
 echo 'lol mdr
 echo 'lol
 echo "loooooooool"

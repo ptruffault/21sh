@@ -14,17 +14,15 @@
 
 t_envv *ft_exec(t_tree *t, t_envv *envv)
 {
-	int ret;
 	char **e;
 	int pid;
 
-	ret = 0;
 	if (check_builtin(t->arr))
 		return (run_builtin(t, envv));
 	e = tenvv_to_tab(envv);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", *t->arr);
-	if (pid == 0 && (ret = execve(*t->arr, t->arr, e) == -1))
+	if (pid == 0 && execve(*t->arr, t->arr, e) == -1)
 		warning("execve fucked up", *t->arr);
 	ft_freestrarr(e);
 	wait(&pid);
@@ -78,26 +76,30 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 		warning("pipe error", NULL);
 		return (e);
 	}
-	if ((pid[0] = fork()) == 0)
+	if ((pid[0] = fork()) < 0)
+		error("fork filed to create a new process in pipe", *t->arr);
+	else if (pid[0] == 0)
 	{
-		dup2(pipes[1], STDOUT_FILENO);
 		if (close(pipes[0] == -1))
-			warning("cant close", "pipe[0] || STDOUT");
+			warning("cant close", "pipe[0] 0");
+		dup2(pipes[1], STDOUT_FILENO);
 		e = ft_exec(t, e);
 		exit(0);
 	}
-	if ((pid[1] = fork()) == 0)
+	if ((pid[1] = fork()) < 0)
+		error("fork filed to create a new process in pipe", *t->arr);
+	else if (pid[1] == 0)
 	{
-		dup2(pipes[0], STDIN_FILENO);
 		if (close(pipes[1] == -1))
-			warning("cant close", "pipe[1]");
+			warning("cant close", "pipe[1] 1");
+		dup2(pipes[0], STDIN_FILENO);
 		e = exec_instruction(t->next, e);
 		exit(0);
 	}
 	close(pipes[0]);
 	close(pipes[1]);
 	wait(&pid[0]);
-	wait(&pid[1]); 
+	wait(&pid[1]);
 	return (e);
 }
 
