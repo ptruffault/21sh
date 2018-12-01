@@ -1,3 +1,6 @@
+ls | rev |  cat -e
+ls | rev
+ls
 ls | rev
 ls | ref
 ls | rev
