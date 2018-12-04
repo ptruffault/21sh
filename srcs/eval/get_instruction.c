@@ -44,7 +44,7 @@ static t_tree *get_redirection(t_tree *t ,char **input, int *i)
 	}
 	else if (t->r.to == -2)
 	{
-		warning("redirection need an argument", ">[&Y] [file]");
+		warning("redirection need an argument", "[ >(>) / <(<) ] [&Y / file_path]");
 		ft_strdel(&t->r.s);
 	}
 	return (t);
@@ -91,8 +91,8 @@ static void eval_tree(t_tree *t, char **input, t_envv *e)
 			tmp = get_redirection(tmp, input, &i);
 		if (!tmp->arr)
 			error("command not found", input[s]);
-	/*	else
-			print_tree(tmp);*/
+		else
+			print_tree(tmp);
 		if (t->l && (tmp->next))
 		{
 			tmp = tmp->next;

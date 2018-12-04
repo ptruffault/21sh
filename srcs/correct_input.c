@@ -135,18 +135,6 @@ static char *correct_2(char *s, int *i)
 
 }
 
-static char *correct_begin(char *s)
-{
-	int i;
-	char *ret;
-
-	i = 0;
-	while (s[i] == '>' || s[i] == '<' || s[i] == '|' || s[i] == ';')
-		i++;
-	ret = ft_strdup(&s[i]);
-	ft_strdel(&s);
-	return (ret);
-}
 
 static int check_void(char *s)
 {
@@ -169,7 +157,6 @@ char *correct_syntax(char *s)
 		ft_strdel(&s);
 		return (NULL);
 	}
-	s = correct_begin(s);
 	while (s[i])
 	{
 		if (s[i] == '>' || s[i] == '<')

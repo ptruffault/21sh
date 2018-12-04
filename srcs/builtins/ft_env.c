@@ -12,16 +12,16 @@
 
 #include "../includes/21sh.h"
 
-static void ft_env_exec(char **arr, t_envv *envv)
+static void ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 {
 	char **e;
 	char *path;
 	int pid;
 
-	e = tenvv_to_tab(envv);
+	e = tenvv_to_tab(tmp);
 	if (!(path = check_bin(*arr, envv)))
 	{
-		warning("{env} unknow cmd ", *arr);
+		error("{env} unknow cmd ", *arr);
 		return ;
 	}
 	if ((pid = fork()) == -1)
@@ -103,7 +103,7 @@ void			ft_env(t_tree *t, t_envv *envv)
 			tmp = ft_tmpsetenv(tmp, t->arr[i]);
 		else
 		{
-			ft_env_exec(&t->arr[i], tmp);
+			ft_env_exec(&t->arr[i], tmp, envv);
 			ft_free_tenvv(tmp);
 			return ;
 		}

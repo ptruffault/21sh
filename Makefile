@@ -6,16 +6,17 @@
 #    By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 11:16:13 by ptruffau          #+#    #+#              #
-#    Updated: 2018/01/07 16:59:07 by ptruffau         ###   ########.fr        #
+#    Updated: 2018/12/03 13:37:39 by ptruffau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
 
-FLAG		=		-Wall -Wextra -Werror
+FLAG		=		-Wall -Wextra -Werror -g
 
 FILES		=		main.c \
+					signal.c \
 					correct_input.c \
 					disp.c\
 
@@ -45,9 +46,9 @@ NO_COLOR	= \033[00m
 OP_COLOR	= \033[1;31m
 DONE 		= $(NO_COLOR)[\033[1;32mOK$(NO_COLOR)]
 
-all: bin $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJ) Makefile
+$(NAME): $(OBJ) Makefile bin
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
 	@gcc $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)

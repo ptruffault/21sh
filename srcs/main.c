@@ -56,7 +56,7 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 			warning("close failed", NULL);
 		{
 			ft_strdel(&t->r.s);
-			e = ft_exec(t, e);
+			e = exec_instruction(t, e);
 			if (close(t->r.from) == -1)
 				warning("can't close", NULL);
 			if ((t->r.from = dup(save)) == -1)
@@ -66,7 +66,7 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e)
 	return (e);
 }
 
-static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
+static t_envv *exec_pipe(t_tree *t, t_envv *e)
 {
 	int			pipes[2];
 	int			pid[2];
@@ -80,9 +80,8 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 		error("fork filed to create a new process in pipe", *t->arr);
 	else if (pid[0] == 0)
 	{
-		if (close(pipes[0] == -1))
-			warning("cant close", "pipe[0] 0");
 		dup2(pipes[1], STDOUT_FILENO);
+		close(pipes[0]);
 		e = ft_exec(t, e);
 		exit(0);
 	}
@@ -90,16 +89,15 @@ static t_envv *ft_exec_pipe(t_tree *t, t_envv *e)
 		error("fork filed to create a new process in pipe", *t->arr);
 	else if (pid[1] == 0)
 	{
-		if (close(pipes[1] == -1))
-			warning("cant close", "pipe[1] 1");
 		dup2(pipes[0], STDIN_FILENO);
+		close(pipes[1]);
 		e = exec_instruction(t->next, e);
 		exit(0);
-	}
+	} 
 	close(pipes[0]);
 	close(pipes[1]);
-	wait(&pid[0]);
-	wait(&pid[1]);
+	waitpid(-1, 0, 0);
+	waitpid(-1, 0, 0);
 	return (e);
 }
 
@@ -108,13 +106,10 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 {
 	if (t->arr)
 	{
-		if (t->l == '|' && t->next->arr)
-		{
-			t->l = '.';
-			e = ft_exec_pipe(t, e);
-		}
-		else if (t->r.s && t->l != '.')
+		if (t->r.s)
 			e = ft_exec_redirection(t, e);
+		else if (t->l == '|' && t->next->arr)
+			e = exec_pipe(t, e);
 		else 
 			e = ft_exec(t, e);
 	}
@@ -128,15 +123,17 @@ int		main(int argc, char **argv, char **envv)
 	t_envv	*my_envv;
 	t_tree	*t;
 
+	set_signals();
 	if (!(my_envv = new_tenvv()))
 		return (-1);
-	my_envv = init_tenvv(my_envv, envv);
+	my_envv = ft_get_set_envv(init_tenvv(my_envv, envv));
 	while (42)
 	{
 		ft_disp(my_envv, argc, argv);
 		if ((t = get_tree(get_input(envv), my_envv)))
 		{
-			my_envv = exec_instruction(t, my_envv);
+			ft_get_set_tree(t);
+			my_envv = ft_get_set_envv(exec_instruction(t, my_envv));
 			ft_free_tree(t);
 		}
 	}

@@ -19,17 +19,11 @@ static char	*check_exe(char *bin_path, struct stat inf)
 		if (inf.st_mode & S_IXUSR)
 			return (bin_path);
 		else
-		{
 			error("permission denied", bin_path);
-			free(bin_path);
-		}
-		return (NULL);
 	}
 	else
-	{
 		error("not an executable", bin_path);
-		free(bin_path);
-	}
+	free(bin_path);
 	return (NULL);
 }
 
@@ -52,13 +46,16 @@ static char	*local_try(char *input, t_envv *envv)
 	return (check_exe(path, inf));
 }
 
-static char	*check_path(char *input, char **path)
+char	*check_bin(char *input, t_envv *envv)
 {
 	int			i;
 	char		*bin_path;
 	struct stat	inf;
+	char 		**path;
 
 	i = 0;
+	if (!(path = ft_strsplit(get_tenvv_val(envv, "PATH"), ':')))
+		return (NULL);
 	while (path[i])
 	{
 		bin_path = ft_new_path(path[i], input);
@@ -72,20 +69,5 @@ static char	*check_path(char *input, char **path)
 		i++;
 	}
 	ft_freestrarr(path);
-	return (NULL);
-}
-
-char		*check_bin(char *input, t_envv *envv)
-{
-	char			**path;
-
-	path = NULL;
-	if (!(path = ft_strsplit(get_tenvv_val(envv, "PATH"), ':')))
-	{
-		warning("$PATH is empty", NULL);
-		return (NULL);
-	}
-	else
-		return (check_path(input, path));
 	return (local_try(input, envv));
 }
