@@ -128,7 +128,7 @@ t_tree *get_tree(char *input, t_envv *e)
 	ft_strdel(&input);
 	if (!(tree = init_tree(t, e)))
 		error("init tree failed", NULL);
-	print_tree(tree);
+	//print_tree(tree);
 	ft_freestrarr(t);
 	return (tree);
 }

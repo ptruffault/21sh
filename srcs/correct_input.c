@@ -127,6 +127,8 @@ static char *correct_2(char *s , int *i)
 	c = s[*i];
 	if (*i > 0 && !ft_isspace(s[*i - 1]))
 		s = ft_straddchar_at(s, ' ', *i - 1);
+	if (s[*i + 2] && !ft_isspace(s[*i + 2]))
+		s = ft_straddchar_at(s, ' ', *i + 2);
 	return (s);
 }
 
