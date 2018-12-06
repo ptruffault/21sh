@@ -29,26 +29,24 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 {
 	int save[2];
 
+	save[1] = -1;
 	if (r->to < 0 || r->from < 0)
 		get_destination_fd(r);
 	if (r->to >= 0 && (r->t == 0 || r->t == 1))
 	{
-		if (r->to == STDOUT_FILENO && (save[1] = dup(STDOUT_FILENO)) == -1)
-			warning("impossible to save STDOUT_FILENO", NULL);
+	/*	if (r->to == STDOUT_FILENO && (save[1] = dup(STDOUT_FILENO)) == -1)
+			warning("impossible to save STDOUT_FILENO", NULL);*/
 		if ((save[0] = dup(r->from)) == -1)
 			error("impossible to save file descriptor (dup)", "from");
 		else if (dup2(r->to, r->from) == -1)
 			warning("dup2 failed", NULL);
-		else if (close(r->to) == -1)
+		else if (r->to != STDOUT_FILENO && close(r->to) == -1)
 			warning("close failed", NULL);
 		{
 			e = ft_exec(t, e, r->next);
 			if (close(r->from) == -1)
-			{
-				put_redirect(r);
 				warning("redirection can't close", "from");
-			}
-			if ((r->from = dup(save[0])) == -1)
+			if ((r->from = dup(save[0]) == -1))
 				warning("impossible to load old fd", NULL);
 		}
 	}

@@ -1,3 +1,55 @@
+make save
+ls
+clear
+cat file
+ls -l wef 21sh  2>&1 | rev > file
+ls -l wef 21sh  2>&1 | rev 
+ls -l wef 21sh  2>&1 
+ls  wef  2>&1 
+ls 2>&1 
+ls | rev
+ls
+ls -l auteur eqrf 2>&1 | rev
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+clear
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls
+ls
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+clear
+
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2> file
+ls -l auteur eqrf 2> file
+ls -l auteur eqrf 2> file
+ls -l auteur eqrf 2> file
+ls -l auteur eqrf 2> file
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls
+ls -l auteur eqrf 2>&1
+ls -l auteur eqrf 2>&1
+ls ewv || ls
+eqrg || ls
+ls || env
 ls
 clear
 
