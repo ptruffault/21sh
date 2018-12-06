@@ -11,44 +11,79 @@
 /* ************************************************************************** */
 #include "../includes/21sh.h"
 
-static void	find_type(char *s, t_tree *t)
+static void	find_type(char *s, t_redirect *r)
 {
 	char *ptr;
 
 	if ((ptr = ft_strchr(s, '>')))
-		t->r.t = (*(ptr + 1) == '>' ? DR : R);
+		r->t = (*(ptr + 1) == '>' ? 1 : 0);
 	else if ((ptr = ft_strchr(s, '<')))
-		t->r.t = (*(ptr + 1) == '<' ? DL : L);
+		r->t = (*(ptr + 1) == '<' ? 3 : 2);
 	else
-		t->r.t = UK;
+		r->t = -1;
 }	
 
-static t_tree *get_redirection(t_tree *t ,char **input, int *i)
+
+
+static t_redirect *new_redirection(void)
+{
+	t_redirect *new;
+
+	if (!(new = (t_redirect *)malloc(sizeof(t_redirect))))
+		return (NULL);
+	new->t = -1;
+	new->to = -2;
+	new->from = -1;
+	new->path = NULL;
+	new->next = NULL;
+	return (new);
+}
+
+// a refaire adapté a une liste chainee
+
+static t_redirect *get_redirection(t_redirect *new, char **input, int *i)
 {
 	char *ptr;
 
-	find_type(input[*i], t);
-	t->r.s = ft_strdup(input[*i]);
-	*i = *i + 1;
-	if (t->r.t == R || t->r.t == DR)
+	find_type(input[*i], new);
+	if (new->t == 0 || new->t == 1)
 	{
-		t->r.from = (ft_isdigit(*t->r.s) ? ft_atoi(t->r.s) : 1);
-		if ((ptr = ft_strchr(t->r.s, '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
-			t->r.to = (ft_isdigit(*(ptr + 1)) ? ft_atoi(ptr + 1) : -1);
+		new->from = (ft_isdigit(*input[*i]) ? ft_atoi(input[*i]) : 1);
+		if ((ptr = ft_strchr(input[*i], '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
+			new->to = (ft_isdigit(*(ptr + 1)) ? ft_atoi(ptr + 1) : -1);
 	}
-	if (input[*i] &&  t->r.to == -2 && 
-	(t->r.t == L || ((t->r.t == R || t->r.t == DR))))
+	else {
+		new->to = 0;
+		new->from = -1;
+	}
+	if (input[++(*i)] &&  ((new->to == -2 && (new->t == 0 || new->t == 1))
+	 || (new->from == -1 && (new->t == 2 || new->t == 3))))
 	{
-		t->r.path = ft_strdup(input[*i]);
+		new->path = ft_strdup(input[*i]);
 		*i = *i + 1;
 	}
-	else if (t->r.to == -2)
+	else if (new->to == -2)
 	{
 		warning("redirection need an argument", "[ >(>) / <(<) ] [&Y / file_path]");
-		ft_strdel(&t->r.s);
+		new = NULL;
 	}
-	return (t);
+	return (new);
 }
+
+static t_redirect *get_redirections(t_redirect *head, char **input, int *i)
+{
+	t_redirect *tmp;
+
+	head = get_redirection(head, input, i);
+	tmp = head;
+	while (IS_RED(input[*i]))
+	{
+		tmp->next = new_redirection();
+		tmp = get_redirection(tmp->next, input, i);
+	}
+	return (head);
+}
+
 
 static t_tree *init_tree(char **input)
 {
@@ -68,6 +103,11 @@ static t_tree *init_tree(char **input)
 			t->next = new_tree();
 			t = t->next;
 		}
+		if (IS_RED(input[i]))
+		{
+			t->r = new_redirection();
+			t->r = get_redirections(t->r, input, &i);
+		}
 		i++;
 	}
 	return (head);
@@ -86,13 +126,8 @@ static void eval_tree(t_tree *t, char **input, t_envv *e)
 	while (i < arr_len)
 	{
 		s = i;
-		if ((tmp->arr = get_cmd_and_arg(input, e, &i)) &&
-		IS_RED(input[i]))
-			tmp = get_redirection(tmp, input, &i);
-		if (!tmp->arr)
+		if (!(tmp->arr = get_cmd_and_arg(input, e, &i)))
 			error("command not found", input[s]);
-		else
-			print_tree(tmp);
 		if (t->l && (tmp->next))
 		{
 			tmp = tmp->next;

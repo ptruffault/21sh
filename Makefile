@@ -19,6 +19,7 @@ FILES		=		main.c \
 					signal.c \
 					correct_input.c \
 					disp.c\
+					exec.c 
 
 EVAL			=	check_cmd.c \
 					eval_tools.c \

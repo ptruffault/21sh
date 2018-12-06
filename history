@@ -1,3 +1,180 @@
+ls > file
+ls
+ls > file
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; env
+ls > file 2>&- 1>&- ; lol
+ls > file 2>&- 1>&-
+ls > file 2>&-
+ls > file 2>&-
+ls > file 2>&-
+ls > file 2>&-
+ls > file
+ls
+ls > file
+ls
+ls 2>&1 1> file
+ls 2>1 1> file
+ls 2>1 1> file
+ls ewfw auteur 2>&- 1> file < file
+ls ewfw auteur 2>&- 1> file < file
+ls ewfw auteur 2>&- 1> file
+ls ewfw auteur 2>&- 1> file
+ls 2>&1 1>&-
+ls 2>&1 1>&-
+ls 2>&1
+ls
+ls auteur  > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls
+ls > file
+ls -l
+ls 
+ls > file
+ls
+ls
+ls > file
+ls
+clear
+ls
+ls
+ls
+clear
+ls 
+ls
+ls
+ls
+ls
+ls
+ ls auteur wefwc 2> file
+cat file
+ ls auteur wefwc 2> file
+cat file
+ ls auteur wefwc > file
+ ls auteur wefwc 2> file
+ ls auteur wefwc
+ls auteur
+ls
+cat < auteur
+cat < auteur
+ls
+cat < auteur
+cat < auteur
+cat file
+ls wrgv 2>&1 | rev | cat -e > file
+ls wrgv 2>&1 | rev
+ls | rev
+ls
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+ls
+ls -l > file ; echo end >> file ; cat file ; rm -rf file
+rm -rf file
+cat file
+ls > file
+cat < auteur
+cat < auteur
+cat file
+ls
+ls > file
+cat < auteur
+cat < auteur
+ls
+clear
+ls
+cat < auteur
+cat < auteur
+ls < auteur
+rm -rf file
+cat file
+ls weveqfv 2> file ; cat file
+ls weveqfv 2>&1 | rev
+ls | rev
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls
+ls < auteur
+ls
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls < auteur
+ls
+ls < auteur
+ls
+ls < auteur
+ls < auteur
+ls 2>&1
+ls
+clear
+ls
+ls < auteur
+ls < auteur
+ls < auteur
+ls
+ls erg 2>>&1 | rev
+ls erg 2>>&1
+ls
+ls erg 2>>&1
+ls erg 2>>1
+ls
+clear
+ls
+rm -rf 1 12 2
+ls
+ls
+ls | rev
+ls
 exit
 ls evv 2>&1 | rev |cat -e
 cd 

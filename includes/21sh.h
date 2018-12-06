@@ -27,28 +27,19 @@
 # define IS_LEFT_RED(x) ((x && ft_strchr(x, '<')))
 # define IS_SYNTAX(x) (IS_PIPE(x) || IS_EOI(x) || IS_RED(x))
 
-typedef enum red_type
-{
-	UK = 0,
-	R = 1,
-	DR = 2,
-	L = 3,
-	DL = 4 ,
-}			t_redtype;
-
 typedef struct s_redirect
 {
-	char *s;
-	t_redtype t;
-	char *path;
-	int from;
-	int to;
+	int					t;
+	char 				*path;
+	int 				from;
+	int 				to;
+	struct s_redirect	*next;
 }				t_redirect;
 
 typedef struct s_tree
 {
 	char 			**arr; //args
-	t_redirect		r;
+	t_redirect		*r;
 	int				ret;
 	char			l;    //next cmd link | or ;
 	struct s_tree	*next; 
@@ -67,7 +58,6 @@ void	ft_disp(t_envv *envv, int argc, char **argv);
 void	run_bin(char **args, t_envv *envv);
 char	**ft_correct(char **input, t_envv *envv);
 char	*correct_syntax(char *s);
-t_envv	*read_cmd(t_envv *my_envv, char *input, char **arr);
 char	*ft_get_input(void);
 int		check_cmd(char *input, t_envv *envv);
 char	*check_bin(char *input, t_envv *envv);

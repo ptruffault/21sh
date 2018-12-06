@@ -12,6 +12,20 @@
 
 #include "../includes/21sh.h"
 
+void ft_free_redirection(t_redirect *r)
+{
+	t_redirect *tmp;
+
+	while (r)
+	{
+		tmp = r->next;
+		ft_strdel(&r->path);
+		free(r);
+		r = NULL;
+		r = tmp;
+	}
+}
+
 void ft_free_tree(t_tree *t)
 {
 	t_tree *tmp;
@@ -19,11 +33,22 @@ void ft_free_tree(t_tree *t)
 	while (t)
 	{
 		ft_freestrarr(t->arr);
-		ft_strdel(&t->r.s);
-		ft_strdel(&t->r.path);
+		ft_free_redirection(t->r);
 		tmp = t->next;
 		free(t);
 		t = tmp;
+	}
+}
+
+void put_redirect(t_redirect *r)
+{
+	t_redirect *tmp;
+
+	tmp = r;
+	while (tmp)
+	{
+		printf("type = %i path = %s from = %i to = %i \n",tmp->t, tmp->path, tmp->from, tmp->to );
+		tmp = tmp->next;
 	}
 }
 
@@ -31,23 +56,15 @@ void print_tree(t_tree *t)
 {
 	ft_putstr("instruc = ");
 	ft_putstrarr(t->arr);
-	if (t->r.s)
-	{
-		ft_putstr("redirection = ");
-		ft_putendl(t->r.s);
-		printf("from %i -> to %i\n",t->r.from, t->r.to );
-		if (t->r.path)
-		{
-			ft_putchar('\t');
-			ft_putendl(t->r.path);
-		}
-	}
+	put_redirect(t->r);
+	
 	if (t->l)
 	{
 		ft_putstr("link : ");
 		ft_putchar(t->l);
 	}
 	ft_putchar('\n');
+	printf("END\n");
 }
 
 t_tree *new_tree(void)
@@ -57,12 +74,9 @@ t_tree *new_tree(void)
 	if (!(n = (t_tree *)malloc(sizeof(t_tree))))
 		return (NULL);
 	n->arr = NULL;
-	n->r.s = NULL;
-	n->r.to = -2;
-	n->r.from = 1;
+	n->r = NULL;
 	n->l = 0;
 	n->ret = 0;
-	n->r.path = NULL;
 	n->next = NULL;
 	return (n);
 }

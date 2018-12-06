@@ -39,8 +39,8 @@ char		**ft_correct(char **input, t_envv *envv)
 	i = 0;
 	while (input[i])
 	{
-		if ((ptr = ft_strchr(input[i], '$')) && !IS_SPACE(*(ptr + 1))
-		&& (ptr - input[i] == 0 || IS_SPACE(*(ptr - 1))))
+		if ((ptr = ft_strchr(input[i], '$')) && !ft_isspace(*(ptr + 1))
+		&& (ptr - input[i] == 0 || ft_isspace(*(ptr - 1))))
 		{
 			if (!(tmp = ft_correct_one(envv, input[i], ptr)))
 				i++;
@@ -91,13 +91,13 @@ static char *correct_0(char *s, int *i)
 			*i = *i - 1;
 	}
 
-	if (!IS_SPACE(s[*i - 1]))
+	if (!ft_isspace(s[*i - 1]))
 		s = ft_straddchar_at(s, ' ', *i);
 	*i = sa + 1;
 	while (s[*i] && (s[*i] == '>' || s[*i] == '<' ||
 	s[*i] == '&' || ft_isdigit(s[*i]) || s[*i] == '-'))
 		*i = *i + 1;
-	if (!IS_SPACE(s[*i]))
+	if (!ft_isspace(s[*i]))
 		s = ft_straddchar_at(s, ' ', *i);
 	return (s);
 }
@@ -107,14 +107,14 @@ static char *correct_1(char *s, int *i)
 	char c;
 
 	c = s[*i];
-	if (*i > 0 && !IS_SPACE(s[*i - 1]))
+	if (*i > 0 && !ft_isspace(s[*i - 1]))
 	{
 		s = ft_straddchar_at(s, ' ', *i);
 		*i = *i + 1;
 	}
 	while (s[*i] == c)
 		*i = *i + 1;
-	if (!IS_SPACE(s[*i + 1]))
+	if (!ft_isspace(s[*i + 1]))
 		s = ft_straddchar_at(s, ' ', *i);
 	return (s);
 }
@@ -142,7 +142,7 @@ static int check_void(char *s)
 
 	i = 0;
 	while ((s) && s[i])
-		if (!IS_SPACE(s[i++]))
+		if (!ft_isspace(s[i++]))
 			return (0);
 	return (1);
 }
