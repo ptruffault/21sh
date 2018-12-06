@@ -120,19 +120,14 @@ static char *correct_1(char *s, int *i)
 }
 
 
-static char *correct_2(char *s, int *i)
+static char *correct_2(char *s , int *i)
 {
 	char c;
 
 	c = s[*i];
-	while (s[*(i)])
-	{
-		*i = *i + 1;
-		if (s[*i] == c)
-			return (s);
-	}
-	return (ft_stradd_char(s, c));
-
+	if (*i > 0 && !ft_isspace(s[*i - 1]))
+		s = ft_straddchar_at(s, ' ', *i - 1);
+	return (s);
 }
 
 
@@ -163,7 +158,8 @@ char *correct_syntax(char *s)
 			s = correct_0(s, &i);
 		if (s[i] == ';' || s[i] == '|')
 			s = correct_1(s, &i);
-		if (s[i] == '\'' || s[i] == '"')
+		if ((s[i] == '&' && s[i + 1] == '&')
+		|| (s[i] == '|' && s[i + 1] == '|'))
 			s = correct_2(s, &i);
 		i++;
 	}

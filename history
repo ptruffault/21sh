@@ -1,3 +1,56 @@
+ls && ls || rev
+ls && ls || rev
+ls && ls
+ls && ls
+ls
+ls && env
+ls && ls
+ls && env
+ls && ls
+ls wef
+ls
+ls
+dfiv
+ls | rev
+ls -a
+ls
+ls wefw
+ls | rev | rev
+ls -l auteur wef 2>&1
+ls -l auteur wef 2> file 
+ls -l auteur wef 2> file ; echo FILE: ; cat file
+ls -l auteur wef 2> file  1>> file; echo FILE: ; cat file
+ls -l auteur wef 2> file  1> file; echo FILE: ; cat file
+ls -l auteur wef 2> file ; echo FILE: ; cat file
+ls -l auteur wef 2> file ; echo FILE: 
+ls -l auteur wef 2> file 
+ls -l auteur wef 2>&1 
+ls -l auteur wef 2>&1 
+ls -l auteur wef 2>&1 
+ls wef 2>&1
+ls wef 2>&-
+ls
+clear
+ls ;echo lol > file ; cat file
+ls ;echo lol > file
+ls ;echo lol
+;;;;;;;;;;
+cd ; ;
+ls wqefq
+ls | rev
+ls -l wfqw auteur 2>&- 1> file
+ls -l wfqw auteur 2>&- 1> file
+cat file
+ls -l wfqw auteur 2>&- 1> file
+ls -l auteur  wef 1> file  2>&1 
+ls weqf 2>&1 | rev | cat -e >&2 2>&-
+ls weqf 2>&1 | rev | cat -e >&2
+ls weqf 2>&1 | rev | cat -e >&3
+ls weqf 2>&1 | rev | cat -e >&3
+ls weqf 2>&1 | rev | cat -e >&-
+ls weqf 2>&1 | rev | cat -e 
+clear
+ls
 clear
 cat file
 ls -l auteur ewr 2> file 1>&-

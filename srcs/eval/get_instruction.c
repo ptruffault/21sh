@@ -81,6 +81,13 @@ static t_redirect *get_redirections(t_redirect *head, char **input, int *i)
 	return (head);
 }
 
+static char ft_link(char *s)
+{
+	if (IS_OR(s))
+		return ('o');
+	else
+		return (*s);
+}
 
 static t_tree *init_tree(char **input, t_envv *e)
 {
@@ -98,9 +105,9 @@ static t_tree *init_tree(char **input, t_envv *e)
 			t->arr = get_cmd_and_arg(input, e, &i);
 		else if (input[i] && IS_RED(input[i]))
 			t->r = get_redirections(t->r, input, &i);
-		else if (input[i] && (IS_PIPE(input[i]) || IS_EOI(input[i])))
+		else if (input[i] && (IS_PIPE(input[i]) || IS_EOI(input[i]) || IS_OPERATEUR(input[i])))
 		{
-			t->l = (IS_EOI(input[i]) ? ';' : '|');
+			t->l = ft_link(input[i]);
 			t->next = new_tree();
 			t = t->next;
 			i++;
@@ -121,7 +128,7 @@ t_tree *get_tree(char *input, t_envv *e)
 	ft_strdel(&input);
 	if (!(tree = init_tree(t, e)))
 		error("init tree failed", NULL);
-//	print_tree(tree);
+	print_tree(tree);
 	ft_freestrarr(t);
 	return (tree);
 }

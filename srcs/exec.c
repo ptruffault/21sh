@@ -27,15 +27,15 @@ static void get_destination_fd(t_redirect *r)
 
 static t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 {
-	int save;
-	save = 0;
+	int save[2];
 
 	if (r->to < 0 || r->from < 0)
 		get_destination_fd(r);
 	if (r->to >= 0 && (r->t == 0 || r->t == 1))
 	{
-
-		if ((save = dup(r->from)) == -1)
+		if (r->to == STDOUT_FILENO && (save[1] = dup(STDOUT_FILENO)) == -1)
+			warning("impossible to save STDOUT_FILENO", NULL);
+		if ((save[0] = dup(r->from)) == -1)
 			error("impossible to save file descriptor (dup)", "from");
 		else if (dup2(r->to, r->from) == -1)
 			warning("dup2 failed", NULL);
@@ -48,7 +48,7 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 				put_redirect(r);
 				warning("redirection can't close", "from");
 			}
-			if ((r->from = dup(save)) == -1)
+			if ((r->from = dup(save[0])) == -1)
 				warning("impossible to load old fd", NULL);
 		}
 	}
@@ -58,8 +58,7 @@ static t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r)
 {
 	char **e;
-	int pid;
-	int status;
+	pid_t pid;
 
 	if (r)
 		return(ft_exec_redirection(t, envv, r));
@@ -71,7 +70,8 @@ t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r)
 	if (pid == 0 && execve(*t->arr, t->arr, e) == -1)
 		warning("execve fucked up", *t->arr);
 	ft_freestrarr(e);
-	wait(&status);
+	wait(&t->ret);
+	printf("%i\n",t->ret );
 	return (envv);
 }
 

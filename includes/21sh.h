@@ -25,7 +25,10 @@
 # define IS_RED(x) (x && (IS_RIGHT_RED(x) || IS_LEFT_RED(x)))
 # define IS_RIGHT_RED(x) (x && (ft_strchr(x, '>')))
 # define IS_LEFT_RED(x) ((x && ft_strchr(x, '<')))
-# define IS_SYNTAX(x) (IS_PIPE(x) || IS_EOI(x) || IS_RED(x))
+# define IS_AND(x) (x && ft_strequ(x, "&&"))
+# define IS_OR(x) (x && ft_strequ(x, "||"))
+# define IS_OPERATEUR(x) (IS_AND(x) || IS_OR(x))
+# define IS_SYNTAX(x) (IS_PIPE(x) || IS_EOI(x) || IS_RED(x) || IS_OPERATEUR(x))
 
 typedef struct s_redirect
 {
