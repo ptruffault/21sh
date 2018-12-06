@@ -71,7 +71,6 @@ t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r)
 		warning("execve fucked up", *t->arr);
 	ft_freestrarr(e);
 	wait(&t->ret);
-	printf("%i\n",t->ret );
 	return (envv);
 }
 
@@ -110,17 +109,44 @@ static t_envv *exec_pipe(t_tree *t, t_envv *e)
 	return (e);
 }
 
+t_envv *next_instrcution(t_tree *t, t_envv  *e)
+{
+	if (t->l && t->next->arr)
+	{
+		if (t->l == ';' )
+			return (exec_instruction(t->next, e));
+		if (t->l == '&')
+		{
+			if (t->ret == 0)
+				return (exec_instruction(t->next, e));
+			else
+				while (t && t->l == '&')
+					t = t->next;
+		}	
+		if (t->l == 'o')
+		{
+			if (t->ret != 0)
+				return (exec_instruction(t->next, e));
+			else
+				while (t && t->l == 'o')
+					t = t->next;
+		}
+	}
+	return (e);
+}
 
 t_envv *exec_instruction(t_tree *t, t_envv *e)
 {
-	if (t->arr)
+	if (!t)
+		return (e);
+	if (t->ret != 0)
+		error("unknow cmd", *t->arr);
+	else if (t->arr)
 	{
 		if (t->l == '|' && t->next->arr)
 			e = exec_pipe(t, e);
 		else
 			e = ft_exec(t, e, t->r);
 	}
-	if (t->l == ';' && t->next->arr)
-		return (exec_instruction(t->next, e));
-	return (e);
+	return (next_instrcution(t, e));
 }

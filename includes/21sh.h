@@ -51,7 +51,7 @@ typedef struct s_tree
 t_tree		*ft_get_set_tree(t_tree *new_t);
 void set_signals(void);
 t_envv *exec_instruction(t_tree *t, t_envv *e);
-char **get_cmd_and_arg(char **input, t_envv *e, int *i);
+char **get_cmd_and_arg(t_tree *t, char **input, t_envv *e, int *i);
 t_tree *new_tree(void);
 void ft_free_tree(t_tree *t);
 t_tree *get_tree(char *input, t_envv *e);

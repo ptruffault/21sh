@@ -105,22 +105,26 @@ static char *get_binpath(char **input, t_envv *e, int *i)
 }
 
 
-char **get_cmd_and_arg(char **input, t_envv *e, int *i)
+char **get_cmd_and_arg(t_tree *t, char **input, t_envv *e, int *i)
 {
 	char **ret;
+	int save;
 	int len;
 	int j;
 
 	len = 0;
 	j = 1;
+	save = *i;
 	while (input[*i + len] && !IS_SYNTAX(input[*i + len]))
 		len++;
 	if (!(ret = (char **)malloc(sizeof(char *) *(len + 1)))
 	|| (!(ret[0] = get_binpath(input, e, i))))
 	{
-		ft_freestrarr(ret);
-		*i = *i + len;
-		return (NULL);
+		t->ret = -1;
+		ret[0] = ft_strdup(input[save]);
+		*i = save + 1;
+		ret[1] = NULL;
+		return (ret);
 	}
 	while (j < len)
 	{

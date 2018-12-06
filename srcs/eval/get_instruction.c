@@ -102,7 +102,7 @@ static t_tree *init_tree(char **input, t_envv *e)
 	while (input[i])
 	{
 		if (!IS_SYNTAX(input[i]))
-			t->arr = get_cmd_and_arg(input, e, &i);
+			t->arr = get_cmd_and_arg(t, input, e, &i);
 		else if (input[i] && IS_RED(input[i]))
 			t->r = get_redirections(t->r, input, &i);
 		else if (input[i] && (IS_PIPE(input[i]) || IS_EOI(input[i]) || IS_OPERATEUR(input[i])))
