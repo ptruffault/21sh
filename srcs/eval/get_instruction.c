@@ -23,8 +23,6 @@ static void	find_type(char *s, t_redirect *r)
 		r->t = -1;
 }	
 
-
-
 static t_redirect *new_redirection(void)
 {
 	t_redirect *new;
@@ -38,8 +36,6 @@ static t_redirect *new_redirection(void)
 	new->next = NULL;
 	return (new);
 }
-
-// a refaire adapté a une liste chainee
 
 static t_redirect *get_redirection(t_redirect *new, char **input, int *i)
 {
@@ -74,6 +70,7 @@ static t_redirect *get_redirections(t_redirect *head, char **input, int *i)
 {
 	t_redirect *tmp;
 
+	head = new_redirection();
 	head = get_redirection(head, input, i);
 	tmp = head;
 	while (IS_RED(input[*i]))
@@ -85,56 +82,33 @@ static t_redirect *get_redirections(t_redirect *head, char **input, int *i)
 }
 
 
-static t_tree *init_tree(char **input)
+static t_tree *init_tree(char **input, t_envv *e)
 {
 	t_tree *head;
 	t_tree *t;
 	int i;
 
-	i = 1;
+	i = 0;
 	if (!(head = new_tree()))
 		return (NULL);
 	t = head;
 	while (input[i])
 	{
-		if (IS_PIPE(input[i]) || IS_EOI(input[i]))
+		if (!IS_SYNTAX(input[i]))
+			t->arr = get_cmd_and_arg(input, e, &i);
+		else if (input[i] && IS_RED(input[i]))
+			t->r = get_redirections(t->r, input, &i);
+		else if (input[i] && (IS_PIPE(input[i]) || IS_EOI(input[i])))
 		{
-			t->l = (IS_PIPE(input[i]) ? '|' : ';');
+			t->l = (IS_EOI(input[i]) ? ';' : '|');
 			t->next = new_tree();
 			t = t->next;
+			i++;
 		}
-		if (IS_RED(input[i]))
-		{
-			t->r = new_redirection();
-			t->r = get_redirections(t->r, input, &i);
-		}
-		i++;
 	}
 	return (head);
 }
 
-static void eval_tree(t_tree *t, char **input, t_envv *e)
-{
-	t_tree *tmp;
-	int arr_len;
-	int i;
-	int s;
-
-	i = 0;
-	tmp = t;
-	arr_len = ft_strarrlen(input);
-	while (i < arr_len)
-	{
-		s = i;
-		if (!(tmp->arr = get_cmd_and_arg(input, e, &i)))
-			error("command not found", input[s]);
-		if (t->l && (tmp->next))
-		{
-			tmp = tmp->next;
-			i++;
-		}
-	}
-}
 
 t_tree *get_tree(char *input, t_envv *e)
 {
@@ -145,8 +119,9 @@ t_tree *get_tree(char *input, t_envv *e)
 		return (NULL);
 	t = ft_correct(ft_strsplit_word(input), e);
 	ft_strdel(&input);
-	if ((tree = init_tree(t)))
-		eval_tree(tree, t, e);
+	if (!(tree = init_tree(t, e)))
+		error("init tree failed", NULL);
+//	print_tree(tree);
 	ft_freestrarr(t);
 	return (tree);
 }

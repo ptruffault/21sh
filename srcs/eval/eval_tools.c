@@ -54,17 +54,23 @@ void put_redirect(t_redirect *r)
 
 void print_tree(t_tree *t)
 {
-	ft_putstr("instruc = ");
-	ft_putstrarr(t->arr);
-	put_redirect(t->r);
-	
-	if (t->l)
+	t_tree *tmp;
+	tmp = t;
+	while (tmp)
 	{
-		ft_putstr("link : ");
-		ft_putchar(t->l);
+		ft_putstr("instruc = ");
+		if (tmp->arr)
+			ft_putstrarr(tmp->arr);
+		if (tmp->r)
+			put_redirect(tmp->r);	
+		if (tmp->l)
+		{
+			ft_putstr("link : ");
+			ft_putchar(tmp->l);
+		}
+		ft_putchar('\n');
+		tmp = tmp->next;
 	}
-	ft_putchar('\n');
-	printf("END\n");
 }
 
 t_tree *new_tree(void)

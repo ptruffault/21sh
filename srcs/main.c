@@ -29,7 +29,6 @@ int		main(int argc, char **argv, char **envv)
 		if ((t = get_tree(get_input(envv), my_envv)))
 		{
 			ft_get_set_tree(t);
-			printf("get_treee OK\n");
 			my_envv = ft_get_set_envv(exec_instruction(t, my_envv));
 			ft_free_tree(t);
 		}
