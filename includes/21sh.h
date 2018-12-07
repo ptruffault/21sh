@@ -48,6 +48,7 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
+char *get_token(char *s);
 t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r);
 t_envv *exec_pipe(t_tree *t, t_envv *e);
 t_tree	*ft_get_set_tree(t_tree *new_t);

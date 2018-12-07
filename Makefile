@@ -20,12 +20,14 @@ FILES		=		main.c \
 					correct_input.c \
 					disp.c\
 					exec.c \
-					exec_redirect.c 
+					exec_redirect.c \
+
 
 EVAL			=	get_bin_path.c \
 					eval_tools.c \
 					get_instruction.c \
-					instruction_parseur.c
+					instruction_parseur.c \
+					token.c
 
 BUILTINS		=	ft_echo.c \
 					ft_cd.c \
@@ -54,7 +56,7 @@ $(NAME): $(OBJ) Makefile bin
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
 	@gcc $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
-	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
+	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \r"
 
 bin:
 	@mkdir $@

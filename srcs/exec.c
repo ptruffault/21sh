@@ -67,13 +67,17 @@ t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r)
 
 t_envv *exec_instruction(t_tree *t, t_envv *e)
 {
+	t_redirect *save;
+
 	if (!t || !t->arr)
 		return (e);
+	save = t->r;
 	if (t->ret != 0)
 		error("unknow cmd", *t->arr);
 	else if (t->l == '|' && t->next && t->next->arr)
 		e = exec_pipe(t, e);
 	else
 		e = ft_exec(t, e, t->r);
+	t->r = save;
 	return (next_instruction(t, e));
 }
