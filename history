@@ -1,3 +1,11 @@
+coco > ;
+coco > ;
+coco > ;
+coco > ;
+coco > ;
+coco > ;
+ls || rev
+ls
 ls | rev | cat -e > file
 ls | rev | cat -e > file
 ls | rev | cat -e > file
