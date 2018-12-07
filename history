@@ -1,3 +1,261 @@
+cat < file
+cat < file
+cat < file
+cat < file
+cat < file
+ls
+cat < file
+cat < file
+ls ze 2> file
+ls ze 2> file
+ls ze 2> file
+ls > file
+ls > file
+ls > file
+ls > file
+ls > file
+cat < file
+cat < file
+cat < file
+cat < file
+cat < file
+cat < file
+clear
+ls
+ls -l auteur aeraz 2>&1
+ ls
+ls -R
+ls
+ls -l auteur aze 2>&1 1> file | rev
+ls -l auteur aze 2>&1 1> file | rev
+cat file
+ls -l auteur aze 2>&- 1> file
+ls -l auteur aze 2>&-
+ls -l auteur
+ls -l auteur zff 2>&- 1> file
+ls -l auteur zff
+ls -l auteur
+ls efdaze || ls && ls
+ls efdaze || ls
+ls efdaze
+ls
+clear
+ls ; ls
+; ls
+;ls
+ls;ls
+; ls
+||ls
+ls||ls
+ls
+
+
+
+
+
+
+
+
+
+
+ 
+l
+cat < file
+cat < file
+cat < file
+cat < file
+cat < file
+cat < file
+cat file
+cat file
+cat < file
+ls < file
+ls | rev
+ls | ls
+ls
+ls
+clear
+ls
+lz
+&&ls|ls||||ls&&ls&&
+&&ls|ls||ls&&ls&&
+&&ls|ls||ls&&ls&&||
+&&ls|ls||ls&&ls&&||
+&&ls|ls||ls&&ls&&
+ls|ls||ls&&ls&&
+ls|ls||ls&&ls
+ls;ls|ls||ls&&ls
+ls;ls|ls||ls&&ls;
+ls;ls|ls
+ls;ls|ls
+ls;ls
+ls|ls
+ls||ls
+ls&&ls
+ls&&ls
+ls&&ls
+ls&&ls
+ls && ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ ls || ls
+ls
+ls||ls
+ls
+ls&&ls
+ls&&ls
+ls && ls
+ls;;;;;;;;;;ls
+;;;;;;;;;ls
+ls
+ls ||ls
+ls
+ls|ls
+exit
+exit
+21sh
+/bin/ls
+clear
+ls
+z
+z
+z
+
+az
+claa
+ls
+clear
+ls -la
+ls
+setenc PWD oajg
+setenc PWD oajg
+ls
+setenc PWD oajg
+setenc PWD oajg
+setenv PWD oajg
+setenc PWD oajg
+clear
+ls && ls ezf && ls
+ls
+ls
+ls|rev
+ls | rev
+ls 
+ls;ls
+ls;ls
+ls ; ls
+ls
+   ls -l aze Makefile 
+   ls -l aze Makefile 
+ls aze 
+;;;;;;;;;;;;;;;;;;;;;;;
+ls 
+ls
+clear
+ls | ls
+clear
+cleqr
+cleqr
+;;;;;;;;;;;;ls
+;;;;;;;;;;;;;;;&&&&&&&&&&                    ls
+;;;;;;;;;;;;;;;;;;;ls
+ls
+cleqr
+ls
+ls
+||
+               ls
+||||||||||||||||||;;;;;;;;;;;;;;;;;;;;;&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&         ls
+clear
+||||||||||||||||||||&&&&&&;;;;;;;;;;;;;           ls
+ls
+&&ls
+||||clear
+             ls
+ls
+                                            
+                     
+   
+
+
+
+ls
+     
+ls||env||env&&ls
+ls||env||env&&ls
+ls||env||env&&ls
+ls||env||env&&ls
+ls||env||env
+ls||env
+ls || env
+ls
+ls||ls
+ls||ls
+ls||ls&&ls
+ls
+ls||ls||ls&&ls
+ls||ls
+ls||ls
+ls|| ls
+ ls
+ls
+ls ff||env
+ls ff|| env
+ls ff||env
+cat file
+
+cat file
+ls -l auteur aaze 2>&1 >&- | > file
+ls -l auteur aaze 2>&1 >&- | rev
+ls -l auteur aaze 2>&1 >&-
+ls | rev
+ls
+ls ff|| env
+ls ff||env
+ls ff||env
+ls ff||env
+ls ff||env
+ls ff||env
+ls||env
+ls||ls
+ls
+l
+ls||ls||
+ls||ls||
+ls ||ls||
+ls || ls||
+ls ||
+ls ||ls 
+ls && env
+ls
+ls || ls|| ls ||ls||
+ls || ls|| ls ||ls||
+ls ls
+lsls
+ls
+
+clear
+ls
+ls && && &&
+f;f;f;f;;;
+f
+f
+ls -l auteur af 2>&1 1>&-
+ls -l auteur af 2>&1 | rev
+ls af 2>&1 | rev
+ls ezaf || ls
+ls
+clear
+ls && env
+ls
 make save
 ls
 clear

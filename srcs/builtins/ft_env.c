@@ -19,7 +19,7 @@ static void ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 	int pid;
 
 	e = tenvv_to_tab(tmp);
-	if (!(path = check_bin(*arr, envv)))
+	if (!(path = get_bin_path(*arr, envv)))
 	{
 		error("{env} unknow cmd ", *arr);
 		return ;

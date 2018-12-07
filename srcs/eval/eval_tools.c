@@ -87,45 +87,18 @@ t_tree *new_tree(void)
 	return (n);
 }
 
-static char *get_binpath(char **input, t_envv *e, int *i)
-{
-	int inf;
-	char *ret;
-
-	ret = NULL;
-	if ((inf = check_builtin(&input[*i])))
-		 ret = ft_strdup(input[*i]);
-	else if (inf == 0)
-		 ret = check_bin(input[*i], e);
-	*i = *i + 1;
-	if (!ret)
-		while ((input[*i]) && !IS_EOI(input[*i]) && !IS_PIPE(input[*i]))
-			*i = *i + 1;
-	return (ret);
-}
-
-
-char **get_cmd_and_arg(t_tree *t, char **input, t_envv *e, int *i)
+char **get_cmd_and_arg(char **input, int *i)
 {
 	char **ret;
-	int save;
 	int len;
 	int j;
 
 	len = 0;
-	j = 1;
-	save = *i;
+	j = 0;
 	while (input[*i + len] && !IS_SYNTAX(input[*i + len]))
 		len++;
-	if (!(ret = (char **)malloc(sizeof(char *) *(len + 1)))
-	|| (!(ret[0] = get_binpath(input, e, i))))
-	{
-		t->ret = -1;
-		ret[0] = ft_strdup(input[save]);
-		*i = save + 1;
-		ret[1] = NULL;
-		return (ret);
-	}
+	if (!(ret = (char **)malloc(sizeof(char *) *(len + 1))))
+		return (NULL);
 	while (j < len)
 	{
 		ret[j++] = ft_strdup(input[*i]);

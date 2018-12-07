@@ -89,7 +89,7 @@ static char ft_link(char *s)
 		return (*s);
 }
 
-static t_tree *init_tree(char **input, t_envv *e)
+static t_tree *init_tree(char **input)
 {
 	t_tree *head;
 	t_tree *t;
@@ -102,7 +102,7 @@ static t_tree *init_tree(char **input, t_envv *e)
 	while (input[i])
 	{
 		if (!IS_SYNTAX(input[i]))
-			t->arr = get_cmd_and_arg(t, input, e, &i);
+			t->arr = get_cmd_and_arg(input, &i);
 		else if (input[i] && IS_RED(input[i]))
 			t->r = get_redirections(t->r, input, &i);
 		else if (input[i] && (IS_PIPE(input[i]) || IS_EOI(input[i]) || IS_OPERATEUR(input[i])))
@@ -122,11 +122,9 @@ t_tree *get_tree(char *input, t_envv *e)
 	t_tree	*tree;
 	char 	**t;
 
-	if (!(input = correct_syntax(input)))
-		return (NULL);
 	t = ft_correct(ft_strsplit_word(input), e);
 	ft_strdel(&input);
-	if (!(tree = init_tree(t, e)))
+	if (!(tree = init_tree(t)))
 		error("init tree failed", NULL);
 	//print_tree(tree);
 	ft_freestrarr(t);

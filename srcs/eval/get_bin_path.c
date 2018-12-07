@@ -46,7 +46,7 @@ static char	*local_try(char *input, t_envv *envv)
 	return (check_exe(path, inf));
 }
 
-char	*check_bin(char *input, t_envv *envv)
+char	*get_bin_path(char *input, t_envv *envv)
 {
 	int			i;
 	char		*bin_path;

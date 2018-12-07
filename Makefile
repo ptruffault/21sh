@@ -19,9 +19,10 @@ FILES		=		main.c \
 					signal.c \
 					correct_input.c \
 					disp.c\
-					exec.c 
+					exec.c \
+					exec_redirect.c 
 
-EVAL			=	check_cmd.c \
+EVAL			=	get_bin_path.c \
 					eval_tools.c \
 					get_instruction.c \
 					instruction_parseur.c
