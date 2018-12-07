@@ -48,7 +48,23 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
-char *get_token(char *s);
+enum e_type{
+	undef = 0,
+	operateur = 1, 
+	cmd = 2,
+	arg = 3,
+	redirection = 4,
+	quote = 5
+};
+
+typedef struct s_word
+{
+	enum e_type 	type;
+	char 			*word;
+	struct s_word 	*next;
+}				t_word;
+
+t_word *tokeniser(char *input);
 t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r);
 t_envv *exec_pipe(t_tree *t, t_envv *e);
 t_tree	*ft_get_set_tree(t_tree *new_t);

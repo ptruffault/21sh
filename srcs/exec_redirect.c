@@ -37,7 +37,6 @@ t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 			|| (0 <= r->to && r->to <= 2 && (r->to = dup(save[1]) == -1)))
 				warning("impossible to load old fd", NULL);
 		}
-		printf("end :from %i to %i\n",r->from, r->to );
 		if (0 <= r->from && r->from <= 2 && close(save[0]) == -1)
 			warning("redirection can't close fd", "save");
 	}

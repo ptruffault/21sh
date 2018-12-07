@@ -28,7 +28,7 @@ int		main(int argc, char **argv, char **envv)
 	{
 		ft_disp(my_envv, argc, argv);
 		input = get_input(envv);
-		get_token(input);
+		tokeniser(input);
 		if ((t = get_tree(input, my_envv)))
 		{
 			ft_get_set_tree(t);
