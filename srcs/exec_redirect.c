@@ -1,10 +1,40 @@
 #include "../includes/21sh.h"
 
+char **my_get_input(t_envv *e, char *s)
+{
+	char **ret;
+	char **env;
+	int i;
+
+	if (!s)
+	{
+		warning ("End of instruction string needed as argument", "<< \"EOI\" ");
+		return (NULL);
+	}
+	if (!(ret = (char **)malloc(sizeof(char *))))
+		return (NULL);
+	i = 0;
+	env = tenvv_to_tab(e);
+	while (42)
+	{
+		if (!(ret[i] = get_input(env)) || ft_strequ(ret[i], s))
+		{
+			ft_freestrarr(env);
+			ret[i] = NULL;
+			return (ret);
+		}
+		i++;
+		ret = ft_realloc(ret, i , i + 1);
+	}
+	return (NULL);
+}
+
+
 static void get_destination_fd(t_redirect *r)
 {	
-	if ((r->t == 0 && r->to == -2 && (r->to = open(r->path, O_WRONLY | O_TRUNC | O_CREAT , S_IRWXU)) == -1)
-	|| (r->t == 1 && r->to == -2 && (r->to = open(r->path, O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) == -1)
-	|| (r->t == 2 && r->from == -1 && (r->from = open(r->path, O_WRONLY , S_IRWXU)) == -1))
+	if ((r->t == R_RIGHT && r->to == -2 && (r->to = open(r->path, O_WRONLY | O_TRUNC | O_CREAT , S_IRWXU)) == -1)
+	|| (r->t == R_DRIGHT && r->to == -2 && (r->to = open(r->path, O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) == -1)
+	|| (r->t == R_LEFT && r->from == -1 && (r->from = open(r->path, O_WRONLY , S_IRWXU)) == -1))
 	{
  		warning("can't open this file", r->path);
 		perror(NULL);
@@ -61,6 +91,8 @@ t_envv *exec_pipe(t_tree *t, t_envv *e)
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
 		e = ft_exec(t, e, t->r);
+		ft_free_tree(t);
+		ft_free_tenvv(e);
 		exit(0);
 	}
 	if ((pid[1] = fork()) < 0)
@@ -70,6 +102,8 @@ t_envv *exec_pipe(t_tree *t, t_envv *e)
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
 		e = exec_instruction(t->next, e);
+		ft_free_tree(t);
+		ft_free_tenvv(e);
 		exit(0);
 	} 
 	close(pipes[0]);

@@ -14,24 +14,24 @@
 
 static t_envv *next_instruction(t_tree *t, t_envv  *e)
 {
-	if (t->l && t->next->arr)
+	if (t->o_type && t->next->arr)
 	{
-		if (t->l == ';' )
+		if (t->o_type == O_SEP)
 			return (exec_instruction(t->next, e));
-		if (t->l == '&')
+		if (t->o_type == O_AND)
 		{
 			if (t->ret == 0)
 				return (exec_instruction(t->next, e));
 			else
-				while (t && t->l == '&')
+				while (t && t->o_type == O_AND)
 					t = t->next;
 		}	
-		if (t->l == 'o')
+		if (t->o_type == O_OR)
 		{
 			if (t->ret != 0)
 				return (exec_instruction(t->next, e));
 			else
-				while (t && t->l == 'o')
+				while (t && t->o_type == O_OR)
 					t = t->next;
 		}
 	}
@@ -72,9 +72,7 @@ t_envv *exec_instruction(t_tree *t, t_envv *e)
 	if (!t || !t->arr)
 		return (e);
 	save = t->r;
-	if (t->ret != 0)
-		error("unknow cmd", *t->arr);
-	else if (t->l == '|' && t->next && t->next->arr)
+	if (t->o_type == O_PIPE && t->next && t->next->arr)
 		e = exec_pipe(t, e);
 	else
 		e = ft_exec(t, e, t->r);

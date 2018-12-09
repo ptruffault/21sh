@@ -12,7 +12,45 @@
 
 #include "../includes/21sh.h"
 
-char *analyse(char *src)
+void ft_putwords(t_word *w)
+{
+	while (w)
+	{
+		if (w->word)
+			printf("PUTWORD:%s type = %i\n", w->word, w->type);
+		w = w->next;
+	}
+}
+
+
+int ft_isspace(int c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' ||
+		c == ' ')
+		return (1);
+	else
+		return (0);
+}
+
+char	*ft_strndup(char *src, int len)
+{
+	char	*new;
+	int		i;
+
+	if (!(new = malloc(sizeof(char *) * len + 1)))
+		return (NULL);
+	i = 0;
+	while (i < len && src[i] != '\0')
+	{
+		new[i] = src[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
+
+static char *analyse(char *src)
 {
 	char *eval;
 	int len;
@@ -28,56 +66,90 @@ char *analyse(char *src)
 		if (ft_isspace(src[i]))
 			eval[i] = ' ';
 		else if (src[i] == '<')
-			eval[i] = 's';
+			eval[i] = 'r';
 		else if (src[i] == '>')
 		{
 			j = i;
 			while (j > 0 && ft_isdigit(src[j - 1]))
-				eval[--j] = 's';
-			eval[i] = 's';
+				eval[--j] = 'r';
+			eval[i] = 'r';
 			if (i + 2 < len && src[i + 1] == '&')
 			{
-				eval[++i] = 's';
+				eval[++i] = 'r';
 				if (src[i + 1] == '-')
-					eval[++i] = 's';
+					eval[++i] = 'r';
 				else
 				{
 					while (ft_isdigit(src[i + 1]))
-						eval[++i] = 's';
+						eval[++i] = 'r';
 				}
 			}
 		}
 		else if (src[i] == '&' || src[i] == '|' || src[i] == ';')
 			eval[i] = 'o';
+		else if (src[i] == '\'' || src[i] == '"')
+		{
+			int save;
+
+			save = i;
+			eval[i++] = 'Q';
+			while (src[i] && src[i] != src[save])
+				eval[i++] = 'q';
+			if (src[i] == src[save])
+				eval[i] = 'Q';
+			else
+			{
+				error("invalid quotes", &src[save]);
+			}
+		}
 		else
 			eval[i] = 'e';
 	}
+	eval[i] = 0;
 	return (eval);
 }
 
-int ft_is_word(char *s)
+static t_word *find_type(t_word *w, char c, int *pos)
 {
-	int i;
+	if (c == 'o')
+	{
+		if (ft_strequ(w->word, "&&"))
+			w->type = O_AND;
+		else if (ft_strequ(w->word, "||"))
+			w->type = O_OR;
+		else if (ft_strequ(w->word, ";"))
+			w->type = O_SEP;
+		else if (ft_strequ(w->word, "|"))
+			w->type = O_PIPE;
+		else
+			w->type = 0;
+		*pos = 0;
+	}
+	else if (c == 'r')
+	{
+		char *ptr;
 
-	i = -1;
-	while (s[++i])
-		if (s[i] != ' ')
-			return (1);
-	return (0);
+		if ((ptr = ft_strchr(w->word, '>')))
+			w->type = (*(ptr + 1) == '>'? R_DRIGHT : R_RIGHT);
+		else if ((ptr = ft_strchr(w->word, '<')))
+			w->type = (*(ptr + 1) == '<'? R_DLEFT : R_LEFT);
+		else
+			w->type = 0;
+	}
+	else if (c == 'e')
+	{
+		if (*pos == 0)
+			w->type = CMD;
+		else
+			w->type = PATH;
+		*pos = *pos + 1;
+	}
+	else if (c == 'q')
+		w->type = QUOTE;
+	return (w);
 }
 
-void ft_word_limit(char *eval, int i, int *begin, int *end)
-{
-	char c;
-
-	c = eval[i];
-	*begin = i;
-	*end = i;
-	while (eval[*end] == c)
-		*end = *end + 1;
-}
-
-t_word *new_tword(void)
+static t_word *new_tword(void)
 {
 	t_word *n;
 
@@ -89,47 +161,90 @@ t_word *new_tword(void)
 	return (n);
 }
 
-t_word *ft_get_words(char *input, char *eval)
+static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *pos)
+{
+	char c;
+	int begin;
+
+	while (eval[*i] == ' ')
+		*i = *i + 1;;
+	if (eval[*i] == 0)
+		return (w);
+	if (eval[*i] == 'Q')
+		*i = *i + 1;	
+	c = eval[*i];
+	begin = *i;
+	while (eval[*i] && eval[*i] == c)
+		*i = *i + 1;
+	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
+	 	return (w);
+	 return (find_type(w, c, pos));
+}
+
+static t_word *ft_get_words(char *input, char *eval)
 {
 	t_word *head;
 	t_word *tmp;
+	int pos;
 	int i;
-	int begin;
-	int end;
+	int len;
 
-	i = -1;
-	if (!(head = new_tword()))
-		return (NULL);
+	i = 0;
+	pos = 0;
+	if (!(head = new_tword()) || !(head = get_next_word(head, eval, input, &i, &pos))
+	|| eval[i] == 0)
+		return (head);
+	ft_putendl(eval);
+	len = ft_strlen(input);
 	tmp = head;
-	while (eval[++i])
+	while (i < len)
 	{
-		if (eval[i] == ' ')
+		while (eval[i] == ' ')
 			i++;
-		else
-		{
-			ft_word_limit(eval, i, &begin, &end);
-			tmp->word = ft_strndup(input + begin, end - begin);
-			i = end;
-			tmp->next = new_tword();
-			tmp = tmp->next;
-		}
+		if (eval[i] == 0)
+			return (head);
+		if (!(tmp->next = new_tword()))
+			return (head);
+		tmp = tmp->next;
+		if (!(tmp = get_next_word(tmp, eval, input, &i, &pos)))
+			return (head);
 	}
 	return (head);
 }
 
-void ft_put_word(t_word *w)
+
+void ft_free_tword(t_word *w)
 {
 	t_word *tmp;
 
-	tmp = w;
-	while (tmp)
+	while (w)
 	{
-		printf("tmp->word %s\t", tmp->word);
-		tmp = tmp->next;
+		printf("free tword %s\n",w->word );
+		ft_strdel(&w->word);
+		tmp = w->next;
+		free(w);
+		w = tmp;
 	}
 }
 
-t_word *tokeniser(char *input)
+
+// lis input et renvoie une liste chainée t_word avec chaque mot et son type
+/*
+	 O_AND = 1,
+      O_OR = 2,
+      O_SEP = 3, 
+      O_PIPE = 4,
+      R_LEFT = 5,
+      R_RIGHT = 6,
+      R_DLEFT = 7,
+      R_DRIGHT = 8,
+      CMD = 9, 
+      QUOTE = 10,
+      PATH = 11  
+*/
+
+
+t_word *eval_line(char *input)
 {
 	t_word *head;
 	char *eval;
@@ -137,9 +252,8 @@ t_word *tokeniser(char *input)
 	if (!input|| !*input|| !(eval = analyse(input)))
 		return (NULL);
 	ft_putendl(eval);
-	if (!(head = ft_get_words(input, eval)))
-		return (NULL);
-	ft_put_word(head);
+	head = ft_get_words(input, eval);
 	ft_strdel(&eval);
+	ft_putwords(head);
 	return (head);
 }

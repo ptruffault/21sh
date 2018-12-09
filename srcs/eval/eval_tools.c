@@ -63,10 +63,10 @@ void print_tree(t_tree *t)
 			ft_putstrarr(tmp->arr);
 		if (tmp->r)
 			put_redirect(tmp->r);	
-		if (tmp->l)
+		if (tmp->o_type)
 		{
 			ft_putstr("link : ");
-			ft_putchar(tmp->l);
+			ft_putchar(tmp->o_type);
 		}
 		ft_putchar('\n');
 		tmp = tmp->next;
@@ -81,33 +81,11 @@ t_tree *new_tree(void)
 		return (NULL);
 	n->arr = NULL;
 	n->r = NULL;
-	n->l = 0;
+	n->o_type = 0;
 	n->ret = 0;
 	n->next = NULL;
 	return (n);
 }
-
-char **get_cmd_and_arg(char **input, int *i)
-{
-	char **ret;
-	int len;
-	int j;
-
-	len = 0;
-	j = 0;
-	while (input[*i + len] && !IS_SYNTAX(input[*i + len]))
-		len++;
-	if (!(ret = (char **)malloc(sizeof(char *) *(len + 1))))
-		return (NULL);
-	while (j < len)
-	{
-		ret[j++] = ft_strdup(input[*i]);
-		*i = *i + 1;
-	}
-	ret[j] = NULL;
-	return (ret);
-}
-
 
 
 

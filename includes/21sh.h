@@ -20,19 +20,38 @@
 # include <signal.h>
 # include <dirent.h>
 # include "../libft/includes/libft.h"
-# define IS_PIPE(x) (x && ft_strequ(x, "|"))
-# define IS_EOI(x)  (x && ft_strequ(x, ";"))
-# define IS_RED(x) (x && (IS_RIGHT_RED(x) || IS_LEFT_RED(x)))
-# define IS_RIGHT_RED(x) (x && (ft_strchr(x, '>')))
-# define IS_LEFT_RED(x) ((x && ft_strchr(x, '<')))
-# define IS_AND(x) (x && ft_strequ(x, "&&"))
-# define IS_OR(x) (x && ft_strequ(x, "||"))
-# define IS_OPERATEUR(x) (IS_AND(x) || IS_OR(x))
-# define IS_SYNTAX(x) (IS_PIPE(x) || IS_EOI(x) || IS_RED(x) || IS_OPERATEUR(x))
+
+# define IS_OPERATEUR(x) (1 <= x && x <= 4)
+# define IS_REDIRECTION(x) (5 <= x && x <= 8)
+# define IS_CMD(x) (9 <= x && x <= 11)
+
+
+enum e_type{ 
+    undef = 0, // undef => 'parse error near {}   ' 
+    O_AND = 1,
+    O_OR = 2,
+    O_SEP = 3, 
+    O_PIPE = 4,
+    R_LEFT = 5,
+    R_RIGHT = 6,
+   	R_DLEFT = 7,
+    R_DRIGHT = 8,
+    CMD = 9, 
+    QUOTE = 10,
+    PATH = 11  
+  };
+
+typedef struct s_word
+{
+	enum e_type 	type;
+	char 			*word;
+	struct s_word 	*next;
+}				t_word;
+
 
 typedef struct s_redirect
 {
-	int					t;
+	enum e_type 		t;
 	char 				*path;
 	int 				from;
 	int 				to;
@@ -44,27 +63,17 @@ typedef struct s_tree
 	char 			**arr; //args
 	t_redirect		*r;
 	int				ret;
-	char			l;    //next cmd link | or ;
+	enum e_type		o_type;    //op
 	struct s_tree	*next; 
 }				t_tree;
 
-enum e_type{
-	undef = 0,
-	operateur = 1, 
-	cmd = 2,
-	arg = 3,
-	redirection = 4,
-	quote = 5
-};
 
-typedef struct s_word
-{
-	enum e_type 	type;
-	char 			*word;
-	struct s_word 	*next;
-}				t_word;
 
-t_word *tokeniser(char *input);
+t_word *eval_line(char *input);
+void ft_free_tword(t_word *w);
+
+
+
 t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r);
 t_envv *exec_pipe(t_tree *t, t_envv *e);
 t_tree	*ft_get_set_tree(t_tree *new_t);
@@ -73,7 +82,7 @@ t_envv 	*exec_instruction(t_tree *t, t_envv *e);
 char 	**get_cmd_and_arg(char **input, int *i);
 t_tree *new_tree(void);
 void 	ft_free_tree(t_tree *t);
-t_tree 	*get_tree(char *input, t_envv *e);
+t_tree 	*get_tree(char *input);
 void	 print_tree(t_tree *t);
 void 	put_redirect(t_redirect *r);
 t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r);

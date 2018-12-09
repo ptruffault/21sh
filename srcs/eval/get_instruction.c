@@ -11,25 +11,13 @@
 /* ************************************************************************** */
 #include "../includes/21sh.h"
 
-static void	find_type(char *s, t_redirect *r)
-{
-	char *ptr;
-
-	if ((ptr = ft_strchr(s, '>')))
-		r->t = (*(ptr + 1) == '>' ? 1 : 0);
-	else if ((ptr = ft_strchr(s, '<')))
-		r->t = (*(ptr + 1) == '<' ? 3 : 2);
-	else
-		r->t = -1;
-}	
-
 static t_redirect *new_redirection(void)
 {
 	t_redirect *new;
 
 	if (!(new = (t_redirect *)malloc(sizeof(t_redirect))))
 		return (NULL);
-	new->t = -1;
+	new->t = 0;
 	new->to = -2;
 	new->from = -1;
 	new->path = NULL;
@@ -37,26 +25,26 @@ static t_redirect *new_redirection(void)
 	return (new);
 }
 
-static t_redirect *get_redirection(t_redirect *new, char **input, int *i)
+static t_redirect *get_redirection(t_redirect *new, t_word *w)
 {
 	char *ptr;
 
-	find_type(input[*i], new);
-	if (new->t == 0 || new->t == 1)
+	new->t = w->type;
+	if (new->t == R_RIGHT)
 	{
-		new->from = (ft_isdigit(*input[*i]) ? ft_atoi(input[*i]) : 1);
-		if ((ptr = ft_strchr(input[*i], '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
+		new->from = (ft_isdigit(w->word[0]) ? ft_atoi(w->word) : 1);
+		if ((ptr = ft_strchr(w->word, '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
 			new->to = (ft_isdigit(*(ptr + 1)) ? ft_atoi(ptr + 1) : -1);
 	}
 	else {
 		new->to = 0;
 		new->from = -1;
 	}
-	if (input[++(*i)] &&  ((new->to == -2 && (new->t == 0 || new->t == 1))
-	 || (new->from == -1 && (new->t == 2 || new->t == 3))))
+	if (w->next && ((new->to == -2 && (new->t == R_RIGHT || new->t == R_DRIGHT))
+	 || (new->from == -1 && (new->t == R_LEFT || new->t == R_DLEFT))))
 	{
-		new->path = ft_strdup(input[*i]);
-		*i = *i + 1;
+		w = w->next;
+		new->path = ft_strdup(w->word);
 	}
 	else if (new->to == -2)
 	{
@@ -66,67 +54,77 @@ static t_redirect *get_redirection(t_redirect *new, char **input, int *i)
 	return (new);
 }
 
-static t_redirect *get_redirections(t_redirect *head, char **input, int *i)
+static t_word *get_redirections(t_tree *t, t_word *w)
 {
 	t_redirect *tmp;
 
-	head = new_redirection();
-	head = get_redirection(head, input, i);
-	tmp = head;
-	while (IS_RED(input[*i]))
+	t->r = new_redirection();
+	tmp = t->r;
+	while (w && IS_REDIRECTION(w->type))
 	{
+		tmp = get_redirection(tmp, w);
+		if (tmp->path && w->next)
+			w = w->next;
+		w = w->next;
 		tmp->next = new_redirection();
-		tmp = get_redirection(tmp->next, input, i);
+		tmp = tmp->next;
 	}
-	return (head);
+	return (w);
 }
 
-static char ft_link(char *s)
+t_word *get_argv(t_tree *t, t_word *w)
 {
-	if (IS_OR(s))
-		return ('o');
-	else
-		return (*s);
-}
-
-static t_tree *init_tree(char **input)
-{
-	t_tree *head;
-	t_tree *t;
+	int argc;
 	int i;
+	t_word *tmp;
 
+	argc = 0;
 	i = 0;
-	if (!(head = new_tree()))
+	tmp = w;
+	while (tmp && IS_CMD(tmp->type) && ++argc > 0)
+		tmp = tmp->next;
+	if (argc == 0 || !(t->arr = (char **)malloc(sizeof(char *) * (argc + 1))))
 		return (NULL);
-	t = head;
-	while (input[i])
+	while (w && IS_CMD(w->type))
 	{
-		if (!IS_SYNTAX(input[i]))
-			t->arr = get_cmd_and_arg(input, &i);
-		else if (input[i] && IS_RED(input[i]))
-			t->r = get_redirections(t->r, input, &i);
-		else if (input[i] && (IS_PIPE(input[i]) || IS_EOI(input[i]) || IS_OPERATEUR(input[i])))
+		t->arr[i++] = ft_strdup(w->word);
+		w = w->next;
+	}
+	t->arr[i] = NULL;
+	return (w);
+}
+
+t_tree *get_tree(char *input)
+{
+	t_tree	*head;
+	t_tree	*tree;
+	t_word *tmp;
+	t_word *w;
+
+	w = eval_line(input);
+	ft_strdel(&input);
+	if (!(head = new_tree()))
+		return (head);
+	tree = head;
+	tmp = w;
+	while (tmp)
+	{
+		if (IS_CMD(tmp->type))
+			tmp = get_argv(tree, tmp);
+		else if (IS_REDIRECTION(tmp->type))
+			tmp = get_redirections(tree, tmp);
+		else if (IS_OPERATEUR(tmp->type))
 		{
-			t->l = ft_link(input[i]);
-			t->next = new_tree();
-			t = t->next;
-			i++;
+			tree->o_type = tmp->type;
+			if (!(tree->next = new_tree()))
+			{
+				ft_free_tword(w);
+				return (head);
+			}
+			tmp = tmp->next;
+			tree = tree->next;
 		}
 	}
+	ft_free_tword(w);
 	return (head);
-}
-
-
-t_tree *get_tree(char *input, t_envv *e)
-{
-	t_tree	*tree;
-	char 	**t;
-
-	t = ft_correct(ft_strsplit_word(input), e);
-	ft_strdel(&input);
-	if (!(tree = init_tree(t)))
-		error("init tree failed", NULL);
-	//print_tree(tree);
-	ft_freestrarr(t);
-	return (tree);
 }

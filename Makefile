@@ -13,7 +13,7 @@
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
 
-FLAG		=		-Wall -Wextra -Werror -g
+FLAG		=	-Wall -Werror -Wextra
 
 FILES		=		main.c \
 					signal.c \
@@ -56,7 +56,7 @@ $(NAME): $(OBJ) Makefile bin
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
 	@gcc $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
-	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \r"
+	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
 
 bin:
 	@mkdir $@
@@ -86,7 +86,7 @@ fclean: clean
 	rm -rf $(NAME)
 	@make -C ./libft fclean	
 
-re: clear fclean all
+re: fclean all
 
 fre: clear sclean all
 
