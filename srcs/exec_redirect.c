@@ -44,10 +44,13 @@ static void get_destination_fd(t_redirect *r)
 	printf("from %i to %i\n",r->from, r->to );
 }
 
+
+
 t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 {
 	int save[2];
 
+	put_redirect(r);
 	if (r->to < 0 || r->from < 0)
 		get_destination_fd(r);
 	if (r->to >= 0 && r->from >= 0)

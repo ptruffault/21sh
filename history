@@ -1,3 +1,246 @@
+ls
+clear
+ls -l  auteur  ezra 2>&1 1>&- | rev
+ls -l  auteur  ezra 2>&-
+ls -l  auteur  ezra
+ls -l  auteur 
+ls -l -z  auteur 
+ls -l -z  auteur 2>&- 
+ls -z 2>&-
+ls -z 2>&-
+clear
+ls
+rm -rf file 1
+cat file
+ls > file
+ls
+ls -z 1>&- 2>&1 
+ls -z 1>&- 2>&1 | rev
+ls -z 1>&- 2>&1 | rev
+ls -z 1>&- 2>1 | rev
+ls
+ls -z 1>&- 2>1 | rev
+ls -z 1>&- 2>1 | rev
+ls -z 1>&- 2>1 
+ls -z 1>&- 2>1 | rev
+ls -z 1>&-
+ls 1>&-
+ls
+clear
+cat file
+ls > file
+ls > file
+ls > file
+ls > file
+ls&&clear
+ls
+lq
+cat file
+ls > file
+ls&&clear
+ls
+clear
+ls
+ls -l|rev|rev|grep aut
+ls|rev|rev|grep aut
+clear
+ls
+exit
+env
+clear
+ls
+env -i ls -l bin 
+env -i ls -l bin
+env -i ls -l 
+env -i ls -l
+env -i ls 
+env -i ls
+ls|rev|rev|rev|rev|cat -e|grep 21|rev
+ls|rev|rev|rev|rev|cat -e|grep 21
+ls|rev|rev|rev|rev|cat -e
+ls
+ls|rev|rev|rev|rev|cat -e
+ls|rev|rev|rev|rev
+ls|rev|rev|rev
+vls|rev|rev|ref
+ls|rev|rev|ref
+ls|rev
+ls
+clear
+clea
+ls
+ls -R
+ls
+clear
+ls
+ls-z || ls|rev
+ls -z||env
+ls||rev
+ls
+rm -rf file
+cat file
+cat file
+ls -l > file
+clear
+ls|rev|cat -e
+ls|rev
+clear
+ls
+echo lol
+echo lol
+ls
+ls
+clear
+ls;echo lol
+env
+
+ls
+clear
+ls
+ls
+clear
+echo ~
+~
+echo $PATH
+echo $(PATH)
+ls -Ral
+clear
+ls
+;;ms
+clear
+ls|
+ls|rev|
+exit
+evot
+ecot
+gecot
+g
+g
+reg
+gre
+g
+g
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ls|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ls
+ls
+clear
+ls|rev
+ls
+ls
+ls
+clear
+ls
+ls
+clear
+ls
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c
+ls
+ls
+ls|rev|cat -e&&ls
+ls|rev|cat -e&&ls
+ls|rev|cat-e&&ls
+ls
+ls
+celar
+ls
+ls
+echo "lol"
+ls && env 
+clear
+ls -l
+ls
+clear
+
+cd /
+cd /
+env
+ls
+ls -lRa
+ls
+clear
+ls|rev
+ls | rev
+ls
+clear
+ls
+clear
+ar
+clear&&ls -z||env
+ls&&ls&&env&&ls
+ls&&ls
+ls
 ls|rev
 ls|rev
 ls

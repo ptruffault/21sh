@@ -65,9 +65,12 @@ static t_word *get_redirections(t_tree *t, t_word *w)
 		tmp = get_redirection(tmp, w);
 		if (tmp->path && w->next)
 			w = w->next;
+		if (w && w->next && IS_REDIRECTION(w->next->type))
+		{
+			tmp->next = new_redirection();
+			tmp = tmp->next;
+		}
 		w = w->next;
-		tmp->next = new_redirection();
-		tmp = tmp->next;
 	}
 	return (w);
 }
@@ -116,10 +119,13 @@ t_tree *get_tree(char *input)
 		else if (IS_OPERATEUR(tmp->type))
 		{
 			tree->o_type = tmp->type;
-			if (!(tree->next = new_tree()))
+			if (!tmp->next || !(tree->next = new_tree()))
 			{
+				if (!tmp->next)
+					error("syntax error near", tmp->word);
 				ft_free_tword(w);
-				return (head);
+				ft_free_tree(head);
+				return (NULL);
 			}
 			tmp = tmp->next;
 			tree = tree->next;

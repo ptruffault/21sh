@@ -194,7 +194,6 @@ static t_word *ft_get_words(char *input, char *eval)
 	if (!(head = new_tword()) || !(head = get_next_word(head, eval, input, &i, &pos))
 	|| eval[i] == 0)
 		return (head);
-	ft_putendl(eval);
 	len = ft_strlen(input);
 	tmp = head;
 	while (i < len)
@@ -219,7 +218,6 @@ void ft_free_tword(t_word *w)
 
 	while (w)
 	{
-		printf("free tword %s\n",w->word );
 		ft_strdel(&w->word);
 		tmp = w->next;
 		free(w);
@@ -251,9 +249,7 @@ t_word *eval_line(char *input)
 
 	if (!input|| !*input|| !(eval = analyse(input)))
 		return (NULL);
-	ft_putendl(eval);
 	head = ft_get_words(input, eval);
 	ft_strdel(&eval);
-	ft_putwords(head);
 	return (head);
 }
