@@ -45,6 +45,7 @@ typedef struct s_word
 {
 	enum e_type 	type;
 	char 			*word;
+	int 			position;
 	struct s_word 	*next;
 }				t_word;
 
@@ -71,7 +72,7 @@ typedef struct s_tree
 
 t_word *eval_line(char *input);
 void ft_free_tword(t_word *w);
-
+t_word *new_tword(void);
 
 
 t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r);

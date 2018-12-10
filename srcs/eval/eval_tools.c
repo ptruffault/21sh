@@ -12,6 +12,33 @@
 
 #include "../includes/21sh.h"
 
+
+void ft_free_tword(t_word *w)
+{
+	t_word *tmp;
+
+	while (w)
+	{
+		ft_strdel(&w->word);
+		tmp = w->next;
+		free(w);
+		w = tmp;
+	}
+}
+
+t_word *new_tword(void)
+{
+	t_word *n;
+
+	if (!(n = (t_word *)malloc(sizeof(t_word))))
+		return (NULL);
+	n->word = NULL;
+	n->type = undef;
+	n->next = NULL;
+	return (n);
+}
+
+
 void ft_free_redirection(t_redirect *r)
 {
 	t_redirect *tmp;

@@ -110,25 +110,24 @@ t_tree *get_tree(char *input)
 		return (head);
 	tree = head;
 	tmp = w;
-	while (tmp)
+	while (tmp && tmp->word)
 	{
 		if (IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
 		else if (IS_REDIRECTION(tmp->type))
 			tmp = get_redirections(tree, tmp);
-		else if (IS_OPERATEUR(tmp->type))
+		else if (IS_OPERATEUR(tmp->type) && (tmp->next || ft_strequ(tmp->word, ";")))
 		{
+			if (!(tree->next = new_tree()))
+				return (head);
 			tree->o_type = tmp->type;
-			if (!tmp->next || !(tree->next = new_tree()))
-			{
-				if (!tmp->next)
-					error("syntax error near", tmp->word);
-				ft_free_tword(w);
-				ft_free_tree(head);
-				return (NULL);
-			}
 			tmp = tmp->next;
 			tree = tree->next;
+		}
+		else
+		{
+			error("parse error near", tmp->word);
+			break ;
 		}
 	}
 	ft_free_tword(w);

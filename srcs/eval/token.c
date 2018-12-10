@@ -23,33 +23,6 @@ void ft_putwords(t_word *w)
 }
 
 
-int ft_isspace(int c)
-{
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' ||
-		c == ' ')
-		return (1);
-	else
-		return (0);
-}
-
-char	*ft_strndup(char *src, int len)
-{
-	char	*new;
-	int		i;
-
-	if (!(new = malloc(sizeof(char *) * len + 1)))
-		return (NULL);
-	i = 0;
-	while (i < len && src[i] != '\0')
-	{
-		new[i] = src[i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-
 static char *analyse(char *src)
 {
 	char *eval;
@@ -59,11 +32,17 @@ static char *analyse(char *src)
 
 	i = -1;
 	len = ft_strlen(src);
-	if (!(eval = ft_strnew(len)))
+	if (!(eval = ft_strnew(len + 1)))
 		return (NULL);
 	while (src[++i])
 	{
-		if (ft_isspace(src[i]))
+		if (src[i] == '\\')
+		{
+			eval[i++] = 'b';
+			if (src[i] != 0)
+				eval[i] = 'e'; 
+		}
+		else if (ft_isspace(src[i]))
 			eval[i] = ' ';
 		else if (src[i] == '<')
 			eval[i] = 'r';
@@ -98,9 +77,7 @@ static char *analyse(char *src)
 			if (src[i] == src[save])
 				eval[i] = 'Q';
 			else
-			{
 				error("invalid quotes", &src[save]);
-			}
 		}
 		else
 			eval[i] = 'e';
@@ -149,28 +126,13 @@ static t_word *find_type(t_word *w, char c, int *pos)
 	return (w);
 }
 
-static t_word *new_tword(void)
-{
-	t_word *n;
-
-	if (!(n = (t_word *)malloc(sizeof(t_word))))
-		return (NULL);
-	n->word = NULL;
-	n->type = undef;
-	n->next = NULL;
-	return (n);
-}
 
 static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *pos)
 {
 	char c;
 	int begin;
 
-	while (eval[*i] == ' ')
-		*i = *i + 1;;
-	if (eval[*i] == 0)
-		return (w);
-	if (eval[*i] == 'Q')
+	if (eval[*i] == 'Q' && eval[*i + 1])
 		*i = *i + 1;	
 	c = eval[*i];
 	begin = *i;
@@ -178,6 +140,8 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 		*i = *i + 1;
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
 	 	return (w);
+	 if (eval[*i] == 'Q')
+		*i = *i + 1;
 	 return (find_type(w, c, pos));
 }
 
@@ -191,8 +155,7 @@ static t_word *ft_get_words(char *input, char *eval)
 
 	i = 0;
 	pos = 0;
-	if (!(head = new_tword()) || !(head = get_next_word(head, eval, input, &i, &pos))
-	|| eval[i] == 0)
+	if (!(head = new_tword()))
 		return (head);
 	len = ft_strlen(input);
 	tmp = head;
@@ -200,29 +163,13 @@ static t_word *ft_get_words(char *input, char *eval)
 	{
 		while (eval[i] == ' ')
 			i++;
-		if (eval[i] == 0)
+		if (eval[i] == 0 || !(tmp = get_next_word(tmp, eval, input, &i, &pos)))
 			return (head);
-		if (!(tmp->next = new_tword()))
+		if (eval[i] == 0 || !(tmp->next = new_tword()))
 			return (head);
 		tmp = tmp->next;
-		if (!(tmp = get_next_word(tmp, eval, input, &i, &pos)))
-			return (head);
 	}
 	return (head);
-}
-
-
-void ft_free_tword(t_word *w)
-{
-	t_word *tmp;
-
-	while (w)
-	{
-		ft_strdel(&w->word);
-		tmp = w->next;
-		free(w);
-		w = tmp;
-	}
 }
 
 

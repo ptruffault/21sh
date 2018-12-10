@@ -26,7 +26,6 @@ FILES		=		main.c \
 EVAL			=	get_bin_path.c \
 					eval_tools.c \
 					get_instruction.c \
-					instruction_parseur.c \
 					token.c
 
 BUILTINS		=	ft_echo.c \
