@@ -22,6 +22,22 @@ void ft_putwords(t_word *w)
 	}
 }
 
+char  *ft_delchar_n(char *s, int n)
+{
+	int len;
+
+	if (n < 0 || (len = ft_strlen(s)) == 0 || n > len)
+		return (NULL);
+	while (n  < len)
+	{
+		s[n] = s[n + 1];
+		n++;
+	}
+	return (s);
+}
+
+
+
 
 static char *analyse(char *src)
 {
@@ -38,9 +54,17 @@ static char *analyse(char *src)
 	{
 		if (src[i] == '\\')
 		{
-			eval[i++] = 'b';
-			if (src[i] != 0)
-				eval[i] = 'e'; 
+			if (src[i + 1])
+			{
+				src = ft_delchar_n(src, i);
+				ft_putendl(src);
+				eval[i++] = 'e';
+			}
+			else
+			{
+				error("\\ missing input", NULL); 
+				break ;
+			}
 		}
 		else if (ft_isspace(src[i]))
 			eval[i] = ' ';
@@ -71,12 +95,10 @@ static char *analyse(char *src)
 			int save;
 
 			save = i;
-			eval[i++] = 'Q';
+			eval[i++] = ' ';
 			while (src[i] && src[i] != src[save])
 				eval[i++] = 'q';
-			if (src[i] == src[save])
-				eval[i] = 'Q';
-			else
+			if (src[i] != src[save])
 				error("invalid quotes", &src[save]);
 		}
 		else
@@ -132,16 +154,12 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 	char c;
 	int begin;
 
-	if (eval[*i] == 'Q' && eval[*i + 1])
-		*i = *i + 1;	
 	c = eval[*i];
 	begin = *i;
 	while (eval[*i] && eval[*i] == c)
 		*i = *i + 1;
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
 	 	return (w);
-	 if (eval[*i] == 'Q')
-		*i = *i + 1;
 	 return (find_type(w, c, pos));
 }
 
@@ -188,7 +206,6 @@ static t_word *ft_get_words(char *input, char *eval)
       PATH = 11  
 */
 
-
 t_word *eval_line(char *input)
 {
 	t_word *head;
@@ -196,6 +213,7 @@ t_word *eval_line(char *input)
 
 	if (!input|| !*input|| !(eval = analyse(input)))
 		return (NULL);
+	ft_putendl(eval);
 	head = ft_get_words(input, eval);
 	ft_strdel(&eval);
 	return (head);

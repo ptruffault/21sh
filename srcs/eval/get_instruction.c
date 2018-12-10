@@ -105,6 +105,7 @@ t_tree *get_tree(char *input)
 	t_word *w;
 
 	w = eval_line(input);
+	ft_putwords(w);
 	ft_strdel(&input);
 	if (!(head = new_tree()))
 		return (head);
@@ -130,6 +131,7 @@ t_tree *get_tree(char *input)
 			break ;
 		}
 	}
+	print_tree(head);
 	ft_free_tword(w);
 	return (head);
 }

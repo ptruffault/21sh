@@ -73,7 +73,7 @@ typedef struct s_tree
 t_word *eval_line(char *input);
 void ft_free_tword(t_word *w);
 t_word *new_tword(void);
-
+void ft_putwords(t_word *w);
 
 t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r);
 t_envv *exec_pipe(t_tree *t, t_envv *e);
