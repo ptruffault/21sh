@@ -130,23 +130,24 @@ t_eval  analyse(char *src, char **envv)
 		{
 			int save;
 
-			save = i++;
-			while (src[i] && src[i] != src[save])
+			save = i;
+			while ((src[i] != src[save] || i == save))
 			{		
-				e.eval[i] = 'q';
-				if (IS_QUOTE(src[i]) && src[i - 1] == '\\')
-				{
-					src = ft_delchar_n(src, i);
-					e.eval[i] = 'q';
-				}
-				if (!src[++i])
+				e.eval[i++] = 'q';
+				if (src[i] == 0)
 				{
 					src = ft_strjoin_fr(ft_stradd_char(src, '\n'), q_get_input(envv, src[save]));
 					e.eval = ft_realloc(e.eval, len + 1, ft_strlen(src) + 1);	
 				}
+				if (IS_QUOTE(src[i]) && src[i - 1] == '\\')
+				{
+					src = ft_delchar_n(src, i - 1);
+					e.eval[i] = 'q';
+				}
 			}
 			e.eval[save] = ' ';
 			e.eval[i] = ' ';
+			printf("%s\n", e.eval);
 		}
 		else
 			e.eval[i] = 'e';
