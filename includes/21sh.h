@@ -83,7 +83,7 @@ t_envv 	*exec_instruction(t_tree *t, t_envv *e);
 char 	**get_cmd_and_arg(char **input, int *i);
 t_tree *new_tree(void);
 void 	ft_free_tree(t_tree *t);
-t_tree 	*get_tree(char *input);
+t_tree 	*get_tree(char *input, char **env);
 void	 print_tree(t_tree *t);
 void 	put_redirect(t_redirect *r);
 t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r);

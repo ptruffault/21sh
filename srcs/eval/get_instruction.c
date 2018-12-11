@@ -97,7 +97,21 @@ t_word *get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-t_tree *get_tree(char *input)
+t_word *o_get_input(char **envv)
+{
+	t_word *new;
+
+	ft_putchar('>');
+	if (!(new = new_tword()))
+		return (NULL);
+	if (!(new->word = get_input(envv)))
+		return (NULL);
+	new->type = CMD;
+	new->position = 0;
+	return (new);
+}
+
+t_tree *get_tree(char *input, char  **e)
 {
 	t_tree	*head;
 	t_tree	*tree;
@@ -117,13 +131,19 @@ t_tree *get_tree(char *input)
 			tmp = get_argv(tree, tmp);
 		else if (IS_REDIRECTION(tmp->type))
 			tmp = get_redirections(tree, tmp);
-		else if (IS_OPERATEUR(tmp->type) && (tmp->next || ft_strequ(tmp->word, ";")))
+		else if (IS_OPERATEUR(tmp->type))
 		{
-			if (!(tree->next = new_tree()))
-				return (head);
-			tree->o_type = tmp->type;
-			tmp = tmp->next;
-			tree = tree->next;
+			if (!ft_strequ(tmp->word, ";") && (!tmp->next || !tmp->next->word))
+			{
+				tmp ->next = NULL;
+				while (!tmp->next)
+					tmp->next = o_get_input(e);
+			}
+				if (!(tree->next = new_tree()))
+					return (head);
+				tree->o_type = tmp->type;
+				tmp = tmp->next;
+				tree = tree->next;
 		}
 		else
 		{

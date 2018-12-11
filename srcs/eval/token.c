@@ -38,7 +38,6 @@ char  *ft_delchar_n(char *s, int n)
 
 
 
-
 static char *analyse(char *src)
 {
 	char *eval;
@@ -99,7 +98,7 @@ static char *analyse(char *src)
 			while (src[i] && src[i] != src[save])
 				eval[i++] = 'q';
 			if (src[i] != src[save])
-				error("invalid quotes", &src[save]);
+				error("HERE WE ADD INPUT", NULL);
 		}
 		else
 			eval[i] = 'e';
@@ -160,6 +159,7 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 		*i = *i + 1;
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
 	 	return (w);
+	 w->position = *pos;
 	 return (find_type(w, c, pos));
 }
 
@@ -177,15 +177,17 @@ static t_word *ft_get_words(char *input, char *eval)
 		return (head);
 	len = ft_strlen(input);
 	tmp = head;
+	while (eval[i] == ' ')
+		i++;
 	while (i < len)
 	{
-		while (eval[i] == ' ')
-			i++;
 		if (eval[i] == 0 || !(tmp = get_next_word(tmp, eval, input, &i, &pos)))
 			return (head);
 		if (eval[i] == 0 || !(tmp->next = new_tword()))
 			return (head);
 		tmp = tmp->next;
+		while (eval[i] == ' ')
+			i++;
 	}
 	return (head);
 }

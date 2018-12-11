@@ -26,7 +26,7 @@ int		main(int argc, char **argv, char **envv)
 	while (42)
 	{
 		ft_disp(my_envv, argc, argv);
-		if ((t = get_tree(get_input(envv))))
+		if ((t = get_tree(get_input(envv), envv)))
 		{
 			ft_get_set_tree(t);
 			my_envv = ft_get_set_envv(exec_instruction(t, my_envv));
