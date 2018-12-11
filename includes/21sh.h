@@ -69,8 +69,8 @@ typedef struct s_tree
 }				t_tree;
 
 
-
-t_word *eval_line(char *input);
+t_word *o_get_input(char **envv, int type);
+t_word *eval_line(char *input, char **envv);
 void ft_free_tword(t_word *w);
 t_word *new_tword(void);
 void ft_putwords(t_word *w);

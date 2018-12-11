@@ -97,20 +97,6 @@ t_word *get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-t_word *o_get_input(char **envv)
-{
-	t_word *new;
-
-	ft_putchar('>');
-	if (!(new = new_tword()))
-		return (NULL);
-	if (!(new->word = get_input(envv)))
-		return (NULL);
-	new->type = CMD;
-	new->position = 0;
-	return (new);
-}
-
 t_tree *get_tree(char *input, char  **e)
 {
 	t_tree	*head;
@@ -118,9 +104,7 @@ t_tree *get_tree(char *input, char  **e)
 	t_word *tmp;
 	t_word *w;
 
-	w = eval_line(input);
-	ft_putwords(w);
-	ft_strdel(&input);
+	w = eval_line(input, e);
 	if (!(head = new_tree()))
 		return (head);
 	tree = head;
@@ -137,7 +121,7 @@ t_tree *get_tree(char *input, char  **e)
 			{
 				tmp ->next = NULL;
 				while (!tmp->next)
-					tmp->next = o_get_input(e);
+					tmp->next = o_get_input(e, tmp->type);
 			}
 				if (!(tree->next = new_tree()))
 					return (head);
@@ -151,7 +135,6 @@ t_tree *get_tree(char *input, char  **e)
 			break ;
 		}
 	}
-	print_tree(head);
 	ft_free_tword(w);
 	return (head);
 }

@@ -12,6 +12,8 @@
 
 #include "../includes/21sh.h"
 
+# define IS_QUOTE(x) (x == '\'' || x == '"')
+
 void ft_putwords(t_word *w)
 {
 	while (w)
@@ -36,19 +38,55 @@ char  *ft_delchar_n(char *s, int n)
 	return (s);
 }
 
-
-
-static char *analyse(char *src)
+t_word *o_get_input(char **envv, int type)
 {
+	t_word *ret;
+	char *input;
+
+	if (type == 1)
+		ft_putstr("cmdand");
+	else if (type == 2)
+		ft_putstr("cmdor");
+	else if (type == 4)
+		ft_putstr("pipe");
+	ft_putstr("> ");
+	input = get_input(envv);
+	ret = eval_line(input, envv);
+	return (ret);
+}
+
+char *q_get_input(char **envv, char c)
+{
+	char *ret;
+	char *ptr;
+
+	if (c == '"')
+		ft_putchar('d');
+	ft_putstr("quote> ");
+	if (!(ret = get_input(envv)))
+		return (NULL);
+	if ((!(ptr = ft_strchr(ret, c)) || *(ptr - 1) == '\\' )&& !(ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  q_get_input(envv, c))))
+			return (NULL);
+	return (ret);
+}
+
+typedef struct 	s_eval
+{
+	char *s;
 	char *eval;
+}				t_eval;
+
+t_eval  analyse(char *src, char **envv)
+{
+	t_eval e;
 	int len;
 	int j;
 	int i;
 
 	i = -1;
 	len = ft_strlen(src);
-	if (!(eval = ft_strnew(len + 1)))
-		return (NULL);
+	if (!(e.eval = ft_strnew(len + 1)))
+		return (e);
 	while (src[++i])
 	{
 		if (src[i] == '\\')
@@ -56,8 +94,7 @@ static char *analyse(char *src)
 			if (src[i + 1])
 			{
 				src = ft_delchar_n(src, i);
-				ft_putendl(src);
-				eval[i++] = 'e';
+				e.eval[i] = 'e';
 			}
 			else
 			{
@@ -66,45 +103,57 @@ static char *analyse(char *src)
 			}
 		}
 		else if (ft_isspace(src[i]))
-			eval[i] = ' ';
+			e.eval[i] = ' ';
 		else if (src[i] == '<')
-			eval[i] = 'r';
+			e.eval[i] = 'r';
 		else if (src[i] == '>')
 		{
 			j = i;
 			while (j > 0 && ft_isdigit(src[j - 1]))
-				eval[--j] = 'r';
-			eval[i] = 'r';
+				e.eval[--j] = 'r';
+			e.eval[i] = 'r';
 			if (i + 2 < len && src[i + 1] == '&')
 			{
-				eval[++i] = 'r';
+				e.eval[++i] = 'r';
 				if (src[i + 1] == '-')
-					eval[++i] = 'r';
+					e.eval[++i] = 'r';
 				else
 				{
 					while (ft_isdigit(src[i + 1]))
-						eval[++i] = 'r';
+						e.eval[++i] = 'r';
 				}
 			}
 		}
 		else if (src[i] == '&' || src[i] == '|' || src[i] == ';')
-			eval[i] = 'o';
-		else if (src[i] == '\'' || src[i] == '"')
+			e.eval[i] = 'o';
+		else if (IS_QUOTE(src[i]))
 		{
 			int save;
 
-			save = i;
-			eval[i++] = ' ';
+			save = i++;
 			while (src[i] && src[i] != src[save])
-				eval[i++] = 'q';
-			if (src[i] != src[save])
-				error("HERE WE ADD INPUT", NULL);
+			{		
+				e.eval[i] = 'q';
+				if (IS_QUOTE(src[i]) && src[i - 1] == '\\')
+				{
+					src = ft_delchar_n(src, i);
+					e.eval[i] = 'q';
+				}
+				if (!src[++i])
+				{
+					src = ft_strjoin_fr(ft_stradd_char(src, '\n'), q_get_input(envv, src[save]));
+					e.eval = ft_realloc(e.eval, len + 1, ft_strlen(src) + 1);	
+				}
+			}
+			e.eval[save] = ' ';
+			e.eval[i] = ' ';
 		}
 		else
-			eval[i] = 'e';
+			e.eval[i] = 'e';
 	}
-	eval[i] = 0;
-	return (eval);
+	e.s = src;
+	e.eval[i] = 0;
+	return (e);
 }
 
 static t_word *find_type(t_word *w, char c, int *pos)
@@ -146,6 +195,7 @@ static t_word *find_type(t_word *w, char c, int *pos)
 		w->type = QUOTE;
 	return (w);
 }
+
 
 
 static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *pos)
@@ -208,15 +258,16 @@ static t_word *ft_get_words(char *input, char *eval)
       PATH = 11  
 */
 
-t_word *eval_line(char *input)
+t_word *eval_line(char *input, char **envv)
 {
 	t_word *head;
-	char *eval;
+	t_eval e;
 
-	if (!input|| !*input|| !(eval = analyse(input)))
+	if (!input|| !*input)
 		return (NULL);
-	ft_putendl(eval);
-	head = ft_get_words(input, eval);
-	ft_strdel(&eval);
+	e = analyse(input, envv);
+	head = ft_get_words(e.s, e.eval);
+	ft_strdel(&e.eval);
+	ft_strdel(&e.s);
 	return (head);
 }
