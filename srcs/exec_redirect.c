@@ -60,9 +60,10 @@ t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 			error("impossible to save[0] file descriptor (dup)", "from");
 		else if (dup2(r->to, r->from) == -1)
 			warning("dup2 failed", NULL);
-		else if (r->to != STDOUT_FILENO && r->to != STDIN_FILENO && close(r->to) == -1)
+		else if (close(r->to) == -1)
 			warning("close failed", NULL);
 		{
+	
 			e = ft_exec(t, e, r->next);
 			if (close(r->from) == -1)
 				warning("redirection can't close fd", "from");
@@ -72,7 +73,9 @@ t_envv *ft_exec_redirection(t_tree *t, t_envv *e, t_redirect *r)
 		}
 		if (0 <= r->from && r->from <= 2 && close(save[0]) == -1)
 			warning("redirection can't close fd", "save");
+
 	}
+			printf("just before exec from %i to%i\n", r->from, r->to);
 	return (e);
 }
 

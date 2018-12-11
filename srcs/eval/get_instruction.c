@@ -30,14 +30,14 @@ static t_redirect *get_redirection(t_redirect *new, t_word *w)
 	char *ptr;
 
 	new->t = w->type;
-	if (new->t == R_RIGHT)
+	if (new->t == R_RIGHT || new->t == R_DRIGHT)
 	{
 		new->from = (ft_isdigit(w->word[0]) ? ft_atoi(w->word) : 1);
 		if ((ptr = ft_strchr(w->word, '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
 			new->to = (ft_isdigit(*(ptr + 1)) ? ft_atoi(ptr + 1) : -1);
 	}
 	else {
-		new->to = 0;
+		new->to = STDIN_FILENO;
 		new->from = -1;
 	}
 	if (w->next && ((new->to == -2 && (new->t == R_RIGHT || new->t == R_DRIGHT))

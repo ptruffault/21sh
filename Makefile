@@ -13,7 +13,7 @@
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
 
-FLAG		=	-Wall -Werror -Wextra
+FLAG		=	-Wall -Werror -Wextra -g
 
 FILES		=		main.c \
 					signal.c \
