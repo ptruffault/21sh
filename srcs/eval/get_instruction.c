@@ -9,7 +9,7 @@
 /*   Updated: 2018/11/07 14:20:36 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 static t_redirect *new_redirection(void)
 {
@@ -21,35 +21,63 @@ static t_redirect *new_redirection(void)
 	new->to = -2;
 	new->from = -1;
 	new->path = NULL;
+	new->heredoc = NULL;
 	new->next = NULL;
+	return (new);
+}
+
+static t_redirect *parse_right_redirect(t_redirect *new, t_word *w)
+{
+	char *ptr;
+
+	new->from = (ft_isdigit(w->word[0]) ? ft_atoi(w->word) : 1);
+	if ((ptr = ft_strchr(w->word, '&'))) 
+	{
+		if (ft_isdigit(*(ptr + 1)))
+			new->to = ft_atoi(ptr + 1);
+		if (*(ptr + 1) == '-')
+			new->path = ft_strdup("/dev/null");
+	}
+	else if (w->next && w->next->word)
+		new->path = ft_strdup(w->next->word);
+	else
+
+		return (NULL);
+	return (new);
+}
+
+static t_redirect *parse_left_redirect(t_redirect *new, t_word *w)
+{
+
+
+	new->from = STDIN_FILENO;
+	if (new->t == R_DLEFT)
+	{
+		if (w->next && w->next->word)
+		{
+			new->path = ft_strdup(w->next->word);
+			new->heredoc = heredoc_get_input(new->path);
+		}
+		else
+			return (NULL);
+	}
+	else if (w->next && w->next->word)
+		new->path = ft_strdup(w->next->word);
+	else
+		return (NULL);
 	return (new);
 }
 
 static t_redirect *get_redirection(t_redirect *new, t_word *w)
 {
-	char *ptr;
 
 	new->t = w->type;
-	if (new->t == R_RIGHT || new->t == R_DRIGHT)
+	new->to = -2;
+	if (((new->t == R_RIGHT || new->t == R_DRIGHT) && !(new = parse_right_redirect(new, w)))
+	|| ((new->t == R_LEFT || new->t == R_DLEFT) && !(new = parse_left_redirect(new, w))))
 	{
-		new->from = (ft_isdigit(w->word[0]) ? ft_atoi(w->word) : 1);
-		if ((ptr = ft_strchr(w->word, '&')) && (ft_isdigit(*(ptr + 1)) || *(ptr + 1) == '-'))
-			new->to = (ft_isdigit(*(ptr + 1)) ? ft_atoi(ptr + 1) : -1);
-	}
-	else {
-		new->to = STDIN_FILENO;
-		new->from = -1;
-	}
-	if (w->next && ((new->to == -2 && (new->t == R_RIGHT || new->t == R_DRIGHT))
-	 || (new->from == -1 && (new->t == R_LEFT || new->t == R_DLEFT))))
-	{
-		w = w->next;
-		new->path = ft_strdup(w->word);
-	}
-	else if (new->to == -2)
-	{
-		warning("redirection need an argument", "[ >(>) / <(<) ] [&Y / file_path]");
-		new = NULL;
+		error("invalid redirection", "argument needed");
+		return (NULL);
 	}
 	return (new);
 }
@@ -62,13 +90,17 @@ static t_word *get_redirections(t_tree *t, t_word *w)
 	tmp = t->r;
 	while (w && IS_REDIRECTION(w->type))
 	{
-		tmp = get_redirection(tmp, w);
-		if (tmp->path && w->next)
+		if (!(tmp = get_redirection(tmp, w)))
+		{
+			w->type = 0;
+			return (w);
+		}
+		else if (tmp->path && w->next)
 			w = w->next;
 		if (w && w->next && IS_REDIRECTION(w->next->type))
 		{
-			tmp->next = new_redirection();
-			tmp = tmp->next;
+				tmp->next = new_redirection();
+				tmp = tmp->next;
 		}
 		w = w->next;
 	}
@@ -97,14 +129,14 @@ t_word *get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-t_tree *get_tree(char *input, char  **e)
+t_tree *get_tree(char *input)
 {
 	t_tree	*head;
 	t_tree	*tree;
 	t_word *tmp;
 	t_word *w;
 
-	w = eval_line(input, e);
+	w = eval_line(input);
 	if (!(head = new_tree()))
 		return (head);
 	tree = head;
@@ -121,7 +153,7 @@ t_tree *get_tree(char *input, char  **e)
 			{
 				tmp ->next = NULL;
 				while (!tmp->next)
-					tmp->next = o_get_input(e, tmp->type);
+					tmp->next = o_get_input(tmp->type);
 			}
 				if (!(tree->next = new_tree()))
 					return (head);
@@ -132,7 +164,9 @@ t_tree *get_tree(char *input, char  **e)
 		else
 		{
 			error("parse error near", tmp->word);
-			break ;
+			ft_free_tree(head);
+			ft_free_tword(w);
+			return (NULL);
 		}
 	}
 	ft_free_tword(w);

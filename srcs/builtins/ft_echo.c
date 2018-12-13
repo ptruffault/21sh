@@ -9,8 +9,7 @@
 /*   Updated: 2018/07/04 14:10:54 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/21sh.h"
-
+#include <21sh.h>
 void		ft_echo(char **input)
 {
 	int i;

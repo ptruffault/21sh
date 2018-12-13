@@ -56,6 +56,7 @@ typedef struct s_redirect
 	char 				*path;
 	int 				from;
 	int 				to;
+	char				*heredoc;
 	struct s_redirect	*next;
 }				t_redirect;
 
@@ -68,9 +69,9 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
-
-t_word *o_get_input(char **envv, int type);
-t_word *eval_line(char *input, char **envv);
+char *heredoc_get_input(char *eoi);
+t_word *o_get_input(int type);
+t_word *eval_line(char *input);
 void ft_free_tword(t_word *w);
 t_word *new_tword(void);
 void ft_putwords(t_word *w);
@@ -83,7 +84,10 @@ t_envv 	*exec_instruction(t_tree *t, t_envv *e);
 char 	**get_cmd_and_arg(char **input, int *i);
 t_tree *new_tree(void);
 void 	ft_free_tree(t_tree *t);
-t_tree 	*get_tree(char *input, char **env);
+void ft_free_redirection(t_redirect *r);
+
+
+t_tree 	*get_tree(char *input);
 void	 print_tree(t_tree *t);
 void 	put_redirect(t_redirect *r);
 t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r);
@@ -99,5 +103,9 @@ t_envv	*run_builtin(t_tree *t, t_envv *envv);
 t_envv	*ft_cd(char **input, t_envv *envv);
 void	ft_echo(char **input);
 void	ft_env(t_tree *t, t_envv *envv);
+
+//sys
+int fd_dup(int fd1, int fd2);
+int ft_execve(char **argv, t_envv *e);
 
 #endif

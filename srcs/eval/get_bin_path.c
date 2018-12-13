@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 static char	*check_exe(char *bin_path, struct stat inf)
 {

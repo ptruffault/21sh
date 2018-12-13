@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 
 void ft_free_tword(t_word *w)
@@ -46,6 +46,7 @@ void ft_free_redirection(t_redirect *r)
 	while (r)
 	{
 		tmp = r->next;
+		ft_strdel(&r->heredoc);
 		ft_strdel(&r->path);
 		free(r);
 		r = NULL;
@@ -60,7 +61,8 @@ void ft_free_tree(t_tree *t)
 	while (t)
 	{
 		ft_freestrarr(t->arr);
-		ft_free_redirection(t->r);
+		if (t->r)
+			ft_free_redirection(t->r);
 		tmp = t->next;
 		free(t);
 		t = tmp;

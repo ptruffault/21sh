@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 static char	*ft_correct_one(t_envv *envv, char *s, char *ptr)
 {

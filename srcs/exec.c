@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 static t_envv *next_instruction(t_tree *t, t_envv  *e)
 {
@@ -40,28 +40,12 @@ static t_envv *next_instruction(t_tree *t, t_envv  *e)
 
 t_envv *ft_exec(t_tree *t, t_envv *envv, t_redirect *r)
 {
-	char **e;
-	pid_t pid;
-	char *bin_path;
 
 	if (r)
-		return(ft_exec_redirection(t, envv, r));
+		return (envv = ft_exec_redirection(t, envv, r));
 	if (check_builtin(t->arr))
 		return (run_builtin(t, envv));
-	if (!(bin_path = get_bin_path(*t->arr, envv)))
-	{
-		error("unknow cmd", *t->arr);
-		t->ret = -1;
-		return (envv);
-	}
-	e = tenvv_to_tab(envv);
-	if ((pid = fork()) == -1)
-		warning("fork failed to create a new process", *t->arr);
-	if (pid == 0 && execve(bin_path, t->arr, e) == -1)
-		warning("execve fucked up", *t->arr);
-	ft_freestrarr(e);
-	ft_strdel(&bin_path);
-	wait(&t->ret);
+	t->ret = ft_execve(t->arr, envv);
 	return (envv);
 }
 

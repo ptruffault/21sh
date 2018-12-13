@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 static t_envv	*change_dir(char *path, char *cwd, t_envv *envv)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 static void ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 {

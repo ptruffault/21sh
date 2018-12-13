@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
 # define IS_QUOTE(x) (x == '\'' || x == '"')
 
@@ -38,8 +38,11 @@ char  *ft_delchar_n(char *s, int n)
 	return (s);
 }
 
-t_word *o_get_input(char **envv, int type)
+//optimiser les get_input en enleveant les allocation d'environnement a chaque appel
+
+t_word *o_get_input(int type)
 {
+	char **env;
 	t_word *ret;
 	char *input;
 
@@ -50,25 +53,45 @@ t_word *o_get_input(char **envv, int type)
 	else if (type == 4)
 		ft_putstr("pipe");
 	ft_putstr("> ");
-	input = get_input(envv);
-	ret = eval_line(input, envv);
+	env = tenvv_to_tab(ft_get_set_envv(NULL));
+	input = get_input(env);
+	ret = eval_line(input);
+	ft_freestrarr(env);
 	return (ret);
 }
 
-char *q_get_input(char **envv, char c)
+char *q_get_input(char c)
 {
+	char **env;
 	char *ret;
 	char *ptr;
 
 	if (c == '"')
 		ft_putchar('d');
 	ft_putstr("quote> ");
-	if (!(ret = get_input(envv)))
-		return (NULL);
-	if ((!(ptr = ft_strchr(ret, c)) || *(ptr - 1) == '\\' )&& !(ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  q_get_input(envv, c))))
-			return (NULL);
+	env = tenvv_to_tab(ft_get_set_envv(NULL));
+	ret = get_input(env);
+	if ((!(ptr = ft_strchr(ret, c)) || *(ptr - 1) == '\\' ))
+		ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  q_get_input(c));
+	ft_freestrarr(env);
 	return (ret);
 }
+
+char *heredoc_get_input(char *eoi)
+{
+	char **env;
+	char *ret;
+
+	ft_putstr("heredoc> ");
+	env = tenvv_to_tab(ft_get_set_envv(NULL));
+	ret = get_input(env);
+	if (!ft_strequ(ret, eoi))
+		ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  heredoc_get_input(eoi));
+	ft_freestrarr(env);
+	return (ret);
+}
+
+
 
 typedef struct 	s_eval
 {
@@ -76,7 +99,7 @@ typedef struct 	s_eval
 	char *eval;
 }				t_eval;
 
-t_eval  analyse(char *src, char **envv)
+t_eval  analyse(char *src)
 {
 	t_eval e;
 	int len;
@@ -136,7 +159,7 @@ t_eval  analyse(char *src, char **envv)
 				e.eval[i++] = 'q';
 				if (src[i] == 0)
 				{
-					src = ft_strjoin_fr(ft_stradd_char(src, '\n'), q_get_input(envv, src[save]));
+					src = ft_strjoin_fr(ft_stradd_char(src, '\n'), q_get_input(src[save]));
 					e.eval = ft_realloc(e.eval, len + 1, ft_strlen(src) + 1);	
 				}
 				if (IS_QUOTE(src[i]) && src[i - 1] == '\\')
@@ -147,7 +170,6 @@ t_eval  analyse(char *src, char **envv)
 			}
 			e.eval[save] = ' ';
 			e.eval[i] = ' ';
-			printf("%s\n", e.eval);
 		}
 		else
 			e.eval[i] = 'e';
@@ -259,14 +281,14 @@ static t_word *ft_get_words(char *input, char *eval)
       PATH = 11  
 */
 
-t_word *eval_line(char *input, char **envv)
+t_word *eval_line(char *input)
 {
 	t_word *head;
 	t_eval e;
 
 	if (!input|| !*input)
 		return (NULL);
-	e = analyse(input, envv);
+	e = analyse(input);
 	head = ft_get_words(e.s, e.eval);
 	ft_strdel(&e.eval);
 	ft_strdel(&e.s);

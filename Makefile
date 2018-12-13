@@ -22,6 +22,9 @@ FILES		=		main.c \
 					exec.c \
 					exec_redirect.c \
 
+SYS 		=		fd.c \
+					ft_execve.c
+
 
 EVAL			=	get_bin_path.c \
 					eval_tools.c \
@@ -39,10 +42,12 @@ BUILTINS_FOLDER	=	./srcs/builtins/
 OBJ_FOLDER 	= 		./bin/
 SRC			= 		$(addprefix $(FILE_FOLDER), $(FILES)) \
 					$(addprefix $(EVAL_FOLDER), $(EVAL)) \
-					$(addprefix $(BUILTINS_FOLDER), $(BUILTINS))  	
+					$(addprefix $(BUILTINS_FOLDER), $(BUILTINS))  	\
+					$(addprefix $(SYS_FOLDER), $(SYS))
 OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o))
+					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o)) \
+					$(addprefix $(OBJ_FOLDER), $(SYS:.c=.o))
 
 COLOR		= \033[01;34m
 NO_COLOR	= \033[00m
@@ -71,6 +76,10 @@ bin/%.o: srcs/eval/%.c
 bin/%.o: srcs/builtins/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@		
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                   \r"
+
+bin/%.o: srcs/sys/%.c 
+	@gcc $(FLAG) -I includes -c $< -o $@
+	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
 clear:
 	@clear
