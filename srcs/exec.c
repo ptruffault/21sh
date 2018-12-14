@@ -31,10 +31,10 @@ static t_tree *next_instruction(t_tree *t)
 				while (t->next && t->o_type == tmp)
 				{
 					t = t->next;
-					if (!t)
-						return (NULL);
+					if (t->o_type != tmp && t->next)
+						return (t);
 				}
-				return (t);
+				return (NULL);
 			}
 		}
 	}
@@ -155,7 +155,6 @@ void ft_redirect(t_tree *t)
 			get_destination_fd(r);
 		if (r->to >= 0 && r->from >= 0)
 		{
-			printf("from %i to %i\n", r->from, r->to);
 			if ((IS_STD(r->from) && (t->fd[r->from] = dup(r->from)) == -1)
 			|| (IS_STD(r->to) && (t->fd[r->to] = dup(t->fd[r->to])) == -1))
 				error("impossible to save file descriptor (dup)", NULL);
@@ -177,7 +176,6 @@ void reset_fd(t_tree *t)
 	{
 		if (t->fd[fd] != fd)
 		{
-			printf("reseting fd %i\n", t->fd[fd]);
 			if (close(fd) == -1)
 				warning("can't close fd 0", NULL);
 			if ((fd = dup(t->fd[fd])) == -1)
@@ -185,7 +183,6 @@ void reset_fd(t_tree *t)
 			if (close(t->fd[fd]) == -1)
 				warning("can't close fd 1", NULL);
 			t->fd[fd] = fd;
-			printf("now %i\n", fd);
 		}
 		fd++;
 
@@ -194,10 +191,8 @@ void reset_fd(t_tree *t)
 
 void ft_exec(t_tree *t)
 {
-	printf("ft_exec\n");
 	if (t->r)
 		ft_redirect(t);
-	//printf("stdin = %i\nstdout = %i\nstderr = %i\n\n",t->fd[0],t->fd[1],t->fd[2]);
 	if (check_builtin(t->arr))
 		run_builtin(t);
 	else

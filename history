@@ -1,3 +1,42 @@
+
+ls
+clear
+ls |rev |cat -e
+clear
+ls
+clear
+lol"
+echo "lol
+ls
+clear
+env
+ls ||
+clear
+ls && ls-z || ls
+ls&&ls-z&&ls
+clear
+ls &&ls&&ls
+ls & ls && ls
+ls || env || env || echo lolo
+ls || env || env || echo lolo
+ls || env
+ls || echo no || echo no || echo no || env
+ls || env
+env || ls
+env 
+clear
+ls
+ls -lR
+lss
+cat file
+ls -l > file
+ls
+clear
+ls
+cd
+env | grep PWD
+env
+ls
 ls -z  1>&-  2>&1 | rev
 ls -z 2>&1 | rev
 ls > file
