@@ -78,12 +78,11 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
-char *heredoc_get_input(char *eoi);
-t_word *o_get_input(int type);
-t_word *eval_line(char *input);
-void ft_free_tword(t_word *w);
-t_word *new_tword(void);
-void ft_putwords(t_word *w);
+//exec redirection
+void reset_fd(t_tree *t);
+void ft_redirect(t_tree *t);
+
+
 
 t_tree *ft_exec_redirection(t_tree *t, t_redirect *r);
 t_tree *exec_pipe(t_tree *t);
@@ -96,25 +95,24 @@ void exec_tree(t_tree *t);
 t_tree	*ft_get_set_tree(t_tree *new_t);
 void 	set_signals(void);
 
-char 	**get_cmd_and_arg(char **input, int *i);
-t_tree *new_tree(void);
-void 	ft_free_tree(t_tree *t);
-void ft_free_redirection(t_redirect *r);
+t_word 		*get_redirections(t_tree *t, t_word *w);
+t_tree 		*new_tree(void);
+void 		ft_free_tree(t_tree *t);
+void 		ft_free_redirection(t_redirect *r);
+t_redirect 	*new_redirection(void);
+t_tree 		*get_tree(char *input);
 
-
-t_tree 	*get_tree(char *input);
-void	 print_tree(t_tree *t);
-void 	put_redirect(t_redirect *r);
+char 		*heredoc_get_input(char *eoi);
+t_word 		*o_get_input(int type);
+t_word 		*eval_line(char *input);
+void 		ft_free_tword(t_word *w);
+t_word 		*new_tword(void);
 
 
 void	ft_disp(t_envv *envv, int argc, char **argv);
-void	run_bin(char **args, t_envv *envv);
-char	**ft_correct(char **input, t_envv *envv);
-char	*correct_syntax(char *s);
+
 char	*ft_get_input(void);
 
-
-char	*get_bin_path(char *input, t_envv *envv);
 
 //builtins
 int		check_builtin(char **input);
@@ -124,6 +122,7 @@ void	ft_env(t_tree *t, t_envv *envv);
 
 //sys
 int fd_dup(int fd1, int fd2);
-int ft_execve(char **argv);
+char	*get_bin_path(char *input, t_envv *envv);
+int ft_execve(char **argv, t_envv *e);
 
 #endif

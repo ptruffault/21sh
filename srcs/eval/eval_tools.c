@@ -26,18 +26,20 @@ void ft_free_tword(t_word *w)
 	}
 }
 
-t_word *new_tword(void)
+void ft_free_tree(t_tree *t)
 {
-	t_word *n;
+	t_tree *tmp;
 
-	if (!(n = (t_word *)malloc(sizeof(t_word))))
-		return (NULL);
-	n->word = NULL;
-	n->type = undef;
-	n->next = NULL;
-	return (n);
+	while (t)
+	{
+		ft_freestrarr(t->arr);
+		if (t->r)
+			ft_free_redirection(t->r);
+		tmp = t->next;
+		free(t);
+		t = tmp;
+	}
 }
-
 
 void ft_free_redirection(t_redirect *r)
 {
@@ -54,52 +56,16 @@ void ft_free_redirection(t_redirect *r)
 	}
 }
 
-void ft_free_tree(t_tree *t)
+t_word *new_tword(void)
 {
-	t_tree *tmp;
+	t_word *n;
 
-	while (t)
-	{
-		ft_freestrarr(t->arr);
-		if (t->r)
-			ft_free_redirection(t->r);
-		tmp = t->next;
-		free(t);
-		t = tmp;
-	}
-}
-
-void put_redirect(t_redirect *r)
-{
-	t_redirect *tmp;
-
-	tmp = r;
-	while (tmp)
-	{
-		printf("type = %i path = %s from = %i to = %i \n",tmp->t, tmp->path, tmp->from, tmp->to );
-		tmp = tmp->next;
-	}
-}
-
-void print_tree(t_tree *t)
-{
-	t_tree *tmp;
-	tmp = t;
-	while (tmp)
-	{
-		ft_putstr("instruc = ");
-		if (tmp->arr)
-			ft_putstrarr(tmp->arr);
-		if (tmp->r)
-			put_redirect(tmp->r);	
-		if (tmp->o_type)
-		{
-			ft_putstr("link : ");
-			ft_putchar(tmp->o_type);
-		}
-		ft_putchar('\n');
-		tmp = tmp->next;
-	}
+	if (!(n = (t_word *)malloc(sizeof(t_word))))
+		return (NULL);
+	n->word = NULL;
+	n->type = undef;
+	n->next = NULL;
+	return (n);
 }
 
 t_tree *new_tree(void)
@@ -117,6 +83,22 @@ t_tree *new_tree(void)
 	n->fd[STDOUT] = 1;
 	n->fd[STDERR] = 2;
 	return (n);
+}
+
+t_redirect *new_redirection(void)
+{
+	t_redirect *new;
+
+	if (!(new = (t_redirect *)malloc(sizeof(t_redirect))))
+		return (NULL);
+	new->t = 0;
+	new->to = -2;
+	new->from = -1;
+	new->path = NULL;
+	new->done = 0;
+	new->heredoc = NULL;
+	new->next = NULL;
+	return (new);
 }
 
 

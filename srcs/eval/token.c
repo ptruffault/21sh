@@ -14,16 +14,6 @@
 
 # define IS_QUOTE(x) (x == '\'' || x == '"')
 
-void ft_putwords(t_word *w)
-{
-	while (w)
-	{
-		if (w->word)
-			printf("PUTWORD:%s type = %i\n", w->word, w->type);
-		w = w->next;
-	}
-}
-
 char  *ft_delchar_n(char *s, int n)
 {
 	int len;
@@ -265,21 +255,6 @@ static t_word *ft_get_words(char *input, char *eval)
 	return (head);
 }
 
-
-// lis input et renvoie une liste chainée t_word avec chaque mot et son type
-/*
-	 O_AND = 1,
-      O_OR = 2,
-      O_SEP = 3, 
-      O_PIPE = 4,
-      R_LEFT = 5,
-      R_RIGHT = 6,
-      R_DLEFT = 7,
-      R_DRIGHT = 8,
-      CMD = 9, 
-      QUOTE = 10,
-      PATH = 11  
-*/
 
 t_word *eval_line(char *input)
 {

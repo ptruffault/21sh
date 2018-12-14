@@ -18,12 +18,12 @@ static void ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 	char *path;
 	int pid;
 
-	e = tenvv_to_tab(tmp);
 	if (!(path = get_bin_path(*arr, envv)))
 	{
 		error("{env} unknow cmd ", *arr);
 		return ;
 	}
+	e = tenvv_to_tab(tmp);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", *arr);
 	if (pid == 0 && execve(path, arr, e) == -1)

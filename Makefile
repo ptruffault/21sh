@@ -20,16 +20,16 @@ FILES		=		main.c \
 					correct_input.c \
 					disp.c\
 					exec.c \
-					exec_redirect.c \
+					redirection.c \
 
 SYS 		=		fd.c \
 					ft_execve.c
 
 
-EVAL			=	get_bin_path.c \
-					eval_tools.c \
+EVAL			=	eval_tools.c \
 					get_instruction.c \
-					token.c
+					token.c \
+					redirect.c
 
 BUILTINS		=	ft_echo.c \
 					ft_cd.c \

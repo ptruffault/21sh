@@ -1,3 +1,260 @@
+cat < toto
+ls
+clear
+env | grep PWD
+env
+ls
+clear
+"
+lo:
+echo "lol
+ls
+clear
+ls|rev|rev|cat -e
+ls | rev
+clear
+ls
+clear
+ls
+ld
+mv srcs/exec_redirect.c srcs/redirection.c
+cat < toto
+ls
+cat < file
+ls|rev
+ls
+clear
+;ls
+|ls
+;ls
+clear
+ls
+env
+clear
+ls
+ ls|rev|rev
+ls
+clear
+ls | rev
+ls
+env -i make exe
+env -i make
+clear
+ls
+ls
+env -i make
+env -i make re
+env -i ls
+
+ls
+ls
+clear
+ls
+cat < file
+ls > file
+ls
+clear
+ls 2>toto
+ls > toto
+ls
+cat < toto
+cat <toto
+rm -rf rev file
+ls
+clear
+ls
+cat <toto
+cat <toto
+ls
+ls |rev
+clear
+ls
+cat < toto
+cat toto
+ls
+cat < toto
+ls
+cat < toto
+ls
+ls
+cat < toto
+cat < toto
+cat < toto
+ls|rev
+clear
+ls
+cat < toto
+cat < rev
+cat rev
+ls > rev
+clear
+ls
+ls -l auteur >&2 2>&1 1>&2 2>&1 | rev
+ls | rev > file
+ls | rev > file
+ls | rev
+ls
+rm -rf file
+ls&&ls &&ls
+ls|rev>file
+ls|rev
+ls|rev
+ls|rev
+exit
+ls | rebv
+ls
+clear
+clear
+ls && ls
+ls && ls
+rev
+ls | rev |
+ls ;ls  ;
+ls;ls
+ls
+clear
+ls ; ls ; 
+clear
+echo "">file; cat -e < file
+echo "">file; cat-e < file
+echo "">file; cat < file
+ls
+clear
+cat -e <  file
+cat -e file
+echo "" > file
+clear
+cat file
+ls >> file
+cat file
+ls | rev > file
+clear
+ls >> file
+cat file
+ls > file
+clear
+exit
+exity
+cd sr
+;ls
+;ls
+;;ls
+;;;;;;;;;ls
+;;;;;;;;;ls
+;ls
+;ls
+|ls
+ls
+ls ||
+ls
+s
+clear
+ls | rev
+ls
+clear
+ls
+rm -rf "-"
+ls
+ls | rev 2>&-  < file 
+ls | rev < file 2>&-
+
+ls | rev < file 2>&-
+ls | rev < file 2>&-
+ls | rev < file 2>-
+ls | rev < file
+ls | rev
+exit
+man echo
+echo  lol -n
+echo -n lol
+ls
+clear
+env -i make re
+env -i make
+env -i ls
+env >&2 |rev
+env >&2
+ls|rev
+ls
+clear
+ls
+ls
+clear
+lo"
+echo "j'aim faim
+ls
+clear
+ls
+ls -la
+ls
+clear
+ls
+cd /
+cd
+ls
+clear
+ls
+env
+ls
+clear
+ls | rev < file
+ls |rev
+ls
+cat file  zf 2>&1 | rev
+cat file
+cqt file
+ls -l auteur wqefqw 2>&1 1> file
+ls -l auteur wqefqw
+clear
+ls
+clear
+cleqr
+ls
+ls -z 2>&1 | rev
+ls
+ls | rev < file
+clear
+cclear
+ls
+ls && env
+ls %% ebv
+ls || env
+clear
+ls -l auteur afrefeqr  2>&1 | rev
+ls -l auteur afrefeqr >file 2>&1
+ls -l auteur afrefeqr >file 2>&1 | rev
+ls -l auteur afrefeqr >file 2>&1 | rev
+ls -l auteur afrefeqr 2>&1 | rev
+ls -l auteur afrefeqr 2>&1 | rev
+ls -l auteur afrefeqr 2>&1
+clear
+ls | rev | cat -e
+ls -R
+ls
+clear
+ls
+ls
+clear
+ls | cat Makefile
+ls | cat Makefile
+ls | cat
+ls |rev < file 
+rev < file | rev
+rev < file
+cat file
+ls | rev < file
+cat < file
+clear
+cat file
+cqt file
+ls | rev | cat -e > file
+ls | rev | cat -e
+ls | rev
+ls
+clear
+ls -l auteur weferwfg  >file  2>&1 | rev
+cat file
+ls>file
 
 ls
 clear
