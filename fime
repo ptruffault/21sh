@@ -1,3 +1,8 @@
+3 1
+stdin = 0
+stdout = 1
+stderr = 2
+
 21sh
 Makefile
 auteur
@@ -8,4 +13,3 @@ history
 includes
 libft
 srcs
-reseting fd 4

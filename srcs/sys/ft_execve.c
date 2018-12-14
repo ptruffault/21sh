@@ -12,13 +12,15 @@
 
 #include <21sh.h>
 
-int ft_execve(char **argv, t_envv *e)
+int ft_execve(char **argv)
 {
+	t_envv *e;
 	int ret;
 	char **env;
 	char *bin_path;
 	pid_t pid;
 
+	e = ft_get_set_envv(NULL);
 	if (!(bin_path = get_bin_path(*argv, e)))
 	{
 		error("unknow cmd", *argv);

@@ -29,7 +29,7 @@ int		main(int argc, char **argv, char **envv)
 		if ((t = get_tree(get_input(envv))))
 		{
 			ft_get_set_tree(t);
-			my_envv = ft_get_set_envv(exec_instruction(t, my_envv));
+			exec_tree(t);
 			ft_free_tree(t);
 		}
 	}

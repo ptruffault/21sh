@@ -21,6 +21,7 @@ static t_redirect *new_redirection(void)
 	new->to = -2;
 	new->from = -1;
 	new->path = NULL;
+	new->done = 0;
 	new->heredoc = NULL;
 	new->next = NULL;
 	return (new);

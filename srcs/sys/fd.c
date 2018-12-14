@@ -21,7 +21,7 @@ int fd_dup(int fd1, int fd2)
 		warning("can 't duplicate fd", NULL);
 		return (-1);
 	}
-	if (close(fd1) < 0)
+	if (!IS_STD(fd1) && close(fd1) < 0)
 	{
 		warning("can't close fd", NULL);
 		return (-1);

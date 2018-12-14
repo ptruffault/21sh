@@ -1,3 +1,265 @@
+ls -z  1>&-  2>&1 | rev
+ls -z 2>&1 | rev
+ls > file
+ls
+cat < file
+cat < file
+cat < file
+ls > file
+cat < file
+ls >file
+ls> file
+ls > file
+ls -l auteur arre >file 2>&1 | rev
+clear
+ls -z 2>&1 | rev
+ls -l auteur zear 2>&1
+exit
+ls > -l auteur zrzer 1>file 2>&1
+cat file
+ls > file
+clear
+clea
+eoi
+lol
+cat << eoi
+cat < file
+ls
+clear
+ls >> file
+ls > file
+ls
+ls > file
+ls > file
+ls> file
+
+ls > file 2>&1
+ls>file
+sl> file
+
+ls > file 2>&1
+cat file
+ls > file
+
+ls -l 1>file 2>&1
+
+ls -l 1>file 2>&1
+ls -l 1>&- 2>&1
+cat fime
+ls > fime
+ls
+ls -l auteur zerfer 1>&- 2>&1 | rev
+ls -l auteur zerfer 1>&- 2>&1
+ls -l auteur zerfer 2>&1
+ls -l auteur zerfer 
+clear
+ls
+ls -z > file 2>&1 | rev
+ls -z 2>&1 | rev
+ls
+clear
+eoi
+lol
+cat << eoi
+cat < file
+cat file
+ls > file
+cat < file
+cat file
+ls | rev
+ls | rev < file
+ls | rev
+ls
+ls | rev < file
+ls | rev
+cat -e file
+cat -e ile
+cat file
+cat file
+ls
+rev < file
+ls | rev > file
+cat file
+ls | rev < file
+cat file
+ls > file
+ls
+ls -l auteur erzrer  1>&- 2>&1 | rev
+ls -l auteur erzrer  1>&2 | rev
+ls -l auteur erzrer 2>&1 1>&2 | rev
+ls -l auteur erzrer 2>&1 | rev
+ls -l auteur erzrer 2>&1
+cat file
+ls > file
+ls -z 2>&1 | rev
+cat file
+ls > file
+ls
+exit
+ls -l auteur arer 2>&1 | rev
+ls -l auteur arer 2>file | rev
+cat file
+ls -l auteur arer 2>file
+cat file
+ls > file
+clar
+ls
+
+ls > file
+ls
+ls > file
+clear
+ls
+ls >> file
+ls
+
+ls > file
+ls -z
+ls -z
+ls -z
+ls zeart t 
+ls zerz
+ls
+cat file
+ls -z 2> file
+ls > file
+ls > file
+ls > file
+
+ls > file
+ls -z
+ls 2>&1
+ls > file
+ls
+
+ls > file
+
+ls > file
+
+ls > file
+ls
+env
+ls
+clear
+ls
+ls -l auteur aezrr 2>&1 >file
+ls
+clear
+ls -z 2>&1 | rev
+ls 1>&2 | rev
+ls | rev | rev
+ls -l
+
+ls -l auteur zerzer 2>&1 | rev
+ls -l auteur zerzer 2>&1
+cat file
+ls > file
+ls
+ls -l auteur zerazer 2>&1 | rev
+ls
+clear
+ls -z
+ls
+ls -l auteur  rzaer  2>&1
+ls -l auteur  rzaer 
+ls -l auteur 
+ls | rev
+ls
+ls |rev|rev
+clear
+ls
+ls -l auteur  azea  2>&1 | rev
+ls -l auteur  azea  2>&1 | rev
+ls -l auteur  azea 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z 2>&1
+ls -l auteur zerzer 2>&- | rev
+ls -l auteur zerzer 2>&- | rev
+ls -l auteur zerzer 2>&-
+ls>file
+ls|rev
+clear
+ls
+ls edara 2>&- | rev
+ls | rev
+clear
+ls;ls
+ls
+ls||env
+ls &&ls
+ls||env
+clear
+ls&&ls
+ls &&ls
+ls|rev
+ls
+clear
+ls
+cat -e < file > file
+cat file
+ls | rev > file
+ ls > file
+ls
+env
+ls
+ls -l auteur rfr 2>&- | rev
+ls
+clear
+s
+l
+clear
+ls
+
+clear
+cat file
+ls
+ls|rev|cat -e > file
+ls|rev|cat-e > file
+ls|rev
+ls
+ls -l auteur rfr 2>&- | rev
+ls -l auteur rfr 2>&-
+clear
+cat file
+ls | rev > file
+ls
+eoi
+lola
+cat -e << eoi | rev < file
+eoi
+ptdr
+mdr
+cat -e << eoi | rev
+clear
+eoi
+mdr
+lol
+cat << eoi
+clear
+cat < file
+cat file
+ls > file
+ls-z &&ls
+ls&&ls
+ls||env
+ls||env
+ls&&ls&&ls&&ls-z||env
+ls|rev&&ls
+ls
+clear
+ls |rev |cat -e
+ls|rev
+ls ;ls
+ls && echo lol
+ls|rev&&echo lol||env
+rev
+ls|
+ls
+ls | rev
+ls
+ls -l auteur araz 2>&- | rev
+ls > file | rev
+ls
 eoi
 ptdr
 eoi

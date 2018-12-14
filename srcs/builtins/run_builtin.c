@@ -35,8 +35,11 @@ static t_envv	*change_envv(t_tree *t, t_envv *envv)
 	return (envv);
 }
 
-t_envv			*run_builtin(t_tree *t, t_envv *envv)
+void run_builtin(t_tree *t)
 {
+	t_envv *envv;
+
+	envv = ft_get_set_envv(NULL);
 	if (ft_strequ(t->arr[0], "exit"))
 	{
 		ft_free_tree(t);
@@ -47,11 +50,10 @@ t_envv			*run_builtin(t_tree *t, t_envv *envv)
 	else if (ft_strequ(t->arr[0], "pwd"))
 		ft_putendl(get_tenvv_val(envv, "PWD"));
 	else if (ft_strequ(t->arr[0], "cd"))
-		return (ft_cd(t->arr, envv));
+		ft_get_set_envv(ft_cd(t->arr, envv));
 	else if (ft_strequ(t->arr[0], "echo"))
 		ft_echo(&t->arr[1]);
 	else
-		return (change_envv(t, envv));
-	return (envv);
+		ft_get_set_envv(change_envv(t, envv));
 }
 
