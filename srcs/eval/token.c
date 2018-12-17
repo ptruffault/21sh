@@ -28,6 +28,19 @@ char  *ft_delchar_n(char *s, int n)
 	return (s);
 }
 
+int ft_isempty(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s && s[i])
+	{
+		if (!ft_isspace(s[i++]))
+			return (0);
+	}
+	return (1);
+}
+
 //optimiser les get_input en enleveant les allocation d'environnement a chaque appel
 
 t_word *o_get_input(int type)

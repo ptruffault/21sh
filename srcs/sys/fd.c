@@ -12,9 +12,20 @@
 
 #include <21sh.h>
 
+int fd_valid(int fd)
+{
+	if (isatty(fd) == 0)
+	{
+		error("Bad file descriptor", NULL);
+		return (0);
+	}
+	return (1);
+
+}
+
 int fd_dup(int fd1, int fd2)
 {
-	if (fd1 == fd2)
+	if (fd1 == fd2 || !fd_valid(fd1 || !fd_valid(fd2)))
 		return (-1);
 	if (dup2(fd1, fd2) < 0)
 	{

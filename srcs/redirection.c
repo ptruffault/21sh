@@ -39,14 +39,12 @@ void ft_redirect(t_tree *t)
 			get_destination_fd(r);
 		if (r->to >= 0 && r->from >= 0)
 		{
-			printf("redirect\n");
 			if ((IS_STD(r->from) && (t->fd[r->from] = dup(r->from)) == -1)
 			|| (IS_STD(r->to) && (t->fd[r->to] = dup(t->fd[r->to])) == -1))
 				error("impossible to save file descriptor (dup)", NULL);
 			else if (fd_dup(r->to, r->from) == -1)
-				warning("redirection failed", NULL);
+				error("redirection failed", NULL);
 		}
-		printf("here i am\n");
 		r = r->next;
 	}
 }
@@ -55,6 +53,7 @@ void ft_redirect(t_tree *t)
 void reset_fd(t_tree *t)
 {
 	int fd;
+	int tmp;
 
 	fd = 0;
 	while (fd <= 2)
@@ -63,11 +62,11 @@ void reset_fd(t_tree *t)
 		{
 			if (close(fd) == -1)
 				warning("can't close fd 0", NULL);
-			if ((fd = dup(t->fd[fd])) == -1)
+			if ((tmp = dup(t->fd[fd])) == -1)
 				error("can't load old fd", NULL);
 			if (close(t->fd[fd]) == -1)
 				warning("can't close fd 1", NULL);
-			t->fd[fd] = fd;
+			t->fd[fd] = tmp;
 		}
 		fd++;
 

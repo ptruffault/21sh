@@ -56,9 +56,14 @@ t_tree *exec_pipe(t_tree *t)
 		error("fork filed to create a new process in pipe", *t->arr);
 	else if (pid[0] == 0)
 	{
-		dup2(pipes[1], t->fd[STDOUT]);
+		if (t->r)
+			ft_redirect(t);
+		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		ft_exec(t);
+		if (check_builtin(t->arr))
+			run_builtin(t);
+		else
+			t->ret = ft_execve(t->arr);
 		ft_free_tree(t);
 		exit(0);
 	}
@@ -66,7 +71,7 @@ t_tree *exec_pipe(t_tree *t)
 		error("fork filed to create a new process in pipe", *t->arr);
 	else if (pid[1] == 0)
 	{
-		dup2(pipes[0], t->fd[STDIN]);
+		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
 		t = exec_instruction(t->next);
 		ft_free_tree(t);
@@ -81,17 +86,12 @@ t_tree *exec_pipe(t_tree *t)
 
 void ft_exec(t_tree *t)
 {
-	t_envv *e;
-
 	if (t->r)
 		ft_redirect(t);
 	if (check_builtin(t->arr))
 		run_builtin(t);
 	else
-	{
-		e = ft_get_set_envv(NULL);
-		t->ret = ft_execve(t->arr, e);
-	}
+		t->ret = ft_execve(t->arr);
 	reset_fd(t);
 }
 
@@ -113,7 +113,6 @@ void exec_tree(t_tree *t)
 	tmp = t;
 	while (tmp)
 	{
-		printf("in ecex loop\n");
 		tmp = exec_instruction(tmp);
 		tmp = next_instruction(tmp);
 	}

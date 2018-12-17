@@ -78,6 +78,10 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
+//future lib functions
+int ft_isempty(char *s);
+
+
 //exec redirection
 void reset_fd(t_tree *t);
 void ft_redirect(t_tree *t);
@@ -123,6 +127,6 @@ void	ft_env(t_tree *t, t_envv *envv);
 //sys
 int fd_dup(int fd1, int fd2);
 char	*get_bin_path(char *input, t_envv *envv);
-int ft_execve(char **argv, t_envv *e);
+int ft_execve(char **argv);
 
 #endif

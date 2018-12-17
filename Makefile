@@ -17,7 +17,6 @@ FLAG		=	-Wall -Werror -Wextra -g
 
 FILES		=		main.c \
 					signal.c \
-					correct_input.c \
 					disp.c\
 					exec.c \
 					redirection.c \
