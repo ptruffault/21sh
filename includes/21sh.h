@@ -31,6 +31,10 @@
 # define IS_REDIRECTION(x) (5 <= x && x <= 8)
 # define IS_CMD(x) (9 <= x && x <= 11)
 
+# define S_UNKN 0
+# define S_QUOTE 1
+# define S_DQUOTE 2
+# define S_VAR 3
 
 
 enum e_type{ 
@@ -78,8 +82,17 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
-//future lib functions
-int ft_isempty(char *s);
+
+
+typedef struct 	s_eval
+{
+	char *s;
+	int status;
+	char *eval;
+	int curr;
+}				t_eval;
+
+
 
 
 //exec redirection
@@ -108,14 +121,17 @@ t_tree 		*get_tree(char *input);
 
 char 		*heredoc_get_input(char *eoi);
 t_word 		*o_get_input(int type);
+char 		*q_get_input(char c);
+char 		*backslash_get_input(void);
+
+
+t_eval 		lexer(char *src);
 t_word 		*eval_line(char *input);
 void 		ft_free_tword(t_word *w);
 t_word 		*new_tword(void);
 
 
-void	ft_disp(t_envv *envv, int argc, char **argv);
 
-char	*ft_get_input(void);
 
 
 //builtins

@@ -12,175 +12,7 @@
 
 #include <21sh.h>
 
-# define IS_QUOTE(x) (x == '\'' || x == '"')
 
-char  *ft_delchar_n(char *s, int n)
-{
-	int len;
-
-	if (n < 0 || (len = ft_strlen(s)) == 0 || n > len)
-		return (NULL);
-	while (n  < len)
-	{
-		s[n] = s[n + 1];
-		n++;
-	}
-	return (s);
-}
-
-int ft_isempty(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s && s[i])
-	{
-		if (!ft_isspace(s[i++]))
-			return (0);
-	}
-	return (1);
-}
-
-//optimiser les get_input en enleveant les allocation d'environnement a chaque appel
-
-t_word *o_get_input(int type)
-{
-	char **env;
-	t_word *ret;
-	char *input;
-
-	if (type == 1)
-		ft_putstr("cmdand");
-	else if (type == 2)
-		ft_putstr("cmdor");
-	else if (type == 4)
-		ft_putstr("pipe");
-	ft_putstr("> ");
-	env = tenvv_to_tab(ft_get_set_envv(NULL));
-	input = get_input(env);
-	ret = eval_line(input);
-	ft_freestrarr(env);
-	return (ret);
-}
-
-char *q_get_input(char c)
-{
-	char **env;
-	char *ret;
-	char *ptr;
-
-	if (c == '"')
-		ft_putchar('d');
-	ft_putstr("quote> ");
-	env = tenvv_to_tab(ft_get_set_envv(NULL));
-	ret = get_input(env);
-	if ((!(ptr = ft_strchr(ret, c)) || *(ptr - 1) == '\\' ))
-		ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  q_get_input(c));
-	ft_freestrarr(env);
-	return (ret);
-}
-
-char *heredoc_get_input(char *eoi)
-{
-	char **env;
-	char *ret;
-
-	ft_putstr("heredoc> ");
-	env = tenvv_to_tab(ft_get_set_envv(NULL));
-	ret = get_input(env);
-	if (!ft_strequ(ret, eoi))
-		ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  heredoc_get_input(eoi));
-	ft_freestrarr(env);
-	return (ret);
-}
-
-
-
-typedef struct 	s_eval
-{
-	char *s;
-	char *eval;
-}				t_eval;
-
-t_eval  analyse(char *src)
-{
-	t_eval e;
-	int len;
-	int j;
-	int i;
-
-	i = -1;
-	len = ft_strlen(src);
-	if (!(e.eval = ft_strnew(len + 1)))
-		return (e);
-	while (src[++i])
-	{
-		if (src[i] == '\\')
-		{
-			if (src[i + 1])
-			{
-				src = ft_delchar_n(src, i);
-				e.eval[i] = 'e';
-			}
-			else
-			{
-				error("\\ missing input", NULL); 
-				break ;
-			}
-		}
-		else if (ft_isspace(src[i]))
-			e.eval[i] = ' ';
-		else if (src[i] == '<')
-			e.eval[i] = 'r';
-		else if (src[i] == '>')
-		{
-			j = i;
-			while (j > 0 && ft_isdigit(src[j - 1]))
-				e.eval[--j] = 'r';
-			e.eval[i] = 'r';
-			if (i + 2 < len && src[i + 1] == '&')
-			{
-				e.eval[++i] = 'r';
-				if (src[i + 1] == '-')
-					e.eval[++i] = 'r';
-				else
-				{
-					while (ft_isdigit(src[i + 1]))
-						e.eval[++i] = 'r';
-				}
-			}
-		}
-		else if (src[i] == '&' || src[i] == '|' || src[i] == ';')
-			e.eval[i] = 'o';
-		else if (IS_QUOTE(src[i]))
-		{
-			int save;
-
-			save = i;
-			while ((src[i] != src[save] || i == save))
-			{		
-				e.eval[i++] = 'q';
-				if (src[i] == 0)
-				{
-					src = ft_strjoin_fr(ft_stradd_char(src, '\n'), q_get_input(src[save]));
-					e.eval = ft_realloc(e.eval, len + 1, ft_strlen(src) + 1);	
-				}
-				if (IS_QUOTE(src[i]) && src[i - 1] == '\\')
-				{
-					src = ft_delchar_n(src, i - 1);
-					e.eval[i] = 'q';
-				}
-			}
-			e.eval[save] = ' ';
-			e.eval[i] = ' ';
-		}
-		else
-			e.eval[i] = 'e';
-	}
-	e.s = src;
-	e.eval[i] = 0;
-	return (e);
-}
 
 static t_word *find_type(t_word *w, char c, int *pos)
 {
@@ -250,7 +82,7 @@ static t_word *ft_get_words(char *input, char *eval)
 	i = 0;
 	pos = 0;
 	if (!(head = new_tword()))
-		return (head);
+		return (NULL);
 	len = ft_strlen(input);
 	tmp = head;
 	while (eval[i] == ' ')
@@ -274,9 +106,9 @@ t_word *eval_line(char *input)
 	t_word *head;
 	t_eval e;
 
-	if (!input|| !*input)
+	if (!input|| !*input || ft_isempty(input))
 		return (NULL);
-	e = analyse(input);
+	e = lexer(input);
 	head = ft_get_words(e.s, e.eval);
 	ft_strdel(&e.eval);
 	ft_strdel(&e.s);

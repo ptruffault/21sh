@@ -28,13 +28,9 @@ static t_tree *next_instruction(t_tree *t)
 			else
 			{
 				tmp = t->o_type;
-				while (t->next && t->o_type == tmp)
-				{
+				while (t->next && (t->o_type == tmp || t->o_type == O_PIPE))
 					t = t->next;
-					if (t->o_type != tmp && t->next)
-						return (t);
-				}
-				return (NULL);
+				return (t->next);
 			}
 		}
 	}
@@ -113,6 +109,11 @@ void exec_tree(t_tree *t)
 	tmp = t;
 	while (tmp)
 	{
+		if (!tmp->arr)
+		{
+			error("syntax error", NULL);
+			break ;
+		}
 		tmp = exec_instruction(tmp);
 		tmp = next_instruction(tmp);
 	}

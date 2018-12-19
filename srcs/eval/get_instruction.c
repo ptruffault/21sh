@@ -43,11 +43,9 @@ t_tree *get_tree(char *input)
 
 	if (!input || ft_isempty(input) || 
 	!(w = eval_line(input)) || !(head = new_tree()))
-	{
-		ft_strdel(&input);
 		return (NULL);
-	}
 	tree = head;
+	ft_get_set_tree(head);
 	tmp = w;
 	while (tmp && tmp->word)
 	{

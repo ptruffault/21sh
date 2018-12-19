@@ -37,7 +37,7 @@ void	set_signals(void)
 	if (signal(SIGINT, abort_exit) == SIG_ERR
 	|| signal(SIGHUP, abort_exit) == SIG_ERR
 	|| signal(SIGHUP, abort_exit) == SIG_ERR
-	|| signal(SIGTERM, abort_exit))
+	|| signal(SIGTERM, abort_exit) == SIG_ERR)
 		warning("SIGNAL SETTING ERROR", NULL);
 /*	
 	signal(SIGTERM, abort_exit);
@@ -49,5 +49,4 @@ void	set_signals(void)
 	signal(SIGABRT, abort_exit);
 	signal(SIGUSR1, abort_exit);
 	signal(SIGUSR2, abort_exit);*/
-	ft_putstr("OK");
 }

@@ -81,6 +81,7 @@ int ft_execve(char **argv)
 	pid_t pid;
 
 	e = ft_get_set_envv(NULL);
+	ret = -1;
 	if (!(bin_path = get_bin_path(*argv, e)))
 	{
 		error("unknow cmd", *argv);
@@ -88,17 +89,12 @@ int ft_execve(char **argv)
 	}
 	env = tenvv_to_tab(e);
 	if ((pid = fork()) == -1)
-	{
 		warning("fork failed to create a new process", bin_path);
-		return (-1);
-	}
-	if (pid == 0 && execve(bin_path, argv, env) == -1)
-	{
+	else if (pid == 0 && execve(bin_path, argv, env) == -1)
 		warning("execve fucked up", bin_path);
-		return (-1);
-	}
+	else
+		wait(&ret);
 	ft_freestrarr(env);
 	ft_strdel(&bin_path);
-	wait(&ret);
 	return (ret);
 }

@@ -15,7 +15,7 @@
 int				check_builtin(char **input)
 {
 
-	if (input[0] && (ft_strequ(input[0], "env") || ft_strequ(input[0], "exit")
+	if (input && *input && (ft_strequ(input[0], "env") || ft_strequ(input[0], "exit")
 	|| ft_strequ(input[0], "pwd") || ft_strequ(input[0], "unsetenv") 
 	|| ft_strequ(input[0], "unset") || ft_strequ(input[0], "setenv") 
 	|| ft_strequ(input[0], "export")|| ft_strequ(input[0], "cd") 
