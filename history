@@ -1,4 +1,25 @@
 exit
+clear
+env
+ze
+lda
+clezar
+ls
+||rev
+env | grep PWD
+clear
+ls|rev |cat -e
+ls| tervb
+ls
+exit
+clear
+ls|rev;ls
+l|rev;ls
+clear
+ls|rev
+rev
+ls|
+exit
 ls|rev|cat -e | rev&& ls
 ls|rev|cat -e | rev
 clear
