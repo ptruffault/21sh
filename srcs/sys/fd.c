@@ -12,30 +12,14 @@
 
 #include <21sh.h>
 
-int fd_valid(int fd)
-{
-	if (isatty(fd) == 0)
-	{
-		error("Bad file descriptor", NULL);
-		return (0);
-	}
-	return (1);
-
-}
-
 int fd_dup(int fd1, int fd2)
 {
-	if (fd1 == fd2 || !fd_valid(fd1 || !fd_valid(fd2)))
-		return (-1);
 	if (dup2(fd1, fd2) < 0)
 	{
-		warning("can 't duplicate fd", NULL);
+		error("can 't duplicate fd", NULL);
 		return (-1);
 	}
-	if (!IS_STD(fd1) && close(fd1) < 0)
-	{
-		warning("can't close fd", NULL);
-		return (-1);
-	}
+	if (close(fd1) == -1)
+		warning("can't close file descriptor", NULL);
 	return (0);
 }

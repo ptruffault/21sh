@@ -15,10 +15,9 @@
 int				check_builtin(char **input)
 {
 
-	if (input && *input && (ft_strequ(input[0], "env") || ft_strequ(input[0], "exit")
-	|| ft_strequ(input[0], "pwd") || ft_strequ(input[0], "unsetenv") 
-	|| ft_strequ(input[0], "unset") || ft_strequ(input[0], "setenv") 
-	|| ft_strequ(input[0], "export")|| ft_strequ(input[0], "cd") 
+	if (input && input[0] && (ft_strequ(input[0], "env") || ft_strequ(input[0], "exit")
+	|| ft_strequ(input[0], "unsetenv") || ft_strequ(input[0], "unset") 
+	|| ft_strequ(input[0], "setenv") || ft_strequ(input[0], "cd") 
 	|| ft_strequ(input[0], "echo")))
 		return (1);
 	return (0);
@@ -28,17 +27,23 @@ static t_envv	*change_envv(t_tree *t, t_envv *envv)
 {
 	if (ft_strequ(t->arr[0], "unsetenv") || ft_strequ(t->arr[0], "unset"))
 		return (ft_unsetenv(envv, t->arr[1]));
-	else if (ft_strequ(t->arr[0], "setenv") || ft_strequ(t->arr[0], "export"))
-		envv = ft_setenv(envv, t->arr[1], t->arr[2]);
+	else if (ft_strequ(t->arr[0], "setenv"))
+		return (ft_setenv(envv, t->arr[1], t->arr[2]));
 	else if (ft_strequ(t->arr[0], "env"))
 		ft_env(t, envv);
 	return (envv);
 }
 
-void run_builtin(t_tree *t)
+int run_builtin(t_tree *t)
 {
 	t_envv *envv;
+	int fd[3];
 
+	fd[0] = 0;
+	fd[1] =  1;
+	fd[2] = 2;
+	if(t->r && ft_redirect_builtin(t, fd) == -1)
+		warning("redirection fucked up", NULL);
 	envv = ft_get_set_envv(NULL);
 	if (ft_strequ(t->arr[0], "exit"))
 	{
@@ -47,13 +52,15 @@ void run_builtin(t_tree *t)
 		ft_putendl("\033[00;31m21sh get killed\033[00m");
 		exit(0);
 	}
-	else if (ft_strequ(t->arr[0], "pwd"))
-		ft_putendl(get_tenvv_val(envv, "PWD"));
 	else if (ft_strequ(t->arr[0], "cd"))
 		ft_get_set_envv(ft_cd(t->arr, envv));
 	else if (ft_strequ(t->arr[0], "echo"))
 		ft_echo(&t->arr[1]);
 	else
 		ft_get_set_envv(change_envv(t, envv));
+
+	if (t->r)
+		ft_reset_fd(fd);
+	return (0);
 }
 

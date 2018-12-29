@@ -42,7 +42,6 @@ t_tree *exec_pipe(t_tree *t)
 	int			pipes[2];
 	int			pid[2];
 
-
 	if (pipe(pipes) != 0)
 	{
 		warning("pipe error", NULL);
@@ -52,14 +51,9 @@ t_tree *exec_pipe(t_tree *t)
 		error("fork filed to create a new process in pipe", *t->arr);
 	else if (pid[0] == 0)
 	{
-		if (t->r)
-			ft_redirect(t);
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		if (check_builtin(t->arr))
-			run_builtin(t);
-		else
-			t->ret = ft_execve(t->arr);
+		t->ret = ft_execve_pipe(t);
 		ft_free_tree(t);
 		exit(0);
 	}
@@ -69,7 +63,7 @@ t_tree *exec_pipe(t_tree *t)
 	{
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
-		t = exec_instruction(t->next);
+		t->next = exec_instruction(t->next);
 		ft_free_tree(t);
 		exit(0);
 	} 
@@ -77,30 +71,19 @@ t_tree *exec_pipe(t_tree *t)
 	close(pipes[1]);
 	waitpid(-1, 0, 0);
 	waitpid(-1, 0, 0);
+	while (t->o_type == O_PIPE)
+		t = t->next;
 	return (t);
-}
-
-void ft_exec(t_tree *t)
-{
-	if (t->r)
-		ft_redirect(t);
-	if (check_builtin(t->arr))
-		run_builtin(t);
-	else
-		t->ret = ft_execve(t->arr);
-	reset_fd(t);
 }
 
 t_tree *exec_instruction(t_tree *t)
 {
-	if (t->o_type == O_PIPE)
-		return (exec_pipe(t));
+	if (t->o_type == O_PIPE  && t->next)
+		t = exec_pipe(t);
 	else
-		ft_exec(t);
+		t->ret = ft_execve(t);
 	return (t);
 }
-
-
 
 void exec_tree(t_tree *t)
 {
@@ -111,10 +94,19 @@ void exec_tree(t_tree *t)
 	{
 		if (!tmp->arr)
 		{
-			error("syntax error", NULL);
-			break ;
+			if (tmp->o_type == O_SEP)
+				tmp = tmp->next;
+			else
+			{
+				error("syntax error", NULL);
+				break ;
+			}
 		}
-		tmp = exec_instruction(tmp);
-		tmp = next_instruction(tmp);
+		else
+		{
+			tmp = exec_instruction(tmp);
+			//printf("%s\n",*tmp->arr );
+			tmp = next_instruction(tmp);
+		}
 	}
 }

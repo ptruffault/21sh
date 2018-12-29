@@ -72,7 +72,36 @@ char	*get_bin_path(char *input, t_envv *envv)
 	return (local_try(input, envv));
 }
 
-int ft_execve(char **argv)
+
+int ft_execve_pipe(t_tree *t)
+{
+	t_envv *e;
+	int ret;
+	char **env;
+	char *bin_path;
+
+	e = ft_get_set_envv(NULL);
+	ret = -1;
+	if (!(bin_path = get_bin_path(*t->arr, e)))
+	{
+		error("unknow cmd", *t->arr);
+		return (-1);
+	}
+	env = tenvv_to_tab(e);
+	if (t->r)
+		ft_redirect(t);
+	if (check_builtin(t->arr))
+		run_builtin(t);
+	else if (execve(bin_path, t->arr, env) == -1)
+		warning("execve fucked up", bin_path);
+	else
+		wait(&ret);
+	ft_freestrarr(env);
+	ft_strdel(&bin_path);
+	return (ret);
+}
+
+int ft_execve(t_tree *t)
 {
 	t_envv *e;
 	int ret;
@@ -82,16 +111,23 @@ int ft_execve(char **argv)
 
 	e = ft_get_set_envv(NULL);
 	ret = -1;
-	if (!(bin_path = get_bin_path(*argv, e)))
+	if (check_builtin(t->arr))
+		return (run_builtin(t));
+	if (!(bin_path = get_bin_path(*t->arr, e)))
 	{
-		error("unknow cmd", *argv);
+		error("unknow cmd", *t->arr);
 		return (-1);
 	}
 	env = tenvv_to_tab(e);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", bin_path);
-	else if (pid == 0 && execve(bin_path, argv, env) == -1)
-		warning("execve fucked up", bin_path);
+	else if (pid == 0)
+	{
+		if (t->r && ft_redirect(t) != 0)
+			exit(-1);
+		else if (execve(bin_path, t->arr, env) == -1)
+			warning("execve fucked up", bin_path);
+	}
 	else
 		wait(&ret);
 	ft_freestrarr(env);

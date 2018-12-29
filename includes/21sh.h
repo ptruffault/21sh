@@ -21,16 +21,11 @@
 # include <dirent.h>
 # include "../libft/includes/libft.h"
 
-# define STDIN 0
-# define STDOUT 1
-# define STDERR 2
-# define IS_STD(fd) (0 <= fd && fd <= 2)
 
-
+# define IS_STD(x) (0 <= x && x <= 2)
 # define IS_OPERATEUR(x) (1 <= x && x <= 4)
 # define IS_REDIRECTION(x) (5 <= x && x <= 8)
 # define IS_CMD(x) (9 <= x && x <= 11)
-
 # define S_UNKN 0
 # define S_QUOTE 1
 # define S_DQUOTE 2
@@ -76,7 +71,6 @@ typedef struct s_tree
 {
 	char 			**arr; //args
 	t_redirect		*r;
-	int 			fd[3];
 	int				ret;
 	enum e_type		o_type;    //op
 	struct s_tree	*next; 
@@ -92,20 +86,15 @@ typedef struct 	s_eval
 	int curr;
 }				t_eval;
 
-
-
-
 //exec redirection
-void reset_fd(t_tree *t);
-void ft_redirect(t_tree *t);
+int ft_redirect(t_tree *t);
+int ft_redirect_builtin(t_tree *t, int fd[3]);
+void ft_reset_fd(int fd[3]);
 
 
-
-t_tree *ft_exec_redirection(t_tree *t, t_redirect *r);
 t_tree *exec_pipe(t_tree *t);
 t_tree *exec_instruction(t_tree *t);
-void ft_exec(t_tree *t);
-void  run_builtin(t_tree *t);
+int  run_builtin(t_tree *t);
 void exec_tree(t_tree *t);
 
 
@@ -143,6 +132,7 @@ void	ft_env(t_tree *t, t_envv *envv);
 //sys
 int fd_dup(int fd1, int fd2);
 char	*get_bin_path(char *input, t_envv *envv);
-int ft_execve(char **argv);
+int ft_execve(t_tree *t);
+int ft_execve_pipe(t_tree *t);
 
 #endif

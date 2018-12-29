@@ -12,7 +12,7 @@
 
 #include <21sh.h>
 
-void ft_lex_backslash(t_eval *e)
+void ft_parse_backslash(t_eval *e)
 {
 
 	if (e->s[e->curr + 1])
@@ -43,6 +43,37 @@ void ft_lex_backslash(t_eval *e)
 	{
 		e->s = ft_strjoin_fr(e->s, backslash_get_input());
 		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
+		ft_parse_backslash(e);
+	}
+}
+
+void ft_parse_var(t_eval *e)
+{
+	char *name;
+	char *value;
+	char *ret;
+	int len;
+
+	len = 1;
+
+	if (e->s[e->curr] == '$')
+	{
+		while (e->s[e->curr + len] && e->s[e->curr + len] != '"' && !ft_isspace(e->s[e->curr + len])
+		&& e->s[e->curr + len] != '$' && e->s[e->curr + len] != '\\')
+			len++;
+		name = ft_strsub(e->s, e->curr + 1, len - 1);
+	}
+	else if (e->s[e->curr] == '~')
+		name = ft_strdup("HOME");
+	if (name)
+	{
+		value = ft_strdup(get_tenvv_val(ft_get_set_envv(NULL), name));
+		ret = ft_strpull(e->s, &e->s[e->curr] , len - 1, value);
+		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(ret) + 1);
+		ft_strdel(&name);
+		ft_strdel(&e->s);
+		ft_strdel(&value);
+		e->s = ret;
 	}
 }
 
@@ -54,11 +85,12 @@ void ft_lex_dquote(t_eval *e)
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '"')
 	{
 		if (e->s[e->curr] == '\\')
-			ft_lex_backslash(e);
+			ft_parse_backslash(e);
+		else if (e->s[e->curr] == '$')
+			ft_parse_var(e);
 		else
 			e->eval[e->curr++] = 'q';
 	}
-		printf("%c %i\n",e->eval[e->curr] , e->curr);
 	if (!e->s[e->curr])
 	{
 		e->s = ft_strjoin_fr(ft_stradd_char(e->s, '\n'), q_get_input('"'));
@@ -144,11 +176,16 @@ void ft_lexword(t_eval *e)
 			ft_lex_quotes(e);
 			break ;
 		}
+		else if (e->status == S_VAR)
+		{
+			ft_parse_var(e);
+			break ;
+		}
 		else if (e->status == 0)
 		{
 			
 			if (e->s[e->curr] == '\\')
-				ft_lex_backslash(e);
+				ft_parse_backslash(e);
 			else if (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';')
 				e->eval[e->curr] = 'o';
 			else if (e->s[e->curr] == '<')
@@ -160,7 +197,7 @@ void ft_lexword(t_eval *e)
 		}
 		e->curr++;
 		if (((ft_isspace(e->s[e->curr]) || !e->s[e->curr]) && e->status != S_QUOTE && e->status != S_DQUOTE)
-		|| (e->s[e->curr] == '$' && e->status != S_QUOTE))
+		|| ((e->s[e->curr] == '$' || e->s[e->curr] == '~') && e->status != S_QUOTE))
 			word_over = 1;
 	}
 }
@@ -181,7 +218,7 @@ t_eval lexer(char *src)
 			e.eval[e.curr++] = ' ';
 		if (e.s[e.curr] == '\'' || e.s[e.curr] == '\"')
 			e.status = (e.s[e.curr] == '\"' ? S_DQUOTE : S_QUOTE);
-		else if (e.s[e.curr] == '$')
+		else if (e.s[e.curr] == '$' ||  (e.s[e.curr] == '~'))
 			e.status = S_VAR;
 		else
 			e.status = 0;

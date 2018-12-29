@@ -12,8 +12,6 @@
 
 #include <21sh.h>
 
-
-
 static t_word *find_type(t_word *w, char c, int *pos)
 {
 	if (c == 'o')

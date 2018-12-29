@@ -79,9 +79,6 @@ t_tree *new_tree(void)
 	n->o_type = 0;
 	n->ret = 0;
 	n->next = NULL;
-	n->fd[STDIN] = 0;
-	n->fd[STDOUT] = 1;
-	n->fd[STDERR] = 2;
 	return (n);
 }
 

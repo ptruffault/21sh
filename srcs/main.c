@@ -27,7 +27,6 @@ int		main(int argc, char **argv, char **envv)
 {
 	t_envv	*my_envv;
 	t_tree	*t;
-	char *input;
 
 	set_signals();
 	if (!(my_envv = new_tenvv()))
@@ -36,13 +35,11 @@ int		main(int argc, char **argv, char **envv)
 	while (42)
 	{
 		ft_disp(argc, argv);
-		if ((input = get_input(envv))
+		if ((t = get_tree(get_input())))
 		{
-			if ((t = get_tree(input)))
-			{
-				exec_tree(t);
-				ft_free_tree(t);
-			}
+			ft_get_set_tree(t);
+			exec_tree(t);
+			ft_free_tree(t);
 		}
 	}
 	return (0);
