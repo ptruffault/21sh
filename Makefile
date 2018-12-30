@@ -18,7 +18,6 @@ FLAG		=	-Wall -Werror -Wextra -g
 FILES		=		main.c \
 					signal.c \
 					exec.c \
-					lexer.c \
 					redirection.c \
 
 SYS 		=		fd.c \
@@ -26,6 +25,8 @@ SYS 		=		fd.c \
 
 
 EVAL			=	eval_tools.c \
+					lexer.c \
+					free_tools.c \
 					get_instruction.c \
 					token.c \
 					redirect.c \

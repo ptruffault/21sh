@@ -20,17 +20,10 @@
 # include <signal.h>
 # include <dirent.h>
 # include "../libft/includes/libft.h"
-
-
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_OPERATEUR(x) (1 <= x && x <= 4)
 # define IS_REDIRECTION(x) (5 <= x && x <= 8)
 # define IS_CMD(x) (9 <= x && x <= 11)
-# define S_UNKN 0
-# define S_QUOTE 1
-# define S_DQUOTE 2
-# define S_VAR 3
-
 
 enum e_type{ 
     undef = 0, // undef => 'parse error near {}   ' 
@@ -45,15 +38,7 @@ enum e_type{
     CMD = 9, 
     QUOTE = 10,
     PATH = 11  
-  };
-
-typedef struct s_word
-{
-	enum e_type 	type;
-	char 			*word;
-	int 			position;
-	struct s_word 	*next;
-}				t_word;
+};
 
 
 typedef struct s_redirect
@@ -78,13 +63,8 @@ typedef struct s_tree
 
 
 
-typedef struct 	s_eval
-{
-	char *s;
-	int status;
-	char *eval;
-	int curr;
-}				t_eval;
+t_tree 		*get_tree(char *input);
+void 		ft_free_tree(t_tree *t);
 
 //exec redirection
 int ft_redirect(t_tree *t);
@@ -101,23 +81,7 @@ void exec_tree(t_tree *t);
 t_tree	*ft_get_set_tree(t_tree *new_t);
 void 	set_signals(void);
 
-t_word 		*get_redirections(t_tree *t, t_word *w);
-t_tree 		*new_tree(void);
-void 		ft_free_tree(t_tree *t);
-void 		ft_free_redirection(t_redirect *r);
-t_redirect 	*new_redirection(void);
-t_tree 		*get_tree(char *input);
 
-char 		*heredoc_get_input(char *eoi);
-t_word 		*o_get_input(int type);
-char 		*q_get_input(char c);
-char 		*backslash_get_input(void);
-
-
-t_eval 		lexer(char *src);
-t_word 		*eval_line(char *input);
-void 		ft_free_tword(t_word *w);
-t_word 		*new_tword(void);
 
 
 

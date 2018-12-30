@@ -10,51 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include <parseur.h>
 
-
-void ft_free_tword(t_word *w)
-{
-	t_word *tmp;
-
-	while (w)
-	{
-		ft_strdel(&w->word);
-		tmp = w->next;
-		free(w);
-		w = tmp;
-	}
-}
-
-void ft_free_tree(t_tree *t)
-{
-	t_tree *tmp;
-
-	while (t)
-	{
-		ft_freestrarr(t->arr);
-		if (t->r)
-			ft_free_redirection(t->r);
-		tmp = t->next;
-		free(t);
-		t = tmp;
-	}
-}
-
-void ft_free_redirection(t_redirect *r)
-{
-	t_redirect *tmp;
-
-	while (r)
-	{
-		tmp = r->next;
-		ft_strdel(&r->heredoc);
-		ft_strdel(&r->path);
-		free(r);
-		r = NULL;
-		r = tmp;
-	}
-}
 
 t_word *new_tword(void)
 {
@@ -97,6 +54,3 @@ t_redirect *new_redirection(void)
 	new->next = NULL;
 	return (new);
 }
-
-
-

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include <parseur.h>
 
 static t_word *find_type(t_word *w, char c, int *pos)
 {

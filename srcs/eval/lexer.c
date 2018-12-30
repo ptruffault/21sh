@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include <parseur.h>
 
 void ft_parse_backslash(t_eval *e)
 {
@@ -217,7 +217,7 @@ t_eval lexer(char *src)
 		while (ft_isspace(e.s[e.curr]))
 			e.eval[e.curr++] = ' ';
 		if (e.s[e.curr] == '\'' || e.s[e.curr] == '\"')
-			e.status = (e.s[e.curr] == '\"' ? S_DQUOTE : S_QUOTE);
+			e.status = (e.s[e.curr] == '"' ? S_DQUOTE : S_QUOTE);
 		else if (e.s[e.curr] == '$' ||  (e.s[e.curr] == '~'))
 			e.status = S_VAR;
 		else

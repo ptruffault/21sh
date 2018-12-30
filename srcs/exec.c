@@ -51,7 +51,7 @@ t_tree *exec_pipe(t_tree *t)
 		error("fork filed to create a new process in pipe", *t->arr);
 	else if (pid[0] == 0)
 	{
-		dup2(pipes[1], STDOUT_FILENO);p
+		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
 		t->ret = ft_execve_pipe(t);
 		ft_free_tree(t);
@@ -105,7 +105,6 @@ void exec_tree(t_tree *t)
 		else
 		{
 			tmp = exec_instruction(tmp);
-			//printf("%s\n",*tmp->arr );
 			tmp = next_instruction(tmp);
 		}
 	}
