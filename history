@@ -1,4 +1,126 @@
 exit
+ls
+env
+pwd
+ls
+clear
+ls
+ls
+clear
+cleazr
+/bin/pwd
+ls
+ls | cat -e > file ; cat file ; rm -rf file
+ls
+clear
+ ls
+ls |rev|cat -e > file ; cat file ; rm -rf file
+cat file
+ls |rev > file
+ls
+echo lol > file
+ls
+clear
+ls
+ls|rev
+ls
+echo lol > file ; cat file
+ls |rev
+ls
+clear
+cat file
+echo "test" > file
+/dev/urandom
+ls | sort | cat -e
+ls | cat -e
+
+
+
+
+
+
+
+
+
+
+
+ls
+
+
+
+echo lol
+/bin/ls -a
+/bin/ls
+foo
+cd
+clear
+ls
+exit
+ls -R
+env
+ls
+ls | rev
+ls
+clear
+cat history
+ls -a
+ls
+clear
+ls
+ls
+exit
+clear
+ls
+exit
+ls
+clear
+ls
+ls | cat
+ls
+ls -a
+ls
+ls
+clear
+ls
+ls
+ls|rev
+cd
+ls
+ls
+clear
+ls
+sl
+sl
+mls
+clear
+
+lsls
+ls
+clear
+clear
+ls
+echo $PATH
+clear
+env
+ls
+clear
+ls|rev|cat -e | rev && ls
+ls
+clear
+ls
+ls|rev
+ls
+ks
+cd
+ls
+clear
+ls
+cd
+clear
+ls
+clear
+ls
+exit
 ls|rev|cat -e
 ls|rev|cat-e
 ls|rev

@@ -12,16 +12,15 @@
 
 #include <21sh.h>
 
-
 void		ft_disp(int argc, char **argv)
 {
+	char *pwd;
+
 	(void)argv;
 	(void)argc;
-	ft_putstr("\033[1;32m21sh\033[00m:[\033[01;34m\033[04m");
-	ft_putstr(get_tenvv_val(ft_get_set_envv(NULL), "PWD"));
-	ft_putendl("\033[00m]");
+	pwd = get_tenvv_val(ft_get_set_envv(NULL), "PWD");
+	ft_printf("\033[1;32m21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n", pwd);
 }
-
 
 int		main(int argc, char **argv, char **envv)
 {

@@ -13,16 +13,14 @@
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
 
-FLAG		=	-Wall -Werror -Wextra -g
+FLAG		=	-Wall -Werror -Wextra
 
 FILES		=		main.c \
 					signal.c \
+
+EXEC 		=		ft_execve.c \
 					exec.c \
 					redirection.c \
-
-SYS 		=		fd.c \
-					ft_execve.c
-
 
 EVAL			=	eval_tools.c \
 					lexer.c \
@@ -44,11 +42,11 @@ OBJ_FOLDER 	= 		./bin/
 SRC			= 		$(addprefix $(FILE_FOLDER), $(FILES)) \
 					$(addprefix $(EVAL_FOLDER), $(EVAL)) \
 					$(addprefix $(BUILTINS_FOLDER), $(BUILTINS))  	\
-					$(addprefix $(SYS_FOLDER), $(SYS))
+					$(addprefix $(EXEC_FOLDER), $(EXEC))
 OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(SYS:.c=.o))
+					$(addprefix $(OBJ_FOLDER), $(EXEC:.c=.o))
 
 COLOR		= \033[01;34m
 NO_COLOR	= \033[00m
@@ -60,7 +58,7 @@ all: $(NAME)
 $(NAME): $(OBJ) Makefile bin
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
-	@gcc $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
+	@gcc  $(FLAG) $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
 	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
 
 bin:
@@ -78,7 +76,7 @@ bin/%.o: srcs/builtins/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@		
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                   \r"
 
-bin/%.o: srcs/sys/%.c 
+bin/%.o: srcs/exec/%.c 
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 

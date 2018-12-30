@@ -225,6 +225,5 @@ t_eval lexer(char *src)
 		ft_lexword(&e);
 	}
 	e.eval[e.curr] = 0;
-	ft_putendl(e.eval);
 	return (e);
 }

@@ -34,6 +34,18 @@ static int get_destination_fd(t_redirect *r)
 		return (-1);
 }
 
+int fd_dup(int fd1, int fd2)
+{
+	if (dup2(fd1, fd2) < 0)
+	{
+		error("can 't duplicate fd", NULL);
+		return (-1);
+	}
+	if (close(fd1) == -1)
+		warning("can't close file descriptor", NULL);
+	return (0);
+}
+
 int ft_redirect(t_tree *t)
 {
 	t_redirect *r;
@@ -86,7 +98,6 @@ void ft_reset_fd(int fd[3])
 				warning("can't close fd 0", NULL);
 			if ((tmp = dup(fd[i])) == -1)
 				error("can't load old fd", NULL);
-			printf("tmp = %i \n",tmp );
 			if (close(fd[i]) == -1)
 				warning("can't close fd 1", NULL);
 			fd[i] = tmp;
