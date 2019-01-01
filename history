@@ -1,4 +1,230 @@
 exit
+clear
+cat file
+echo $PATH | rev > file ; env| grep PATH | rev
+env | grep PATH ; echo $PATH
+env | grep PATH ; echo $ÂÂPATH
+echo $PATH
+echo $PWD
+echo $ÂÂPATH
+env | grep PATH ; echo $ÂÂPATH
+env | grep PATH ; echo PATH
+env
+envb
+clear
+echo $PATH
+ls|rev
+clear
+ls| grep b
+ls
+clear
+echo $PWD
+clear
+echo $PWD/lol
+echo Â$LOL
+echo $PWD
+echo $PWD/
+ls
+clear
+echo $PWD~$PWD
+echo $PWDlol
+echo $PWDlol
+echo $PWD~$PWD
+clear
+echo ~/$zaf$PWD
+echo $FEKOZ
+echo '$PWD'
+echo ~Â/$PWD
+mls
+clear
+clear
+lol
+mdr
+echo << lol
+echo < env
+clear
+env|ls
+ls|env
+ls
+clear
+echo $zafze mol
+echo Â$FEOZP
+echo $PWD
+ls
+exit
+echo ~~
+echo ~
+echo "$lol"
+echo "$"
+echo $zaefg $ $PWD
+echo $ZEF Â$PWD
+clear
+ ls | env | grep "pwd"
+ls | env
+ls| rev
+ms
+clear
+ls
+echo $PO lol
+echo $PWD $PO lol
+echo $PWD $PO lol
+echo Â$PWD
+echo $OL po
+echo $
+echo $PO lol $PWD
+echo $PO lol
+echo $PO
+echo $PWD
+echo $
+echo $ lol
+echo $
+echo $DU lol
+echo $PATGEZ $PWD
+echo $PFZ
+echo Â$EZF
+echo $PEZA
+echo $PWD
+echo $EFA lol
+echo $PWD $LOL lol
+~
+echo $P lol mdr
+echo $P lol mdr
+echo $PO lol
+echo $ zaef
+echo $
+echo $PWD
+ls
+rm -rf file
+cat < file
+cat file
+ls > file
+ls|rev
+ls
+clear
+exit
+clear
+cleaer
+man ascii
+echo $PWD
+echo $
+echo P
+echo $FEZ
+echo sedf
+echo $PWD
+echo $PWD
+echo $PWD
+echo $PWD
+echo $PWD
+echo $FEF
+echo $FEF
+echo $PWD
+clear
+ls
+echo $PWD
+echo $PWD
+clear
+clezar
+ls
+echo $PEF
+echo $PWD
+echo $PWD
+echo $PEF
+echo PWD
+echo $PO
+ls
+clear
+ls
+echo $P
+echo P
+echo $PWD
+clear
+cat < file
+ls > file
+ls|rev
+echo $PWD
+echo ok
+echo $PWD
+echo $P
+echo $
+echo $ lol
+echo $ lol
+echo $ lol
+echo $
+echo $
+echo $FD
+echo $PEFZ
+echo $P
+ls
+echo $
+echo $DE
+echo $
+echo $E
+echo $PWD
+echo $FE
+ls|rev
+clear
+ls
+echo $DEZ
+echo $DEZ
+echo $FEJZO
+echo $PWD
+echo $PWD
+echo $P | cat -e
+echo | cat -e
+echo | cat
+echo $zaefr | cat -e
+echo $zaef
+$EF
+
+
+
+
+clear
+env
+ls
+$EZF
+$PWD
+pwd
+ls
+
+&azef
+cler
+echo "\a"
+cat file
+ls
+clear
+ls
+env
+$zaef
+echo $azefr
+$cat file
+ls
+cat lol
+echo lol >  file
+rev < file
+clear
+cat < file
+cat file
+ls > file
+ls|rev
+clear
+ls
+ls
+clear
+rm -rf file
+ls
+ls -l zaeraze auteur 2>&1 
+ls -l zaeraze auteur 2>&1
+ls -l zaeraze auteur
+cat file
+ls > file
+ls|rev
+ls
+ls
+pwd
+clear
+ls
+exit
 ls
 env
 pwd

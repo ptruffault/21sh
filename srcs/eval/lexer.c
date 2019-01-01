@@ -54,25 +54,41 @@ void ft_parse_var(t_eval *e)
 	char *ret;
 	int len;
 
-	len = 1;
-
+	len = 0;
 	if (e->s[e->curr] == '$')
 	{
+		e->eval[e->curr++] = 'e';
 		while (e->s[e->curr + len] && e->s[e->curr + len] != '"' && !ft_isspace(e->s[e->curr + len])
-		&& e->s[e->curr + len] != '$' && e->s[e->curr + len] != '\\')
+		&& e->s[e->curr + len] != '$' && e->s[e->curr + len] != '\\' && e->s[e->curr + len] != '~'
+		&& e->s[e->curr + len] != '/' && ft_isascii(e->s[e->curr + len]))
 			len++;
-		name = ft_strsub(e->s, e->curr + 1, len - 1);
+		if (len == 0)
+			return ;
+		name = ft_strsub(e->s, e->curr, len);
 	}
 	else if (e->s[e->curr] == '~')
+	{
+		e->eval[e->curr++] = 'e';
 		name = ft_strdup("HOME");
+	}
 	if (name)
 	{
-		value = ft_strdup(get_tenvv_val(ft_get_set_envv(NULL), name));
-		ret = ft_strpull(e->s, &e->s[e->curr] , len - 1, value);
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(ret) + 1);
-		ft_strdel(&name);
+		if ((value = ft_strdup(get_tenvv_val(ft_get_set_envv(NULL), name))))
+		{
+
+			ret = ft_strpull(e->s, &e->s[e->curr - 1] , len , value);
+			e->eval[e->curr - 1] = 'e';
+			e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(ret) + 1);
+			ft_strdel(&value);
+		}
+		else
+		{
+			ret = ft_strjoin_fr(ft_strndup(e->s, e->curr - 1), ft_strdup(e->s + e->curr + ft_strlen(name)));
+			e->eval[--e->curr] = 0;
+			e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(ret) + 1);
+		}
 		ft_strdel(&e->s);
-		ft_strdel(&value);
+		ft_strdel(&name);
 		e->s = ret;
 	}
 }
