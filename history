@@ -1,3 +1,169 @@
+clear
+clea
+ls
+ls > file
+cat file
+ls -l auteur azefaze 2>&1 | rev > file
+clear
+ls -l auteur zaef 2>&1
+ls >&3
+ls -l auteur azef 1>&- 2>&1 | rev
+ls -l auteur azef 2>&1 1>&- | rev
+ls -l auteur azef 2>&- | rev
+clear
+ls >&- | rev
+ls &- | rev
+ls >&-
+ls
+ls -auteur zaefze 2>&- | rev
+ls >&-
+ls > file
+ls
+ls -l auteur zaef 2>&3
+ls -z 2>&1 | cat -e
+ls -z 2>&1 | cat -(e
+clear
+ls -z  2>&1 | cat -e
+ls -z  2>&1 | cat
+ls -z 2>&1 | rev
+ls -z 2>&1
+ls
+ls > file | cat
+ls | cat
+ls -l auteur zaefer 2>&-
+cat file
+ls > file | rev
+ls > file
+rm -rf rev file
+ls
+ls > rev
+ls 
+clear
+
+ls
+cleazr
+ls
+ls -z 2> file | rev
+ls
+ls
+ls -z 2>&- | rev
+ls -z
+ls -l auteur ezaf 2>&-
+ls >&-
+ls -l auteur zaef 2>&1 1> file | rev
+cat file
+ls -l auteur 2>&1 1> file | rev
+cat file
+clear
+ls > file | rev
+ls > file
+ls
+ls >&- | rev
+ls > file | rev
+ls|cat
+ls|rev
+ls
+ls >&- | cat
+ls > file | cat
+ls > file | rev
+cat file
+ls > file
+ls >&- | rev
+ls > file | rev
+cat file
+ls > file |rev
+ls -l auteur 1>&- | rev
+ls -l auteur 1>&-
+ls |rev
+clear
+ls
+ls >&- | rev
+ls |rev
+./21	
+ls -l auteur azef 2>&1 
+ls -l auteur azef
+ls |rev
+ls
+echo lol >&- | rev
+echo lol >&-
+ls
+ls >&-
+ls -a
+ls
+ls > &-
+ls
+rm -rf file 
+ls
+ls > &-
+ls >&- | rev
+ls >&-
+ls
+clear
+ls
+ls
+ls
+rm -rf '&'
+ls
+ls >&
+ls >&-
+ls &-
+clear
+ls
+ls -l 1>&- | rev
+ls -l 
+ls -l auteur 1>&- | rev
+ls -l auteur azef 2>&1 1>&-
+clear
+ls
+eoi
+lol
+<< eoi
+>>
+ls
+> file
+ls -l auteur azef 2>&1 
+ls
+ls -l auteur azer 2>&1 1>&- | rev
+ls -l auteur azer 2>&1 1>&-
+ls -l auteur azef
+ls|rev
+ls
+ls -l auteur azef 2>&1
+ls -l auteur azef 2>&1
+ls -l auteur aergfaer 2>&1 1>&- | rev
+ls -l auteur aergfaer 2>&1 | rev
+ls|rev
+ls
+ls
+ls
+ls -l auteur azefr  2>&1 1>&- | rev
+ls -l auteur azefr  2>&1 1>&-
+ls -l auteur azefr  2>&1 | rev
+ls -l auteur azefr  2>&1
+ls -l auteur azefr  2>&1
+ls -l auteur azefr 
+ls
+ls -l auteur ezatt 2>&1
+ls -l auteur ezatt
+clear
+ls
+ls
+./packages
+chmod 777 packages
+chmo 777 packages
+ls -l
+./packages
+ls
+vim packages
+clear
+ls
+ls
+rm -rf file
+cat file
+ls> file
+ls|rev
+ls
+clear
 exit
 clear
 cat file

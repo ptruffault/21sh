@@ -77,6 +77,7 @@ int ft_execve_pipe(t_tree *t)
 {
 	t_envv *e;
 	int ret;
+	int fd[3];
 	char **env;
 	char *bin_path;
 
@@ -88,14 +89,16 @@ int ft_execve_pipe(t_tree *t)
 		return (-1);
 	}
 	env = tenvv_to_tab(e);
-	if (t->r)
-		ft_redirect(t);
 	if (check_builtin(t->arr))
 		run_builtin(t);
+	if (t->r)
+		ft_redirect_builtin(t, fd);
 	else if (execve(bin_path, t->arr, env) == -1)
 		warning("execve fucked up", bin_path);
 	else
 		wait(&ret);
+	if (t->r)
+		ft_reset_fd(fd);
 	ft_freestrarr(env);
 	ft_strdel(&bin_path);
 	return (ret);

@@ -36,13 +36,12 @@ static int get_destination_fd(t_redirect *r)
 
 int fd_dup(int fd1, int fd2)
 {
+	if (fd1 == fd2)
+		return (0);
 	if (dup2(fd1, fd2) < 0)
-	{
-		error("can 't duplicate fd", NULL);
 		return (-1);
-	}
-	if (close(fd1) == -1)
-		warning("can't close file descriptor", NULL);
+	if (!IS_STD(fd1) && close(fd1) == -1)
+		return (-1);
 	return (0);
 }
 
@@ -105,6 +104,7 @@ void ft_reset_fd(int fd[3])
 		i++;
 
 	}
+	printf("fd[0] = %i\nfd[1] = %i\nfd[2] = %i \n",fd[0], fd[1], fd[2] );
 }
 
 

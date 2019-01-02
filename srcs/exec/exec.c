@@ -53,7 +53,7 @@ t_tree *exec_pipe(t_tree *t)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		t->ret = ft_execve_pipe(t);
+		t->ret = ft_execve(t);
 		ft_free_tree(t);
 		exit(0);
 	}
