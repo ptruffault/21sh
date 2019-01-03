@@ -95,8 +95,7 @@ void	ft_env(t_tree *t, t_envv *envv);
 
 //sys
 int fd_dup(int fd1, int fd2);
-char	*get_bin_path(char *input, t_envv *envv);
+char *get_bin_path(char *input, t_envv *envv);
 int ft_execve(t_tree *t);
-int ft_execve_pipe(t_tree *t);
 
 #endif

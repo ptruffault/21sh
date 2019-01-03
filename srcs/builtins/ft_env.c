@@ -42,7 +42,7 @@ static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
 	ret = NULL;
 	if (!(n = get_name(equal)) ||
 	!(v = get_value(equal)) ||
-	!(ret = ft_setenv(tmp, n, v)))
+	!(ret = ft_new_envv(tmp, n, v)))
 		warning("impossible to create tmp envv value", NULL);
 	ft_strdel(&n);
 	ft_strdel(&v);
@@ -79,7 +79,7 @@ static t_envv	*ft_env_option(t_envv *tmp, char **input, int *i)
 			return (NULL);
 		}
 		*i = *i + 1;
-		tmp = ft_unsetenv(tmp, input[*i]);
+		tmp = ft_del_envv(tmp, input[*i]);
 	}
 	else if (input[*i][1] == 'i')
 	{

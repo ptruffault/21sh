@@ -33,20 +33,11 @@ void abort_exit(int s)
 
 void	set_signals(void)
 {
-
-	if (signal(SIGINT, abort_exit) == SIG_ERR
-	|| signal(SIGHUP, abort_exit) == SIG_ERR
-	|| signal(SIGHUP, abort_exit) == SIG_ERR
-	|| signal(SIGTERM, abort_exit) == SIG_ERR)
-		warning("SIGNAL SETTING ERROR", NULL);
-/*	
-	signal(SIGTERM, abort_exit);
-	signal(SIGSEGV, abort_exit);
-	signal(SIGQUIT, abort_exit);
-	signal(SIGFPE, abort_exit);
-	signal(SIGALRM, abort_exit);
-	signal(SIGKILL, abort_exit);
-	signal(SIGABRT, abort_exit);
-	signal(SIGUSR1, abort_exit);
-	signal(SIGUSR2, abort_exit);*/
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGTSTP, SIG_IGN);
+	signal(SIGTTIN, SIG_IGN);
+	signal(SIGTTOU, SIG_IGN);
+	signal(SIGCHLD, SIG_DFL);
 }
+

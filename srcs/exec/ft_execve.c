@@ -27,7 +27,7 @@ static char	*check_exe(char *bin_path, struct stat inf)
 	return (NULL);
 }
 
-static char	*local_try(char *input, t_envv *envv)
+static char	*absolute_path(char *input, t_envv *envv)
 {
 	char		*path;
 	struct stat	inf;
@@ -54,6 +54,13 @@ char	*get_bin_path(char *input, t_envv *envv)
 	char 		**path;
 
 	i = 0;
+	if ((bin_path = absolute_path(input, envv)))
+		return (bin_path);
+	if (ft_str_startwith(input, "./") || ft_str_startwith(input, "/"))
+	{
+		error("no such file or directory", input);
+		return (NULL);
+	}
 	if (!(path = ft_strsplit(get_tenvv_val(envv, "PATH"), ':')))
 		return (NULL);
 	while (path[i])
@@ -69,39 +76,8 @@ char	*get_bin_path(char *input, t_envv *envv)
 		i++;
 	}
 	ft_freestrarr(path);
-	return (local_try(input, envv));
-}
-
-
-int ft_execve_pipe(t_tree *t)
-{
-	t_envv *e;
-	int ret;
-	int fd[3];
-	char **env;
-	char *bin_path;
-
-	e = ft_get_set_envv(NULL);
-	ret = -1;
-	if (!(bin_path = get_bin_path(*t->arr, e)))
-	{
-		error("unknow cmd", *t->arr);
-		return (-1);
-	}
-	env = tenvv_to_tab(e);
-	if (check_builtin(t->arr))
-		run_builtin(t);
-	if (t->r)
-		ft_redirect_builtin(t, fd);
-	else if (execve(bin_path, t->arr, env) == -1)
-		warning("execve fucked up", bin_path);
-	else
-		wait(&ret);
-	if (t->r)
-		ft_reset_fd(fd);
-	ft_freestrarr(env);
-	ft_strdel(&bin_path);
-	return (ret);
+	error("command not found", input);
+	return (NULL);
 }
 
 int ft_execve(t_tree *t)
@@ -112,15 +88,12 @@ int ft_execve(t_tree *t)
 	char *bin_path;
 	pid_t pid;
 
-	e = ft_get_set_envv(NULL);
 	ret = -1;
 	if (check_builtin(t->arr))
 		return (run_builtin(t));
+	e = ft_get_set_envv(NULL);
 	if (!(bin_path = get_bin_path(*t->arr, e)))
-	{
-		error("unknow cmd", *t->arr);
 		return (-1);
-	}
 	env = tenvv_to_tab(e);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", bin_path);

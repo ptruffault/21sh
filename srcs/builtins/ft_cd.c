@@ -18,8 +18,8 @@ static t_envv	*change_dir(char *path, char *cwd, t_envv *envv)
 
 	if (!chdir(path))
 	{
-		envv = ft_setenv(envv, "OLDPWD", cwd);
-		envv = ft_setenv(envv, "PWD", getcwd(buff, 4096));
+		envv = ft_new_envv(envv, "OLDPWD", cwd);
+		envv = ft_new_envv(envv, "PWD", getcwd(buff, 4096));
 	}
 	else
 	{
@@ -39,8 +39,6 @@ t_envv			*ft_cd(char **input, t_envv *envv)
 	char buff[4097];
 
 	cwd = getcwd(buff, 4096);
-	if (!get_tenvv(envv, "OLDPWD"))
-		envv = ft_setenv(envv, "OLDPWD", cwd);
 	if (!get_tenvv(envv, "HOME"))
 		warning("envvironnement \'$HOME\' var not set", NULL);
 	else if (!(input[1]))

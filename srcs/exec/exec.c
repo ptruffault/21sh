@@ -98,7 +98,7 @@ void exec_tree(t_tree *t)
 				tmp = tmp->next;
 			else
 			{
-				error("syntax error", NULL);
+				error("syntax error near", *tmp->next->arr);
 				break ;
 			}
 		}

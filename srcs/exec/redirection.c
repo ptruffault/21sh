@@ -22,8 +22,7 @@ static int get_destination_fd(t_redirect *r)
 		else
 		{
 			ft_putstr_fd(r->heredoc, fd[1]);
-			if (close(fd[1]) == -1)
-				warning("can't close", "heredoc");
+			ft_close(fd[1]);
 			r->to = fd[0];
 			r->from = STDIN_FILENO;
 		}
@@ -40,7 +39,7 @@ int fd_dup(int fd1, int fd2)
 		return (0);
 	if (dup2(fd1, fd2) < 0)
 		return (-1);
-	if (!IS_STD(fd1) && close(fd1) == -1)
+	if (!IS_STD(fd1) && ft_close(fd1) == -1)
 		return (-1);
 	return (0);
 }
@@ -93,18 +92,15 @@ void ft_reset_fd(int fd[3])
 	{
 		if (fd[i] != i)
 		{
-			if (close(i) == -1)
-				warning("can't close fd 0", NULL);
+			ft_close(i);
 			if ((tmp = dup(fd[i])) == -1)
 				error("can't load old fd", NULL);
-			if (close(fd[i]) == -1)
-				warning("can't close fd 1", NULL);
+			ft_close(fd[i]);
 			fd[i] = tmp;
 		}
 		i++;
 
 	}
-	printf("fd[0] = %i\nfd[1] = %i\nfd[2] = %i \n",fd[0], fd[1], fd[2] );
 }
 
 
