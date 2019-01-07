@@ -44,6 +44,7 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 
 	c = eval[*i];
 	begin = *i;
+	// to add le cas vvvveeeee eeeevvvv 
 	while (eval[*i] && (eval[*i] == c || (c == 'q' && eval[*i] == 'v')))
 		*i = *i + 1;
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
