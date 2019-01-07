@@ -48,7 +48,7 @@ t_tree *exec_pipe(t_tree *t)
 		return (t);
 	}
 	if ((pid[0] = fork()) < 0)
-		error("fork filed to create a new process in pipe", *t->arr);
+		error("fork filed to create a new process in pipe", t->cmd->word);
 	else if (pid[0] == 0)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
@@ -58,7 +58,7 @@ t_tree *exec_pipe(t_tree *t)
 		exit(0);
 	}
 	if ((pid[1] = fork()) < 0)
-		error("fork filed to create a new process in pipe", *t->arr);
+		error("fork filed to create a new process in pipe", t->cmd->word);
 	else if (pid[1] == 0)
 	{
 		dup2(pipes[0], STDIN_FILENO);
@@ -92,13 +92,13 @@ void exec_tree(t_tree *t)
 	tmp = t;
 	while (tmp)
 	{
-		if (!tmp->arr)
+		if (!tmp->cmd->word)
 		{
 			if (tmp->o_type == O_SEP || tmp->o_type == 0)
 				tmp = tmp->next;
 			else
 			{
-				error("syntax error near", *tmp->next->arr);
+				error("syntax error near", tmp->next->cmd->word);
 				break ;
 			}
 		}

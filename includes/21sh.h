@@ -21,29 +21,53 @@
 # include <dirent.h>
 # include "../libft/includes/libft.h"
 # define IS_STD(x) (0 <= x && x <= 2)
-# define IS_OPERATEUR(x) (1 <= x && x <= 4)
-# define IS_REDIRECTION(x) (5 <= x && x <= 8)
-# define IS_CMD(x) (9 <= x && x <= 11)
+# define IS_CMD(x) (1 <= x && x <= 4)
 
-enum e_type{ 
-    undef = 0, // undef => 'parse error near {}   ' 
-    O_AND = 1,
+enum e_rtype{
+	UNDEF = 0,
+	R_LEFT = 1,
+    R_RIGHT = 2,
+   	R_DLEFT = 3,
+    R_DRIGHT = 4
+};
+
+enum e_otype{
+	UN = 0,
+	O_AND = 1,
     O_OR = 2,
     O_SEP = 3, 
-    O_PIPE = 4,
-    R_LEFT = 5,
-    R_RIGHT = 6,
-   	R_DLEFT = 7,
-    R_DRIGHT = 8,
-    CMD = 9, 
-    QUOTE = 10,
-    PATH = 11  
+    O_PIPE = 4
 };
+
+enum e_wtype{ 
+    undef = 0,
+    CMD = 1,
+    PATH = 2,
+    QUOTE = 3,
+    VAR = 4,
+    REDIRECT = 5,
+    OPERATEUR = 6
+};
+
+typedef struct 	s_eval
+{
+	char *s;
+	int status;
+	char *eval;
+	int curr;
+}				t_eval;
+
+typedef struct s_word
+{
+	enum e_wtype 	type;
+	char 			*word;
+	struct s_word 	*next;
+}				t_word;
 
 
 typedef struct s_redirect
 {
-	enum e_type 		t;
+	enum e_rtype 		t;
 	char 				*path;
 	int 				from;
 	int 				to;
@@ -54,14 +78,22 @@ typedef struct s_redirect
 
 typedef struct s_tree
 {
-	char 			**arr; //args
+	t_word 			*cmd;
 	t_redirect		*r;
 	int				ret;
-	enum e_type		o_type;    //op
+	enum e_otype	o_type;
 	struct s_tree	*next; 
 }				t_tree;
 
+typedef struct s_shell
+{
+	t_envv *env;
+	t_envv *intern;
+	t_envv *alias;
+}				t_shell;
 
+char **ft_twordto_arr(t_word *w);
+char *ft_expention(t_word *w);
 
 t_tree 		*get_tree(char *input);
 void 		ft_free_tree(t_tree *t);
@@ -71,10 +103,10 @@ int ft_redirect(t_tree *t);
 int ft_redirect_builtin(t_tree *t, int fd[3]);
 void ft_reset_fd(int fd[3]);
 
-
+t_shell *ft_get_set_shell(t_shell *sh);
 t_tree *exec_pipe(t_tree *t);
 t_tree *exec_instruction(t_tree *t);
-int  run_builtin(t_tree *t);
+int  run_builtin(t_tree *t, char **argv);
 void exec_tree(t_tree *t);
 
 
@@ -91,7 +123,7 @@ void 	set_signals(void);
 int		check_builtin(char **input);
 t_envv	*ft_cd(char **input, t_envv *envv);
 void	ft_echo(char **input);
-void	ft_env(t_tree *t, t_envv *envv);
+void	ft_env(t_envv *envv, char **argv);
 
 //sys
 int fd_dup(int fd1, int fd2);

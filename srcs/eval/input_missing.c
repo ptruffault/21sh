@@ -13,11 +13,11 @@
 
 t_word *o_get_input(int type)
 {
-	if (type == 1)
+	if (type == O_AND)
 		ft_putstr("\033[00;31mcmdand\033[00m\n>");
-	else if (type == 2)
+	else if (type == O_OR)
 		ft_putstr("\033[00;31mcmdor\033[00m\n>");
-	else if (type == 4)
+	else if (type == O_PIPE)
 		ft_putstr("\033[00;31mpipe\033[00m\n>");
 	return (eval_line(get_input()));
 }

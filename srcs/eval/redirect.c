@@ -53,10 +53,21 @@ static t_redirect *parse_left_redirect(t_redirect *new, t_word *w)
 	return (new);
 }
 
+static int ft_find_redirect_type(char *red)
+{
+	char *ptr;
+
+	 if ((ptr = ft_strchr(red, '<')))
+	 	return ((*(ptr + 1) == '<' ? R_DLEFT : R_LEFT));
+	 if ((ptr = ft_strchr(red, '>')))
+	 	return ((*(ptr + 1) == '>' ? R_DRIGHT : R_RIGHT));
+	 return (0);
+}
+
 static t_redirect *get_redirection(t_redirect *new, t_word *w)
 {
 
-	new->t = w->type;
+	new->t = ft_find_redirect_type(w->word);
 	new->to = -2;
 	if (((new->t == R_RIGHT || new->t == R_DRIGHT) && !(new = parse_right_redirect(new, w)))
 	|| ((new->t == R_LEFT || new->t == R_DLEFT) && !(new = parse_left_redirect(new, w))))
@@ -73,7 +84,7 @@ t_word *get_redirections(t_tree *t, t_word *w)
 
 	t->r = new_redirection();
 	tmp = t->r;
-	while (w && IS_REDIRECTION(w->type))
+	while (w && w->type == REDIRECT)
 	{
 		if (!(tmp = get_redirection(tmp, w)))
 		{
@@ -82,7 +93,7 @@ t_word *get_redirections(t_tree *t, t_word *w)
 		}
 		else if (tmp->path && w->next && !ft_strequ(tmp->path, "/dev/null"))
 			w = w->next;
-		if (w && w->next && IS_REDIRECTION(w->next->type))
+		if (w && w->next && w->next->type == REDIRECT)
 		{
 				tmp->next = new_redirection();
 				tmp = tmp->next;

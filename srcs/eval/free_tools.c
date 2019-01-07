@@ -46,7 +46,7 @@ void ft_free_tree(t_tree *t)
 
 	while (t)
 	{
-		ft_freestrarr(t->arr);
+		ft_free_tword(t->cmd);
 		if (t->r)
 			ft_free_redirection(t->r);
 		tmp = t->next;

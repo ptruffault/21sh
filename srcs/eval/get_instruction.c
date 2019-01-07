@@ -11,27 +11,48 @@
 /* ************************************************************************** */
 #include <parseur.h>
 
-
 t_word *get_argv(t_tree *t, t_word *w)
 {
-	int argc;
-	int i;
-	t_word *tmp;
-
-	argc = 0;
-	i = 0;
-	tmp = w;
-	while (tmp && IS_CMD(tmp->type) && ++argc > 0)
-		tmp = tmp->next;
-	if (argc == 0 || !(t->arr = (char **)malloc(sizeof(char *) * (argc + 1))))
-		return (NULL);
-	while (w && IS_CMD(w->type))
+	while (w && w->word && IS_CMD(w->type))
 	{
-		t->arr[i++] = ft_strdup(w->word);
+		t->cmd = ft_addtword(t->cmd, w);
 		w = w->next;
 	}
-	t->arr[i] = NULL;
 	return (w);
+}
+
+int find_operateur(char *op)
+{
+	char *operateur[4] = {
+		"&&", "||", ";", "|"
+	};
+	int i;
+
+	i = 0;
+	while (operateur[i])
+	{
+		if (ft_strequ(operateur[i++], op))
+			return (i);
+	}
+	return (0);
+}
+
+t_tree *add_newttree(t_tree *tree, t_word *w)
+{
+	tree->o_type = find_operateur(w->word);
+	if (tree->o_type != O_SEP && (!w->next || !w->next->word))
+	{
+		w ->next = NULL;
+		while (!w->next)
+			w->next = o_get_input(tree->o_type);
+	}
+	if (w->type != 0)
+	{
+		if (!(tree->next = new_tree()))
+			return (tree);
+		w = w->next;
+	}
+	return (tree->next);
 }
 
 t_tree *get_tree(char *input)
@@ -51,31 +72,12 @@ t_tree *get_tree(char *input)
 	{
 		if (IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
-		else if (IS_REDIRECTION(tmp->type))
+		else if (tmp->type == REDIRECT)
 			tmp = get_redirections(tree, tmp);
-		else if (IS_OPERATEUR(tmp->type))
+		else if (tmp->type == OPERATEUR)
 		{
-			if (!ft_strequ(tmp->word, ";") && (!tmp->next || !tmp->next->word))
-			{
-				tmp ->next = NULL;
-				while (!tmp->next)
-					tmp->next = o_get_input(tmp->type);
-			}
-			if (tmp->type != 0)
-			{
-				if (!(tree->next = new_tree()))
-					return (head);
-				tree->o_type = tmp->type;
-				tmp = tmp->next;
-				tree = tree->next;
-			}
-		}
-		else
-		{
-			error("parse error near", tmp->word);
-			ft_free_tree(head);
-			ft_free_tword(w);
-			return (NULL);
+			tree = add_newttree(tree, tmp);
+			tmp = tmp->next;
 		}
 	}
 	ft_free_tword(w);

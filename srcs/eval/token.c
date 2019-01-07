@@ -15,30 +15,13 @@
 static t_word *find_type(t_word *w, char c, int *pos)
 {
 	if (c == 'o')
-	{
-		if (ft_strequ(w->word, "&&"))
-			w->type = O_AND;
-		else if (ft_strequ(w->word, "||"))
-			w->type = O_OR;
-		else if (ft_strequ(w->word, ";"))
-			w->type = O_SEP;
-		else if (ft_strequ(w->word, "|"))
-			w->type = O_PIPE;
-		else
-			w->type = 0;
-		*pos = 0;
-	}
+		w->type = OPERATEUR;
 	else if (c == 'r')
-	{
-		char *ptr;
-
-		if ((ptr = ft_strchr(w->word, '>')))
-			w->type = (*(ptr + 1) == '>'? R_DRIGHT : R_RIGHT);
-		else if ((ptr = ft_strchr(w->word, '<')))
-			w->type = (*(ptr + 1) == '<'? R_DLEFT : R_LEFT);
-		else
-			w->type = 0;
-	}
+		w->type = REDIRECT;
+	else if (c == 'q')
+		w->type = QUOTE;
+	else if (c == 'v')
+		w->type = VAR;
 	else if (c == 'e')
 	{
 		if (*pos == 0)
@@ -47,8 +30,8 @@ static t_word *find_type(t_word *w, char c, int *pos)
 			w->type = PATH;
 		*pos = *pos + 1;
 	}
-	else if (c == 'q')
-		w->type = QUOTE;
+	else
+		w->type = 0;
 	return (w);
 }
 
@@ -61,11 +44,10 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 
 	c = eval[*i];
 	begin = *i;
-	while (eval[*i] && eval[*i] == c)
+	while (eval[*i] && (eval[*i] == c || (c == 'q' && eval[*i] == 'v')))
 		*i = *i + 1;
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
 	 	return (w);
-	 w->position = *pos;
 	 return (find_type(w, c, pos));
 }
 
@@ -108,6 +90,12 @@ t_word *eval_line(char *input)
 		return (NULL);
 	e = lexer(input);
 	head = ft_get_words(e.s, e.eval);
+	if (head->type == OPERATEUR || head->type == REDIRECT)
+	{
+		error("syntax error near", head->word);
+		ft_free_tword(head);
+		return (NULL);
+	}
 	ft_strdel(&e.eval);
 	ft_strdel(&e.s);
 	return (head);

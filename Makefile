@@ -17,6 +17,7 @@ FLAG		=	-Wall -Werror -Wextra
 
 FILES		=		main.c \
 					signal.c \
+					expention.c 
 
 EXEC 		=		ft_execve.c \
 					exec.c \

@@ -12,98 +12,44 @@
 
 #include <parseur.h>
 
-void ft_parse_backslash(t_eval *e)
+void ft_lex_backslash(t_eval *e)
 {
+	char c;
 
-	if (e->s[e->curr + 1])
-	{
-		e->s = ft_delchar_n(e->s, e->curr);
-		if (e->status == S_DQUOTE)
-		{
-			e->eval[e->curr] = 'q';
-			if (e->s[e->curr] == 'n')
-				e->s[e->curr] = '\n';
-			else if (e->s[e->curr] == 't')
-				e->s[e->curr] = '\t';
-			else if (e->s[e->curr] == 'f')
-				e->s[e->curr] = '\f';
-			else if (e->s[e->curr] == 'a')
-				e->s[e->curr] = '\a';
-			else if (e->s[e->curr] == 'b')
-				e->s[e->curr] = '\b';
-			else if (e->s[e->curr] == 'r')
-				e->s[e->curr] = '\r';
-			else if (e->s[e->curr] == 'v')
-				e->s[e->curr] = '\v';
-		}
-		else
-			e->eval[e->curr] = 'e';
-	}
+	if (e->curr > 0 && (e->s[e->curr - 1] == '\'' || e->s[e->curr - 1] == '"'
+	|| e->eval[e->curr - 1] == 'q'))
+		c = 'q';
 	else
+		c = 'e';
+	e->eval[e->curr++] = 'B';
+	if (!(e->s[e->curr]))
 	{
 		e->s = ft_strjoin_fr(e->s, backslash_get_input());
 		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
-		ft_parse_backslash(e);
 	}
+	e->eval[e->curr++] = c;
 }
 
-void ft_parse_var(t_eval *e)
+void ft_lex_var(t_eval *e)
 {
-	char *name;
-	char *value;
-	char *ret;
-	int len;
-
-	len = 0;
-	if (e->s[e->curr] == '$')
+	e->eval[e->curr++] = 'v';
+	if (e->s[e->curr - 1] == '$')
 	{
-		e->eval[e->curr++] = 'e';
-		while (e->s[e->curr + len] && e->s[e->curr + len] != '"' && !ft_isspace(e->s[e->curr + len])
-		&& e->s[e->curr + len] != '$' && e->s[e->curr + len] != '\\' && e->s[e->curr + len] != '~'
-		&& e->s[e->curr + len] != '/' && ft_isascii(e->s[e->curr + len]))
-			len++;
-		if (len == 0)
-			return ;
-		name = ft_strsub(e->s, e->curr, len);
-	}
-	else if (e->s[e->curr] == '~')
-	{
-		e->eval[e->curr++] = 'e';
-		name = ft_strdup("HOME");
-	}
-	if (name)
-	{
-		if ((value = ft_strdup(get_tenvv_val(ft_get_set_envv(NULL), name))))
-		{
-
-			ret = ft_strpull(e->s, &e->s[e->curr - 1] , len , value);
-			e->eval[e->curr - 1] = 'e';
-			e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(ret) + 1);
-			ft_strdel(&value);
-		}
-		else
-		{
-			ret = ft_strjoin_fr(ft_strndup(e->s, e->curr - 1), ft_strdup(e->s + e->curr + ft_strlen(name)));
-			e->eval[--e->curr] = 0;
-			e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(ret) + 1);
-		}
-		ft_strdel(&e->s);
-		ft_strdel(&name);
-		e->s = ret;
+		while(e->s[e->curr] && (ft_isalpha(e->s[e->curr]) || e->s[e->curr] == '_'))
+			e->eval[e->curr++] = 'v';
 	}
 }
-
 
 void ft_lex_dquote(t_eval *e)
 {
-	if (e->s[e->curr] == '"')
-		e->eval[e->curr++] = 'Q';
+
+	e->eval[e->curr++] = 'Q';
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '"')
 	{
 		if (e->s[e->curr] == '\\')
-			ft_parse_backslash(e);
-		else if (e->s[e->curr] == '$')
-			ft_parse_var(e);
+			ft_lex_backslash(e);
+		else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
+			ft_lex_var(e);
 		else
 			e->eval[e->curr++] = 'q';
 	}
@@ -114,13 +60,12 @@ void ft_lex_dquote(t_eval *e)
 		ft_lex_dquote(e);
 	}
 	else
-		e->eval[e->curr] = 'Q';
+		e->eval[e->curr++] = ' ';
 }
 
 void ft_lex_quote(t_eval *e)
 {
-	if (e->s[e->curr] == '\'')
-		e->eval[e->curr++] = 'Q';
+	e->eval[e->curr++] = 'Q';
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '\'')
 		e->eval[e->curr++] = 'q';
 	if (!e->s[e->curr])
@@ -130,7 +75,7 @@ void ft_lex_quote(t_eval *e)
 		ft_lex_quote(e);
 	}
 	else
-		e->eval[e->curr] = 'Q';
+		e->eval[e->curr++] = ' ';
 }
 
 void ft_lex_right_redirect(t_eval *e)
@@ -142,10 +87,10 @@ void ft_lex_right_redirect(t_eval *e)
 	j = e->curr;
 	while (j > 0 && ft_isdigit(e->s[j - 1]))
 		e->eval[--j] = 'r';
-	e->eval[e->curr] = 'r';
-	if (e->curr + 2 < len && e->s[e->curr + 1] == '&')
+	e->eval[e->curr++] = 'r';
+	if (e->curr + 1 < len && e->s[e->curr] == '&')
 	{
-		e->eval[++e->curr] = 'r';
+		e->eval[e->curr] = 'r';
 		if (e->s[e->curr + 1] == '-' && (!e->s[e->curr + 2] || ft_isspace(e->s[e->curr + 2])))
 			e->eval[++e->curr] = 'r';
 		else
@@ -156,66 +101,37 @@ void ft_lex_right_redirect(t_eval *e)
 	}
 }
 
-void ft_clean_quote(t_eval *e)
+void ft_clean_str(t_eval *e)
 {
 	char *ptr;
 
-	if ((ptr = ft_strchr(e->eval, 'Q')))
+	while ((ptr = ft_strchr(e->eval, 'Q')) || (ptr = ft_strchr(e->eval, 'B'))  )
 	{
 		e->s = ft_delchar_n(e->s, ptr - e->eval);
 		e->eval = ft_delchar_n(e->eval, ptr - e->eval);
 	}
 }
 
-void ft_lex_quotes(t_eval *e)
-{
-	if (e->status == S_QUOTE)
-		ft_lex_quote(e);
-	else if (e->status == S_DQUOTE)
-		ft_lex_dquote(e);
-	ft_clean_quote(e);
-	ft_clean_quote(e);
-	e->curr--;
-}	
-
-
 void ft_lexword(t_eval *e)
 {
-	int word_over;
-
-	word_over = 0;
-	while (word_over == 0)
-	{
-
-		if (e->status == S_QUOTE || e->status == S_DQUOTE)
-		{
-			ft_lex_quotes(e);
-			break ;
-		}
-		else if (e->status == S_VAR)
-		{
-			ft_parse_var(e);
-			break ;
-		}
-		else if (e->status == 0)
-		{
-			
-			if (e->s[e->curr] == '\\')
-				ft_parse_backslash(e);
-			else if (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';')
-				e->eval[e->curr] = 'o';
-			else if (e->s[e->curr] == '<')
-				e->eval[e->curr] = 'r';
-			else if (e->s[e->curr] == '>')
-				ft_lex_right_redirect(e);
-			else
-				e->eval[e->curr] = 'e';
-		}
-		e->curr++;
-		if (((ft_isspace(e->s[e->curr]) || !e->s[e->curr]) && e->status != S_QUOTE && e->status != S_DQUOTE)
-		|| ((e->s[e->curr] == '$' || e->s[e->curr] == '~') && e->status != S_QUOTE))
-			word_over = 1;
-	}
+	while (ft_isspace(e->s[e->curr]))
+		e->eval[e->curr++] = ' ';
+	if (e->s[e->curr] == '\"')
+		ft_lex_dquote(e);
+	else if (e->s[e->curr] == '\'')
+		ft_lex_quote(e);
+	else if (e->s[e->curr] == '\\')
+		ft_lex_backslash(e);
+	else if (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';')
+		e->eval[e->curr++] = 'o';
+	else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
+		ft_lex_var(e);
+	else if (e->s[e->curr] == '<')
+		e->eval[e->curr++] = 'r';
+	else if (e->s[e->curr] == '>')
+		ft_lex_right_redirect(e);
+	else if (e->s[e->curr])
+		e->eval[e->curr++] = 'e';
 }
 
 
@@ -224,22 +140,13 @@ t_eval lexer(char *src)
 	t_eval e;
 
 	e.curr = 0;
-	e.status = 0;
 	e.s = src;
 	if (!(e.eval = ft_strnew(ft_strlen(e.s) + 1)))
 		return (e);
 	while (e.s[e.curr])
-	{
-		while (ft_isspace(e.s[e.curr]))
-			e.eval[e.curr++] = ' ';
-		if (e.s[e.curr] == '\'' || e.s[e.curr] == '\"')
-			e.status = (e.s[e.curr] == '"' ? S_DQUOTE : S_QUOTE);
-		else if (e.s[e.curr] == '$' ||  (e.s[e.curr] == '~'))
-			e.status = S_VAR;
-		else
-			e.status = 0;
 		ft_lexword(&e);
-	}
 	e.eval[e.curr] = 0;
+	ft_clean_str(&e);
+	ft_putendl(e.eval);
 	return (e);
 }

@@ -85,14 +85,17 @@ int ft_execve(t_tree *t)
 	t_envv *e;
 	int ret;
 	char **env;
+	char **argv;
 	char *bin_path;
 	pid_t pid;
 
 	ret = -1;
-	if (check_builtin(t->arr))
-		return (run_builtin(t));
+	if (!(argv = ft_twordto_arr(t->cmd)))
+		return (-1);
+	if (check_builtin(argv))
+		return (run_builtin(t, argv));
 	e = ft_get_set_envv(NULL);
-	if (!(bin_path = get_bin_path(*t->arr, e)))
+	if (!(bin_path = get_bin_path(*argv, e)))
 		return (-1);
 	env = tenvv_to_tab(e);
 	if ((pid = fork()) == -1)
@@ -101,7 +104,7 @@ int ft_execve(t_tree *t)
 	{
 		if (t->r && ft_redirect(t) != 0)
 			exit(-1);
-		else if (execve(bin_path, t->arr, env) == -1)
+		else if (execve(bin_path, argv, env) == -1)
 			warning("execve fucked up", bin_path);
 	}
 	else

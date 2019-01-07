@@ -89,21 +89,21 @@ static t_envv	*ft_env_option(t_envv *tmp, char **input, int *i)
 	return (tmp);
 }
 
-void			ft_env(t_tree *t, t_envv *envv)
+void			ft_env(t_envv *envv, char **argv)
 {
 	t_envv	*tmp;
 	int		i;
 
 	tmp = init(&i, envv);
-	while (t->arr[i])
+	while (argv[i])
 	{
-		if (t->arr[i][0] == '-')
-			tmp = ft_env_option(tmp, t->arr, &i);
-		else if (ft_strchr(t->arr[i], '='))
-			tmp = ft_tmpsetenv(tmp, t->arr[i]);
+		if (argv[i][0] == '-')
+			tmp = ft_env_option(tmp, argv, &i);
+		else if (ft_strchr(argv[i], '='))
+			tmp = ft_tmpsetenv(tmp, argv[i]);
 		else
 		{
-			ft_env_exec(&t->arr[i], tmp, envv);
+			ft_env_exec(&argv[i], tmp, envv);
 			ft_free_tenvv(tmp);
 			return ;
 		}
