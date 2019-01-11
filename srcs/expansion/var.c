@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   var.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include <21sh.h>
 
-char *ft_get_varname(char *s)
+static char *ft_get_varname(char *s)
 {
 	char *ptr;
 	int i;
@@ -24,43 +24,44 @@ char *ft_get_varname(char *s)
 	return (ft_strsub(s, ptr - s , i));
 }
 
-char  *ft_exp_var(char *ret)
+static char *ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
 {
-	char *ptr;
-	char *tmp;
 	char *name;
-	
-	while ((ptr = ft_strchr(ret, '~')))
+	char *value;
+	char *tmp;
+
+	name = ft_get_varname(ptr);
+	if (!(value = get_tenvv_val(sh->env, name)))
+		value = get_tenvv_val(sh->intern, name);
+	if ((tmp = ft_strpull(ret, ptr , ft_strlen(name) + 1, value)))
 	{
-		if ((tmp = ft_strpull(ret, ptr, 1, 
-		get_tenvv_val(ft_get_set_envv(NULL), "HOME"))))
-		{
-			ft_strdel(&ret);
-			ret = tmp;
-		}
+		ft_strdel(&ret);
+		ret = tmp;
 	}
-	while ((ptr = ft_strchr(ret, '$')))
-	{
-		name = ft_get_varname(ptr);
-		if ((tmp = ft_strpull(ret, ptr , ft_strlen(name) + 1, 
-		get_tenvv_val(ft_get_set_envv(NULL), name))))
-		{
-			ft_strdel(&ret);
-			ret = tmp;
-		}
-		ft_strdel(&name);
-	}
+	ft_strdel(&name);
 	return (ret);
 }
 
-char *ft_expention(t_word *w)
+static char *ft_exp_home_var(char *ret, char *ptr, t_envv *envv)
 {
-	char *ret;
+	char *tmp;
 
-	ret = ft_strdup(w->word);
-	if (w->type == VAR || w->type == QUOTE)
+	if ((tmp = ft_strpull(ret, ptr, 1, 
+		get_tenvv_val(envv, "HOME"))))
 	{
-		ret = ft_exp_var(ret);
+		ft_strdel(&ret);
+		return(tmp);
 	}
+	return (NULL);
+}
+
+char  *ft_exp_var(char *ret, t_shell *sh)
+{
+	char *ptr;
+	
+	while ((ptr = ft_strchr(ret, '~')))
+		ret = ft_exp_home_var(ret, ptr, sh->env);
+	while ((ptr = ft_strchr(ret, '$')))
+		ret = ft_exp_envv_var(ret, ptr, sh);
 	return (ret);
 }

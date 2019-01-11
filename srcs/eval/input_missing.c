@@ -28,14 +28,30 @@ char *backslash_get_input(void)
 	return (get_input());
 }
 
+char *p_get_input(char c)
+{
+	char s;
+	char *ret;
+	char *ptr;
+
+	s = (c == '(' ? ')' : (c == '{' ? '}' : (c == '[' ? ']' : 'R')));
+	ft_printf("\033[00;31md '%c' expect '%s' >\033[00m\n");
+	ret = get_input();
+	if ((!(ptr = ft_strchr(ret, s)) || *(ptr - 1) == '\\' ))
+		ret = ft_strjoin_fr(ret,  p_get_input(c));
+	return (ret);
+}
+
+
 char *q_get_input(char c)
 {
 	char *ret;
 	char *ptr;
 
 	if (c == '"')
-		ft_putstr("\033[00;31md");
-	ft_putstr("\033[00;31mquote>\n\033[00m");
+		ft_putstr("\033[00;31mdquote>\033[00m\n");
+	else if (c == '\'')
+		ft_putstr("\033[00;31mquote>\033[00m\n");
 	ret = get_input();
 	if ((!(ptr = ft_strchr(ret, c)) || *(ptr - 1) == '\\' ))
 		ret = ft_strjoin_fr(ft_stradd_char(ret, '\n'),  q_get_input(c));

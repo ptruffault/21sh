@@ -51,14 +51,17 @@ t_word *ft_cpytword(t_word *src)
 char **ft_twordto_arr(t_word *w)
 {
 	char **arr;
+	t_word *ext;
 	int i;
 
 	i = 0;
+	if ((ext = ft_expention(w)))
+		w = ext;
 	if (!(arr = (char **)malloc(sizeof(char *) * (ft_twordlen(w) + 1))))
 		return (NULL);
 	while (w)
 	{
-		if ((arr[i] = ft_expention(w)))
+		if ((arr[i] = ft_strdup(w->word)))
 			i++;
 		w = w->next;
 	}

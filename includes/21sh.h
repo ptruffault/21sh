@@ -93,41 +93,48 @@ typedef struct s_shell
 }				t_shell;
 
 char **ft_twordto_arr(t_word *w);
-char *ft_expention(t_word *w);
+t_word *ft_expention(t_word *w);
+char  *ft_exp_var(char *ret, t_shell *sh);
 
 t_tree 		*get_tree(char *input);
 void 		ft_free_tree(t_tree *t);
 
-//exec redirection
+//redirection
 int ft_redirect(t_tree *t);
 int ft_redirect_builtin(t_tree *t, int fd[3]);
 void ft_reset_fd(int fd[3]);
 
-t_shell *ft_get_set_shell(t_shell *sh);
+t_shell 	*ft_get_set_shell(t_shell *sh);
+void 		init_shell(t_shell *sh,char **argv, char **envv);
+void 	set_signals(void);
+
+//exec
 t_tree *exec_pipe(t_tree *t);
 t_tree *exec_instruction(t_tree *t);
 int  run_builtin(t_tree *t, char **argv);
 void exec_tree(t_tree *t);
-
-
 t_tree	*ft_get_set_tree(t_tree *new_t);
-void 	set_signals(void);
 
 
 
+char	*search_in_envv(char *input, t_envv *envv);
+char	*absolute_path(char *input, t_envv *envv);
+char	*get_bin_path(char *input, t_envv *envv);
 
 
 
 
 //builtins
-int		check_builtin(char **input);
+int		check_builtin(char *input);
 t_envv	*ft_cd(char **input, t_envv *envv);
 void	ft_echo(char **input);
 void	ft_env(t_envv *envv, char **argv);
+t_envv *ft_export(t_shell *sh, char **argv);
+t_envv *ft_alias(t_shell *sh, char **argv);
+void ft_type(t_word *w);
 
 //sys
 int fd_dup(int fd1, int fd2);
-char *get_bin_path(char *input, t_envv *envv);
 int ft_execve(t_tree *t);
 
 #endif

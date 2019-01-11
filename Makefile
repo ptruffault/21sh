@@ -12,12 +12,12 @@
 
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
-
-FLAG		=	-Wall -Werror -Wextra
+FLAG		=		-Wall -Werror -Wextra
+OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
 					signal.c \
-					expention.c 
+					init_shell.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \
@@ -34,20 +34,26 @@ EVAL			=	eval_tools.c \
 BUILTINS		=	ft_echo.c \
 					ft_cd.c \
 					run_builtin.c \
-					ft_env.c
-FILE_FOLDER		= 	./srcs/
-EVAL_FOLDER	= 	./srcs/eval/
-BUILTINS_FOLDER	=	./srcs/builtins/
+					ft_env.c \
+					ft_export.c \
+					ft_type.c 
 
-OBJ_FOLDER 	= 		./bin/
-SRC			= 		$(addprefix $(FILE_FOLDER), $(FILES)) \
-					$(addprefix $(EVAL_FOLDER), $(EVAL)) \
-					$(addprefix $(BUILTINS_FOLDER), $(BUILTINS))  	\
-					$(addprefix $(EXEC_FOLDER), $(EXEC))
+EXPANSION		=	var.c \
+					exp.c \
+
+
+
+SRC			= 		$(addprefix "./srcs/", $(FILES)) \
+					$(addprefix "./srcs/eval/", $(EVAL)) \
+					$(addprefix ./srcs/builtins/, $(BUILTINS))  	\
+					$(addprefix "./srcs/exec/", $(EXEC)) \
+					$(addprefix "./srcs/expansion/", $(EXPANSION))
+
 OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(EXEC:.c=.o))
+					$(addprefix $(OBJ_FOLDER), $(EXEC:.c=.o)) \
+					$(addprefix $(OBJ_FOLDER), $(EXPANSION:.c=.o))
 
 COLOR		= \033[01;34m
 NO_COLOR	= \033[00m
@@ -78,6 +84,14 @@ bin/%.o: srcs/builtins/%.c
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                   \r"
 
 bin/%.o: srcs/exec/%.c 
+	@gcc $(FLAG) -I includes -c $< -o $@
+	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+
+bin/%.o: srcs/exec/%.c 
+	@gcc $(FLAG) -I includes -c $< -o $@
+	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+
+bin/%.o: srcs/expansion/%.c 
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 

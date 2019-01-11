@@ -15,9 +15,15 @@
 static t_word *find_type(t_word *w, char c, int *pos)
 {
 	if (c == 'o')
+	{
 		w->type = OPERATEUR;
+		*pos = 0;
+	}
 	else if (c == 'r')
+	{
 		w->type = REDIRECT;
+		*pos = 0;
+	}
 	else if (c == 'q')
 		w->type = QUOTE;
 	else if (c == 'v')
@@ -44,11 +50,12 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 
 	c = eval[*i];
 	begin = *i;
-	// to add le cas vvvveeeee eeeevvvv 
-	while (eval[*i] && (eval[*i] == c || (c == 'q' && eval[*i] == 'v')))
+	while (eval[*i] && (eval[*i] == c || (c == 'q' && eval[*i] == 'v')
+	|| (c == 'v' && eval[*i] == 'e') || (c == 'v' && eval[*i] == 'e')
+	|| (c == 'v' && eval[*i] == 'q')))
 		*i = *i + 1;
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
-	 	return (w);
+	 	return (NULL);
 	 return (find_type(w, c, pos));
 }
 
@@ -81,6 +88,48 @@ static t_word *ft_get_words(char *input, char *eval)
 	return (head);
 }
 
+t_word *add_alias(t_word *w, const char *alias)
+{
+	char *tmp_al;
+	t_word *save;
+	t_word *new;
+	t_word *tmp;
+
+	if ((tmp_al = ft_strdup(alias)) 
+	&& (new = eval_line((tmp_al))))
+	{
+		save = w->next;
+		ft_strdel(&w->word);
+		w->word = ft_strdup(new->word);
+		w->next = new->next;
+		new->next = NULL;
+		ft_free_tword(new);
+		tmp = w;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = save;
+	}
+	return (w);
+}
+
+t_word *check_alias(t_word *head)
+{
+	t_shell *sh;
+	t_word *tmp;
+	char *alias;
+
+	tmp = head;
+	if (!(sh = ft_get_set_shell(NULL)))
+		return (head);
+	while (tmp)
+	{
+		if (tmp->type == CMD && (alias = get_tenvv_val(sh->alias, tmp->word)))
+			tmp = add_alias(tmp, alias);
+		else
+			tmp = tmp->next;
+	}
+	return (head);
+}
 
 t_word *eval_line(char *input)
 {
@@ -90,7 +139,7 @@ t_word *eval_line(char *input)
 	if (!input|| !*input || ft_isempty(input))
 		return (NULL);
 	e = lexer(input);
-	head = ft_get_words(e.s, e.eval);
+	head = check_alias(ft_get_words(e.s, e.eval));
 	if (head->type == OPERATEUR || head->type == REDIRECT)
 	{
 		error("syntax error near", head->word);

@@ -12,9 +12,9 @@
 
 #include <21sh.h>
 
-int				check_builtin(char **input)
+int				check_builtin(char *input)
 {
-	char *builtins[9] = {"env", 
+	char *builtins[12] = {"env", 
 	"setenv", 
 	"unsetenv", 
 	"exit", 
@@ -23,16 +23,19 @@ int				check_builtin(char **input)
 	"export", 
 	"set",
 	"unset",
+	"alias",
+	"unalias",
+	"type"
 	};
 	int i;
 
 	i = 0;
-	if (input == NULL || *input == NULL)
+	if (input == NULL)
 		return (0);
-	if (ft_isequal(*input))
+	if (ft_isequal(input))
 		return (1);
-	while (i < 9)
-		if (ft_strequ(builtins[i++], *input))
+	while (i < 12)
+		if (ft_strequ(builtins[i++], input))
 			return (1);
 	return (0);
 }
@@ -45,26 +48,6 @@ void ft_exit(t_tree *t, t_envv *e)
 	exit(0);
 }
 
-t_envv *ft_export(t_shell *sh, char **argv)
-{
-	t_envv *tmp;
-	t_envv *new;
-	int i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if ((tmp = get_tenvv(sh->intern, argv[i++])))
-		{
-			if ((new = ft_tenvv_cpy(tmp)))
-			{
-				new->next = sh->env;
-				sh->env = new;
-			}
-		}
-	}
-	return (sh->intern);
-}
 
 static t_envv	*change_envv(char **argv, t_envv *envv)
 {
@@ -75,7 +58,7 @@ static t_envv	*change_envv(char **argv, t_envv *envv)
 		if (ft_strequ(*argv, "unsetenv"))
 			sh->env = ft_get_set_envv(ft_unsetenv(envv, &argv[1]));
 		else if (ft_strequ(*argv, "setenv"))
-			sh->env = ft_get_set_envv(ft_setenv(envv, argv));
+			sh->env = ft_get_set_envv(ft_setenv(envv, &argv[1]));
 		else if (ft_isequal(*argv))
 			sh->intern = ft_setenv(sh->intern, argv);
 		else if (ft_strequ(*argv, "unset"))
@@ -86,12 +69,14 @@ static t_envv	*change_envv(char **argv, t_envv *envv)
 			sh->env = ft_get_set_envv(ft_export(sh, &argv[1]));
 		else if (ft_strequ(*argv, "set"))
 			ft_puttenvv(sh->intern);
+		else if (ft_strequ(*argv, "alias"))
+			sh->alias = ft_setenv(sh->alias, &argv[1]);
+		else if (ft_strequ(*argv, "unalias"))
+			sh->alias = ft_unsetenv(sh->alias, &argv[1]);
 	}
 	ft_get_set_shell(sh);
 	return (sh->env);
 }
-
-
 
 
 int run_builtin(t_tree *t, char **argv)
@@ -111,6 +96,8 @@ int run_builtin(t_tree *t, char **argv)
 		ft_env(envv, argv);
 	else if (ft_strequ(*argv, "echo"))
 		ft_echo(&argv[1]);
+	else if (ft_strequ(*argv, "type"))
+		ft_type(t->cmd->next);
 	else
 		ft_get_set_envv(change_envv(argv, envv));
 	if (t->r)

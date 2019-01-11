@@ -27,7 +27,7 @@ static char	*check_exe(char *bin_path, struct stat inf)
 	return (NULL);
 }
 
-static char	*absolute_path(char *input, t_envv *envv)
+char	*absolute_path(char *input, t_envv *envv)
 {
 	char		*path;
 	struct stat	inf;
@@ -46,21 +46,14 @@ static char	*absolute_path(char *input, t_envv *envv)
 	return (check_exe(path, inf));
 }
 
-char	*get_bin_path(char *input, t_envv *envv)
+char *search_in_envv(char *input, t_envv *envv)
 {
-	int			i;
-	char		*bin_path;
+	char *bin_path;
+	char **path;
 	struct stat	inf;
-	char 		**path;
+	int i;
 
 	i = 0;
-	if ((bin_path = absolute_path(input, envv)))
-		return (bin_path);
-	if (ft_str_startwith(input, "./") || ft_str_startwith(input, "/"))
-	{
-		error("no such file or directory", input);
-		return (NULL);
-	}
 	if (!(path = ft_strsplit(get_tenvv_val(envv, "PATH"), ':')))
 		return (NULL);
 	while (path[i])
@@ -76,8 +69,24 @@ char	*get_bin_path(char *input, t_envv *envv)
 		i++;
 	}
 	ft_freestrarr(path);
-	error("command not found", input);
 	return (NULL);
+}
+
+
+char	*get_bin_path(char *input, t_envv *envv)
+{
+	char		*bin_path;
+
+	if (ft_str_startwith(input, "./") || ft_str_startwith(input, "/"))
+	{ 
+		if ((bin_path = absolute_path(input, envv)))
+			return (bin_path);
+		error("no such file or directory", input);
+		return (NULL);
+	}
+	if (!(bin_path = search_in_envv(input, envv)))
+		error("command not found", input);
+	return (bin_path);
 }
 
 int ft_execve(t_tree *t)
@@ -92,7 +101,7 @@ int ft_execve(t_tree *t)
 	ret = -1;
 	if (!(argv = ft_twordto_arr(t->cmd)))
 		return (-1);
-	if (check_builtin(argv))
+	if (check_builtin(*argv))
 		return (run_builtin(t, argv));
 	e = ft_get_set_envv(NULL);
 	if (!(bin_path = get_bin_path(*argv, e)))
@@ -109,6 +118,7 @@ int ft_execve(t_tree *t)
 	}
 	else
 		wait(&ret);
+	ft_freestrarr(argv);
 	ft_freestrarr(env);
 	ft_strdel(&bin_path);
 	return (ret);
