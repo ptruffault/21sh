@@ -2,9 +2,9 @@ export HOME=${HOME:-/home}
 export HISTORY=~/.21history
 export TERM=${TERM:-xterm-256color}
 alias cl /usr/bin/clear 
-alias c=cdpwd
 alias PWD $PWD
-cl
+alias la=ls -a lq=l lz=ls
+/usr/bin/clear 
 echo "       444444444   222222222222222        SSSSSSSSSSSSSSS HHHHHHHHH     HHHHHHHHH	"
 echo "      4::::::::4  2:::::::::::::::22    SS:::::::::::::::SH:::::::H     H:::::::H	"
 echo "     4:::::::::4  2::::::222222:::::2  S:::::SSSSSS::::::SH:::::::H     H:::::::H	"
@@ -21,6 +21,6 @@ echo "          4::::4  2:::::2       222222 SSSSSSS     S:::::SHH::::::H     H:
 echo "        44::::::442::::::2222222:::::2 S::::::SSSSSS:::::SH:::::::H     H:::::::H	"
 echo "        4::::::::42::::::::::::::::::2 S:::::::::::::::SS H:::::::H     H:::::::H	"
 echo "       444444444422222222222222222222  SSSSSSSSSSSSSSS   HHHHHHHHH     HHHHHHHHH	"
-PATH=$(PATH:?unset var)
+PATH=${PATH:?unset var}
 export PATH
 echo OK
