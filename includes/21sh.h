@@ -121,7 +121,8 @@ char	*search_in_envv(char *input, t_envv *envv);
 char	*absolute_path(char *input, t_envv *envv);
 char	*get_bin_path(char *input, t_envv *envv);
 
-
+//fct.c
+int ft_isparenth(char c);
 
 
 //builtins

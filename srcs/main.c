@@ -32,8 +32,6 @@ void ft_put_tword(t_word *w)
 }
 
 
-
-
 int		main(int argc, char **argv, char **envv)
 {
 	t_shell	e_shell;

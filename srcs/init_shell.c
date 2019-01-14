@@ -21,27 +21,6 @@ t_shell *ft_get_set_shell(t_shell *sh)
 	return (s);
 }
 
-
-t_envv *init_envvironnment(char **envv)
-{
-	t_shell sh;
-	t_envv *new;
-	t_envv *tmp;
-
-	if (!(new = ft_init_tenvv_file("/home/ptruffau/21sh/sys/env")))
-		return (NULL);
-	sh.env  = init_tenvv(envv);
-	tmp = new;
-	while (tmp && tmp->value)
-	{
-		tmp->value = ft_exp_var(tmp->value, &sh);
-		tmp = tmp->next;
-	}
-	ft_free_tenvv(sh.env);
-	return (new);
-
-}
-
 char *get_shell_path(t_envv *env, char *path)
 {
 	char *pwd;
@@ -56,22 +35,32 @@ char *get_shell_path(t_envv *env, char *path)
 
 void init_shell(t_shell *sh,char **argv, char **envv)
 {
-	char *shell_path;
-	char *sys_path;
+	char *rc_path;
+	t_tree *t;
+	char **instruct;
+	int i;
+	(void)argv;
 
 	sh->intern = NULL;
-	if (!(ft_get_set_envv(sh->env = init_envvironnment(envv))))
-		warning("void environnement", NULL);
-	else if ((shell_path = get_shell_path(sh->env, argv[0])))
+	sh->alias = NULL;
+	rc_path = NULL;
+	instruct = NULL;
+	i = 0;
+	sh = ft_get_set_shell(sh);
+	if ((sh->env = ft_get_set_envv(init_tenvv(envv)))
+	&& (rc_path = ft_strjoin(get_tenvv_val(sh->env, "HOME"), "/.21shrc"))
+	&& (instruct = ft_get_txt(open(rc_path, S_IRWXU , O_RDWR))))
 	{
-		sh->env = ft_new_envv(sh->env, "SHELL", shell_path);
-		if ((sys_path = ft_strjoin_fr(ft_get_prev_path(shell_path), ft_strdup("/sys"))))
+		while (instruct && instruct[i])
 		{
-			sh->env = ft_new_envv(sh->env, "SYS", sys_path);
-			ft_strdel(&sys_path);
+			if ((t = ft_get_set_tree(get_tree(instruct[i++]))))
+			{
+				exec_tree(t);
+				ft_free_tree(t);
+			}
 		}
-		ft_strdel(&shell_path);
 	}
-	sh->alias = ft_init_tenvv_file("/home/ptruffau/21sh/sys/alias");
+	free(instruct);
+	ft_strdel(&rc_path);
 	ft_get_set_shell(sh);
 }

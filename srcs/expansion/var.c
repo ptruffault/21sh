@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include <21sh.h>
-
 char *ft_exp_param(char *ret, t_shell *sh, char *ptr);
+
+
 
 //return VAR pour $VAR/lol
 static char *ft_get_varname(char *s)
@@ -83,8 +84,7 @@ char *handle_modifier(char *parenth, char *ptr, t_shell *sh)
 
 
 	val = NULL;
-	if (!(val1 = ft_strsub(parenth, 0, ptr - parenth - 1)))
-		return (NULL);
+	val1 = ft_strsub(parenth, 0, ptr - parenth - 1);
 	val2 = ft_strdup(ptr + 1);
 	if (*ptr == '-' && !(val = ft_strdup(get_tenvv_val(sh->env, val1))))
 		val = ft_strdup(val2);
@@ -140,15 +140,13 @@ char *sub_get_param_value(char *old_parenth, t_shell *sh)
 	if ((ptr = ft_strchr(parenth, ':')) && ++ptr)
 	{
 		if (ft_strchr("-+?=", *ptr))
-		{
 			value = sub_handle_modifier(parenth, ptr, sh);
-		}
 		else
 			error_c("unrecognized modifier", *ptr);
 	}
 	else
 		value = ft_strdup(parenth);
-	printf("subvalue = %s\n",value );
+	ft_strdel(&parenth);
 	return (ft_strpull(old_parenth, old_parenth , get_content_size(old_parenth) + 2 , value));
 }
 
@@ -158,16 +156,18 @@ char *ft_get_param_value(t_shell *sh, char *parenth)
 	char *val;
 
 	val = NULL;
-	if ((ptr = ft_strchr(parenth, ':')) && ++ptr)
+	if (parenth && (ptr = ft_strchr(parenth, ':')) && ++ptr)
 	{
 		if (ft_strchr("-+?=", *ptr))
 			val = handle_modifier(parenth, ptr, sh);
 		else
 			error_c("unrecognized modifier", *ptr);
 	}
-	else
+	else if (parenth)
+	{
 		val = ft_strdup(get_tenvv_val(sh->env, parenth));
-	ft_strdel(&parenth);
+		ft_strdel(&parenth);
+	}
 	return (val);
 
 }
@@ -178,6 +178,7 @@ char *ft_exp_param(char *ret, t_shell *sh, char *ptr)
 	char *tmp;
 	char *parenth;
 
+	value = NULL;
 	if (!(parenth = ft_strsub(ret, ptr - ret + 2 ,  get_content_size(ptr))))
 		return (NULL);
 	if (*parenth == '#' &&  (tmp = ft_get_param_value(sh, parenth)))
@@ -189,14 +190,11 @@ char *ft_exp_param(char *ret, t_shell *sh, char *ptr)
 	{
 		if (ft_str_startwith(parenth, "${"))
 			parenth = sub_get_param_value(parenth, sh);
-		printf("parenth post sub = \n%s\n",parenth );
 		value = ft_get_param_value(sh, parenth);
 	}
-	if ((tmp = ft_strpull(ret, ptr, get_content_size(ptr) + 3, value)))
-	{
-		ft_strdel(&ret);
-		ret = tmp;
-	}
+	tmp = ft_strpull(ret, ptr, get_content_size(ptr) + 2, value);
+	ft_strdel(&ret);
+	ret = tmp;
 	ft_strdel(&value);
 	return (ret);
 }
@@ -209,11 +207,11 @@ char  *ft_exp_var(char *ret, t_shell *sh)
 	i = 0;
 	while (ret && ret[i])
 	{
-		if (ret[i] == '~')
+		if (ret && ret[i] == '~')
 			ret = ft_exp_home_var(ret, &ret[i], sh->env);
-		if ((ret[i] == '$') && ret[i+ 1] == '{')
+		if ((ret && ret[i] == '$') && ret[i+ 1] == '{')
 			ret = ft_exp_param(ret, sh, &ret[i]);
-		if ((ret[i] == '$') && ret[i + 1] != '{')
+		if (ret && (ret[i] == '$') && ret[i + 1] != '{')
 			ret = ft_exp_envv_var(ret, &ret[i], sh);
 		i++;
 	}

@@ -3,3 +3,4 @@ USER=${USER:-ptruffau}
 TERM=${TERM:?undef}
 HOME=${${HOME:?undef}:-/home}
 PATH=${PATH:-/bin}
+HISTORY=$HOME/.history

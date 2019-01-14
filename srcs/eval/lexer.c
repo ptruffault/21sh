@@ -170,8 +170,6 @@ t_eval lexer(char *src)
 	while (e.s[e.curr])
 		ft_lexword(&e);
 	e.eval[e.curr] = 0;
-	ft_putendl(e.s);
-	ft_putendl(e.eval);
 	ft_clean_str(&e);
 	return (e);
 }

@@ -17,7 +17,8 @@ OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
 					signal.c \
-					init_shell.c
+					init_shell.c \
+					fct.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \
