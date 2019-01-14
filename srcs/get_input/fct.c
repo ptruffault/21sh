@@ -10,7 +10,7 @@ int ft_isparenth(char c)
 	return (0);
 }
 
-t_hist *new_thist(void)
+t_hist *new_hist(void)
 {
 	t_hist *n;
 
@@ -21,7 +21,7 @@ t_hist *new_thist(void)
 	return (n);
 }
 
-void put_thist(t_hist *h)
+void put_hist(t_hist *h)
 {
 	int i;
 
@@ -33,8 +33,19 @@ void put_thist(t_hist *h)
 	}
 }
 
+t_hist *add_hist(t_hist *head, char *s)
+{
+	t_hist *new;
 
-t_hist *init_thist(t_envv *env)
+	if (!(new = new_hist()))
+		return (NULL);
+	new->s = ft_strdup(s);
+	new->next = head;
+	return (new);
+}
+
+
+t_hist *init_hist(t_envv *env)
 {
 	t_hist *new;
 	t_hist *tmp;
@@ -46,15 +57,19 @@ t_hist *init_thist(t_envv *env)
 	new = NULL;
 	if ((h_path = get_tenvv_val(env,  "HISTORY"))
 	&& (arr = ft_get_txt(open(h_path,  O_WRONLY | O_CREAT, S_IRWXU)))
-	&& (new = new_thist()) && (i = ft_strarrlen(arr)) > 0)
+	&& (new = new_hist()) && (i = ft_strarrlen(arr) - 1) > 0)
 	{
+		printf("here i am\n");
 		tmp = new;
 		while (i > 0)
 		{
-			tmp->s = ft_strdup(arr[i--]);
+			printf("here i am\n");
+			tmp->s = ft_strdup(arr[i]);
+			tmp->next = new_hist();
 			tmp = tmp->next;
-			tmp = new_thist();
+			i--;
 		}
 	}
+	put_hist(new);
 	return (new);
 }

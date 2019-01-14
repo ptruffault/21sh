@@ -38,15 +38,17 @@
 		return;
 }*/
 
-char	*get_input(t_hist *hist)
+char	*get_input(void)
 {
+	t_shell 		*sh;
 	t_edit			e;
 	char			*ret;
 	unsigned long	buf;
 
-	e = init_tedit();
+	sh = ft_get_set_shell(NULL);
+	e = init_tedit(sh->env);
 	e.pos_hist = 0;
-	e.hist = hist;
+	e.hist =sh->hist;
 	while (e.edited == FALSE)
 	{
 		buf = 0;
@@ -55,11 +57,11 @@ char	*get_input(t_hist *hist)
 	}
 	if (e.input[0] != '\0')
 	{
-		ft_write_in_file(".21history", e.input);
-		ft_write_in_file(".21history", "\n");
+		ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), e.input);
 	}
 	ret = ft_strdup(e.input);
 	free_tedit(&e);
+	sh->hist = add_hist(sh->hist, e.input);
 	ft_putchar('\n');
 	return (ret);
 }

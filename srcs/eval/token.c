@@ -112,18 +112,15 @@ t_word *add_alias(t_word *w, const char *alias)
 	return (w);
 }
 
-t_word *check_alias(t_word *head)
+t_word *check_alias(t_word *head, t_envv *e_alias)
 {
-	t_shell *sh;
 	t_word *tmp;
 	char *alias;
 
 	tmp = head;
-	if (!(sh = ft_get_set_shell(NULL)))
-		return (head);
 	while (tmp)
 	{
-		if (tmp->type == CMD && (alias = get_tenvv_val(sh->alias, tmp->word)))
+		if (tmp->type == CMD && (alias = get_tenvv_val(e_alias, tmp->word)))
 			tmp = add_alias(tmp, alias);
 		else
 			tmp = tmp->next;
@@ -135,11 +132,15 @@ t_word *eval_line(char *input)
 {
 	t_word *head;
 	t_eval e;
+	t_shell *sh;
 
+	sh = ft_get_set_shell(NULL);
 	if (!input|| !*input || ft_isempty(input))
 		return (NULL);
 	e = lexer(input);
-	head = check_alias(ft_get_words(e.s, e.eval));
+	head = ft_get_words(e.s, e.eval);
+	if (sh->alias)
+		head = check_alias(head, sh->alias);
 	if (head->type == OPERATEUR || head->type == REDIRECT)
 	{
 		error("syntax error near", head->word);

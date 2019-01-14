@@ -74,9 +74,13 @@ void	hist_move_up(t_edit *e)
 		e->curr_history++;
 		update_input(e, s);
 	}*/
-	hist = e->hist;
-	if (!hist->s)
+	printf("before\n");
+	if (!e->hist || !e->hist->s)
+	{
+		printf("no history\n");
 		return;
+	}
+	printf("after\n");
 	x = 0;
 	printf("test\n");
 	while (hist->next && x < e->pos_hist)
@@ -96,9 +100,13 @@ void	hist_move_up(t_edit *e)
 
 void	hist_move_do(t_edit *e)
 {
+	t_shell *sh;
+	char *hist_path;
 	char *s;
 
-	if ((s = ft_get_line_in_file(HISTORY_PATH, e->curr_history - 1)))
+	sh = ft_get_set_shell(NULL);
+	if ((hist_path = get_tenvv_val(sh->env, "HISTORY"))
+	&& (s = ft_get_line_in_file(hist_path, e->curr_history - 1)))
 	{
 		e->curr_history--;
 		update_input(e, s);

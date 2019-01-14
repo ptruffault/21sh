@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <signal.h>
 # include <dirent.h>
-#include "get_input.h"
 # include "../libft/includes/libft.h"
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_CMD(x) (1 <= x && x <= 4)
@@ -49,6 +48,14 @@ enum e_wtype{
     REDIRECT = 5,
     OPERATEUR = 6
 };
+
+typedef struct	s_hist
+{
+	char *s;
+	struct s_hist *next;
+}				t_hist;
+
+
 
 typedef struct 	s_eval
 {
@@ -107,14 +114,15 @@ int ft_redirect_builtin(t_tree *t, int fd[3]);
 void ft_reset_fd(int fd[3]);
 
 t_shell 	*ft_get_set_shell(t_shell *sh);
-void 		init_shell(t_shell *sh, char **envv);
+void 		init_shell(t_shell *sh, char **envv, char **argv);
 void 	set_signals(void);
 
 //exec
 t_tree *exec_pipe(t_tree *t);
 t_tree *exec_instruction(t_tree *t);
 int  run_builtin(t_tree *t, char **argv);
-void exec_tree(t_tree *t);
+t_tree *exec_tree(t_tree *t);
+void exec_file(char *path, t_shell *sh);
 t_tree	*ft_get_set_tree(t_tree *new_t);
 
 
@@ -125,6 +133,7 @@ char	*get_bin_path(char *input, t_envv *envv);
 
 //fct.c
 int ft_isparenth(char c);
+
 
 
 //builtins
@@ -140,4 +149,8 @@ void ft_type(t_word *w);
 int fd_dup(int fd1, int fd2);
 int ft_execve(t_tree *t);
 
+//historique
+t_hist *init_hist(t_envv *env);
+t_hist *new_hist(void);
+t_hist *add_hist(t_hist *head, char *s);
 #endif

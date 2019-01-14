@@ -85,7 +85,7 @@ t_tree *exec_instruction(t_tree *t)
 	return (t);
 }
 
-void exec_tree(t_tree *t)
+t_tree *exec_tree(t_tree *t)
 {
 	t_tree *tmp;
 
@@ -108,4 +108,31 @@ void exec_tree(t_tree *t)
 			tmp = next_instruction(tmp);
 		}
 	}
+	return (t);
+}
+
+void exec_file(char *path, t_shell *sh)
+{
+	char **instruct;
+	int fd;
+	int i;
+	t_tree *t;
+
+	i = 0;
+	if ((fd = open(path, O_RDWR,  S_IRWXU)) >= 0 && 
+	(instruct = ft_get_txt(fd)))
+	{
+		ft_get_set_shell(sh);
+		while (instruct && instruct[i])
+		{
+			if (*instruct[i] && (t = ft_get_set_tree(get_tree(instruct[i]))))
+				ft_free_tree(exec_tree(t));
+			i++;
+		}
+		sh->hist = init_hist(sh->env);
+		sh = ft_get_set_shell(sh);
+		ft_close(fd);
+	}
+	else
+		error("can't exec this file", path);
 }

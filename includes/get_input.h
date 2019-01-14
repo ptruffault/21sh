@@ -22,8 +22,7 @@
 # include <fcntl.h>
 # include <signal.h>
 # include <sys/ioctl.h>
-#include "../libft/includes/libft.h"
-
+#include "21sh.h"
 # define KEY_ENTER 0xA
 # define ARROW_UP 4283163
 # define ARROW_DOWN 4348699
@@ -64,13 +63,6 @@ typedef enum	e_boolen {
 	TRUE = 1
 }				t_bool;
 
-typedef struct	s_hist
-{
-	char *s;
-	struct s_hist *next;
-}				t_hist;
-
-
 typedef struct	s_termi
 {
 	struct termios	term;
@@ -92,6 +84,7 @@ typedef struct	s_edit
 	t_termi	*t;
 }				t_edit;
 
+char			*get_input(void);
 void			ft_delete_line(t_edit *e);
 void			hist_move_do(t_edit *e);
 void			hist_move_up(t_edit *e);
@@ -108,16 +101,12 @@ void			ft_print_line(t_edit *e);
 void			ft_clear(t_edit *e);
 void			ft_delete_line(t_edit *e);
 void 			add_to_file(char *path, char *s);
-char			*get_input(t_hist *hist);
 void			handle_input(unsigned long buf, t_edit *e);
 t_edit			*get_set_edit(t_edit *new_ed);
-t_edit			init_tedit(void);
+t_edit			init_tedit(t_envv *env);
 void			free_tedit(t_edit *e);
-void get_hist_path(t_edit *e);
-char **get_hist(int fd);
+void 			get_hist_path(t_edit *e);
+char 			**get_hist(int fd);
 
-//historique
-t_hist *init_thist(t_envv *env);
-t_hist *new_thist(void);
 
 #endif
