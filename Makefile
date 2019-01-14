@@ -74,6 +74,7 @@ DONE 		= $(NO_COLOR)[\033[1;32mOK$(NO_COLOR)]
 all: $(NAME)
 
 $(NAME): $(OBJ) Makefile bin
+	@cp sys/.21shrc ~/.21shrc
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
 	@gcc  $(FLAG) $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
