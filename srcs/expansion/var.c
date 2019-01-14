@@ -53,7 +53,7 @@ static char *ft_exp_home_var(char *ret, char *ptr, t_envv *envv)
 {
 	char *tmp;
 
-	if ((tmp = ft_strpull(ret, ptr, 1, get_tenvv_val(envv, "HOME"))))
+	if ((tmp = ft_strpull(ret, ptr, 0, get_tenvv_val(envv, "HOME"))))
 	{
 		ft_strdel(&ret);
 		return(tmp);
