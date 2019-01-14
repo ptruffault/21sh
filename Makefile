@@ -17,8 +17,7 @@ OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
 					signal.c \
-					init_shell.c \
-					fct.c
+					init_shell.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \
@@ -46,6 +45,7 @@ GET_INPUT	=	curs_move.c	\
 						input_tools.c	\
 						print_line.c	\
 						setup.c	\
+						fct.c
 
 EXPANSION		=	var.c \
 					exp.c \

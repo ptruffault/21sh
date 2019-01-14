@@ -1,11 +1,4 @@
-#include <21sh.h>
-
-typedef struct	s_hist
-{
-	char *s;
-	struct s_hist *next;
-}				t_hist;
-
+#include <get_input.h>
 
 
 int ft_isparenth(char c)

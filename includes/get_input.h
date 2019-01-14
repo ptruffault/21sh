@@ -59,6 +59,13 @@
 # define UNDERLINE_CURS "uc"
 # define DELETE_LINE "dl"
 
+typedef struct	s_hist
+{
+	char *s;
+	struct s_hist *next;
+}				t_hist;
+
+
 typedef enum	e_boolen {
 	FALSE = 0,
 	TRUE = 1
@@ -110,5 +117,9 @@ t_edit			init_tedit(void);
 void			free_tedit(t_edit *e);
 void get_hist_path(t_edit *e);
 char **get_hist(int fd);
+
+//historique
+t_hist *init_thist(t_envv *env);
+t_hist *new_thist(void);
 
 #endif

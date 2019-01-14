@@ -1,0 +1,4 @@
+alias cl clear c=cd PWD $PWD
+echo OK
+export HISTORY=~/.21history
+echo $HISTORY
