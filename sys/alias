@@ -1,6 +1,3 @@
 cl=clear
 c=cd
-PWD=env|grep PWD
-PATH=$PATH
-QUOTE='\a"'
-DQUOTE="mdr $PWD ~"
+l=ls

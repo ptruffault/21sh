@@ -34,37 +34,10 @@ int ft_open_tmpfile(t_envv *env)
 
 
 
-t_word *ft_exp_cmd(t_word *w, t_shell *sh, char *ptr)
-{	
-	t_tree *t;
-	int fd;
-	char *value;
-
-	if ((fd = ft_open_tmpfile(sh->env)) != -1)
-	{
-		if ((value = ft_strsub(w->word, ptr - w->word + 2, ft_strlen(w->word) - 3)))
-		{
-			if ((t = get_tree(value)))
-			{
-				exec_tree(t);
-				ft_free_tree(t);
-			}
-			else
-				warning("no t_tree", NULL);
-		}
-		else
-			ft_strdel(&w->word);
-		ft_close(fd);
-	}
-	return (w);
-}
-
-
 t_word *ft_expention(t_word *w)
 {
 	t_shell *sh;
 	t_word *tmp;
-	char *ptr;
 
 	if (!(sh = ft_get_set_shell(NULL)))
 		return (NULL);
@@ -72,13 +45,7 @@ t_word *ft_expention(t_word *w)
 	while (tmp)
 	{
 		if (IS_CMD(tmp->type) && tmp->word)
-		{
-			if ((ptr = ft_strchr(tmp->word, '$')) && *(ptr + 1) == '(')
-				tmp = ft_exp_cmd(tmp, sh, ptr);
-			else
-				tmp->word = ft_exp_var(tmp->word, sh);
-				
-		}
+			tmp->word = ft_exp_var(tmp->word, sh);
 		tmp = tmp->next;
 	}
 	return (w);

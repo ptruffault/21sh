@@ -35,7 +35,7 @@ char *p_get_input(char c)
 	char *ptr;
 
 	s = (c == '(' ? ')' : (c == '{' ? '}' : (c == '[' ? ']' : 'R')));
-	ft_printf("\033[00;31md '%c' expect '%s' >\033[00m\n");
+	ft_printf("\033[00;31md '%c' expect '%c' >\033[00m\n", c, s);
 	ret = get_input();
 	if ((!(ptr = ft_strchr(ret, s)) || *(ptr - 1) == '\\' ))
 		ret = ft_strjoin_fr(ret,  p_get_input(c));

@@ -12,7 +12,7 @@
 
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
-FLAG		=		-Wall -Werror -Wextra
+FLAG		=		-Wall -Werror -Wextra -g
 OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \

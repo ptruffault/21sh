@@ -19,10 +19,7 @@ static void ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 	int pid;
 
 	if (!(path = get_bin_path(*arr, envv)))
-	{
-		error("{env} unknow cmd ", *arr);
 		return ;
-	}
 	e = tenvv_to_tab(tmp);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", *arr);
@@ -99,7 +96,7 @@ void			ft_env(t_envv *envv, char **argv)
 	{
 		if (argv[i][0] == '-')
 			tmp = ft_env_option(tmp, argv, &i);
-		else if (ft_strchr(argv[i], '='))
+		else if (ft_isequal(argv[i]))
 			tmp = ft_tmpsetenv(tmp, argv[i]);
 		else
 		{

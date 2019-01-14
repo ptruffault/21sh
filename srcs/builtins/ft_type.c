@@ -16,12 +16,6 @@
 #define OPTS_P(t) (t[2] == 1)
 #define OPTS_BP(t) (t[3] == 1)
 
-
-
-
-
-
-
 static t_word *init_opts(char opts[4], t_word *w)
 {
 	int i;
@@ -31,7 +25,7 @@ static t_word *init_opts(char opts[4], t_word *w)
 	opts[1] = 0;
 	opts[2] = 0;
 	opts[3] = 0;
-	while (*w->word == '-')
+	while (w->word && *w->word == '-')
 	{
 		while (w->word[i])
 		{
@@ -72,7 +66,7 @@ static int putfile(t_word *w, t_envv *env, int t)
 	if ((value = absolute_path(w->word, env)))
 	{
 		if (t == 1)
-			ft_printf("file");
+			ft_printf("file\n");
 		else
 			ft_printf("%s is %s\n", w->word, value);
 		ft_strdel(&value);

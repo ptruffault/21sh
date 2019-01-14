@@ -37,11 +37,12 @@ void ft_lex_parenth(t_eval *e)
 
 	save = e->curr;
 	c = e->s[save];
-	while (e->s[e->curr] && e->s[e->curr] != ')')
+	while (e->s[e->curr] && ((c == '(' && e->s[e->curr] != ')') 
+	|| (c == '{' && e->s[e->curr] != '}')))
 		e->eval[e->curr++] = 'v';
 	if (!e->s[e->curr])
 	{
-		e->s = ft_strjoin_fr(ft_stradd_char(e->s, '\n'), q_get_input(c));
+		e->s = ft_strjoin_fr(e->s , p_get_input(c));
 		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
 		e->curr = save;
 		ft_lex_parenth(e);
@@ -55,7 +56,7 @@ void ft_lex_var(t_eval *e)
 	e->eval[e->curr++] = 'v';
 	if (e->s[e->curr - 1] == '$')
 	{
-		if (e->s[e->curr] == '(')
+		if (ft_isparenth(e->s[e->curr]))
 			ft_lex_parenth(e);
 		while(e->s[e->curr] && (ft_isalpha(e->s[e->curr]) || 
 		e->s[e->curr] == '_'))

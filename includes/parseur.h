@@ -31,6 +31,7 @@ t_word 		*new_tword(void);
 char 		*heredoc_get_input(char *eoi);
 t_word 		*o_get_input(int type);
 char 		*q_get_input(char c);
+char 		*p_get_input(char c);
 char 		*backslash_get_input(void);
 
 #endif

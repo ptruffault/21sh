@@ -1,4 +1,5 @@
-PWD=$PWD
-TERM=$TERM
-HOME=$HOME
-PATH=$PATH
+PWD=${PWD:?undef}
+USER=${USER:-ptruffau}
+TERM=${TERM:?undef}
+HOME=${${HOME:?undef}:-/home}
+PATH=${PATH:-/bin}
