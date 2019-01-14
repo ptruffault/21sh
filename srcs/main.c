@@ -34,16 +34,16 @@ void ft_put_tword(t_word *w)
 
 int		main(int argc, char **argv, char **envv)
 {
-	t_shell	e_shell;
+	t_shell	sh;
 	t_tree	*t;
 
 	set_signals();
-	init_shell(&e_shell, argv, envv);
+	init_shell(&sh, envv);
 	while (42)
 	{
 		ft_disp(argc, argv);
-		ft_get_set_envv(e_shell.env);
-		if ((t = ft_get_set_tree(get_tree(get_input()))))
+		ft_get_set_envv(sh.env);
+		if ((t = ft_get_set_tree(get_tree(get_input(sh.hist)))))
 		{
 			exec_tree(t);
 			ft_free_tree(t);

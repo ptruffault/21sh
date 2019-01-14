@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <signal.h>
 # include <dirent.h>
+#include "get_input.h"
 # include "../libft/includes/libft.h"
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_CMD(x) (1 <= x && x <= 4)
@@ -90,6 +91,7 @@ typedef struct s_shell
 	t_envv *env;
 	t_envv *intern;
 	t_envv *alias;
+	t_hist *hist;
 }				t_shell;
 
 char **ft_twordto_arr(t_word *w);
@@ -105,7 +107,7 @@ int ft_redirect_builtin(t_tree *t, int fd[3]);
 void ft_reset_fd(int fd[3]);
 
 t_shell 	*ft_get_set_shell(t_shell *sh);
-void 		init_shell(t_shell *sh,char **argv, char **envv);
+void 		init_shell(t_shell *sh, char **envv);
 void 	set_signals(void);
 
 //exec

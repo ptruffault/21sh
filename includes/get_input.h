@@ -22,8 +22,8 @@
 # include <fcntl.h>
 # include <signal.h>
 # include <sys/ioctl.h>
-# include "./../libft/includes/libft.h"
-# define HISTORY_PATH "./history"
+#include "../libft/includes/libft.h"
+
 # define KEY_ENTER 0xA
 # define ARROW_UP 4283163
 # define ARROW_DOWN 4348699
@@ -59,6 +59,11 @@
 # define UNDERLINE_CURS "uc"
 # define DELETE_LINE "dl"
 
+typedef enum	e_boolen {
+	FALSE = 0,
+	TRUE = 1
+}				t_bool;
+
 typedef struct	s_hist
 {
 	char *s;
@@ -66,18 +71,12 @@ typedef struct	s_hist
 }				t_hist;
 
 
-typedef enum	e_boolen {
-	FALSE = 0,
-	TRUE = 1
-}				t_bool;
-
 typedef struct	s_termi
 {
 	struct termios	term;
 	int				x;
 	int				y;
 	int				nb_of_l;
-	char			*cm_cap;
 	int				width;
 }				t_termi;
 

@@ -33,13 +33,12 @@ char *get_shell_path(t_envv *env, char *path)
 	return (NULL);
 }
 
-void init_shell(t_shell *sh,char **argv, char **envv)
+void init_shell(t_shell *sh, char **envv)
 {
 	char *rc_path;
 	t_tree *t;
 	char **instruct;
 	int i;
-	(void)argv;
 
 	sh->intern = NULL;
 	sh->alias = NULL;
@@ -53,13 +52,14 @@ void init_shell(t_shell *sh,char **argv, char **envv)
 	{
 		while (instruct && instruct[i])
 		{
-			if ((t = ft_get_set_tree(get_tree(instruct[i++]))))
+			if (*instruct[i] && (t = ft_get_set_tree(get_tree(instruct[i]))))
 			{
 				exec_tree(t);
 				ft_free_tree(t);
 			}
 		}
 	}
+	sh->hist = init_thist(sh->env);
 	free(instruct);
 	ft_strdel(&rc_path);
 	ft_get_set_shell(sh);
