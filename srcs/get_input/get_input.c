@@ -12,7 +12,7 @@
 
 #include <get_input.h>
 
-void get_hist_path(t_edit *e)
+/*void get_hist_path(t_edit *e)
 {
 	int x;
 	char *buff;
@@ -36,22 +36,17 @@ void get_hist_path(t_edit *e)
 		e->path_hist = ft_strjoin(buff, "/.21sh_history");
 		free(buff);
 		return;
-}
+}*/
 
-char	*get_input(void)
+char	*get_input(t_hist *hist)
 {
 	t_edit			e;
 	char			*ret;
 	unsigned long	buf;
-	int fd;
 
 	e = init_tedit();
-	fd = ft_strlen(e.path_hist) - 13;
-	fd = open(&e.path_hist[fd], O_CREAT, S_IRWXU | S_IRWXO | S_IRWXG);
-	if (fd != -1)
-		close(fd);
 	e.pos_hist = 0;
-	e.hist = get_hist(fd);
+	e.hist = hist;
 	while (e.edited == FALSE)
 	{
 		buf = 0;
@@ -60,8 +55,8 @@ char	*get_input(void)
 	}
 	if (e.input[0] != '\0')
 	{
-		ft_write_in_file(e.path_hist, e.input);
-		ft_write_in_file(e.path_hist, "\n");
+		ft_write_in_file(".21history", e.input);
+		ft_write_in_file(".21history", "\n");
 	}
 	ret = ft_strdup(e.input);
 	free_tedit(&e);

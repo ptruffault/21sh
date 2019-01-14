@@ -47,7 +47,6 @@ t_edit		init_tedit(void)
 	e.input = ft_strnew(2);
 	setup_term(&e);
 	e.curr_history = 0;
-	get_hist_path(&e);
 	return (e);
 }
 

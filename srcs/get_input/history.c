@@ -62,6 +62,7 @@ void	hist_move_up(t_edit *e)
 {
 	int x;
 	int b;
+	t_hist *hist;
 
 /*	if (e->input != NULL && e->curr_history == 0 && (s = ft_search_line_in_file(HISTORY_PATH, e->input)))
 	{
@@ -73,18 +74,23 @@ void	hist_move_up(t_edit *e)
 		e->curr_history++;
 		update_input(e, s);
 	}*/
-	if (!e->hist)
+	hist = e->hist;
+	if (!hist->s)
 		return;
 	x = 0;
-	while (e->hist && e->hist[x])
+	printf("test\n");
+	while (hist->next && x < e->pos_hist)
+	{
+		hist = hist->next;
 		++x;
-	x = x - e->pos_hist;
+	}
+	printf("wadwad []%d[]\n", x);
 	ft_strdel(&e->input);
-	if (e->hist && !(e->input = ft_strnew(ft_strlen(e->hist[x]) + 2)))
+	if (hist && !(e->input = ft_strnew(ft_strlen(hist->s) + 2)))
 		exit(0);
 	b = -1;
-	while(e->hist && e->hist[x][++b])
-		e->input[b] = e->hist[x][b];
+	while(hist && hist->s[++b])
+		e->input[b] = hist->s[b];
 	e->pos_hist++;
 }
 

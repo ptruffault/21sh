@@ -88,9 +88,8 @@ typedef struct	s_edit
 	int		curr;
 	int		size;
 	int		curr_history;
-	char		*path_hist;
 	int		pos_hist;
-	char	**hist;
+	t_hist	*hist;
 	t_termi	*t;
 }				t_edit;
 
@@ -110,7 +109,7 @@ void			ft_print_line(t_edit *e);
 void			ft_clear(t_edit *e);
 void			ft_delete_line(t_edit *e);
 void 			add_to_file(char *path, char *s);
-char			*get_input(void);
+char			*get_input(t_hist *hist);
 void			handle_input(unsigned long buf, t_edit *e);
 t_edit			*get_set_edit(t_edit *new_ed);
 t_edit			init_tedit(void);

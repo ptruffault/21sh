@@ -53,8 +53,7 @@ t_hist *init_thist(t_envv *env)
 		{
 			tmp->s = ft_strdup(arr[i--]);
 			tmp = tmp->next;
-			if (i > 0)
-				tmp = new_thist();
+			tmp = new_thist();
 		}
 	}
 	return (new);
