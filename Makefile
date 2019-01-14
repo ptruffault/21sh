@@ -37,7 +37,15 @@ BUILTINS		=	ft_echo.c \
 					run_builtin.c \
 					ft_env.c \
 					ft_export.c \
-					ft_type.c 
+					ft_type.c
+
+GET_INPUT	=	curs_move.c	\
+						get_input.c	\
+						handle_input.c	\
+						history.c	\
+						input_tools.c	\
+						print_line.c	\
+						setup.c	\
 
 EXPANSION		=	var.c \
 					exp.c \
@@ -48,12 +56,14 @@ SRC			= 		$(addprefix "./srcs/", $(FILES)) \
 					$(addprefix "./srcs/eval/", $(EVAL)) \
 					$(addprefix ./srcs/builtins/, $(BUILTINS))  	\
 					$(addprefix "./srcs/exec/", $(EXEC)) \
-					$(addprefix "./srcs/expansion/", $(EXPANSION))
+					$(addprefix "./srcs/expansion/", $(EXPANSION))	\
+					$(addprefix "./srcs/get_input/", $(GET_INPUT))
 
 OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(EXEC:.c=.o)) \
+					$(addprefix $(OBJ_FOLDER), $(GET_INPUT:.c=.o))	\
 					$(addprefix $(OBJ_FOLDER), $(EXPANSION:.c=.o))
 
 COLOR		= \033[01;34m
@@ -72,27 +82,31 @@ $(NAME): $(OBJ) Makefile bin
 bin:
 	@mkdir $@
 
-bin/%.o: srcs/%.c 
+bin/%.o: srcs/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
 bin/%.o: srcs/eval/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@		
+	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
 bin/%.o: srcs/builtins/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@		
+	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                   \r"
 
-bin/%.o: srcs/exec/%.c 
+bin/%.o: srcs/exec/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
-bin/%.o: srcs/exec/%.c 
+bin/%.o: srcs/exec/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
-bin/%.o: srcs/expansion/%.c 
+bin/%.o: srcs/expansion/%.c
+	@gcc $(FLAG) -I includes -c $< -o $@
+	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+
+bin/%.o: srcs/get_input/%.c
 	@gcc $(FLAG) -I includes -c $< -o $@
 	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
 
@@ -104,10 +118,10 @@ sclean:
 
 clean:
 	@rm -rf $(OBJ)
-	@make -C ./libft clean	
+	@make -C ./libft clean
 fclean: clean
 	rm -rf $(NAME)
-	@make -C ./libft fclean	
+	@make -C ./libft fclean
 
 re: fclean all
 
@@ -135,4 +149,4 @@ libft:
 
 load: delete_all libft
 	@echo "$(COLOR)download $(NAME) from github$(NO_COLOR)"
-	@git clone $(GIT) TMP && mv TMP/* . && rm -rf TMP 
+	@git clone $(GIT) TMP && mv TMP/* . && rm -rf TMP
