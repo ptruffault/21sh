@@ -49,15 +49,14 @@ t_hist *init_hist(t_envv *env)
 {
 	t_hist *new;
 	t_hist *tmp;
+	int fd;
 	char **arr;
-	char *h_path;
-	int i;
+	int i = 0;
 
-	h_path = NULL;
 	new = NULL;
-	if ((h_path = get_tenvv_val(env,  "HISTORY"))
-	&& (arr = ft_get_txt(open(h_path,  O_WRONLY | O_CREAT, S_IRWXU)))
-	&& (new = new_hist()) && (i = ft_strarrlen(arr) - 1) > 0)
+	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_WRONLY | O_CREAT, S_IRWXU)) > 0)
+		printf("fd = %i ->%s\n",fd, get_tenvv_val(env,  "HISTORY") );
+	if((arr = ft_get_txt(fd)) && (new = new_hist()))
 	{
 		printf("here i am\n");
 		tmp = new;
@@ -70,6 +69,7 @@ t_hist *init_hist(t_envv *env)
 			i--;
 		}
 	}
+	ft_close(fd);
 	put_hist(new);
 	return (new);
 }

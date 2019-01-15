@@ -74,7 +74,6 @@ void init_shell(t_shell *sh, char **envv, char **argv)
 			sh->env = ft_new_envv(sh->env, "SHELL_FOLD", shell_fold);
 			if ((rc_path = ft_strjoin(shell_fold, "/sys/.21shrc")))
 			{
-				printf("rc = %s\n",rc_path );
 				exec_file(rc_path, sh);
 				ft_strdel(&rc_path);
 			}
@@ -82,5 +81,4 @@ void init_shell(t_shell *sh, char **envv, char **argv)
 		}
 		ft_strdel(&shell_path);
 	}
-	ft_get_set_shell(sh);
 }

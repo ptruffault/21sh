@@ -129,7 +129,9 @@ void exec_file(char *path, t_shell *sh)
 				ft_free_tree(exec_tree(t));
 			i++;
 		}
+		printf("before hist\n");
 		sh->hist = init_hist(sh->env);
+		printf("after hist init\n");
 		sh = ft_get_set_shell(sh);
 		ft_close(fd);
 	}
