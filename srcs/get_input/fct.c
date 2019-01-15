@@ -58,7 +58,8 @@ t_hist *init_hist(t_envv *env)
 		printf("fd = %i ->%s\n",fd, get_tenvv_val(env,  "HISTORY") );
 	if((arr = ft_get_txt(fd)) && (new = new_hist()))
 	{
-		printf("here i am\n");
+		i = ft_strarrlen(arr);
+		printf("here i am %s\n", *arr);
 		tmp = new;
 		while (i > 0)
 		{
