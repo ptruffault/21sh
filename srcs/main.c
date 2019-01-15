@@ -43,8 +43,8 @@ int		main(int argc, char **argv, char **envv)
 	{
 		ft_disp(argc, argv);
 		ft_get_set_envv(sh.env);
-		if ((t = ft_get_set_tree(get_tree(get_input()))))
-			ft_free_tree(exec_tree(t));
+		if ((t = get_tree(get_input())))
+			ft_free_tree(exec_tree(ft_get_set_tree(t)));
 	}
 	return (0);
 }

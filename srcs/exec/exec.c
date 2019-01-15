@@ -125,8 +125,8 @@ void exec_file(char *path, t_shell *sh)
 		ft_get_set_shell(sh);
 		while (instruct && instruct[i])
 		{
-			if (*instruct[i] && (t = ft_get_set_tree(get_tree(instruct[i]))))
-				ft_free_tree(exec_tree(t));
+			if (*instruct[i] && (t = get_tree(instruct[i])))
+				ft_free_tree(exec_tree(ft_get_set_tree(t)));
 			i++;
 		}
 		printf("before hist\n");
