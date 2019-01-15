@@ -75,6 +75,7 @@ void	hist_move_up(t_edit *e)
 		update_input(e, s);
 	}*/
 	printf("before\n");
+	hist = e->hist;
 	if (!e->hist || !e->hist->s)
 	{
 		printf("no history\n");
