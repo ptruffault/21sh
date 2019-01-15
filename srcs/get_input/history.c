@@ -3,7 +3,7 @@
 static void	update_input(t_edit *e, char *s)
 {
 	ft_delete_line(e);
-	ft_strdel(&e->input);
+	//ft_strdel(&e->input);
 	e->input = s;
 	e->size = ft_strlen(s) + 1;
 	e->t->nb_of_l = e->size / e->t->width;
@@ -73,8 +73,8 @@ void	hist_move_up(t_edit *e)
 		hist = hist->next;
 		++x;
 	}
-	//if (hist)
-		//printf("[%s]\n", hist->s);
+	if (hist)
+		printf("[%s]\n", hist->s);
 	update_input(e, hist->s);
 	/*while(hist && hist->s[++b])
 		e->input[b] = hist->s[b];
