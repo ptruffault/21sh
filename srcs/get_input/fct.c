@@ -54,7 +54,7 @@ t_hist *init_hist(t_envv *env)
 	int i = 0;
 
 	new = NULL;
-	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_WRONLY | O_CREAT, S_IRWXU)) > 0)
+	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) > 0)
 		printf("fd = %i ->%s\n",fd, get_tenvv_val(env,  "HISTORY") );
 	if((arr = ft_get_txt(fd)) && (new = new_hist()))
 	{

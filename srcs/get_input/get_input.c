@@ -48,20 +48,24 @@ char	*get_input(void)
 	sh = ft_get_set_shell(NULL);
 	e = init_tedit(sh->env);
 	e.pos_hist = 0;
-	e.hist =sh->hist;
+	e.hist = sh->hist;
 	while (e.edited == FALSE)
 	{
 		buf = 0;
 		read(0, &buf, 8);
 		handle_input(buf, &e);
 	}
+	printf("tawdaw\n");
 	if (e.input[0] != '\0')
 	{
+		printf("hein?%s|\n", get_tenvv_val(sh->env, "HISTORY"));
 		ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), e.input);
+		sh->hist = add_hist(sh->hist, e.input);
 	}
+	printf("test\n");
 	ret = ft_strdup(e.input);
 	free_tedit(&e);
-	sh->hist = add_hist(sh->hist, e.input);
+	printf("trois\n");
 	ft_putchar('\n');
 	return (ret);
 }
