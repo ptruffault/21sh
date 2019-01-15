@@ -51,19 +51,17 @@ t_hist *init_hist(t_envv *env)
 	t_hist *tmp;
 	int fd;
 	char **arr;
-	int i = 0;
+	int i;
 
 	new = NULL;
-	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) > 0)
-		printf("fd = %i ->%s\n",fd, get_tenvv_val(env,  "HISTORY") );
+	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) < 0)
+		exit(0);
 	if((arr = ft_get_txt(fd)) && (new = new_hist()))
 	{
-		i = ft_strarrlen(arr);
-		printf("here i am %s\n", *arr);
+		i = ft_strarrlen(arr) - 1;
 		tmp = new;
 		while (i > 0)
 		{
-			printf("here i am\n");
 			tmp->s = ft_strdup(arr[i]);
 			tmp->next = new_hist();
 			tmp = tmp->next;

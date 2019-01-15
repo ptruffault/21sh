@@ -55,17 +55,17 @@ char	*get_input(void)
 		read(0, &buf, 8);
 		handle_input(buf, &e);
 	}
-	printf("tawdaw\n");
+	//printf("tawdaw\n");
 	if (e.input[0] != '\0')
 	{
-		printf("hein?%s|\n", get_tenvv_val(sh->env, "HISTORY"));
+		//printf("hein?%s|\n", get_tenvv_val(sh->env, "HISTORY"));
 		ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), e.input);
 		sh->hist = add_hist(sh->hist, e.input);
 	}
-	printf("test\n");
+	//printf("test\n");
 	ret = ft_strdup(e.input);
 	free_tedit(&e);
-	printf("trois\n");
+	//printf("trois\n");
 	ft_putchar('\n');
 	return (ret);
 }
