@@ -1,6 +1,6 @@
 #include "../includes/get_input.h"
 
-/*static void	update_input(t_edit *e, char *s)
+static void	update_input(t_edit *e, char *s)
 {
 	ft_delete_line(e);
 	ft_strdel(&e->input);
@@ -8,9 +8,9 @@
 	e->size = ft_strlen(s) + 1;
 	e->t->nb_of_l = e->size / e->t->width;
 	ft_print_line(e);
-	e->curr = 0;
-	curs_reset(e);
-}*/
+	curs_move_to(e, -1, -1);
+	e->curr = e->size - 1;
+}
 
 char **ft_tab_realloc(char **buff, size_t size)
 {
@@ -61,7 +61,6 @@ char **ft_tab_realloc(char **buff, size_t size)
 void	hist_move_up(t_edit *e)
 {
 	int x;
-	int b;
 	t_hist *hist;
 
 	hist = e->hist;
@@ -70,16 +69,18 @@ void	hist_move_up(t_edit *e)
 	x = 0;
 	while (hist->next && x < e->pos_hist)
 	{
+		//printf("[%s]\n", hist->s);
 		hist = hist->next;
 		++x;
 	}
-	ft_strdel(&e->input);
-	if (hist && !(e->input = ft_strnew(ft_strlen(hist->s) + 2)))
-		exit(0);
-	b = -1;
-	while(hist && hist->s[++b])
+	//if (hist)
+		//printf("[%s]\n", hist->s);
+	update_input(e, hist->s);
+	/*while(hist && hist->s[++b])
 		e->input[b] = hist->s[b];
 	e->pos_hist++;
+	printf("[%s]\n", e->input);
+	ft_print_line(e);*/
 }
 
 void	hist_move_do(t_edit *e)
