@@ -76,6 +76,7 @@ void init_shell(t_shell *sh, char **envv, char **argv)
 			{
 				exec_file(rc_path, sh);
 				ft_strdel(&rc_path);
+				sh->hist = init_hist(sh->env);
 			}
 			ft_strdel(&shell_fold);
 		}

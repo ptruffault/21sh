@@ -66,7 +66,7 @@ t_tree *exec_pipe(t_tree *t)
 		t->next = exec_instruction(t->next);
 		ft_free_tree(t);
 		exit(0);
-	} 
+	}
 	close(pipes[0]);
 	close(pipes[1]);
 	waitpid(-1, 0, 0);
@@ -119,7 +119,7 @@ void exec_file(char *path, t_shell *sh)
 	t_tree *t;
 
 	i = 0;
-	if ((fd = open(path, O_RDWR,  S_IRWXU)) >= 0 && 
+	if ((fd = open(path, O_RDWR,  S_IRWXU)) >= 0 &&
 	(instruct = ft_get_txt(fd)))
 	{
 		ft_get_set_shell(sh);
@@ -129,9 +129,6 @@ void exec_file(char *path, t_shell *sh)
 				ft_free_tree(exec_tree(ft_get_set_tree(t)));
 			i++;
 		}
-		printf("before hist\n");
-		sh->hist = init_hist(sh->env);
-		printf("after hist init\n");
 		sh = ft_get_set_shell(sh);
 		ft_close(fd);
 	}

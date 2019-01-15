@@ -56,6 +56,7 @@ t_hist *init_hist(t_envv *env)
 	new = NULL;
 	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) < 0)
 		exit(0);
+	i = 0;
 	if((arr = ft_get_txt(fd)) && (new = new_hist()))
 	{
 		i = ft_strarrlen(arr) - 1;

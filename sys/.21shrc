@@ -5,5 +5,4 @@ alias cl /usr/bin/clear
 alias PWD $PWD
 alias la=ls -a lq=l lz=ls
 /usr/bin/clear 
-export PATH=${PATH:?unset var}
 echo OK
