@@ -3,8 +3,11 @@
 static void	update_input(t_edit *e, char *s)
 {
 	ft_delete_line(e);
-	//ft_strdel(&e->input);
-	e->input = s;
+	ft_strdel(&e->input);
+	if (s != NULL)
+		e->input = s;
+	else if (s == NULL)
+		e->input = ft_strnew(3);
 	e->size = ft_strlen(s) + 1;
 	e->t->nb_of_l = e->size / e->t->width;
 	ft_print_line(e);
@@ -25,7 +28,7 @@ char **ft_tab_realloc(char **buff, size_t size)
 	while (buff[++x])
 	{
 		ret[x] = ft_strdup(buff[x]);
-		ft_strdel(&buff[x]);
+		free(buff[x]);
 	}
 	ret[x] = NULL;
 	free(buff);
@@ -66,17 +69,14 @@ void	hist_move_up(t_edit *e)
 	hist = e->hist;
 	if (!hist || !hist->s)
 		return;
-	x = 0;
+	x = -1;
 	e->pos_hist++;
-	while (hist->next && x++ < e->pos_hist)
+	while (hist->s && hist->next && ++x < e->pos_hist)
 		hist = hist->next;
-	if (hist && hist->s)
-		update_input(e, hist->s);
-	/*while(hist && hist->s[++b])
-		e->input[b] = hist->s[b];
-	e->pos_hist++;
-	printf("[%s]\n", e->input);
-	ft_print_line(e);*/
+	if (hist->s)
+		update_input(e, ft_strdup(hist->s));
+	else
+		e->pos_hist--;
 }
 
 void	hist_move_do(t_edit *e)
@@ -84,14 +84,20 @@ void	hist_move_do(t_edit *e)
 	t_hist *hist;
 	int x;
 
-	if (e->curr == 0 || !e->hist || !e->hist->s)
-		return;
-	hist = e->hist;
-	hist = e->hist;
 	x = 0;
-	e->pos_hist--;
-	while (x++ < e->pos_hist)
-		hist = hist->next;
-	if (hist && hist->s)
-		update_input(e, hist->s);
+	hist = e->hist;
+	if (e->pos_hist > -1)
+		e->pos_hist--;
+	if (e->pos_hist > -1)
+	{
+		while (hist->s && hist->next && x < e->pos_hist)
+		{
+			hist = hist->next;
+			++x;
+		}
+		if (hist->s)
+			update_input(e, ft_strdup(hist->s));
+	}
+	else if (e->pos_hist == -1)
+		update_input(e, NULL);
 }

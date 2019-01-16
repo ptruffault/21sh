@@ -43,18 +43,13 @@ void input_end(t_edit *e)
 void clear_term(t_edit *e)
 {
 	TERM(CLEAR);
-	TERM(RESET_CURS);
-	e->t->x = 0;
-	e->t->y = 0;
-	free(e->input);
-	e->input = NULL;
 	(void)e;
 }
 
 void reset_input(t_edit *e)
 {
 	ft_putchar('\a');
-	(void)e;
+	e->input = e->input;
 }
 
 void ft_init_inputs_tab(unsigned long kval[], void (*ft_tab[])(t_edit *e))
@@ -95,10 +90,12 @@ void		handle_input(unsigned long buf, t_edit *e)
 	{
 		if (kval[x] == buf)
 		{
+			//printf("[%d]\n", x);
 			ft_tab[x](e);
 			break;
 		}
 	}
+	//printf("[%d]\n", x);
 	if (x == 11 && ft_isascii(buf))
 		ft_add_char((char)buf,e);
 }
