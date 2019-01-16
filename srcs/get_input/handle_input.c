@@ -48,8 +48,8 @@ void clear_term(t_edit *e)
 
 void reset_input(t_edit *e)
 {
-	ft_putchar('\a');
-	e->input = e->input;
+	update_input(e, NULL);
+	e->edited = TRUE;
 }
 
 void ft_init_inputs_tab(unsigned long kval[], void (*ft_tab[])(t_edit *e))

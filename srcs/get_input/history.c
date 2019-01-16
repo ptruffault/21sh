@@ -1,6 +1,6 @@
 #include "../includes/get_input.h"
 
-static void	update_input(t_edit *e, char *s)
+void	update_input(t_edit *e, char *s)
 {
 	ft_delete_line(e);
 	ft_strdel(&e->input);
