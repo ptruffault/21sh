@@ -14,7 +14,7 @@
 
 int				check_builtin(char *input)
 {
-	char *builtins[12] = {"env", 
+	char *builtins[13] = {"env", 
 	"setenv", 
 	"unsetenv", 
 	"exit", 
@@ -25,7 +25,8 @@ int				check_builtin(char *input)
 	"unset",
 	"alias",
 	"unalias",
-	"type"
+	"type",
+	"sh"
 	};
 	int i;
 
@@ -34,7 +35,7 @@ int				check_builtin(char *input)
 		return (0);
 	if (ft_isequal(input))
 		return (1);
-	while (i < 12)
+	while (i < 13)
 		if (ft_strequ(builtins[i++], input))
 			return (1);
 	return (0);
@@ -98,6 +99,8 @@ int run_builtin(t_tree *t, char **argv)
 		ft_echo(&argv[1]);
 	else if (ft_strequ(*argv, "type"))
 		ft_type(t->cmd->next);
+	else if (ft_strequ(*argv, "sh"))
+		exec_file(argv[1], ft_get_set_shell(NULL));
 	else
 		ft_get_set_envv(change_envv(argv, envv));
 	if (t->r)

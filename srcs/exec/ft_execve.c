@@ -89,24 +89,18 @@ char	*get_bin_path(char *input, t_envv *envv)
 	return (bin_path);
 }
 
-int ft_execve(t_tree *t)
+int ft_execve(t_tree *t, char **argv)
 {
-	t_envv *e;
+	t_envv *envv;
 	int ret;
 	char **env;
-	char **argv;
 	char *bin_path;
 	pid_t pid;
 
-	ret = -1;
-	if (!(argv = ft_twordto_arr(t->cmd)))
+	envv = ft_get_set_envv(NULL);
+	if (!(bin_path = get_bin_path(*argv, envv)))
 		return (-1);
-	if (check_builtin(*argv))
-		return (run_builtin(t, argv));
-	e = ft_get_set_envv(NULL);
-	if (!(bin_path = get_bin_path(*argv, e)))
-		return (-1);
-	env = tenvv_to_tab(e);
+	env = tenvv_to_tab(envv);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", bin_path);
 	else if (pid == 0)
@@ -117,9 +111,27 @@ int ft_execve(t_tree *t)
 			warning("execve fucked up", bin_path);
 	}
 	else
+	{
+		ft_freestrarr(env);
+		ft_strdel(&bin_path);
 		wait(&ret);
+	}
+	return (ret);
+}
+
+int ft_exec(t_tree *t)
+{
+	int ret;
+	char **argv;
+
+	ret = -1;
+	if ((argv = ft_twordto_arr(t->cmd)))
+	{
+		if (check_builtin(*argv))
+			ret = run_builtin(t, argv);
+		else
+			ret = ft_execve(t, argv);
+	}
 	ft_freestrarr(argv);
-	ft_freestrarr(env);
-	ft_strdel(&bin_path);
 	return (ret);
 }

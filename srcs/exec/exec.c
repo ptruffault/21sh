@@ -53,7 +53,7 @@ t_tree *exec_pipe(t_tree *t)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		t->ret = ft_execve(t);
+		t->ret = ft_exec(t);
 		ft_free_tree(t);
 		exit(0);
 	}
@@ -81,7 +81,7 @@ t_tree *exec_instruction(t_tree *t)
 	if (t->o_type == O_PIPE  && t->next)
 		t = exec_pipe(t);
 	else
-		t->ret = ft_execve(t);
+		t->ret = ft_exec(t);
 	return (t);
 }
 
@@ -119,17 +119,19 @@ void exec_file(char *path, t_shell *sh)
 	t_tree *t;
 
 	i = 0;
-	if ((fd = open(path, O_RDWR,  S_IRWXU)) >= 0 &&
-	(instruct = ft_get_txt(fd)))
+	if ((fd = open(path, O_RDWR,  S_IRWXU)) >= 0)
 	{
-		ft_get_set_shell(sh);
-		while (instruct && instruct[i])
+		if ((instruct = ft_get_txt(fd)))
 		{
-			if (*instruct[i] && (t = get_tree(instruct[i])))
-				ft_free_tree(exec_tree(ft_get_set_tree(t)));
-			i++;
-		}
-		sh = ft_get_set_shell(sh);
+			ft_get_set_shell(sh);
+			while (instruct[i])
+			{
+				if (*instruct[i] && (t = get_tree(instruct[i])))
+					ft_free_tree(exec_tree(ft_get_set_tree(t)));
+				i++;
+			}
+			free(instruct);
+		}	
 		ft_close(fd);
 	}
 	else

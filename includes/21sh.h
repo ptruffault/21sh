@@ -118,6 +118,8 @@ void 		init_shell(t_shell *sh, char **envv, char **argv);
 void 	set_signals(void);
 
 //exec
+int ft_exec(t_tree *t);
+
 t_tree *exec_pipe(t_tree *t);
 t_tree *exec_instruction(t_tree *t);
 int  run_builtin(t_tree *t, char **argv);
@@ -147,7 +149,6 @@ void ft_type(t_word *w);
 
 //sys
 int fd_dup(int fd1, int fd2);
-int ft_execve(t_tree *t);
 
 //historique
 t_hist *init_hist(t_envv *env);

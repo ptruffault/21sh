@@ -1,0 +1,8 @@
+ls|rev
+echo $PWD ${PWD}
+echo $ZEFUI ${BEU}
+name=value
+name=val
+export name
+unset name
+unsetenv name

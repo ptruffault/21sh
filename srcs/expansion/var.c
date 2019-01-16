@@ -144,7 +144,9 @@ char *sub_get_param_value(char *old_parenth, t_shell *sh)
 	else
 		value = ft_strdup(parenth);
 	ft_strdel(&parenth);
-	return (ft_strpull(old_parenth, old_parenth , get_content_size(old_parenth) + 2 , value));
+	ptr = ft_strpull(old_parenth, old_parenth , get_content_size(old_parenth) + 2 , value);
+	ft_strdel(&old_parenth);
+	return (ptr);
 }
 
 char *ft_get_param_value(t_shell *sh, char *parenth)
@@ -161,10 +163,7 @@ char *ft_get_param_value(t_shell *sh, char *parenth)
 			error_c("unrecognized modifier", *ptr);
 	}
 	else if (parenth)
-	{
 		val = ft_strdup(get_tenvv_val(sh->env, parenth));
-		ft_strdel(&parenth);
-	}
 	return (val);
 
 }
@@ -176,18 +175,20 @@ char *ft_exp_param(char *ret, t_shell *sh, char *ptr)
 	char *parenth;
 
 	value = NULL;
-	if (!(parenth = ft_strsub(ret, ptr - ret + 2 ,  get_content_size(ptr))))
-		return (NULL);
-	if (*parenth == '#' &&  (tmp = ft_get_param_value(sh, parenth)))
+	if ((parenth = ft_strsub(ret, ptr - ret + 2 ,  get_content_size(ptr))))
 	{
-		value = ft_itoa(ft_strlen(tmp));
-		ft_strdel(&tmp);
-	}
-	else
-	{
-		if (ft_str_startwith(parenth, "${"))
-			parenth = sub_get_param_value(parenth, sh);
-		value = ft_get_param_value(sh, parenth);
+		if (*parenth == '#' &&  (tmp = ft_get_param_value(sh, parenth)))
+		{
+			value = ft_itoa(ft_strlen(tmp));
+			ft_strdel(&tmp);
+		}
+		else
+		{
+			if (ft_str_startwith(parenth, "${"))
+				parenth = sub_get_param_value(parenth, sh);
+			value = ft_get_param_value(sh, parenth);
+		}
+		ft_strdel(&parenth);
 	}
 	tmp = ft_strpull(ret, ptr, get_content_size(ptr) + 2, value);
 	ft_strdel(&ret);
