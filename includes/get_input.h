@@ -107,7 +107,7 @@ t_edit			init_tedit(t_envv *env);
 void			free_tedit(t_edit *e);
 void 			get_hist_path(t_edit *e);
 char 			**get_hist(int fd);
-void	update_input(t_edit *e, char *s);
+void			update_input(t_edit *e, char *s);
 
 
 #endif
