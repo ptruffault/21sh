@@ -44,18 +44,6 @@ t_hist *add_hist(t_hist *head, char *s)
 	return (new);
 }
 
-int ft_hist_len(t_hist *hist)
-{
-	int i;
-
-	i = 0;
-	while (hist)
-	{
-		hist = hist->next;
-		i++;
-	}
-	return (i);
-}
 
 t_hist *init_hist(t_envv *env)
 {
@@ -66,26 +54,22 @@ t_hist *init_hist(t_envv *env)
 	int i;
 
 	new = NULL;
-	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) > 0)
+	if ((fd = open(get_tenvv_val(env,  "HISTORY"), O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) < 0)
+		exit(0);
+	i = 0;
+	if((arr = ft_get_txt(fd)) && (new = new_hist()))
 	{
-		if((arr = ft_get_txt(fd)) && (new = new_hist()))
+		i = ft_strarrlen(arr) - 1;
+		tmp = new;
+		while (i > 0)
 		{
-			i = ft_strarrlen(arr) - 1;
-			tmp = new;
-			while (i > 0)
-			{
-				tmp->s = ft_strdup(arr[i--]);
-				tmp->next = new_hist();
-				tmp = tmp->next;
-			}
-			ft_freestrarr(arr);
+			tmp->s = ft_strdup(arr[i]);
+			tmp->next = new_hist();
+			tmp = tmp->next;
+			i--;
 		}
-		ft_close(fd);
 	}
-	else
-	{
-		error("unable to open history file", get_tenvv_val(env,  "HISTORY"));
-		perror(NULL);
-	}
+	ft_close(fd);
+	put_hist(new);
 	return (new);
 }
