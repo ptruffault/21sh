@@ -82,6 +82,7 @@ typedef struct	s_edit
 	int		pos_hist;
 	t_hist	*hist;
 	t_termi	*t;
+	char *last;
 }				t_edit;
 
 char			*get_input(void);

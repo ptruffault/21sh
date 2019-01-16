@@ -3,8 +3,11 @@
 static void	update_input(t_edit *e, char *s)
 {
 	ft_delete_line(e);
-	//ft_strdel(&e->input);
-	e->input = s;
+	ft_strdel(&e->input);
+	if (s != NULL)
+		e->input = s;
+	else if (s == NULL)
+		e->input = ft_strnew(3);
 	e->size = ft_strlen(s) + 1;
 	e->t->nb_of_l = e->size / e->t->width;
 	ft_print_line(e);
@@ -66,34 +69,35 @@ void	hist_move_up(t_edit *e)
 	hist = e->hist;
 	if (!hist || !hist->s)
 		return;
-	x = 0;
-	while (hist->next && x < e->pos_hist)
-	{
-		//printf("[%s]\n", hist->s);
-		hist = hist->next;
-		++x;
-	}
-	if (hist)
-		printf("[%s]\n", hist->s);
-	update_input(e, hist->s);
-	/*while(hist && hist->s[++b])
-		e->input[b] = hist->s[b];
+	x = -1;
 	e->pos_hist++;
-	printf("[%s]\n", e->input);
-	ft_print_line(e);*/
+	while (hist->s && hist->next && ++x < e->pos_hist)
+		hist = hist->next;
+	if (hist->s)
+		update_input(e, ft_strdup(hist->s));
+	else
+		e->pos_hist--;
 }
 
 void	hist_move_do(t_edit *e)
 {
 	t_hist *hist;
+	int x;
 
+	x = 0;
 	hist = e->hist;
-
-	/*sh = ft_get_set_shell(NULL);
-	if ((hist_path = get_tenvv_val(sh->env, "HISTORY"))
-	&& (s = ft_get_line_in_file(hist_path, e->curr_history - 1)))
+	if (e->pos_hist > -1)
+		e->pos_hist--;
+	if (e->pos_hist > -1)
 	{
-		e->curr_history--;
-		update_input(e, s);
-	}*/
+		while (hist->s && hist->next && x < e->pos_hist)
+		{
+			hist = hist->next;
+			++x;
+		}
+		if (hist->s)
+			update_input(e, ft_strdup(hist->s));
+	}
+	else if (e->pos_hist == -1)
+		update_input(e, NULL);
 }
