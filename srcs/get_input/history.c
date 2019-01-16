@@ -25,7 +25,7 @@ char **ft_tab_realloc(char **buff, size_t size)
 	while (buff[++x])
 	{
 		ret[x] = ft_strdup(buff[x]);
-		free(buff[x]);
+		ft_strdel(&buff[x]);
 	}
 	ret[x] = NULL;
 	free(buff);
@@ -67,15 +67,11 @@ void	hist_move_up(t_edit *e)
 	if (!hist || !hist->s)
 		return;
 	x = 0;
-	while (hist->next && x < e->pos_hist)
-	{
-		//printf("[%s]\n", hist->s);
+	e->pos_hist++;
+	while (hist->next && x++ < e->pos_hist)
 		hist = hist->next;
-		++x;
-	}
-	if (hist)
-		printf("[%s]\n", hist->s);
-	update_input(e, hist->s);
+	if (hist && hist->s)
+		update_input(e, hist->s);
 	/*while(hist && hist->s[++b])
 		e->input[b] = hist->s[b];
 	e->pos_hist++;
@@ -86,14 +82,16 @@ void	hist_move_up(t_edit *e)
 void	hist_move_do(t_edit *e)
 {
 	t_hist *hist;
+	int x;
 
+	if (e->curr == 0 || !e->hist || !e->hist->s)
+		return;
 	hist = e->hist;
-
-	/*sh = ft_get_set_shell(NULL);
-	if ((hist_path = get_tenvv_val(sh->env, "HISTORY"))
-	&& (s = ft_get_line_in_file(hist_path, e->curr_history - 1)))
-	{
-		e->curr_history--;
-		update_input(e, s);
-	}*/
+	hist = e->hist;
+	x = 0;
+	e->pos_hist--;
+	while (x++ < e->pos_hist)
+		hist = hist->next;
+	if (hist && hist->s)
+		update_input(e, hist->s);
 }

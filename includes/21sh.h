@@ -151,6 +151,7 @@ int ft_execve(t_tree *t);
 
 //historique
 t_hist *init_hist(t_envv *env);
+int ft_hist_len(t_hist *hist);
 t_hist *new_hist(void);
 t_hist *add_hist(t_hist *head, char *s);
 #endif
