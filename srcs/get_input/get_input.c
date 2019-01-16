@@ -58,8 +58,8 @@ char	*get_input(void)
 	}
 	if (e.input[0] != '\0')
 	{
-		//ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), e.input);
-		//sh->hist = add_hist(sh->hist, e.input);
+		ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), e.input);
+		sh->hist = add_hist(sh->hist, e.input);
 	}
 	ret = ft_strdup(e.input);
 	free_tedit(&e);
