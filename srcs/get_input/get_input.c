@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_input.h>
+#include "../../includes/get_input.h"
 
 /*void get_hist_path(t_edit *e)
 {

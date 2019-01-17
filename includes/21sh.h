@@ -93,14 +93,25 @@ typedef struct s_tree
 	struct s_tree	*next; 
 }				t_tree;
 
+typedef struct	s_process
+{
+	char *cmd;
+	int status;
+	int pid;
+	struct s_process *next;
+}				t_process;
+
 typedef struct s_shell
 {
-	t_envv *env;
-	t_envv *intern;
-	t_envv *alias;
-	t_hist *hist;
+	t_envv		*env;
+	t_envv		*intern;
+	t_envv		*alias;
+	t_hist		*hist;
+	t_process	*process;
 }				t_shell;
 
+
+char	*get_input(void);
 char **ft_twordto_arr(t_word *w);
 t_word *ft_expention(t_word *w);
 char  *ft_exp_var(char *ret, t_shell *sh);

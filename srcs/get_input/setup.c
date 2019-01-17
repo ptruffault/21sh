@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_input.h"
+#include "../../includes/get_input.h"
 
 static void	setup_term(t_edit *e, t_envv *env)
 {

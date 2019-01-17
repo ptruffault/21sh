@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_input.h"
+#include "../../includes/get_input.h"
 
 static void	curr_move_right(t_edit *e)
 {

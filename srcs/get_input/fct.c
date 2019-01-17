@@ -1,4 +1,4 @@
-#include <get_input.h>
+#include "../../includes/get_input.h"
 
 
 int ft_isparenth(char c)
@@ -65,6 +65,7 @@ t_hist *init_hist(t_envv *env)
 				tmp->next = new_hist();
 				tmp = tmp->next;
 			}
+			ft_freestrarr(arr);
 		}
 		ft_close(fd);
 	}

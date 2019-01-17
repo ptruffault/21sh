@@ -63,7 +63,7 @@ t_tree *exec_pipe(t_tree *t)
 	{
 		dup2(pipes[0], STDIN_FILENO);
 		close(pipes[1]);
-		t->next = exec_instruction(t->next);
+		exec_instruction(t->next);
 		ft_free_tree(t);
 		exit(0);
 	}
