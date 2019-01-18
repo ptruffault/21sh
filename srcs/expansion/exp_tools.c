@@ -12,37 +12,19 @@
 
 #include <21sh.h>
 
-char  *ft_exp_var(char *ret, t_shell *sh)
+
+
+//return la taille d'une parrenthése meme s'il i ya des parenthéses dedan
+int get_content_size(char *s)
 {
 	int i;
 
-	i = 0;
-	while (ret && ret[i])
+	i = 2;
+	while (s[i] && s[i] != '}')
 	{
-		if (ret && ret[i] == '~')
-			ret = ft_exp_home_var(ret, &ret[i], sh->env);
-		if ((ret && ret[i] == '$') && ret[i+ 1] == '{')
-			ret = ft_exp_param(ret, sh, &ret[i]);
-		if (ret && (ret[i] == '$') && ret[i + 1] != '{')
-			ret = ft_exp_envv_var(ret, &ret[i], sh);
+		if (s[i] == '$' && s[i + 1] == '{')
+			i = i + get_content_size(&s[i]) + 2;
 		i++;
 	}
-	return (ret);
-}
-
-t_word *ft_expention(t_word *w)
-{
-	t_shell *sh;
-	t_word *tmp;
-
-	if (!(sh = ft_get_set_shell(NULL)))
-		return (NULL);
-	tmp = w;
-	while (tmp)
-	{
-		if (IS_CMD(tmp->type) && tmp->word)
-			tmp->word = ft_exp_var(tmp->word, sh);
-		tmp = tmp->next;
-	}
-	return (w);
+	return (i - 2);
 }

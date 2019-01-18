@@ -36,14 +36,16 @@ int		main(int argc, char **argv, char **envv)
 {
 	t_shell	sh;
 	t_tree	*t;
-
-	set_signals();
+	char *in;
+	
 	init_shell(&sh, envv, argv);
 	while (42)
 	{
-		ft_disp(argc, argv);
 		ft_get_set_envv(sh.env);
-		if ((t = get_tree(get_input())))
+		ft_disp(argc, argv);
+		in = get_input();
+		set_signals();
+		if ((t = get_tree(in)))
 			ft_free_tree(exec_tree(ft_get_set_tree(t)));
 	}
 	return (0);
