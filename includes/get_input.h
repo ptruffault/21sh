@@ -59,7 +59,6 @@
 # define UNDERLINE_CURS "uc"
 # define DELETE_LINE "dl"
 
-
 typedef struct	s_termi
 {
 	struct termios	term;
