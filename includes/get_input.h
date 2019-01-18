@@ -59,6 +59,11 @@
 # define UNDERLINE_CURS "uc"
 # define DELETE_LINE "dl"
 
+typedef enum	e_boolen {
+	FALSE = 0,
+	TRUE = 1
+}				t_bool;
+
 
 typedef struct	s_termi
 {

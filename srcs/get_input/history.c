@@ -35,32 +35,6 @@ char **ft_tab_realloc(char **buff, size_t size)
 	return (ret);
 }
 
-/*char **get_hist(int fd)
-{
-	int x;
-	char *line;
-	char **hist;
-
-	x = 0;
-	if ((fd = open(e->path_hist, O_RDONLY)) != -1)
-	{
-		exit(0);
-	}
-	x = 0;
-	hist = NULL;
-	while (get_next_line(fd, &line) != -1)
-		{
-			if (!(hist = ft_tab_realloc(hist, sizeof(char * ) * (x + 2))))
-				exit(0);
-			hist[x++] = ft_strdup(line);
-			ft_strdel(&line);
-		}
-	if (x > 0)
-		hist[x] = NULL;
-	close(fd);
-	return (hist);
-}*/
-
 void	hist_move_up(t_edit *e)
 {
 	int x;
