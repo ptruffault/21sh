@@ -22,6 +22,7 @@ FILES		=		main.c \
 EXEC 		=		ft_execve.c \
 					exec.c \
 					redirection.c \
+					bin_search.c
 
 EVAL			=	eval_tools.c \
 					lexer.c \
@@ -49,6 +50,8 @@ GET_INPUT	=	curs_move.c	\
 
 EXPANSION		=	var.c \
 					exp.c \
+					curly_exp.c \
+					exp_tools.c \
 
 
 

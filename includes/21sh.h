@@ -112,9 +112,17 @@ typedef struct s_shell
 
 
 char	*get_input(void);
-char **ft_twordto_arr(t_word *w);
-t_word *ft_expention(t_word *w);
-char  *ft_exp_var(char *ret, t_shell *sh);
+
+char 	**ft_twordto_arr(t_word *w);
+
+
+//expension
+t_word 	*ft_expention(t_word *w);
+char 	 *ft_exp_var(char *ret, t_shell *sh);
+int 	get_content_size(char *s);
+char 	*ft_exp_param(char *ret, t_shell *sh, char *ptr);
+char *ft_exp_home_var(char *ret, char *ptr, t_envv *envv);
+char *ft_exp_envv_var(char *ret, char *ptr, t_shell *sh);
 
 t_tree 		*get_tree(char *input);
 void 		ft_free_tree(t_tree *t);
@@ -127,6 +135,7 @@ void ft_free_redirection(t_redirect *r);
 
 t_shell 	*ft_get_set_shell(t_shell *sh);
 void 		init_shell(t_shell *sh, char **envv, char **argv);
+void set_prgm_signal(void);
 void 	set_signals(void);
 
 //exec

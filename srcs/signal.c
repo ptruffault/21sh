@@ -31,6 +31,16 @@ void abort_exit(int s)
 
 }
 
+void set_prgm_signal(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+	signal(SIGTTIN, SIG_DFL);
+	signal(SIGTTOU, SIG_DFL);
+	signal(SIGCHLD, SIG_DFL);
+	signal(SIGTSTP, SIG_IGN);
+}
+
 void	set_signals(void)
 {
 	signal(SIGINT, SIG_IGN);

@@ -149,6 +149,8 @@ void ft_type(t_word *w)
 	t_shell *sh;
 	char opts[4];
 
+	if (!w || !w->word)
+		return ;
 	w = init_opts(opts, w);
 	sh = ft_get_set_shell(NULL);
 	while (w)
