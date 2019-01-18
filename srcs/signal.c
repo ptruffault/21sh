@@ -38,7 +38,7 @@ void set_prgm_signal(void)
 	signal(SIGTTIN, SIG_DFL);
 	signal(SIGTTOU, SIG_DFL);
 	signal(SIGCHLD, SIG_DFL);
-	signal(SIGTSTP, SIG_IGN);
+	signal(SIGTSTP, SIG_DFL);
 }
 
 void	set_signals(void)
