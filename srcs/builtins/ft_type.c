@@ -20,13 +20,13 @@ static t_word *init_opts(char opts[4], t_word *w)
 {
 	int i;
 
-	i = 1;
 	opts[0] = 0;
 	opts[1] = 0;
 	opts[2] = 0;
 	opts[3] = 0;
 	while (w->word && *w->word == '-')
 	{
+		i = 1;
 		while (w->word[i])
 		{
 			if (ft_strchr("atpP", w->word[i]))

@@ -102,25 +102,24 @@ void ft_lex_quote(t_eval *e)
 		e->eval[e->curr++] = ' ';
 }
 
-void ft_lex_right_redirect(t_eval *e)
+void ft_lex_redirect(t_eval *e)
 {
 	int j;
-	int len;
 
-	len = ft_strlen(e->s);
 	j = e->curr;
 	while (j > 0 && ft_isdigit(e->s[j - 1]))
 		e->eval[--j] = 'r';
 	e->eval[e->curr++] = 'r';
-	if (e->curr + 1 < len && e->s[e->curr] == '&')
+	if (e->s[e->curr] == '&' && e->s[e->curr + 1]
+	&& (ft_isdigit(e->s[e->curr + 1]) || e->s[e->curr + 1] == '-'))
 	{
-		e->eval[e->curr] = 'r';
-		if (e->s[e->curr + 1] == '-' && (!e->s[e->curr + 2] || ft_isspace(e->s[e->curr + 2])))
-			e->eval[++e->curr] = 'r';
+		e->eval[e->curr++] = 'r';
+		if (e->s[e->curr] == '-')
+			e->eval[e->curr++] = 'r';
 		else
 		{
-			while (ft_isdigit(e->s[e->curr + 1]))
-				e->eval[++e->curr] = 'r';
+			while (ft_isdigit(e->s[e->curr]))
+				e->eval[e->curr++] = 'r';
 		}
 	}
 }
@@ -150,10 +149,8 @@ void ft_lexword(t_eval *e)
 		e->eval[e->curr++] = 'o';
 	else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 		ft_lex_var(e);
-	else if (e->s[e->curr] == '<')
-		e->eval[e->curr++] = 'r';
-	else if (e->s[e->curr] == '>')
-		ft_lex_right_redirect(e);
+	else if (e->s[e->curr] == '>' || e->s[e->curr] == '<')
+		ft_lex_redirect(e);
 	else if (e->s[e->curr])
 		e->eval[e->curr++] = 'e';
 }
@@ -170,6 +167,8 @@ t_eval lexer(char *src)
 	while (e.s[e.curr])
 		ft_lexword(&e);
 	e.eval[e.curr] = 0;
+	ft_putendl(e.eval);
+	ft_putendl(e.s);
 	ft_clean_str(&e);
 	return (e);
 }
