@@ -105,5 +105,6 @@ void 			get_hist_path(t_edit *e);
 char 			**get_hist(int fd);
 void			update_input(t_edit *e, char *s);
 
+void ft_disp(int argc, char **argv);
 
 #endif
