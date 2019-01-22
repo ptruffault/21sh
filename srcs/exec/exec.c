@@ -111,7 +111,7 @@ t_tree *exec_tree(t_tree *t)
 	return (t);
 }
 
-void exec_file(char *path, t_shell *sh)
+void exec_file(char *path)
 {
 	char **instruct;
 	int fd;
@@ -123,7 +123,6 @@ void exec_file(char *path, t_shell *sh)
 	{
 		if ((instruct = ft_get_txt(fd)))
 		{
-			ft_get_set_shell(sh);
 			while (instruct[i])
 			{
 				if (*instruct[i] && (t = get_tree(instruct[i])))
@@ -135,5 +134,5 @@ void exec_file(char *path, t_shell *sh)
 		ft_close(fd);
 	}
 	else
-		error("can't exec this file", path);
+		perror(path);
 }

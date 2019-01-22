@@ -25,11 +25,7 @@ static char *sub_handle_modifier(char *parenth, char *ptr, t_shell *sh)
 	v2 = ft_strdup(ptr + 1);
 	val = NULL;
 	if (*ptr == '-')
-	{
-		printf("v1 = %s v2 = %s\n",v1, v2 );
 		val = ft_strdup((get_tenvv(sh->env, v1) ? v1 : v2));
-		printf("val =%s\n",val );	
-	}
 	if (*ptr == '+')
 		val = ft_strdup((get_tenvv(sh->env, v1) ? v2 : NULL));
 	if (*ptr == '?' && !(val = ft_strdup((get_tenvv(sh->env, v1) ? v1 : NULL))))

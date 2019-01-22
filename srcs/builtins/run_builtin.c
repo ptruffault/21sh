@@ -100,7 +100,7 @@ int run_builtin(t_tree *t, char **argv)
 	else if (ft_strequ(*argv, "type"))
 		ft_type(t->cmd->next);
 	else if (ft_strequ(*argv, "sh"))
-		exec_file(argv[1], ft_get_set_shell(NULL));
+		exec_file(argv[1]);
 	else
 		ft_get_set_envv(change_envv(argv, envv));
 	if (t->r)

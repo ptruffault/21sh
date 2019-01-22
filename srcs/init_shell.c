@@ -55,6 +55,7 @@ void init_shell(t_shell *sh, char **envv, char **argv)
 {
 	char *shell_path;
 	char *shell_fold;
+	char *hi_path;
 	char *rc_path;
 	char *pwd;
 	char buff[4097];
@@ -72,11 +73,17 @@ void init_shell(t_shell *sh, char **envv, char **argv)
 		&& (shell_fold = ft_strndup(shell_path, pwd - shell_path)))
 		{
 			sh->env = ft_new_envv(sh->env, "SHELL_FOLD", shell_fold);
+			if ((hi_path = ft_strjoin(shell_fold, "/sys/.21history"))
+			&& (sh->env = ft_new_envv(sh->env, "HISTORY", hi_path)))
+			{
+				sh->hist = init_hist(hi_path);
+				ft_strdel(&hi_path);
+			}
 			if ((rc_path = ft_strjoin(shell_fold, "/sys/.21shrc")))
 			{
-				exec_file(rc_path, sh);
+				sh = ft_get_set_shell(sh);
+				exec_file(rc_path);
 				ft_strdel(&rc_path);
-				sh->hist = init_hist(sh->env);
 			}
 			ft_strdel(&shell_fold);
 		}

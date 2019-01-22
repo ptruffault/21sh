@@ -1,0 +1,11 @@
+env
+exit
+env
+ls
+ls
+exit
+ls|rev
+ls|rev|rev
+ls|rev|rev|rev
+ls|rev|rev|rev|cat -e
+exit

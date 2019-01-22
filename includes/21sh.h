@@ -145,7 +145,7 @@ t_tree *exec_pipe(t_tree *t);
 t_tree *exec_instruction(t_tree *t);
 int  run_builtin(t_tree *t, char **argv);
 t_tree *exec_tree(t_tree *t);
-void exec_file(char *path, t_shell *sh);
+void exec_file(char *path);
 t_tree	*ft_get_set_tree(t_tree *new_t);
 
 
@@ -172,7 +172,7 @@ void ft_type(t_word *w);
 int fd_dup(int fd1, int fd2);
 
 //historique
-t_hist *init_hist(t_envv *env);
+t_hist *init_hist(char *hist);
 int ft_hist_len(t_hist *hist);
 t_hist *new_hist(void);
 t_hist *add_hist(t_hist *head, char *s);
