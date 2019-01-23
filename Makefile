@@ -141,8 +141,7 @@ chmod:
 
 save: clear fclean
 	@git add * srcs/* includes/*
-	@echo "COMMIT AND THEN WRITE EOC"
-	@git commit -m  << "EOC"
+	@git commit -m "MAKE SAVE"
 	@git push
 	@echo "$(DONE)"
 
