@@ -116,6 +116,8 @@ void			free_tedit(t_edit *e);
 void 			get_hist_path(t_edit *e);
 char 			**get_hist(int fd);
 void			update_input(t_edit *e, char *s);
+void ft_copy(t_edit *e);
+void ft_paste(t_edit *e);
 
 void ft_disp(int argc, char **argv);
 
