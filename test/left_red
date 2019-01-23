@@ -1,0 +1,1 @@
+cat < pipe | rev

@@ -1,0 +1,1 @@
+ls /Users/ptruffau > /Users/ptruffau/file; echo END >> /Users/ptruffau/file

@@ -53,6 +53,7 @@
 # define CURSEUR_DO "do"
 # define CURSEUR_LE "le"
 # define CURSEUR_RI "nd"
+# define CURSEUR_MOVE "cm"
 # define SAVE_CURS  "sc"
 # define RESET_CURS "rc"
 # define CLEAR "cl"

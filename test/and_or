@@ -1,0 +1,1 @@
+ls&&echo ls OK && ls -z || echo ls -z KO

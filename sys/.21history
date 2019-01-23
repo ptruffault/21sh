@@ -213,3 +213,31 @@ echo ${PWD:?MDR}
 exit
 echo ${PWD:?MDR}
 exit
+ls
+env
+clear
+ls
+env
+echo 4PWD
+$PWD
+echo ${PWD:?MDR}
+${PWD:?LOL}
+${PWDD:?LOL}
+${PWDD:?LOL}
+exit
+exit
+env
+ls|rev|cat -e
+cd
+exit
+'ls
+env
+'
+ls
+env
+clear
+"ls"
+"ls"
+exit
+"ls -R"
+exit

@@ -1,0 +1,1 @@
+ls;echo OK;IdkWhatToTest; env|grep PWD

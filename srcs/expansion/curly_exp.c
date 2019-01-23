@@ -51,11 +51,7 @@ static char *sub_get_param_value(char *old_parenth, t_shell *sh)
 	{
 		printf(" CHAR %c\n",*ptr );
 		if (ft_strchr("-+?=", *ptr)) 
-		{
-
-			if (!(value = sub_handle_modifier(parenth, ptr, sh)))
-				return (NULL);
-		}
+			value = sub_handle_modifier(parenth, ptr, sh);
 		else
 		{
 			error_c("unrecognized modifier", *ptr);
