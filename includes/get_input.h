@@ -59,6 +59,16 @@
 # define UNDERLINE_CURS "uc"
 # define DELETE_LINE "dl"
 
+/* DEFINE DE TESTS */
+
+# define TOUCHE_MAJ_ARROW_LEFT 109
+# define TOUCHE_MAJ_ARROW_RIGHT 110
+# define TOUCHE_CMD_C 99
+# define TOUCHE_CMD_V 118
+
+
+/* DEFINE DE TESTS */
+
 typedef struct	s_termi
 {
 	struct termios	term;
@@ -76,6 +86,8 @@ typedef struct	s_edit
 	int		size;
 	int		curr_history;
 	int		pos_hist;
+	int		select;
+	char	*clipboard;
 	t_hist	*hist;
 	t_termi	*t;
 }				t_edit;
