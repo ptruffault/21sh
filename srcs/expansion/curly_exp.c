@@ -124,15 +124,17 @@ char *ft_exp_param(char *ret, t_shell *sh, char *ptr)
 			len = 1;
 			parenth = tmp;
 		}
-		if (ft_str_startwith(parenth , "${"))
+		while (ft_str_startwith(parenth , "${") && (tmp = sub_get_param_value(parenth , sh)))
 		{
-			if ((tmp = sub_get_param_value(parenth , sh)))
-			{
 				ft_strdel(&parenth);
 				parenth = tmp;
-			}
 		}
 		value = ft_get_param_value(sh, parenth);
+		while (ft_str_startwith(value, "${") && (tmp = sub_get_param_value(value, sh)))
+		{
+			ft_strdel(&value);
+			value = tmp;
+		}
 		ft_strdel(&parenth);
 	}
 	if (len == 1)

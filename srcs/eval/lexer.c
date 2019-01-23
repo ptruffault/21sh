@@ -39,7 +39,11 @@ void ft_lex_parenth(t_eval *e)
 	c = e->s[save];
 	while (e->s[e->curr] && ((c == '(' && e->s[e->curr] != ')') 
 	|| (c == '{' && e->s[e->curr] != '}')))
+	{
 		e->eval[e->curr++] = 'v';
+		if (e->s[e->curr] == '(' || e->s[e->curr] == '{')
+			ft_lex_parenth(e);
+	}
 	if (!e->s[e->curr])
 	{
 		e->s = ft_strjoin_fr(e->s , p_get_input(c));

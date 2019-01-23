@@ -76,6 +76,8 @@ typedef struct	s_edit
 	int		size;
 	int		curr_history;
 	int		pos_hist;
+	int 	select;
+	char 	*clipboard;
 	t_hist	*hist;
 	t_termi	*t;
 }				t_edit;
