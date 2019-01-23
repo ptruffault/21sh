@@ -19,8 +19,10 @@ void ft_free_tword(t_word *w)
 	while (w)
 	{
 		ft_strdel(&w->word);
+		w->type = 0;
 		tmp = w->next;
 		free(w);
+		w = NULL;
 		w = tmp;
 	}
 }

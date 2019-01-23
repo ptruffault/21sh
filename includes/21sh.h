@@ -114,7 +114,8 @@ typedef struct s_shell
 char	*get_input(void);
 
 char 	**ft_twordto_arr(t_word *w);
-
+void 		ft_put_tword(t_word *w);
+void 		ft_free_tword(t_word *w);
 
 //expension
 t_word 	*ft_expention(t_word *w);
