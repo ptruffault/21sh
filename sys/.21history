@@ -9,3 +9,47 @@ ls|rev|rev
 ls|rev|rev|rev
 ls|rev|rev|rev|cat -e
 exit
+env
+cl
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+ls
+cl
+env
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+cl
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+echo ${PWDE:-${PWDD:-${MDR:-OK}}}
+exit
+cl
+env
+env|grep PWD
+ls
+env
+ls
+ls -R ${HOME}
+ls -R ${HOME}
+ls
+env
+ls
+ls|rev
+ls
+env
+cl
+exit
+echo ${PWD:-LOL}
+exit
