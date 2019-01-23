@@ -46,7 +46,8 @@ GET_INPUT	=	curs_move.c	\
 						input_tools.c	\
 						print_line.c	\
 						setup.c	\
-						fct.c
+						fct.c	\
+						ft_cop_pas.c	\
 
 EXPANSION		=	var.c \
 					exp.c \
