@@ -1,1 +1,0 @@
-/bin/ls -R /Users/ptruffau |rev |cat -e | rev

@@ -26,7 +26,7 @@ int				check_builtin(char *input)
 	"alias",
 	"unalias",
 	"type",
-	"sh"
+	"42"
 	};
 	int i;
 
@@ -119,7 +119,7 @@ int run_builtin(t_tree *t, char **argv)
 		ft_echo(&argv[1]);
 	else if (ft_strequ(*argv, "type"))
 		ft_type(t->cmd->next);
-	else if (ft_strequ(*argv, "sh"))
+	else if (ft_strequ(*argv, "42"))
 		exec_file(argv[1]);
 	else
 		ft_get_set_envv(change_envv(argv, envv));
