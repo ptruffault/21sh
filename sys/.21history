@@ -332,6 +332,7 @@ ls
 env
 clear
 exit
+<<<<<<< HEAD
 ls
 type
 type type
@@ -536,4 +537,98 @@ ls
 clear
 dc
 skl,fmfd
+=======
+cl
+env
+name=val l=mdr
+set
+clear
+ls|rev
+cl
+ls
+sh test/ext
+exit
+ddd
+egregv
+wegbwe
+fbwr
+bwr
+br
+b
+wrb
+wr
+bwr
+brs
+bwrdbwr
+bwr
+dbwr
+dbw
+4rfb 
+rwfb
+rwb
+dwdqfeeewafeqf gqerdgeqrfgeqrfdgeqrfgbvrtwfbrfdcb wtrfdcbvwtrfdcgverfdcgvqredsgvqerdsgfvqcerdsgfverqregqverdgverqdgvqerdgverfcgaverdgsrvedgqer
+clear
+ls
+qdfqerdfqerdgqrdgvrtwfdcbtgfcdb wtrfcdbvdwfejvnefnvjenvjenvjnejvnrejvnjrnvjfnvjfnjvfjvfjnvjfnvjfnjvnfjnv
+qduivhequvheqfhvgqefvqef
+ehudivofqeuvgefuygvfbeuydvjgerfbiuqvjckhewfunirjhefuiejdgfhyqredf
+wdjqiufqwehfuwejdfndfivqwd
+weqhufiqervyuef
+cl
+emv
+env
+ls|rev
+ls
+sdmkvdksdnvjsdnjvndjvnjdnvjdnvjdnvjdjvnd
+qwdqwd
+lwwlqd
+qdqwdqwd
+qwebfwe
+efnwef
+ldw
+dfnqejrkigbvhefjbvfhjvbfhnfvnvnnnnnnnnfnfnfnfnffjnfjfnfjfjfkdkdldlddhjcwvnwnwwnwlwnfuiwv
+dfnqejrkigbvhefjbvfhjvbfhnfvnvnnnnnnnnfnfnfnfnffjnfjfnfjfjfkdkdldlddhjcwvnwnwwnwlwnfuiwv
+42 test/test
+exit
+edgjkberhgbeveflbmv
+r
+egfregefnbefc\bvefbe
+ls
+ls|rev
+42 lol
+42 test/test
+cd test
+42 test
+ls
+exit
+cd test
+42 test
+ls > file
+rm -rf 21t sht
+ls
+42 test
+ls
+42 test
+42 test
+clear
+42 test
+42 test
+cd test
+ls
+42 test
+42 test
+42 test
+exit
+cd test
+42 test
+42 test
+exit
+42 tmp
+ls
+cat tmp
+cat tmp
+exit
+42 tmp
+exi
+>>>>>>> 50bd471ce86d2f01ef48ec3778a3f4f6c4441a8b
 exit
