@@ -44,27 +44,17 @@ int				check_builtin(char *input)
 void set_var(char **argv, t_shell *sh)
 {
 	t_envv *head;
-	t_envv *tmp;
-	char *name;
-	char *val;
+	t_envv *end;
 	int i;
 
-	i = -1;
-	head = NULL;
-	while (ft_isequal(argv[++i]))
-	{
-		name = get_name(argv[i]);
-		val = get_value(argv[i]);
-		head = ft_new_envv(head, name, val);
-		ft_strdel(&name);
-		ft_strdel(&val);
-	}
+	head = ft_setenv(new_tenvv(), argv);
+	end = head;
+	i = 0;
+	while (end && end->next && i++)
+		end = end->next;
 	if (!(argv[i]))
 	{
-		tmp = head;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = sh->intern;
+		end->next = sh->intern;
 		sh->intern = head;
 	}
 }

@@ -332,3 +332,208 @@ ls
 env
 clear
 exit
+ls
+type
+type type
+type ls
+type "ls"
+type "ls -r"
+type  name=val
+exit
+name=val
+set
+name=val v=lol
+set
+clear
+ls
+env
+echo -n "lol"
+exit
+echo -n lol
+exit
+ls
+echo "\a"
+echo '\a'
+echo "\a"
+"\a"
+exit
+echo "\a"
+echo "\""
+echo "\"
+"
+exit
+ls
+env
+clear
+echo "\a \n"
+"\a"
+'\a'
+"$PWD"
+echo '$PWD'
+echo '$PWD'
+exit
+clear
+env
+ls
+clear
+echo 'lol'
+echo "\a"
+exit
+echo "\a"
+\&
+exit
+ls
+cl
+exit
+cl
+env
+cl
+export PWD=mdr ; echo $PWD
+pwd
+ls
+env
+cl
+ls
+./21sh
+exit
+export LOL=MDR
+env
+cl
+export LOL
+env
+export MDR
+env
+exit
+ls
+env
+name=val
+set
+export name
+env
+export LOL=MDR;echo $LOL
+lol=mdr
+echo $lol
+echo $lol; export lol
+ls
+ls|rev
+ls
+ls;ls
+"lol"
+"lol";
+ls
+ls;ls
+cl
+ls&&ls|rev||env
+cl
+ls&&ls|rev||env
+echo $PWD
+export $PWD;echo $PWD
+export PWD=MDRLOL; echo $PWD
+cl
+env
+name=value ty=tty ls
+set
+name=val
+set
+name=val t=op
+set
+name=val
+set
+exit
+name=lol
+name=val
+set
+name=PWD
+set
+ls
+ls
+env
+name=valeu
+set
+name=lol lol=name
+set
+exit
+exi
+exit
+name=val
+set
+ls
+cl
+env
+exit
+exit
+ls
+exit
+exit
+ls
+env
+name=val
+exit
+exit
+e
+exit
+name=val
+exit
+name=val
+se
+set
+exit
+ls
+name=val
+set
+exit
+env
+ls
+ls>file
+rm -rf file
+ls
+cl
+env
+ck
+cl
+env
+cl
+env
+sh lol
+clar
+clear
+cl
+env
+type cl
+type cl
+type cl
+type -p cl
+type -P -p cl
+type -P env
+type -p env
+type -a env
+alias env=mdr
+type -a env
+env
+unalias env
+env
+cl
+env
+cl
+env
+exit
+ls
+cl
+efafj
+f
+fzef
+e
+fea
+zfe
+ef
+f
+f
+f
+ff;ghuh ty"hsm
+f
+"
+ls
+clear
+dc
+skl,fmfd
+exit

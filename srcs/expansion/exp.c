@@ -41,7 +41,7 @@ t_word *ft_expention(t_word *w)
 	tmp = w;
 	while (w)
 	{
-		if (IS_CMD(w->type) && w->word && !(w->word = ft_exp_var(w->word, sh)))
+		if (IS_EXP(w->type) && w->word && !(w->word = ft_exp_var(w->word, sh)))
 			return (NULL);
 		else
 			w = w->next;

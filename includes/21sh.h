@@ -21,7 +21,8 @@
 # include <dirent.h>
 # include "../libft/includes/libft.h"
 # define IS_STD(x) (0 <= x && x <= 2)
-# define IS_CMD(x) (1 <= x && x <= 4)
+# define IS_CMD(x) (1 <= x && x <= 5)
+# define IS_EXP(x) (1 <= x && x <= 4)
 
 enum e_rtype{
 	UNDEF = 0,
@@ -42,11 +43,12 @@ enum e_otype{
 enum e_wtype{ 
     undef = 0,
     CMD = 1,
-    PATH = 2,
-    QUOTE = 3,
+    ARG = 2,
+    DQUOTE = 3,
     VAR = 4,
-    REDIRECT = 5,
-    OPERATEUR = 6
+    QUOTE = 5,
+    REDIRECT = 6,
+    OPERATEUR = 7
 };
 
 typedef struct	s_hist

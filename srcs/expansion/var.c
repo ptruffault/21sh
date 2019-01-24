@@ -24,7 +24,6 @@ static char *ft_get_varname(char *s)
 	return (ft_strsub(s, ptr - s , i));
 }
 
-
 char *ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
 {
 	char *name;

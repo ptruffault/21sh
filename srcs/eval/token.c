@@ -15,16 +15,12 @@
 static t_word *find_type(t_word *w, char c, int *pos)
 {
 	if (c == 'o')
-	{
 		w->type = OPERATEUR;
-		*pos = 0;
-	}
 	else if (c == 'r')
-	{
 		w->type = REDIRECT;
-		*pos = 0;
-	}
 	else if (c == 'q')
+		w->type = DQUOTE;
+	else if (c == 's')
 		w->type = QUOTE;
 	else if (c == 'v')
 		w->type = VAR;
@@ -33,7 +29,7 @@ static t_word *find_type(t_word *w, char c, int *pos)
 		if (*pos == 0)
 			w->type = CMD;
 		else
-			w->type = PATH;
+			w->type = ARG;
 		*pos = *pos + 1;
 	}
 	else
@@ -48,12 +44,19 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 	char c;
 	int begin;
 
-	c = eval[*i];
 	begin = *i;
-	while (eval[*i] && (eval[*i] == c || (c == 'q' && eval[*i] == 'v')
-	|| (c == 'v' && eval[*i] == 'e') || (c == 'e' && eval[*i] == 'v')
-	|| (c == 'v' && eval[*i] == 'q')))
-		*i = *i + 1;
+	c = eval[*i];
+	if (eval[*i] == 'o' || eval[*i] == 'r')
+	{
+		while (eval[*i] && eval[*i] == c)
+			*i = *i + 1;
+		*pos = 0;
+	}
+	else
+	{
+		while (eval[*i] && eval[*i] != ' ' && eval[*i] != 'o' && eval[*i] != 'r')
+			*i = *i + 1;
+	}
 	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
 	 	return (NULL);
 	 return (find_type(w, c, pos));
@@ -82,7 +85,7 @@ static t_word *ft_get_words(char *input, char *eval)
 		if (eval[i] == 0 || !(tmp->next = new_tword()))
 			return (head);
 		tmp = tmp->next;
-		while (eval[i] == ' ')
+		while (eval[i] && eval[i] == ' ')
 			i++;
 	}
 	return (head);

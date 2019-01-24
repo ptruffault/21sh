@@ -14,13 +14,20 @@
 void		ft_echo(char **input)
 {
 	int i;
+	int opts_n;
 
 	i = 0;
+	opts_n = 0;
 	while (input[i])
 	{
 		if (i > 0)
 			ft_putchar('\t');
+		if (ft_strequ(input[i], "-n") && input[++i])
+			opts_n = 1;
 		ft_putstr(input[i++]);
 	}
-	ft_putchar('\n');
+	if (opts_n)
+		ft_putchar(0);
+	else
+		ft_putchar('\n');
 }

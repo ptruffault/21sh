@@ -14,20 +14,13 @@
 
 void ft_lex_backslash(t_eval *e)
 {
-	char c;
-
-	if (e->curr > 0 && (e->s[e->curr - 1] == '\'' || e->s[e->curr - 1] == '"'
-	|| e->eval[e->curr - 1] == 'q'))
-		c = 'q';
-	else
-		c = 'e';
-	e->eval[e->curr++] = 'B';
+	e->eval[e->curr++] = ' ';
 	if (!(e->s[e->curr]))
 	{
 		e->s = ft_strjoin_fr(e->s, backslash_get_input());
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
+		e->eval = ft_srealloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
 	}
-	e->eval[e->curr++] = c;
+	e->eval[e->curr++] = 'e';
 }
 
 void ft_lex_parenth(t_eval *e)
@@ -47,7 +40,7 @@ void ft_lex_parenth(t_eval *e)
 	if (!e->s[e->curr])
 	{
 		e->s = ft_strjoin_fr(e->s , p_get_input(c));
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
+		e->eval = ft_srealloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
 		e->curr = save;
 		ft_lex_parenth(e);
 	}
@@ -74,8 +67,9 @@ void ft_lex_dquote(t_eval *e)
 	e->eval[e->curr++] = ' ';
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '"')
 	{
-		if (e->s[e->curr] == '\\')
-			ft_lex_backslash(e);
+		if (e->s[e->curr] == '\\' && (e->eval[e->curr++] = 'q')
+		&&	e->s[e->curr + 1] == '"')
+			e->eval[e->curr++] = 'q';
 		else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 			ft_lex_var(e);
 		else
@@ -84,7 +78,7 @@ void ft_lex_dquote(t_eval *e)
 	if (!e->s[e->curr])
 	{
 		e->s = ft_strjoin_fr(ft_stradd_char(e->s, '\n'), q_get_input('"'));
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
+		e->eval = ft_srealloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
 		ft_lex_dquote(e);
 	}
 	else
@@ -95,11 +89,11 @@ void ft_lex_quote(t_eval *e)
 {
 	e->eval[e->curr++] = ' ';
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '\'')
-		e->eval[e->curr++] = 'q';
+		e->eval[e->curr++] = 's';
 	if (!e->s[e->curr])
 	{
 		e->s = ft_strjoin_fr(ft_stradd_char(e->s, '\n'), q_get_input('\''));
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
+		e->eval = ft_srealloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
 		ft_lex_quote(e);
 	}
 	else
@@ -171,6 +165,7 @@ t_eval lexer(char *src)
 	while (e.s[e.curr])
 		ft_lexword(&e);
 	e.eval[e.curr] = 0;
+	ft_putendl(e.eval);
 	ft_clean_str(&e);
 	return (e);
 }

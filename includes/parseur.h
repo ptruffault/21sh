@@ -14,10 +14,6 @@
 # define PARSEUR_H
 # include "21sh.h"
 
-# define S_UNDEF 0
-# define S_DQUOTE 1
-# define S_QUOTE 2
-# define S_VAR 3
 
 t_word 		*ft_addtword(t_word *head, t_word *new);
 t_word 		*get_redirections(t_tree *t, t_word *w);
