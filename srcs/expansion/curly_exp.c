@@ -49,7 +49,6 @@ static char *sub_get_param_value(char *old_parenth, t_shell *sh)
 		parenth = sub_get_param_value(parenth, sh);
 	if ((ptr = ft_strchr(parenth, ':')) && ++ptr)
 	{
-		printf(" CHAR %c\n",*ptr );
 		if (ft_strchr("-+?=", *ptr)) 
 			value = sub_handle_modifier(parenth, ptr, sh);
 		else
@@ -97,10 +96,12 @@ static char *ft_get_param_value(t_shell *sh, char *parenth)
 	val = NULL;
 	if (parenth && (ptr = ft_strchr(parenth, ':')) && ++ptr)
 	{
-		if (ft_strchr("-+?=", *ptr) && !(val = handle_modifier(parenth, ptr, sh)))
-			return (NULL);
-		else
+		if (!ft_strchr("-+?=", *ptr))
 			error_c("unrecognized modifier", *ptr);
+		else if (!(val = handle_modifier(parenth, ptr, sh)))
+			return (NULL);
+		return (val);
+			
 	}
 	else if (parenth && !(val = ft_strdup(get_tenvv_val(sh->env, parenth))))
 		val = ft_strdup(parenth);

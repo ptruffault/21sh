@@ -41,12 +41,32 @@ int				check_builtin(char *input)
 	return (0);
 }
 
-void ft_exit(t_tree *t, t_envv *e)
+void set_var(char **argv, t_shell *sh)
 {
-	ft_free_tree(t);
-	ft_free_tenvv(e);
-	ft_putendl("\033[00;31m21sh get killed\033[00m");
-	exit(0);
+	t_envv *head;
+	t_envv *tmp;
+	char *name;
+	char *val;
+	int i;
+
+	i = -1;
+	head = NULL;
+	while (ft_isequal(argv[++i]))
+	{
+		name = get_name(argv[i]);
+		val = get_value(argv[i]);
+		head = ft_new_envv(head, name, val);
+		ft_strdel(&name);
+		ft_strdel(&val);
+	}
+	if (!(argv[i]))
+	{
+		tmp = head;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = sh->intern;
+		sh->intern = head;
+	}
 }
 
 
@@ -61,7 +81,7 @@ static t_envv	*change_envv(char **argv, t_envv *envv)
 		else if (ft_strequ(*argv, "setenv"))
 			sh->env = ft_get_set_envv(ft_setenv(envv, &argv[1]));
 		else if (ft_isequal(*argv))
-			sh->intern = ft_setenv(sh->intern, argv);
+			set_var(argv, sh);
 		else if (ft_strequ(*argv, "unset"))
 			sh->intern = ft_unsetenv(sh->intern, &argv[1]);
 		else if (ft_strequ(*argv, "cd"))

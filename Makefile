@@ -37,7 +37,9 @@ BUILTINS		=	ft_echo.c \
 					run_builtin.c \
 					ft_env.c \
 					ft_export.c \
-					ft_type.c
+					ft_type.c \
+					ft_exit.c \
+					type_tools.c
 
 GET_INPUT	=	curs_move.c	\
 						get_input.c	\

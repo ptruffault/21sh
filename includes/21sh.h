@@ -160,17 +160,25 @@ int ft_isparenth(char c);
 
 
 
+
+
 //builtins
 int		check_builtin(char *input);
 t_envv	*ft_cd(char **input, t_envv *envv);
 void	ft_echo(char **input);
+void	ft_exit(t_tree *t, t_envv *e);
 void	ft_env(t_envv *envv, char **argv);
-t_envv *ft_export(t_shell *sh, char **argv);
-t_envv *ft_alias(t_shell *sh, char **argv);
-void ft_type(t_word *w);
+t_envv	*ft_export(t_shell *sh, char **argv);
+t_envv	*ft_alias(t_shell *sh, char **argv);
 
+void	ft_type(t_word *w);
+int		putword(t_word *w, int t);
+int		putfile(t_word *w, t_envv *env, int t);
+int		putcmd(t_word *w, t_envv *env, int t);
+int		putbuiltin(t_word *w, int t);
+int		putalias(t_word *w, t_envv *alias, int t);
 //sys
-int fd_dup(int fd1, int fd2);
+int		fd_dup(int fd1, int fd2);
 
 //historique
 t_hist *init_hist(char *hist);
