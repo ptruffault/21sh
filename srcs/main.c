@@ -19,7 +19,7 @@ void		ft_disp(int argc, char **argv)
 	(void)argv;
 	(void)argc;
 	pwd = get_tenvv_val(ft_get_set_envv(NULL), "PWD");
-	ft_printf("\033[1;32m 21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]", pwd);
+	ft_printf("\033[1;32m 21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n", pwd);
 }
 
 void ft_put_tword(t_word *w)

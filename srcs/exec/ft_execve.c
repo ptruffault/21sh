@@ -21,7 +21,6 @@ pid_t ft_execve(t_process *p, t_tree *t)
 	else if (pid == 0)
 	{
 		ft_redirect(t);
-		printf("%s %s %s\n",p->cmd, *p->argv, *p->env );
 		execve(p->cmd, p->argv, p->env);
 		warning("execve fucked up", p->cmd);
 	}
@@ -77,7 +76,6 @@ int ft_exec(t_tree *t)
 				p->status = DONE;
 			}
 		}
-
 	}
 	return (p->ret);
 }
