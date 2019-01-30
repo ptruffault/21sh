@@ -44,8 +44,11 @@ int fd_dup(int fd1, int fd2)
 	return (0);
 }
 
-int ft_redirect(t_redirect *r)
+int ft_redirect(t_tree *t)
 {
+	t_redirect *r;
+
+	r = t->r;
 	while (r)
 	{
 		if (get_destination_fd(r) < 0 || fd_dup(r->to, r->from) == -1)

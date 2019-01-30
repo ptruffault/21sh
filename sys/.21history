@@ -632,3 +632,329 @@ exit
 exi
 >>>>>>> 50bd471ce86d2f01ef48ec3778a3f4f6c4441a8b
 exit
+clear
+clear
+clear
+env
+clear
+ls
+env
+clear
+evks
+ckear
+ls
+clear
+env
+type clear
+exit
+exit
+ls
+jobs
+exi
+exit
+ls
+env
+jobs
+ls
+env
+cl
+env
+clear
+type -a clear
+type -a cl
+type c
+exit
+ls
+exit
+ls
+jobs
+l
+jobs
+exit
+jobs
+clear
+ls
+jobs
+exit
+ls
+jobs
+exit
+ls
+ls
+clar
+clear
+ls -R $HOME
+ls
+jobs
+echo lol
+jobs
+man kill
+man 2 kill
+exit
+ls -R /
+exit
+exit
+echo ${PWD:+LOL}
+echo ${PWD:-LOL}
+echo ${PWDD:-LOL}
+echo ${${PWD:+PWD}:-LOL}
+echo ${${PWD:-PWDD}:-LOL}
+echo ${${PWD:-PWDD}:-LOL}
+exit
+echo ${PWD:?lool}
+echo ${PWDD:?lool}
+${LOL:=mdr}
+env
+exit
+echo ${P:=l}
+echo $P
+env
+exit
+ls
+ls|rev
+exit
+test
+type test
+type -a test
+exit
+exi
+clear
+exit
+test
+ls & ls
+ls ;
+ls;ls
+ls&&ls
+ls;
+ls;
+ls
+ls;
+ls;env
+ls| ;ls
+ls| || ;ls
+clear
+|ls
+ls|
+rev
+ls||;
+ls;;|
+ls
+env
+clear
+se
+set
+jobs
+cat 
+cat
+ls -R $HOME
+ls -R $HOME
+ls -R $HOME
+ls -R $HOME
+cat
+cat
+cat 
+ks
+s
+ls *
+env
+ls
+ls|
+rev
+ls
+ls|rev|cat -e
+exit
+ls
+exit
+ls
+ls|rev
+ls ai
+ls as
+test
+type test
+cl
+type cl
+exit
+exit
+ls
+clear
+ls|rev
+echo lol 
+echo lol &
+jobs
+ls&
+cl
+env
+set
+n=l
+set
+clear
+ls
+echo ${LOL}
+echo ${LOL} ${LOL:-PWD}
+echo ${LOL} ${LOL:-$PWD}
+clear
+s
+ls
+l;
+ls;;$
+ls::::
+ls;;
+ls|re 
+ls|rev
+cl
+env
+ls
+ls||
+le
+ls|||
+ls &
+cl
+env
+ls
+clear
+ls|rev
+cl
+env
+cl
+ls $HOME
+jobs
+exit
+cleqr
+clear
+ls $HOME -R
+ls $HOME -R
+ls $HOME -R
+ls $HOME -R
+ls $HOME -R
+ls $HOME -R
+ls -R $HOME 
+ls -R /
+jobs
+jobs
+ls
+jpbs
+jobs
+clear
+clear
+clear
+ls
+man signal
+jobs
+jobs
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+env
+cleqr
+cl
+ls
+ls
+ls
+sl
+exit
+$ls
+ls
+$PWD
+$p
+echo $OKEP
+cl
+env
+ls
+jobs
+cl
+jobs
+$jobs
+ls
+ls|rev$
+ls|rev
+ls|rev
+ls|cat|rev
+ls|cat|zerg
+ls$
+cleqr
+jobs
+ls
+jobs
+ls
+jobs
+ls -z
+jobs
+exit
+ls
+ls|rev
+cl
+jobs
+ls&
+ls
+clear
+ls|rev
+ls|rev
+ls
+ls&
+exit
+ls
+ls&
+ls&ls
+ls&ls
+ls&ls&ls
+exit
+ls &
+ls& ls
+exit
+ls&ms
+ls&&ms
+ls&ls
+ls&l
+cl
+ls
+ls&ls
+ls&l
+ls&l
+ls&ls
+clear
+ls
+ls|rev
+l&l
+cez&
+jobs
+exit
+export HOME=
+env
+cd
+cd
+exit
+ls
+exit
+ls
+ls &
+ls&ls
+clear
+ls -z &&ls
+ls -z &ls
+exit
+ls &ls
+ls
+./21sh &
+t
+xi
+t
+exietexils
+s
+l
+x
+eite
+ls
+ls &
+ls
+exit

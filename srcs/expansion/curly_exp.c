@@ -81,7 +81,7 @@ static char *handle_modifier(char *parenth, char *ptr, t_shell *sh)
 	if (*ptr == '?' && !(val = ft_strdup(get_tenvv_val(sh->env, val1))))
 		error(val1, val2);
 	if (*ptr == '=' && !(val = ft_strdup(get_tenvv_val(sh->env, val1))) && val2 && 
-	(sh->env = ft_new_envv(sh->env, val1, val2)))
+	(sh->env = ft_new_envv(sh->intern, val1, val2)))
 		val = ft_strdup(val2);
 	ft_strdel(&val1);
 	ft_strdel(&val2);
@@ -103,8 +103,8 @@ static char *ft_get_param_value(t_shell *sh, char *parenth)
 		return (val);
 			
 	}
-	else if (parenth && !(val = ft_strdup(get_tenvv_val(sh->env, parenth))))
-		val = ft_strdup(parenth);
+	else if (parenth)
+		val = ft_strdup(get_tenvv_val(sh->env, parenth));
 	return (val);
 
 }
@@ -133,20 +133,9 @@ char *ft_exp_param(char *ret, t_shell *sh, char *ptr)
 				parenth = tmp;
 		}
 		if ((value = ft_get_param_value(sh, parenth)))
-		{
-			while (ft_str_startwith(value, "${"))
-			{
-				if ((tmp = sub_get_param_value(value, sh)))
-				{
-					ft_strdel(&value);		
-					value = tmp;
-				}
-			}
 			ft_strdel(&parenth);
-		}
 		if (len == 1)
 		{
-
 			tmp = ft_itoa(ft_strlen(value));
 			ft_strdel(&value);
 			value = tmp;

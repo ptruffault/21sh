@@ -12,9 +12,12 @@
 
 #include <21sh.h>
 
+
+
+
 int				check_builtin(char *input)
 {
-	char *builtins[13] = {"env", 
+	char *builtins[14] = {"env", 
 	"setenv", 
 	"unsetenv", 
 	"exit", 
@@ -26,7 +29,8 @@ int				check_builtin(char *input)
 	"alias",
 	"unalias",
 	"type",
-	"42"
+	"42",
+	"jobs"
 	};
 	int i;
 
@@ -35,11 +39,12 @@ int				check_builtin(char *input)
 		return (0);
 	if (ft_isequal(input))
 		return (1);
-	while (i < 13)
+	while (i < 14)
 		if (ft_strequ(builtins[i++], input))
 			return (1);
 	return (0);
 }
+
 
 void set_var(char **argv, t_shell *sh)
 {
@@ -59,6 +64,26 @@ void set_var(char **argv, t_shell *sh)
 	}
 }
 
+void ft_jobs(t_shell *sh)
+{
+	t_process *tmp;
+	char *stat[4] = {
+		"running",
+		"done",
+		"suspended",
+		"killed"
+	};
+	int i;
+
+	i = 0;
+	tmp = sh->process;
+	while (tmp && tmp->cmd)
+	{
+		ft_printf("[%i] %s -> %i\t%s {%i}\n", i++,  stat[tmp->status], tmp->ret, tmp->cmd,  tmp->pid);
+		tmp = tmp->next;
+	}
+}
+
 
 static t_envv	*change_envv(char **argv, t_envv *envv)
 {
@@ -70,6 +95,8 @@ static t_envv	*change_envv(char **argv, t_envv *envv)
 			sh->env = ft_get_set_envv(ft_unsetenv(envv, &argv[1]));
 		else if (ft_strequ(*argv, "setenv"))
 			sh->env = ft_get_set_envv(ft_setenv(envv, &argv[1]));
+		else if (ft_strequ(*argv, "jobs"))
+			ft_jobs(sh);
 		else if (ft_isequal(*argv))
 			set_var(argv, sh);
 		else if (ft_strequ(*argv, "unset"))

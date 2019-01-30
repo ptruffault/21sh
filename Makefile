@@ -22,7 +22,8 @@ FILES		=		main.c \
 EXEC 		=		ft_execve.c \
 					exec.c \
 					redirection.c \
-					bin_search.c
+					bin_search.c \
+					process_tools.c
 
 EVAL			=	eval_tools.c \
 					lexer.c \

@@ -12,49 +12,52 @@
 
 #include <21sh.h>
 
-int ft_execve(t_redirect *r, char **argv)
+t_process *ft_execve(t_tree *t, char **argv, t_shell *sh)
 {
-	t_envv *envv;
-	int ret;
 	char **env;
 	char *bin_path;
+	t_process *new;
 	pid_t pid;
 
-	ret = -1;
-	envv = ft_get_set_envv(NULL);
-	if (!(bin_path = get_bin_path(*argv, envv)))
-		return (ret);
-	env = tenvv_to_tab(envv);
+	if (!(bin_path = get_bin_path(*argv, sh->env)))
+		return (NULL);
+	new = NULL;
+	env = tenvv_to_tab(sh->env);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", bin_path);
 	else if (pid == 0)
 	{
-		set_prgm_signal();
-		ft_redirect(r);
+		ft_redirect(t);
 		if (execve(bin_path, argv, env) == -1)
 			warning("execve fucked up", bin_path);
 	}
 	else
 	{
+		new = new_process(pid, bin_path, t);
 		ft_freestrarr(env);
 		ft_strdel(&bin_path);
-		wait(&ret);
 	}
-	return (ret);
+	return (new);
 }
 
 int ft_exec(t_tree *t)
 {
 	int ret;
 	char **argv;
+	t_shell *sh;
 
 	ret = -1;
+	sh = ft_get_set_shell(NULL);
 	if ((argv = ft_twordto_arr(t->cmd)))
 	{
 		if (check_builtin(*argv))
 			ret = run_builtin(t, argv);
 		else
-			ret = ft_execve(t->r, argv);
+		{
+			ft_add_process(sh, ft_execve(t, argv, sh));
+			if (sh->process->status == RUNNING_FG)
+				wait(&sh->process->ret);
+		}
 		ft_freestrarr(argv);
 	}
 	return (ret);

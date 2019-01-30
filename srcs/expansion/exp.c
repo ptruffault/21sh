@@ -33,18 +33,16 @@ char  *ft_exp_var(char *ret, t_shell *sh)
 t_word *ft_expention(t_word *w)
 {
 	t_shell *sh;
+	t_word *head;
 
-	t_word *tmp;
-
+	head = w;
 	if (!(sh = ft_get_set_shell(NULL)))
-		return (NULL);
-	tmp = w;
+		return (head);
 	while (w)
 	{
-		if (IS_EXP(w->type) && w->word && !(w->word = ft_exp_var(w->word, sh)))
-			return (NULL);
-		else
-			w = w->next;
+		if (IS_EXP(w->type) && w->word)
+			w->word = ft_exp_var(w->word, sh);
+		w = w->next;
 	}
-	return (tmp);
+	return (head);
 }

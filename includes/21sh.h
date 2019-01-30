@@ -24,6 +24,7 @@
 # define IS_CMD(x) (1 <= x && x <= 5)
 # define IS_EXP(x) (1 <= x && x <= 4)
 
+
 enum e_rtype{
 	UNDEF = 0,
 	R_LEFT = 1,
@@ -37,7 +38,8 @@ enum e_otype{
 	O_AND = 1,
     O_OR = 2,
     O_SEP = 3, 
-    O_PIPE = 4
+    O_PIPE = 4,
+    O_BACK = 5
 };
 
 enum e_wtype{ 
@@ -51,13 +53,19 @@ enum e_wtype{
     OPERATEUR = 7
 };
 
+enum e_pstatus{
+	RUNNING_FG = 0,
+	RUNNING_BG = 1,
+	DONE = 1,
+	SUSPENDED = 2,
+	KILLED = 3
+};
+
 typedef struct	s_hist
 {
 	char *s;
 	struct s_hist *next;
 }				t_hist;
-
-
 
 typedef struct 	s_eval
 {
@@ -98,8 +106,10 @@ typedef struct s_tree
 typedef struct	s_process
 {
 	char *cmd;
-	int status;
+	enum e_pstatus status;
 	int pid;
+	int ret;
+	int fd[3];
 	struct s_process *next;
 }				t_process;
 
@@ -131,7 +141,7 @@ t_tree 		*get_tree(char *input);
 void 		ft_free_tree(t_tree *t);
 
 //redirection
-int ft_redirect(t_redirect *r);
+int ft_redirect(t_tree *t);
 int ft_redirect_builtin(t_tree *t, int fd[3]);
 void ft_reset_fd(int fd[3]);
 void ft_free_redirection(t_redirect *r);
@@ -142,14 +152,19 @@ void set_prgm_signal(void);
 void 	set_signals(void);
 
 //exec
-int ft_exec(t_tree *t);
-
-t_tree *exec_pipe(t_tree *t);
-t_tree *exec_instruction(t_tree *t);
-int  run_builtin(t_tree *t, char **argv);
-t_tree *exec_tree(t_tree *t);
-void exec_file(char *path);
+int 	ft_exec(t_tree *t);
+t_tree	*exec_pipe(t_tree *t);
+t_tree	*exec_instruction(t_tree *t);
+int		run_builtin(t_tree *t, char **argv);
+t_tree	*exec_tree(t_tree *t);
+void	exec_file(char *path);
 t_tree	*ft_get_set_tree(t_tree *new_t);
+
+
+//process
+t_process	*new_process(int pid, char *path, t_tree *t);
+void 		ft_process_done(t_shell *sh, int pid);
+void 		ft_add_process(t_shell *sh, t_process *new);
 
 
 

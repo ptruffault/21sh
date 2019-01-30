@@ -16,7 +16,7 @@ static t_tree *next_instruction(t_tree *t)
 {
 	if (t->o_type && t->next)
 	{
-		if (t->o_type == O_SEP)
+		if (t->o_type == O_SEP || t->o_type == O_BACK)
 			return (t->next);
 		if (t->o_type == O_AND || t->o_type == O_OR)
 		{
@@ -90,11 +90,12 @@ t_tree *exec_tree(t_tree *t)
 	t_tree *tmp;
 
 	tmp = t;
-	while (tmp)
+	while (tmp && tmp->cmd)
 	{
 		if (!tmp->cmd->word)
 		{
-			if (tmp->o_type == O_SEP || tmp->o_type == 0)
+			if (tmp->o_type == O_SEP || tmp->o_type == 0 
+			|| tmp->o_type == O_BACK)
 				tmp = tmp->next;
 			else
 			{

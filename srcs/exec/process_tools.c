@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var.c                                              :+:      :+:    :+:   */
+/*   process_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,41 +12,30 @@
 
 #include <21sh.h>
 
-static char *ft_get_varname(char *s)
+t_process *new_process(int pid, char *path, t_tree *t)
 {
-	char *ptr;
-	int i;
+	t_process *new;
 
-	i = 0;
-	ptr = s + 1;
-	while (ptr[i] && (ft_isalpha(ptr[i]) || ptr[i] == '_'))
-		i++;
-	return (ft_strsub(s, ptr - s , i));
-}
-
-char *ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
-{
-	char *name;
-	char *value;
-	char *tmp;
-
-	name = ft_get_varname(ptr);
-	if (!(value = get_tenvv_val(sh->env, name)))
-		value = get_tenvv_val(sh->intern, name);
-	tmp = ft_strpull(ret, ptr , ft_strlen(name), value);
-	ft_strdel(&ret);
-	ft_strdel(&name);
-	return (tmp);
-}
-
-char *ft_exp_home_var(char *ret, char *ptr, t_envv *envv)
-{
-	char *tmp;
-
-	if ((tmp = ft_strpull(ret, ptr, 0, get_tenvv_val(envv, "HOME"))))
+	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
-		ft_strdel(&ret);
-		return(tmp);
+		new->pid = pid;
+		new->cmd = ft_strdup(path);
+		if (t->o_type == O_BACK)
+			new->status = RUNNING_BG;
+		else
+			new->status = RUNNING_FG;
+		new->fd[0]
+		new->ret = -1;
+		new->next = NULL;
 	}
-	return (NULL);
+	return (new);
+}
+
+void ft_add_process(t_shell *sh, t_process *new)
+{
+	if (new)
+	{
+		new->next = sh->process;
+		sh->process = new;
+	}
 }

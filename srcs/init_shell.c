@@ -63,6 +63,7 @@ void init_shell(t_shell *sh, char **envv, char **argv)
 	pwd = getcwd(buff, 4096);
 	sh->intern = NULL;
 	sh->alias = NULL;
+	sh->process = NULL;
 	rc_path = NULL;
 	sh->env = init_tenvv(envv);
 	sh->env = ft_new_envv(sh->env, "PWD", pwd);

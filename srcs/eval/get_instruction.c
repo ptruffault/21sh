@@ -11,37 +11,35 @@
 /* ************************************************************************** */
 #include <parseur.h>
 
-t_word *get_argv(t_tree *t, t_word *w)
+static t_word *get_argv(t_tree *t, t_word *w)
 {
 	while (w && w->word && IS_CMD(w->type))
 	{
-
 		t->cmd = ft_addtword(t->cmd, w);
 		w = w->next;
 	}
 	return (w);
 }
 
-int find_operateur(char *op)
+static int find_operateur(char *op)
 {
-	char *operateur[4] = {
-		"&&", "||", ";", "|"
+	char *operateur[5] = {
+		"&&", "||", ";", "|", "&"
 	};
 	int i;
 
 	i = 0;
-	while (operateur[i])
-	{
+	while (i < 5)
 		if (ft_strequ(operateur[i++], op))
 			return (i);
-	}
 	return (0);
 }
 
-t_tree *add_newttree(t_tree *tree, t_word *w)
+static t_tree *add_newttree(t_tree *tree, t_word *w)
 {
 	tree->o_type = find_operateur(w->word);
-	if (tree->o_type != O_SEP && (!w->next || !w->next->word))
+	if (tree->o_type != O_SEP && tree->o_type != O_BACK
+	&& (!w->next || !w->next->word))
 	{
 		w ->next = NULL;
 		while (!w->next)
@@ -56,7 +54,7 @@ t_tree *add_newttree(t_tree *tree, t_word *w)
 	return (tree->next);
 }
 
-t_tree *built_tree(t_tree *head, t_word *w)
+static t_tree *built_tree(t_tree *head, t_word *w)
 {
 	t_word *tmp;
 	t_tree	*tree;

@@ -31,23 +31,24 @@ void abort_exit(int s)
 
 }
 
-void set_prgm_signal(void)
+void sig_handler(int sig)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-	signal(SIGTTIN, SIG_DFL);
-	signal(SIGTTOU, SIG_DFL);
-	signal(SIGCHLD, SIG_DFL);
-	signal(SIGTSTP, SIG_DFL);
+	t_shell *sh;
+
+	printf("SIG HANDLER %i", sig);
+	sh = ft_get_set_shell(NULL);
+	if (sig == SIGINT && sh && sh->process)
+		kill(sh->process->pid, sig);
 }
 
 void	set_signals(void)
 {
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGTSTP, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGCHLD, SIG_DFL);
+	signal(SIGWINCH, sig_handler);
 }
 

@@ -3,7 +3,6 @@ export PATH=${PATH:-/bin:/user/bin:/sbin:/usr/sbin:/usr/local/bin}
 alias cl /usr/bin/clear
 alias PWD $PWD
 alias la=ls -a lq=l lz=ls
+alias test="ls -R | rev | cat -e | grep $ | rev | cat -e > file ; ls -z 2>> file; ${F:=TMPFOLDER}; echo $F "
 /usr/bin/clear 
 echo .21shrc [done]
-echo ${HISTORY:?unset var '$HISTORY'} ${HOME:?unset var '$HOME'} ${PWD:?unset var '$PWD'} 
-val=mdr echo $val
