@@ -142,7 +142,7 @@ void			delete_left(t_edit *e);
 void			ft_add_char(char buf, t_edit *e);
 void			curs_move_right(t_edit *e);
 void			curs_move_left(t_edit *e);
-void	curs_move_to(t_edit *e, int pos);
+void			curs_move_to(t_edit *e, int pos);
 void			curs_reset(t_edit *e);
 void			curs_gotoend(t_edit *e);
 void			curs_reset(t_edit *e);
@@ -150,13 +150,13 @@ void			ft_print_line(t_edit *e);
 void			ft_clear(t_edit *e);
 void			ft_delete_line(t_edit *e);
 void 			add_to_file(char *path, char *s);
-int			handle_input(unsigned long buf, t_edit *e);
+int				handle_input(unsigned long buf, t_edit *e);
 t_edit			*get_set_edit(t_edit *new_ed);
-t_edit			init_tedit(t_envv *env);
+t_edit			init_tedit(void);
 void			free_tedit(t_edit *e);
 void 			get_hist_path(t_edit *e);
 char 			**get_hist(int fd);
 void			update_input(t_edit *e, char *s);
-void ft_disp(int argc, char **argv);
+void 			ft_disp(int argc, char **argv);
 
 #endif
