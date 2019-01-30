@@ -51,6 +51,11 @@ GET_INPUT	=	curs_move.c	\
 						setup.c	\
 						fct.c	\
 						ft_cop_pas.c	\
+						ft_jump_word.c	\
+						arrow_move.c	\
+						ft_select.c	\
+						clear_and_all.c	\
+						use_termcaps.c	\
 
 EXPANSION		=	var.c \
 					exp.c \
