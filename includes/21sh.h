@@ -177,6 +177,7 @@ t_tree	*ft_get_set_tree(t_tree *new_t);
 int new_process(t_process *new,  t_tree *t, t_shell *sh);
 void 		ft_process_done(t_shell *sh, int pid);
 void 		ft_add_process(t_shell *sh, t_process *new);
+void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat);
 
 
 

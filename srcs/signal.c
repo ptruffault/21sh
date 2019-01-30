@@ -31,24 +31,44 @@ void abort_exit(int s)
 
 }
 
+void kill_running_fg_process(t_process *p)
+{
+	while(p)
+	{
+		if (p->status == RUNNING_FG)
+		{
+			kill(p->pid, 3);
+			break;
+		}
+		p = p->next;
+	}
+}
+
 void sig_handler(int sig)
 {
 	t_shell *sh;
+	int pid;
 
-	printf("SIG HANDLER %i", sig);
+	ft_printf("SIG HANDLER %i\n", sig);
+
 	sh = ft_get_set_shell(NULL);
-	if (sig == SIGINT && sh && sh->process)
-		kill(sh->process->pid, sig);
+	if (sig == 2 && sh && sh->process)
+		kill_running_fg_process(sh->process);
+	if (sig == SIGCHLD && sh && sh->process)
+	{
+		pid = waitpid(-1, 0, 0);
+		ft_update_process_status(sh->process, pid, DONE);
+	}
 }
 
 void	set_signals(void)
 {
 	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGTSTP, SIG_IGN);
-	signal(SIGTTIN, SIG_IGN);
-	signal(SIGTTOU, SIG_IGN);
-	signal(SIGCHLD, SIG_DFL);
+	signal(SIGQUIT, sig_handler);
+	signal(SIGTSTP, sig_handler);
+	signal(SIGTTIN, sig_handler);
+	signal(SIGTTOU, sig_handler);
+	signal(SIGCHLD, sig_handler);
 	signal(SIGWINCH, sig_handler);
 }
 
