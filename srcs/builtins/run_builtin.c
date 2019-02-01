@@ -67,8 +67,9 @@ void set_var(char **argv, t_shell *sh)
 void ft_jobs(t_shell *sh)
 {
 	t_process *tmp;
-	char *stat[4] = {
-		"running",
+	char *stat[5] = {
+		"running foreground",
+		"running background",
 		"done",
 		"suspended",
 		"killed"

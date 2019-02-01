@@ -12,6 +12,20 @@
 
 #include <21sh.h>
 
+
+void free_tshell(void)
+{
+	t_shell *sh;
+
+	sh = ft_get_set_shell(NULL);
+	ft_free_tenvv(sh->env);
+	ft_free_tenvv(sh->intern);
+	ft_free_tenvv(sh->alias);
+	ft_free_tprocess(sh->process);
+	if ((tcsetattr(0, TCSADRAIN, &sh->saved_term)) == -1)
+		warning("Error while set attr of term, not termcaps", NULL);
+}
+
 void ft_exit(t_tree *t, t_envv *e)
 {
 	ft_free_tree(t);

@@ -70,10 +70,11 @@ int ft_exec(t_tree *t)
 			p->env = tenvv_to_tab(sh->env);
 			p->pid = ft_execve(p, t);
 			ft_add_process(sh, p);
-			if (sh->process->status == RUNNING_FG)
+			if (p->status == RUNNING_FG)
 			{
 				wait(&p->ret);
-				p->status = DONE;
+				if (p->status != KILLED)
+					p->status = DONE;
 			}
 		}
 	}

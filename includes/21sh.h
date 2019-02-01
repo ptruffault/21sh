@@ -60,9 +60,9 @@ enum e_wtype{
 enum e_pstatus{
 	RUNNING_FG = 0,
 	RUNNING_BG = 1,
-	DONE = 1,
-	SUSPENDED = 2,
-	KILLED = 3
+	DONE = 2,
+	SUSPENDED = 3,
+	KILLED = 4
 };
 
 typedef struct	s_hist
@@ -115,7 +115,6 @@ typedef struct	s_process
 	char **env;
 	int pid;
 	int ret;
-	t_redirect *r;
 	struct s_process *next;
 }				t_process;
 
@@ -123,22 +122,27 @@ typedef struct	s_process
 
 typedef struct s_shell
 {
-	t_envv		*env;
-	t_envv		*intern;
-	t_envv		*alias;
-	t_hist		*hist;
-	t_process	*process;
+	t_envv			*env;
+	t_envv			*intern;
+	t_envv			*alias;
+	t_hist			*hist;
+	t_process		*process;
+	struct termios	term;
+	struct termios	saved_term;
 }				t_shell;
 
-
-
+//free
+void ft_free_thist(t_hist *h);
+void ft_free_redirection(t_redirect *r);
+void 		ft_free_tword(t_word *w);
+void ft_free_tprocess(t_process *p);
 
 
 char	*get_input(void);
 
 char 	**ft_twordto_arr(t_word *w);
 void 		ft_put_tword(t_word *w);
-void 		ft_free_tword(t_word *w);
+
 
 //expension
 t_word 	*ft_expention(t_word *w);
@@ -155,11 +159,12 @@ void 		ft_free_tree(t_tree *t);
 int ft_redirect(t_tree *t);
 int ft_redirect_builtin(t_tree *t, int fd[3]);
 void ft_reset_fd(int fd[3]);
-void ft_free_redirection(t_redirect *r);
+
 
 t_shell 	*ft_get_set_shell(t_shell *sh);
+void 		reset_term(void);
 void 		init_shell(t_shell *sh, char **envv, char **argv);
-void set_prgm_signal(void);
+
 void 	set_signals(void);
 
 //exec
@@ -175,11 +180,9 @@ t_tree	*ft_get_set_tree(t_tree *new_t);
 //process
 
 int new_process(t_process *new,  t_tree *t, t_shell *sh);
-void 		ft_process_done(t_shell *sh, int pid);
 void 		ft_add_process(t_shell *sh, t_process *new);
-void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat);
-
-
+int kill_running_fg_process(t_process *p, int sig);
+t_process *ft_get_process(t_process *s, int pid);
 
 char	*search_in_envv(char *input, t_envv *envv);
 char	*absolute_path(char *input, t_envv *envv);

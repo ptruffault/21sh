@@ -31,43 +31,47 @@ void abort_exit(int s)
 
 }
 
-void kill_running_fg_process(t_process *p)
+t_process *ft_wait_background(t_process *p)
 {
-	while(p)
+	t_process *tmp;
+
+	tmp = p;
+	while (tmp)
 	{
-		if (p->status == RUNNING_FG)
-		{
-			kill(p->pid, 3);
-			break;
-		}
-		p = p->next;
+		if (tmp->status == RUNNING_BG && waitpid(tmp->pid, &tmp->ret, WNOHANG) != -1)
+			return (tmp);
+		tmp = tmp->next;
 	}
+	return (NULL);
 }
+
 
 void sig_handler(int sig)
 {
 	t_shell *sh;
-	int pid;
+	t_process *tmp;
 
 	ft_printf("SIG HANDLER %i\n", sig);
 
 	sh = ft_get_set_shell(NULL);
-	if (sig == 2 && sh && sh->process)
-		kill_running_fg_process(sh->process);
-	if (sig == SIGCHLD && sh && sh->process)
+	if (sig == SIGINT && sh && sh->process && !kill_running_fg_process(sh->process, SIGINT))
 	{
-		pid = waitpid(-1, 0, 0);
-		ft_update_process_status(sh->process, pid, DONE);
+		//^C in edition
+	}
+	if (sig == SIGTSTP && sh && sh->process)
+		kill_running_fg_process(sh->process, SIGTSTP);
+	if (sig == SIGCHLD && sh && sh->process 
+	&& (tmp = ft_wait_background(sh->process))) 
+	{
+		if (tmp->status != KILLED)
+			tmp->status = DONE;
 	}
 }
 
 void	set_signals(void)
 {
 	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, sig_handler);
 	signal(SIGTSTP, sig_handler);
-	signal(SIGTTIN, sig_handler);
-	signal(SIGTTOU, sig_handler);
 	signal(SIGCHLD, sig_handler);
 	signal(SIGWINCH, sig_handler);
 }

@@ -53,18 +53,19 @@ char *ft_strchr_end(const char *s, char c)
 
 void setup_term(t_shell *sh)
 {
-	struct termios	term;
-
 	if (tgetent(NULL, get_tenvv_val(sh->env, "TERM")) != 1)
 		warning("$TERM not valid, no termcaps", NULL);
-	if (tcgetattr(0, &term) == -1)
+	if (tcgetattr(0, &sh->term) == -1)
 		warning("Error while get attr of term, no termcaps", NULL);
-	term.c_lflag &= ~(ICANON);
-	term.c_lflag &= ~(ECHO);
-
-	if ((tcsetattr(0, TCSADRAIN, &term)) == -1)
+	ft_memcpy(&sh->saved_term, &sh->term, sizeof(struct termios));
+	sh->term.c_lflag &= ~(ICANON | ECHO);
+	sh->term.c_cc[VMIN] = 1;
+	sh->term.c_cc[VTIME] = 0;
+	if ((tcsetattr(0, TCSADRAIN, &sh->term)) == -1)
 		warning("Error while set attr of term, not termcaps", NULL);
 }
+
+
 
 void init_shell(t_shell *sh, char **envv, char **argv)
 {

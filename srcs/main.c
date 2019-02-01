@@ -22,13 +22,11 @@ void		ft_disp(int argc, char **argv)
 	ft_printf("\033[1;32m 21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n", pwd);
 }
 
-void ft_put_tword(t_word *w)
+void close_term(t_shell *sh)
 {
-	while(w)
-	{
-		printf("\'%s\'  type = %i\n",w->word , w->type);
-		w = w->next;
-	}
+	sh->term.c_lflag &= ~(ICANON | ECHO);
+	if ((tcsetattr(0, TCSADRAIN, &sh->term)) == -1)
+		warning("Error while set attr of term, not termcaps", NULL);
 }
 
 

@@ -21,15 +21,31 @@ void ft_add_process(t_shell *sh, t_process *new)
 	}
 }
 
-void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat)
+t_process *ft_get_process(t_process *s, int pid)
 {
-	while (p)
+	t_process *ret;
+
+	ret = s;
+	while (ret && ret->pid != pid)
+		ret = ret->next;
+	return (ret);
+}
+
+
+int kill_running_fg_process(t_process *p, int sig)
+{
+	while(p)
 	{
-		if (p->pid == pid)
+		if (p->status == RUNNING_FG)
 		{
-			p->status = new_stat;
-			break;
+			if (sig == SIGINT)
+				p->status = KILLED;
+			if (sig == SIGTSTP)
+				p->status = SUSPENDED;
+			kill(p->pid, sig);
+			return (1);
 		}
 		p = p->next;
 	}
+	return (0);
 }

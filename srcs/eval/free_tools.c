@@ -56,3 +56,31 @@ void ft_free_tree(t_tree *t)
 		t = tmp;
 	}
 }
+
+void ft_free_thist(t_hist *h)
+{
+	t_hist *tmp;
+
+	while (h)
+	{
+		ft_strdel(&h->s);
+		tmp = h->next;
+		free(h);
+		h = tmp;
+	}
+}
+
+void ft_free_tprocess(t_process *p)
+{
+	t_process *tmp;
+
+	while (p)
+	{
+		tmp = p->next;
+		ft_strdel(&p->cmd);
+		ft_freestrarr(p->argv);
+		ft_freestrarr(p->env);
+		free(p);
+		p = tmp;
+	}
+}
