@@ -60,7 +60,10 @@ void setup_term(t_shell *sh)
 	if (tcgetattr(0, &term) == -1)
 		warning("Error while get attr of term, no termcaps", NULL);
 	term.c_lflag &= ~(ICANON);
-	term.c_lflag &= ~(ECHO);
+	term.c_lflag &= ~(ECHO | ECHOK);
+	term.c_cc[VINTR] = 3;
+	term.c_cc[VEOL2] = 4;
+	term.c_cc[VEOL] = 4;
 
 	if ((tcsetattr(0, TCSADRAIN, &term)) == -1)
 		warning("Error while set attr of term, not termcaps", NULL);

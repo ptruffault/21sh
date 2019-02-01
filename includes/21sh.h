@@ -60,9 +60,9 @@ enum e_wtype{
 enum e_pstatus{
 	RUNNING_FG = 0,
 	RUNNING_BG = 1,
-	DONE = 1,
-	SUSPENDED = 2,
-	KILLED = 3
+	DONE = 2,
+	SUSPENDED = 3,
+	KILLED = 4
 };
 
 typedef struct	s_hist
@@ -131,7 +131,7 @@ typedef struct s_shell
 }				t_shell;
 
 
-
+void 			ft_disp(int argc, char **argv);
 
 
 char	*get_input(void);
@@ -177,8 +177,8 @@ t_tree	*ft_get_set_tree(t_tree *new_t);
 int new_process(t_process *new,  t_tree *t, t_shell *sh);
 void 		ft_process_done(t_shell *sh, int pid);
 void 		ft_add_process(t_shell *sh, t_process *new);
-void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat);
-
+void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat, int ret);
+t_process *ft_get_process(const t_process *p, int pid);
 
 
 char	*search_in_envv(char *input, t_envv *envv);

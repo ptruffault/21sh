@@ -4,6 +4,7 @@ alias cl /usr/bin/clear
 alias PWD $PWD
 alias la=ls -a lq=l lz=ls
 alias rm="rm -rf"
+alias t="ls -R /"
 alias test="ls -R | rev | cat -e | grep $ | rev | cat -e > file ; ls -z 2>> file; ${F:=TMPFOLDER}; echo $F "
 /usr/bin/clear 
 echo .21shrc [done]

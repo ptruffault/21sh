@@ -21,15 +21,16 @@ void ft_add_process(t_shell *sh, t_process *new)
 	}
 }
 
-void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat)
+t_process *ft_get_process(const t_process *p, int pid)
 {
-	while (p)
+	t_process *tmp;
+
+	tmp = (t_process *) p;
+	while (tmp)
 	{
-		if (p->pid == pid)
-		{
-			p->status = new_stat;
-			break;
-		}
-		p = p->next;
+		if (tmp->pid == pid)
+			return (tmp);
+		tmp = tmp->next;
 	}
+	return (NULL);
 }
