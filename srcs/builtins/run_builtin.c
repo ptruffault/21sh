@@ -80,7 +80,7 @@ void ft_jobs(t_shell *sh)
 	tmp = sh->process;
 	while (tmp && tmp->cmd)
 	{
-		ft_printf("[%i] %s -> %i\t%s {%i}\n", i++,  stat[tmp->status], tmp->ret, tmp->cmd,  tmp->pid);
+		ft_printf("[%i] %s -> %3i\t%s {%i}\n", i++, stat[tmp->status], tmp->ret, tmp->cmd,  tmp->pid);
 		tmp = tmp->next;
 	}
 }

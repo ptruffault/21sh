@@ -69,8 +69,8 @@ t_tree *exec_pipe(t_tree *t)
 	}
 	close(pipes[0]);
 	close(pipes[1]);
-	waitpid(-1, 0, 0);
-	waitpid(-1, 0, 0);
+	waitpid(pid[0], 0, 0);
+	waitpid(pid[1], 0, 0);
 	while (t->o_type == O_PIPE)
 		t = t->next;
 	return (t);

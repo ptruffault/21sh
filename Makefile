@@ -144,7 +144,7 @@ exe: fre
 	./$(NAME)
 
 chmod:
-	@sudo chmod 777 $(SRC) includes/$(NAME).h libft libft/Makefile
+	@sudo chmod 777 $(SRC) includes/$(NAME).h libft libft/Makefile Makefile
 	@sudo make -C ./libft chmod
 
 save: clear fclean
@@ -160,6 +160,9 @@ libft:
 	@echo "$(COLOR)download libft from github$(NO_COLOR)"
 	@git clone https://github.com/ptruffault/libft.git
 
-load: delete_all libft
+load: chmod delete_all libft
 	@echo "$(COLOR)download $(NAME) from github$(NO_COLOR)"
-	@git clone $(GIT) TMP && mv TMP/* . && rm -rf TMP
+	@git clone $(GIT) TMP 
+	@make -C TMP chmod
+	@mv TMP/* .
+	@rm -rf TMP

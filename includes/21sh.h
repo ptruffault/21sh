@@ -131,11 +131,15 @@ typedef struct s_shell
 	struct termios	saved_term;
 }				t_shell;
 
+
 //free
 void ft_free_thist(t_hist *h);
 void ft_free_redirection(t_redirect *r);
 void 		ft_free_tword(t_word *w);
 void ft_free_tprocess(t_process *p);
+
+void 			ft_disp(int argc, char **argv);
+
 
 
 char	*get_input(void);
@@ -181,8 +185,12 @@ t_tree	*ft_get_set_tree(t_tree *new_t);
 
 int new_process(t_process *new,  t_tree *t, t_shell *sh);
 void 		ft_add_process(t_shell *sh, t_process *new);
+
 int kill_running_fg_process(t_process *p, int sig);
-t_process *ft_get_process(t_process *s, int pid);
+
+void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat, int ret);
+t_process *ft_get_process(t_process *p, int pid);
+
 
 char	*search_in_envv(char *input, t_envv *envv);
 char	*absolute_path(char *input, t_envv *envv);

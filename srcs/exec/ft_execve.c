@@ -24,7 +24,9 @@ pid_t ft_execve(t_process *p, t_tree *t)
 		execve(p->cmd, p->argv, p->env);
 		warning("execve fucked up", p->cmd);
 	}
-	return (pid);
+	else
+		return (pid);
+	return (0);
 }
 
 
@@ -75,6 +77,7 @@ int ft_exec(t_tree *t)
 				wait(&p->ret);
 				if (p->status != KILLED)
 					p->status = DONE;
+				printf("p->status = %i\n",p->status );
 			}
 		}
 	}
