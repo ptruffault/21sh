@@ -31,21 +31,30 @@ t_process *ft_get_process(t_process *s, int pid)
 	return (ret);
 }
 
-
-int kill_running_fg_process(t_process *p, int sig)
+t_process *ft_get_running_process(t_process *p)
 {
 	while(p)
 	{
 		if (p->status == RUNNING_FG)
-		{
-			if (sig == SIGINT)
-				p->status = KILLED;
-			if (sig == SIGTSTP)
-				p->status = SUSPENDED;
-			kill(p->pid, sig);
-			return (1);
-		}
+			return (p);
 		p = p->next;
+	}
+	return (NULL);
+}
+
+
+int kill_running_fg_process(t_process *p, int sig)
+{
+	t_process *tmp;
+
+	if ((tmp = ft_get_running_process(p)))
+	{
+		if (sig == SIGINT)
+			p->status = KILLED;
+		if (sig == SIGTSTP)
+			p->status = SUSPENDED;
+		kill(p->pid, sig);
+		return (1);
 	}
 	return (0);
 }

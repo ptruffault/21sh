@@ -22,13 +22,6 @@ void		ft_disp(int argc, char **argv)
 	ft_printf("\033[1;32m 21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n", pwd);
 }
 
-void close_term(t_shell *sh)
-{
-	sh->term.c_lflag &= ~(ICANON | ECHO);
-	if ((tcsetattr(0, TCSADRAIN, &sh->term)) == -1)
-		warning("Error while set attr of term, not termcaps", NULL);
-}
-
 
 int		main(int argc, char **argv, char **envv)
 {

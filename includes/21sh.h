@@ -109,13 +109,13 @@ typedef struct s_tree
 
 typedef struct	s_process
 {
-	char *cmd;
-	enum e_pstatus status;
-	char  **argv;
-	char **env;
-	int pid;
-	int ret;
-	struct s_process *next;
+	char 				*cmd;
+	enum e_pstatus 		status;
+	char  				**argv;
+	char 				**env;
+	int 				pid;
+	int 				ret;
+	struct s_process	*next;
 }				t_process;
 
 
@@ -137,6 +137,7 @@ void ft_free_thist(t_hist *h);
 void ft_free_redirection(t_redirect *r);
 void 		ft_free_tword(t_word *w);
 void ft_free_tprocess(t_process *p);
+void ft_free_tshell(t_shell *sh);
 
 void 			ft_disp(int argc, char **argv);
 
@@ -183,14 +184,13 @@ t_tree	*ft_get_set_tree(t_tree *new_t);
 
 //process
 
-int new_process(t_process *new,  t_tree *t, t_shell *sh);
-void 		ft_add_process(t_shell *sh, t_process *new);
+int 	new_process(t_process *new,  t_tree *t, t_shell *sh);
+void 	ft_add_process(t_shell *sh, t_process *new);
+void 	ft_set_old_term(void);
 
 int kill_running_fg_process(t_process *p, int sig);
-
-void ft_update_process_status(t_process *p, int pid, enum e_pstatus new_stat, int ret);
 t_process *ft_get_process(t_process *p, int pid);
-
+t_process *ft_get_running_process(t_process *p);
 
 char	*search_in_envv(char *input, t_envv *envv);
 char	*absolute_path(char *input, t_envv *envv);
@@ -207,7 +207,7 @@ int ft_isparenth(char c);
 int		check_builtin(char *input);
 t_envv	*ft_cd(char **input, t_envv *envv);
 void	ft_echo(char **input);
-void	ft_exit(t_tree *t, t_envv *e);
+void	ft_exit(void);
 void	ft_env(t_envv *envv, char **argv);
 t_envv	*ft_export(t_shell *sh, char **argv);
 t_envv	*ft_alias(t_shell *sh, char **argv);

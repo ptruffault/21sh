@@ -84,3 +84,13 @@ void ft_free_tprocess(t_process *p)
 		p = tmp;
 	}
 }
+
+
+void ft_free_tshell(t_shell *sh)
+{
+	ft_free_tenvv(sh->env);
+	ft_free_tenvv(sh->intern);
+	ft_free_tenvv(sh->alias);
+	ft_free_tprocess(sh->process);
+	ft_free_thist(sh->hist);
+}

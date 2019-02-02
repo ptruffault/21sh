@@ -130,7 +130,7 @@ int run_builtin(t_tree *t, char **argv)
 		warning("redirection fucked up", NULL);
 	envv = ft_get_set_envv(NULL);
 	if (ft_strequ(*argv, "exit"))
-		ft_exit(t, envv);
+		ft_exit();
 	else if (ft_strequ(*argv, "env"))
 		ft_env(envv, argv);
 	else if (ft_strequ(*argv, "echo"))
