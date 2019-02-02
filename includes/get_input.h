@@ -65,28 +65,6 @@
 
 /* DEFINE DE TESTS */
 
-typedef struct	s_termi
-{
-	int				x;
-	int				y;
-	int				nb_of_l;
-	int				width;
-}				t_termi;
-
-typedef struct	s_edit
-{
-	t_bool	edited;
-	char		*input;
-	int			curr;
-	int			size;
-	int			curr_history;
-	int			pos_hist;
-	int			select;
-	char		*clipboard;
-	t_hist	*hist;
-	t_termi	t;
-}				t_edit;
-
 /* arrow_move.c */
 
 void	curr_move_right(t_edit *e);
@@ -152,11 +130,10 @@ void			ft_delete_line(t_edit *e);
 void 			add_to_file(char *path, char *s);
 int				handle_input(unsigned long buf, t_edit *e);
 t_edit			*get_set_edit(t_edit *new_ed);
-t_edit			init_tedit(void);
+t_edit			init_tedit(t_shell *sh);
 void			free_tedit(t_edit *e);
 void 			get_hist_path(t_edit *e);
 char 			**get_hist(int fd);
 void			update_input(t_edit *e, char *s);
-void 			ft_disp(int argc, char **argv);
 
 #endif

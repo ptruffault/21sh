@@ -17,7 +17,7 @@ OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
 					signal.c \
-					init_shell.c
+					init_shell.c \
 
 EXEC 		=		ft_execve.c \
 					exec.c \
@@ -43,19 +43,20 @@ BUILTINS		=	ft_echo.c \
 					type_tools.c
 
 GET_INPUT	=	curs_move.c	\
-						get_input.c	\
-						handle_input.c	\
-						history.c	\
-						input_tools.c	\
-						print_line.c	\
-						setup.c	\
-						fct.c	\
-						ft_cop_pas.c	\
-						ft_jump_word.c	\
-						arrow_move.c	\
-						ft_select.c	\
-						clear_and_all.c	\
-						use_termcaps.c	\
+				get_input.c	\
+				handle_input.c	\
+				history.c	\
+				input_tools.c	\
+				print_line.c	\
+				setup.c	\
+				fct.c	\
+				ft_cop_pas.c	\
+				ft_jump_word.c	\
+				arrow_move.c	\
+				ft_select.c	\
+				clear_and_all.c	\
+				use_termcaps.c	\
+				term_settings.c\
 
 EXPANSION		=	var.c \
 					exp.c \

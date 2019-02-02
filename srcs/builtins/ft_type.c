@@ -24,7 +24,7 @@ static t_word *init_opts(char opts[4], t_word *w)
 	opts[1] = 0;
 	opts[2] = 0;
 	opts[3] = 0;
-	while (w->word && *w->word == '-')
+	while (w && w->word && *w->word == '-')
 	{
 		i = 1;
 		while (w->word[i])
@@ -75,9 +75,8 @@ void ft_type(t_word *w)
 	t_shell *sh;
 	char opts[4];
 
-	if (!w || !w->word)
+	if (!w || !w->word || !(w = init_opts(opts, w)))
 		return ;
-	w = init_opts(opts, w);
 	sh = ft_get_set_shell(NULL);
 	while (w)
 	{

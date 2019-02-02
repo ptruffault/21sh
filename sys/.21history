@@ -1863,3 +1863,348 @@ cat
 cat
 ls
 ls
+ls
+cat
+cat
+ls
+cleqr
+clear
+ls
+ls
+ls|rev
+cl
+env
+ls
+ls&&ls
+ls||ls
+clear
+ls
+env
+clear
+env -i ls
+clear
+ls
+exit
+clear
+ls
+ls|rev
+ls
+ls&&ls||ls
+ls -z||ls && echo OK
+env
+env|grep PWD | rev
+exit
+ls
+ls -R /
+jobs
+clear
+ls
+exit
+ls
+ls
+ls
+cle
+env
+stty -a
+stty -a
+stty -a
+stty -a
+sttyuezafhrezgfrehjfenarfgeragregergagrrrrrrrreerrrrrrrrrrrrrrrrrrrrrrrrrr
+exit
+sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssPaul
+cl
+env
+ls|rev
+ls
+ls &
+jobs
+exit
+ls
+cl
+env
+ls|rev
+ls
+cl
+env
+cl
+ls|rev
+ls
+ls &
+ls
+ls &
+ls
+exit
+exit
+t
+clear
+ls
+cat
+cart
+cat
+ls
+clear
+ls
+ls&
+ls&
+ls &
+ls & cat &
+jobs
+cat &
+jobqs
+jobs
+cl
+cat &
+jobs
+task
+  ls
+jobs
+echo "lol" > file ; cat file ; mv file dir || mkdir dir && mv file dir ; echo OK
+ls
+ls dir
+rm dir
+ls
+rm dir
+rm dir
+rm dir
+ls |rev
+ls;ls &&ls||ls
+ls | rev | cat -e | rev | grep 21
+cleqr
+clear
+ls
+rm -rf dir
+type sh
+sh 
+type 21sh
+type -a 21sh
+type 42
+type jobns
+type -a env
+clear
+ls
+echo lol
+exit
+ls
+lsexit
+exit
+ls
+ls
+env
+exit
+ls
+ls &
+jobs
+ls &ls
+ls & echo ok &
+echo ok &
+exit
+ls
+env
+l
+test
+t
+clear
+ls
+echo lol
+cl
+env
+ls
+stty -a
+exit
+ls
+ls
+clear
+rm dir
+ls
+ls
+exir
+exit
+ls -R /
+exirt
+exit
+ls
+ls
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssexitsssssssssssssssssssssssssssss
+exit
+sls
+ls
+lsl
+ls
+exit
+ls
+ls
+lssssss
+exit
+ls
+l
+l
+exit
+s
+ssls
+ls
+l
+l
+xit
+exit
+ls
+clear
+ls|rev
+clear
+l
+s
+l
+l
+s
+l
+exit
+ls
+l
+exit
+l
+ss
+ls
+cl
+env
+exit
+cl
+env
+ls
+type ls
+type ls type env -a
+type -a
+exit
+ls
+cl
+type
+type -a 
+type -a 
+ls
+clear
+ls&
+ls
+clear
+l
+ls
+ls|
+clear
+ls
+ls
+ls
+clear
+ls
+ls
+ls
+exit
+ls
+ls
+ls
+exit
+ls
+ls
+clear
+exit
+ls
+ls
+exit
+ls -R /
+ls
+clear
+ls
+cat
+cat
+ezafezc    
+clear
+ls
+env
+ls|rev
+ls
+eng
+env
+ls
+ls&&ls
+ls -R /
+ls -R /
+clear
+ls
+ls
+jobs
+cat &
+jobs
+echo lol &
+echo mo
+ls &
+clear
+ls&
+ls &
+jobs
+ls
+cat &
+jobs
+jobs & 
+ls
+ls
+ls
+ls&&ls
+clear
+env
+exit
+cat file
+cat -e file
+ls
+ls
+clear
+clear
+ls
+env
+ls
+ev
+env
+ls
+lsl -R /
+t
+cat 
+cat -e
+cl
+env
+type -a
+type ls
+type ls -a
+exit
+la
+exit
+la
+ll
+lla
+lz
+lls
+lss
+laa
+clear
+exit
+ls
+la
+ll
+clear
+ls
+ls
+ls
+cl
+env
+la
+cl
+type cl
+type cl
+echo ${PWD}
+echo $PWD
+echo $PWD $JEFI lol $PWD/lol $PO/klo
+echo ${PWD:-LOL}
+echo ${PWDD:-LOL}
+echo ${PWDD:?unsetvar}
+echo ${PWDD:?unset var}
+echo ${PWDD:+LOL}
+echo ${PWD:+LOL}
+echo ${PWDD=+LOL}
+env
+env
+echo $PWDD
+echo ${T:=TEST}

@@ -77,7 +77,6 @@ int ft_exec(t_tree *t)
 				wait(&p->ret);
 				if (p->status != KILLED)
 					p->status = DONE;
-				printf("p->status = %i\n",p->status );
 			}
 		}
 	}

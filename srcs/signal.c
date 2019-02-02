@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <21sh.h>
+#include "../includes/get_input.h"
 
 t_tree		*ft_get_set_tree(t_tree *new_t)
 {
@@ -50,15 +51,20 @@ void sig_handler(int sig)
 {
 	t_shell *sh;
 	t_process *tmp;
-	int pid;
 
-	ft_printf("SIG HANDLER %i\n", sig);
-	pid = 0;
+	printf("sig-> %i\n",sig );
 	sh = ft_get_set_shell(NULL);
-	if (sig == SIGINT && sh && sh->process && !kill_running_fg_process(sh->process, SIGINT))
+	if (sig == SIGINT)
 	{
-		//^C in edition
+		if (!(sh && sh->process && kill_running_fg_process(sh->process, SIGINT)))
+		{
+			ft_strdel(&sh->e.input);
+			ft_disp(sh);
+			sh->e = init_tedit(sh);
+		}
 	}
+	if (sig == SIGWINCH)
+		ft_update_windows(&sh->e);
 /*	if (sig == SIGTSTP && sh && sh->process)
 		kill_running_fg_process(sh->process, SIGTSTP);*/
 

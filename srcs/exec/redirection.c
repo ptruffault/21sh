@@ -51,7 +51,6 @@ int ft_redirect(t_tree *t)
 	{
 		if ((fd = open("/dev/null", O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) != -1)
 		{
-			printf("here ii amn\n");
 			fd_dup(0, fd, 1);
 			fd_dup(1, fd, 1);
 			fd_dup(2, fd, 1);

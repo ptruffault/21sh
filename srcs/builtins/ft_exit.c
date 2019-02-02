@@ -19,8 +19,9 @@ void ft_exit(void)
 
 	sh = ft_get_set_shell(NULL);
 	t = ft_get_set_tree(NULL);
-	ft_set_old_term();
+	ft_set_old_term(sh);
 	ft_free_tshell(sh);
+	ft_free_tree(t);
 	ft_putendl("\033[00;31m21sh get killed\033[00m");
 	exit(0);
 }

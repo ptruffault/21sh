@@ -51,13 +51,6 @@ char *ft_strchr_end(const char *s, char c)
 	return (NULL);
 }
 
-void init_termcaps(t_shell *sh)
-{
-	if (tgetent(NULL, get_tenvv_val(sh->env, "TERM")) != 1)
-		warning("$TERM not valid, no termcaps", NULL);
-	else if (tcgetattr(0, &sh->saved_term) == -1)
-		warning("Error while get attr of term, no termcaps", NULL);
-}
 
 void init_shell(t_shell *sh, char **envv, char **argv)
 {

@@ -91,6 +91,8 @@ static t_word *ft_get_words(char *input, char *eval)
 	return (head);
 }
 
+//A REFAIRE C'EST DEGEU
+// BUG SUR ALIAS="ALIAS (...)" -> boucle infini qui segfault
 t_word *add_alias(t_word *w, const char *alias)
 {
 	char *tmp_al;
@@ -125,8 +127,7 @@ t_word *check_alias(t_word *head, t_envv *e_alias)
 	{
 		if (tmp->type == CMD && (alias = get_tenvv_val(e_alias, tmp->word)))
 			tmp = add_alias(tmp, alias);
-		else
-			tmp = tmp->next;
+		tmp = tmp->next;
 	}
 	return (head);
 }

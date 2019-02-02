@@ -71,6 +71,30 @@ typedef struct	s_hist
 	struct s_hist *next;
 }				t_hist;
 
+
+typedef struct	s_termi
+{
+	int				x;
+	int				y;
+	int				nb_of_l;
+	int				width;
+}				t_termi;
+
+typedef struct	s_edit
+{
+	t_bool	edited;
+	char		*input;
+	int			curr;
+	int			size;
+	int			curr_history;
+	int			pos_hist;
+	int			select;
+	char		*clipboard;
+	t_hist	*hist;
+	t_termi	t;
+}				t_edit;
+
+
 typedef struct 	s_eval
 {
 	char *s;
@@ -127,9 +151,12 @@ typedef struct s_shell
 	t_envv			*alias;
 	t_hist			*hist;
 	t_process		*process;
+	t_edit 			e;
 	struct termios	term;
 	struct termios	saved_term;
 }				t_shell;
+
+
 
 
 //free
@@ -139,7 +166,7 @@ void 		ft_free_tword(t_word *w);
 void ft_free_tprocess(t_process *p);
 void ft_free_tshell(t_shell *sh);
 
-void 			ft_disp(int argc, char **argv);
+void 			ft_disp(t_shell *sh);
 
 
 
@@ -186,7 +213,7 @@ t_tree	*ft_get_set_tree(t_tree *new_t);
 
 int 	new_process(t_process *new,  t_tree *t, t_shell *sh);
 void 	ft_add_process(t_shell *sh, t_process *new);
-void 	ft_set_old_term(void);
+
 
 int kill_running_fg_process(t_process *p, int sig);
 t_process *ft_get_process(t_process *p, int pid);
@@ -199,9 +226,11 @@ char	*get_bin_path(char *input, t_envv *envv);
 //fct.c
 int ft_isparenth(char c);
 
-
-
-
+//term
+void 	ft_setup_edit_term(t_shell *sh);
+void 	ft_set_old_term(t_shell *sh);
+void 	ft_update_windows(t_edit *e);
+void 	init_termcaps(t_shell *sh);
 
 //builtins
 int		check_builtin(char *input);
