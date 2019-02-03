@@ -2208,3 +2208,21 @@ env
 env
 echo $PWDD
 echo ${T:=TEST}
+ls
+clear
+ls
+ls
+ls
+ls
+clear
+ls
+clear
+ls
+rxit
+exit
+ls
+clear
+exit
+ls
+clear
+ls

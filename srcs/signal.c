@@ -22,15 +22,6 @@ t_tree		*ft_get_set_tree(t_tree *new_t)
 	return (stored_t);
 }
 
-void abort_exit(int s)
-{
-	(void)s;
-	ft_free_tenvv(ft_get_set_envv(NULL));
-	ft_free_tree(ft_get_set_tree(NULL));
-	error("21sh aborted", NULL);
-	exit(0);
-
-}
 
 t_process *ft_wait_background(t_process *p)
 {
@@ -52,12 +43,12 @@ void sig_handler(int sig)
 	t_shell *sh;
 	t_process *tmp;
 
-	printf("sig-> %i\n",sig );
 	sh = ft_get_set_shell(NULL);
 	if (sig == SIGINT)
 	{
 		if (!(sh && sh->process && kill_running_fg_process(sh->process, SIGINT)))
 		{
+			ft_delete_line(&sh->e);
 			ft_strdel(&sh->e.input);
 			ft_disp(sh);
 			sh->e = init_tedit(sh);

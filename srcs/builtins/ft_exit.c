@@ -22,6 +22,6 @@ void ft_exit(void)
 	ft_set_old_term(sh);
 	ft_free_tshell(sh);
 	ft_free_tree(t);
-	ft_putendl("\033[00;31m21sh get killed\033[00m");
+	ft_putendl_fd("\033[00;31m21sh get killed\033[00m", 2);
 	exit(0);
 }
