@@ -12,15 +12,6 @@
 
 #include <21sh.h>
 
-void ft_add_process(t_shell *sh, t_process *new)
-{
-	if (new)
-	{
-		new->next = sh->process;
-		sh->process = new;
-	}
-}
-
 t_process *ft_get_process(t_process *s, int pid)
 {
 	t_process *ret;

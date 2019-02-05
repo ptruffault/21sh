@@ -2226,3 +2226,17 @@ exit
 ls
 clear
 ls
+clear
+ls
+ll
+la
+clear
+ls
+set
+nam=val
+set
+clear
+ls
+ls|rev
+exit
+ls|rev
