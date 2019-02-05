@@ -6,7 +6,7 @@
 #    By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/16 11:16:13 by ptruffau          #+#    #+#              #
-#    Updated: 2018/12/03 13:37:39 by ptruffau         ###   ########.fr        #
+#    Updated: 2019/02/05 12:51:01 by adi-rosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ GET_INPUT	=	curs_move.c	\
 				input_tools.c	\
 				print_line.c	\
 				setup.c	\
-				fct.c	\
+				get_history.c	\
 				ft_cop_pas.c	\
 				ft_jump_word.c	\
 				arrow_move.c	\
@@ -163,7 +163,7 @@ libft:
 
 load: chmod delete_all libft
 	@echo "$(COLOR)download $(NAME) from github$(NO_COLOR)"
-	@git clone $(GIT) TMP 
+	@git clone $(GIT) TMP
 	@make -C TMP chmod
 	@mv TMP/* .
 	@rm -rf TMP
