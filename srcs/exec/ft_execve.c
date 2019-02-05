@@ -29,13 +29,11 @@ pid_t ft_execve(t_process *p, t_tree *t)
 	return (0);
 }
 
-t_process *init_process(t_tree *t)
+t_process *init_process(t_tree *t, t_shell *sh)
 {
 	t_process	*new;
-	t_shell		*sh;
 
 	new = NULL;
-	sh = ft_get_set_shell(NULL);
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
 		if (t->o_type == O_BACK)
@@ -60,12 +58,16 @@ int ft_exec(t_tree *t)
 	t_process *p;
 	t_shell *sh;
 
-	
+
 	sh = ft_get_set_shell(NULL);
-	if ((p = init_process(t)))
+	if ((p = init_process(t, sh)))
 	{
 		if (check_builtin(*p->argv))
+		{
+			p->cmd = ft_strdup(*p->argv);
 			p->ret = run_builtin(t, p->argv);
+			p->status = DONE;
+		}
 		else if ((p->cmd = get_bin_path(*p->argv, sh->env)))
 		{
 			p->env = tenvv_to_tab(sh->env);

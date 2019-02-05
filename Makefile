@@ -144,6 +144,9 @@ fre: clear sclean all
 exe: fre
 	./$(NAME)
 
+val: fre
+	@valgrind --leak-check=full ./$(NAME)
+
 chmod:
 	@sudo chmod 777 $(SRC) includes/$(NAME).h libft libft/Makefile Makefile
 	@sudo make -C ./libft chmod
