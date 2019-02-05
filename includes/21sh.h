@@ -227,7 +227,7 @@ char	*get_bin_path(char *input, t_envv *envv);
 int ft_isparenth(char c);
 
 //term
-void 	ft_setup_edit_term(t_shell *sh);
+int		ft_setup_edit_term(t_shell *sh);
 void 	ft_set_old_term(t_shell *sh);
 void 	ft_update_windows(t_edit *e);
 void 	init_termcaps(t_shell *sh);

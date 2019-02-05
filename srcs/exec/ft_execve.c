@@ -29,15 +29,13 @@ pid_t ft_execve(t_process *p, t_tree *t)
 	return (0);
 }
 
-
-//t_process -> env argv  redirect{fd[3]} binpath         pid  
-
-
 t_process *init_process(t_tree *t)
 {
-	 t_process *new;
+	t_process	*new;
+	t_shell		*sh;
 
 	new = NULL;
+	sh = ft_get_set_shell(NULL);
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
 		if (t->o_type == O_BACK)
@@ -45,13 +43,14 @@ t_process *init_process(t_tree *t)
 		else
 			new->status = RUNNING_FG;
 		new->ret = -1;
-		new->next = NULL;
 		new->pid = 0;
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
 		{
 			free(new);
 			return (NULL);
 		}
+		new->next = sh->process;
+		sh->process = new; 
 	}
 	return (new);
 }
@@ -71,7 +70,6 @@ int ft_exec(t_tree *t)
 		{
 			p->env = tenvv_to_tab(sh->env);
 			p->pid = ft_execve(p, t);
-			ft_add_process(sh, p);
 			if (p->status == RUNNING_FG)
 			{
 				wait(&p->ret);
