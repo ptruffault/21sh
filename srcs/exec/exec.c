@@ -126,7 +126,8 @@ void exec_file(char *path)
 		{
 			while (instruct[i])
 			{
-				if (*instruct[i] && (t = get_tree(instruct[i])))
+				if (*instruct[i] && *instruct[i] != '#'
+				&& (t = get_tree(instruct[i])))
 					ft_free_tree(exec_tree(ft_get_set_tree(t)));
 				i++;
 			}

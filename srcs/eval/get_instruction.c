@@ -58,11 +58,14 @@ static t_tree *built_tree(t_tree *head, t_word *w)
 	tree = head;
 	while (tmp && tmp->word)
 	{
-		if (IS_CMD(tmp->type))
+		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
-		else if (tmp->type == REDIRECT)
-			tmp = get_redirections(tree, tmp);
-		else if (tmp->type == OPERATEUR)
+		else if (tmp && tmp->type == REDIRECT && (tmp = get_redirections(tree, tmp))  && tmp->type == 0)
+		{
+			ft_free_tree(head);
+			return (NULL);
+		}
+		else if (tmp && tmp->type == OPERATEUR)
 		{
 			tree = add_newttree(tree, tmp);
 			tmp = tmp->next;

@@ -106,7 +106,7 @@ t_word *get_redirections(t_tree *t, t_word *w)
 		if (!(tmp = get_redirection(tmp, w)))
 		{
 			w->type = 0;
-			return (w->next);
+			return (w);
 		}
 		else if (tmp->path && w->next && !ft_strequ(tmp->path, "/dev/null"))
 			w = w->next;
