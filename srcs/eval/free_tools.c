@@ -79,7 +79,6 @@ void ft_free_tprocess(t_process *p)
 		tmp = p->next;
 		ft_strdel(&p->cmd);
 		ft_freestrarr(p->argv);
-		ft_freestrarr(p->env);
 		free(p);
 		p = tmp;
 	}

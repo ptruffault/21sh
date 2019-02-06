@@ -17,8 +17,8 @@ void ft_lex_backslash(t_eval *e)
 	e->eval[e->curr++] = ' ';
 	if (!(e->s[e->curr]))
 	{
-		e->s = ft_strjoin_fr(e->s, backslash_get_input());
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
+		e->err = B_MISS;
+		e->c = '\\';
 	}
 	e->eval[e->curr++] = 'e';
 }
@@ -39,10 +39,8 @@ void ft_lex_parenth(t_eval *e)
 	}
 	if (!e->s[e->curr])
 	{
-		e->s = ft_strjoin_fr(e->s , p_get_input(c));
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
-		e->curr = save;
-		ft_lex_parenth(e);
+		e->err = P_MISS;
+		e->c = c;
 	}
 	else
 		e->eval[e->curr++] = 'v';
@@ -77,9 +75,8 @@ void ft_lex_dquote(t_eval *e)
 	}
 	if (!e->s[e->curr])
 	{
-		e->s = ft_strjoin_fr(ft_stradd_char(e->s, '\n'), q_get_input('"'));
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
-		ft_lex_dquote(e);
+		e->err = Q_MISS;
+		e->c = '"';
 	}
 	else
 		e->eval[e->curr++] = ' ';
@@ -92,9 +89,8 @@ void ft_lex_quote(t_eval *e)
 		e->eval[e->curr++] = 's';
 	if (!e->s[e->curr])
 	{
-		e->s = ft_strjoin_fr(ft_stradd_char(e->s, '\n'), q_get_input('\''));
-		e->eval = ft_realloc(e->eval, ft_strlen(e->eval) + 1, ft_strlen(e->s) + 1);
-		ft_lex_quote(e);
+		e->err = Q_MISS;
+		e->c = '\'';
 	}
 	else
 		e->eval[e->curr++] = ' ';
@@ -133,6 +129,17 @@ void ft_clean_str(t_eval *e)
 	}
 }
 
+void ft_lex_operateur(t_eval *e)
+{
+	e->c = e->s[e->curr];
+	while (e->s[e->curr] && e->s[e->curr] == e->c)
+		e->eval[e->curr++] = 'o';
+	if (!e->s[e->curr])
+		e->err = O_MISS;
+	if (e->s[e->curr] != e->c && (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';'))
+		e->err = SYNTAX;
+}
+
 void ft_lexword(t_eval *e)
 {
 	while (ft_isspace(e->s[e->curr]))
@@ -144,7 +151,7 @@ void ft_lexword(t_eval *e)
 	else if (e->s[e->curr] == '\\')
 		ft_lex_backslash(e);
 	else if (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';')
-		e->eval[e->curr++] = 'o';
+		ft_lex_operateur(e);
 	else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 		ft_lex_var(e);
 	else if (e->s[e->curr] == '>' || e->s[e->curr] == '<')
@@ -159,6 +166,7 @@ t_eval lexer(char *src)
 	t_eval e;
 
 	e.curr = 0;
+	e.err = OK;
 	e.s = src;
 	if (!(e.eval = ft_strnew(ft_strlen(e.s) + 1)))
 		return (e);

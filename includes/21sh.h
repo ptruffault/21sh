@@ -94,12 +94,22 @@ typedef struct	s_edit
 	t_termi	t;
 }				t_edit;
 
+enum e_error
+{
+	OK = 0,
+	O_MISS = 1,
+	Q_MISS = 2,
+	B_MISS = 3,
+	P_MISS = 4,
+	SYNTAX = 5
+};
 
 typedef struct 	s_eval
 {
-	char *s;
-	int status;
-	char *eval;
+	char 		*s;
+	char 		*eval;
+	enum e_error err;
+	char 		c;
 	int curr;
 }				t_eval;
 

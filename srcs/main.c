@@ -31,7 +31,6 @@ int		main(int argc, char **argv, char **envv)
 	{
 		ft_get_set_envv(sh.env);
 		ft_disp(&sh);
-		ft_setup_edit_term(&sh);
 		in = get_input();
 		ft_set_old_term(&sh);
 		if ((t = get_tree(in)))

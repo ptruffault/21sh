@@ -56,10 +56,8 @@ void sig_handler(int sig)
 	}
 	if (sig == SIGWINCH)
 		ft_update_windows(&sh->e);
-/*	if (sig == SIGTSTP && sh && sh->process)
-		kill_running_fg_process(sh->process, SIGTSTP);*/
-
-	//recupere un process finis en background 
+	if (sig == SIGTSTP && sh && sh->process)
+		kill_running_fg_process(sh->process, SIGTSTP);
 	if (sig == SIGCHLD && sh && sh->process && (tmp = ft_wait_background(sh->process)))
 		tmp->status = DONE;
 }
