@@ -111,7 +111,6 @@ int term_goto(char *cmd, int row, int col);
 /* END use_termcaps.c	*/
 
 
-char			*get_input(void);
 void			ft_delete_line(t_edit *e);
 void			hist_move_do(t_edit *e);
 void			hist_move_up(t_edit *e);

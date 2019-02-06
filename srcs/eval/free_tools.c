@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parseur.h>
+#include "../../includes/21sh.h"
 
 void ft_free_tword(t_word *w)
 {
@@ -78,7 +78,6 @@ void ft_free_tprocess(t_process *p)
 	{
 		tmp = p->next;
 		ft_strdel(&p->cmd);
-		ft_freestrarr(p->argv);
 		free(p);
 		p = tmp;
 	}

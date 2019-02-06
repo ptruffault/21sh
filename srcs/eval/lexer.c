@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parseur.h>
+#include "../../includes/21sh.h"
 
 void ft_lex_backslash(t_eval *e)
 {
@@ -20,7 +20,8 @@ void ft_lex_backslash(t_eval *e)
 		e->err = B_MISS;
 		e->c = '\\';
 	}
-	e->eval[e->curr++] = 'e';
+	else
+		e->eval[e->curr++] = 'e';
 }
 
 void ft_lex_parenth(t_eval *e)
@@ -75,7 +76,7 @@ void ft_lex_dquote(t_eval *e)
 	}
 	if (!e->s[e->curr])
 	{
-		e->err = Q_MISS;
+		e->err = DQ_MISS;
 		e->c = '"';
 	}
 	else
@@ -118,24 +119,28 @@ void ft_lex_redirect(t_eval *e)
 	}
 }
 
-void ft_clean_str(t_eval *e)
-{
-	char *ptr;
-
-	while ((ptr = ft_strchr(e->eval, 'Q')) || (ptr = ft_strchr(e->eval, 'B'))  )
-	{
-		e->s = ft_delchar_n(e->s, ptr - e->eval);
-		e->eval = ft_delchar_n(e->eval, ptr - e->eval);
-	}
-}
 
 void ft_lex_operateur(t_eval *e)
 {
+	int i;
+
 	e->c = e->s[e->curr];
-	while (e->s[e->curr] && e->s[e->curr] == e->c)
+	i = 0;
+	e->eval[e->curr++] = 'o';
+	if (e->s[e->curr] && e->s[e->curr] == e->c)
+	{
+		i = 1;
 		e->eval[e->curr++] = 'o';
-	if (!e->s[e->curr])
-		e->err = O_MISS;
+	}
+	if (e->c != ';' && !(e->c == '&' && i == 0) && (!e->s[e->curr] || ft_isempty(&e->s[e->curr])))
+	{
+		if (e->c == '|' && i == 0)
+			e->err = OP_MISS;
+		else if (e->c == '|')
+			e->err = OO_MISS;
+		else
+			e->err = OA_MISS;
+	}
 	if (e->s[e->curr] != e->c && (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';'))
 		e->err = SYNTAX;
 }
@@ -173,6 +178,5 @@ t_eval lexer(char *src)
 	while (e.s[e.curr])
 		ft_lexword(&e);
 	e.eval[e.curr] = 0;
-	ft_clean_str(&e);
 	return (e);
 }

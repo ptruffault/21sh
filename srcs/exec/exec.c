@@ -130,7 +130,7 @@ void exec_file(char *path)
 					ft_free_tree(exec_tree(ft_get_set_tree(t)));
 				i++;
 			}
-			free(instruct);
+			ft_freestrarr(instruct);
 		}	
 		ft_close(fd);
 	}

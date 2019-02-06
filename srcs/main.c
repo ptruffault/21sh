@@ -35,6 +35,7 @@ int		main(int argc, char **argv, char **envv)
 		ft_set_old_term(&sh);
 		if ((t = get_tree(in)))
 			ft_free_tree(exec_tree(ft_get_set_tree(t)));
+		ft_strdel(&in);
 	}
 	return (0);
 }

@@ -30,8 +30,7 @@ EVAL			=	eval_tools.c \
 					free_tools.c \
 					get_instruction.c \
 					token.c \
-					redirect.c \
-					input_missing.c \
+					redirect.c 
 
 BUILTINS		=	ft_echo.c \
 					ft_cd.c \

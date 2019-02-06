@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parseur.h>
+#include "../../includes/21sh.h"
 
 static t_word *find_type(t_word *w, char c, int *pos)
 {
@@ -152,6 +152,5 @@ t_word *eval_line(char *input)
 		return (NULL);
 	}
 	ft_strdel(&e.eval);
-	ft_strdel(&e.s);
 	return (head);
 }

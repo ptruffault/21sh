@@ -15,17 +15,5 @@
 # include "21sh.h"
 
 
-t_word 		*ft_addtword(t_word *head, t_word *new);
-t_word 		*get_redirections(t_tree *t, t_word *w);
-t_tree 		*new_tree(void);
-t_redirect 	*new_redirection(void);
-t_eval 		lexer(char *src);
-t_word 		*eval_line(char *input);
-t_word 		*new_tword(void);
-char 		*heredoc_get_input(char *eoi);
-t_word 		*o_get_input(int type);
-char 		*q_get_input(char c);
-char 		*p_get_input(char c);
-char 		*backslash_get_input(void);
 
 #endif

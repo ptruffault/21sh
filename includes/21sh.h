@@ -97,12 +97,17 @@ typedef struct	s_edit
 enum e_error
 {
 	OK = 0,
-	O_MISS = 1,
-	Q_MISS = 2,
-	B_MISS = 3,
-	P_MISS = 4,
-	SYNTAX = 5
+	SYNTAX = 1,
+	OA_MISS = 2,
+	OO_MISS = 3,
+	OP_MISS = 4,
+	Q_MISS = 5,
+	DQ_MISS = 6,
+	B_MISS = 7,
+	P_MISS = 8,
 };
+
+
 
 typedef struct 	s_eval
 {
@@ -163,7 +168,7 @@ typedef struct s_shell
 	t_process		*process;
 	t_edit 			e;
 	struct termios	term;
-	struct termios	saved_term;
+	struct termios	*saved_term;
 }				t_shell;
 
 
@@ -264,4 +269,17 @@ t_hist *init_hist(char *hist);
 int ft_hist_len(t_hist *hist);
 t_hist *new_hist(void);
 t_hist *add_hist(t_hist *head, char *s);
+
+t_word 		*ft_addtword(t_word *head, t_word *new);
+t_word 		*get_redirections(t_tree *t, t_word *w);
+t_tree 		*new_tree(void);
+t_redirect 	*new_redirection(void);
+t_eval 		lexer(char *src);
+t_word 		*eval_line(char *input);
+t_word 		*new_tword(void);
+char 		*heredoc_get_input(char *eoi);
+t_word 		*o_get_input(int type);
+char 		*q_get_input(char c);
+char 		*p_get_input(char c);
+char 		*backslash_get_input(void);
 #endif
