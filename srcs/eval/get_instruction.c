@@ -38,13 +38,6 @@ static int find_operateur(char *op)
 static t_tree *add_newttree(t_tree *tree, t_word *w)
 {
 	tree->o_type = find_operateur(w->word);
-	if (tree->o_type != O_SEP && tree->o_type != O_BACK
-	&& (!w->next || !w->next->word))
-	{
-		w ->next = NULL;
-		while (!w->next)
-			w->next = o_get_input(tree->o_type);
-	}
 	if (w->type != 0)
 	{
 		if (!(tree->next = new_tree()))

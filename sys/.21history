@@ -2569,3 +2569,42 @@ ls
 ls||
 exit
 exit
+ls
+ls ;
+ls &&
+ls
+ls ||
+ls
+echo "lol
+exit
+ls
+ls ||
+ls ||
+ls
+exit
+ls
+ls ||
+ls &&
+ls && ls
+clear
+ls
+exit
+ls
+clear
+ls|rev
+ls
+ls &&
+ls &&ls
+clear
+ls
+ls
+cat
+ls
+jobs
+ls
+clear
+ls
+env
+env -i ls
+clear
+exit
