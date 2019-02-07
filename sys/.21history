@@ -3087,3 +3087,196 @@ exit
 ext
 exity
 exit
+cat << eoi
+lol
+mdr
+eoi
+cat -e << eoi
+lol
+mdr
+eoi
+exit
+clear
+ls
+ls |rev
+ls
+ls -
+ls
+clear
+ls | rev
+ls |rev
+ls -
+ls 
+clear
+ls
+ls 
+ls
+clezar
+clear
+ls -
+ls &
+jobs
+echo lo
+jobs
+exit
+ls|rev
+jobs
+ls | rev
+jobs
+clear
+ls
+jobs
+clear
+pwd
+ls
+clear
+env
+clear
+lms
+ls
+ls -ER
+env
+clear
+rm
+exit
+rm
+ls
+clear
+rm
+ls|rev
+rm
+rm lo
+ls
+echo ${lo)}
+clear
+cl
+rm
+exit
+ls
+rm
+alias
+alias
+jobs
+alias
+ls
+exit
+ls
+clear
+ls
+touch f
+rm f
+type rm
+type lo
+type cl
+type $PWD
+type $PWD
+exit
+ls
+type rm
+ls
+rm f
+ls
+ls
+rm f
+exit
+ls
+clear
+cl
+alias
+alias cl=clear
+cl
+type cl
+alias
+alias cl=clear
+alias
+alias
+exit
+exit
+type rm
+ls
+alias
+exit
+exit
+ls
+alias cl=clear
+ls
+alias
+alias cl=clear
+setenv l=m
+env
+l="mdr"
+l "mdr"
+l=\"mdr\"
+echo $l
+set
+setenv l=m
+env
+setenv  o p
+ls
+env
+setenv u i
+env
+l=m
+set
+alias
+alias test=mdr
+l=m1
+set
+exit
+exit
+alias
+type rm
+rm f
+ls
+exit
+$clear
+clear
+ls
+rm f
+ls
+touch f
+rm f
+ls
+alias
+alias
+alias
+ls
+clear
+ls
+alias
+touch t
+rm t
+type t
+ls
+type rm
+ls
+touch f
+ls
+rm f
+ls
+type rm
+ls$
+ls
+ls
+clear
+rm f
+ls
+ls
+clear
+ls|rev
+alias
+alias t=test
+alias
+t
+ls
+alias t type
+t ls
+alias
+exit
+alias
+alias cl=clear
+cl
+ls
+type cl
+cl
+exit

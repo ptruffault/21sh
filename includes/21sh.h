@@ -254,7 +254,7 @@ void	ft_echo(char **input);
 void	ft_exit(void);
 void	ft_env(t_envv *envv, char **argv);
 t_envv	*ft_export(t_shell *sh, char **argv);
-t_envv	*ft_alias(t_shell *sh, char **argv);
+void 	ft_alias(t_shell *sh, char **argv);
 
 void	ft_type(t_word *w);
 int		putword(t_word *w, int t);

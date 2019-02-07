@@ -85,54 +85,61 @@ void ft_jobs(t_shell *sh)
 	}
 }
 
-
-static t_envv	*change_envv(char **argv, t_envv *envv)
+void ft_alias(t_shell *sh, char **argv)
 {
-	t_shell *sh;
-	
-	if ((sh = ft_get_set_shell(NULL)))
-	{	
-		if (ft_strequ(*argv, "unsetenv"))
-			sh->env = ft_get_set_envv(ft_unsetenv(envv, &argv[1]));
-		else if (ft_strequ(*argv, "setenv"))
-			sh->env = ft_get_set_envv(ft_setenv(envv, &argv[1]));
-		else if (ft_strequ(*argv, "jobs"))
-			ft_jobs(sh);
-		else if (ft_isequal(*argv))
-			set_var(argv, sh);
-		else if (ft_strequ(*argv, "unset"))
-			sh->intern = ft_unsetenv(sh->intern, &argv[1]);
-		else if (ft_strequ(*argv, "cd"))
-			sh->env = ft_get_set_envv(ft_cd(argv, envv));
-		else if (ft_strequ(*argv, "export"))
-			sh->env = ft_get_set_envv(ft_export(sh, &argv[1]));
-		else if (ft_strequ(*argv, "set"))
-			ft_puttenvv(sh->intern);
-		else if (ft_strequ(*argv, "alias"))
-			sh->alias = ft_setenv(sh->alias, &argv[1]);
-		else if (ft_strequ(*argv, "unalias"))
-			sh->alias = ft_unsetenv(sh->alias, &argv[1]);
-	}
-	ft_get_set_shell(sh);
-	return (sh->env);
+	if (argv[1] == NULL)
+		ft_puttenvv(sh->alias);
+	else
+		sh->alias = ft_setenv(sh->alias, &argv[1]);
 }
 
 
-int run_builtin(t_tree *t, char **argv)
+static void change_envv(char **argv, t_shell *sh)
 {
-	t_envv *envv;
-	int fd[3];
+	if (ft_strequ(*argv, "unsetenv"))
+		sh->env = ft_unsetenv(sh->env, &argv[1]);
+	else if (ft_strequ(*argv, "setenv"))
+		sh->env =ft_setenv(sh->env, &argv[1]);
+	else if (ft_strequ(*argv, "jobs"))
+		ft_jobs(sh);
+	else if (ft_isequal(*argv))
+		set_var(argv, sh);
+	else if (ft_strequ(*argv, "unset"))
+		sh->intern = ft_unsetenv(sh->intern, &argv[1]);
+	else if (ft_strequ(*argv, "cd"))
+		sh->env = ft_get_set_envv(ft_cd(argv, sh->env));
+	else if (ft_strequ(*argv, "export"))
+		sh->env = ft_get_set_envv(ft_export(sh, &argv[1]));
+	else if (ft_strequ(*argv, "set"))
+		ft_puttenvv(sh->intern);
+	else if (ft_strequ(*argv, "alias"))
+		ft_alias(sh, argv);
+	else if (ft_strequ(*argv, "unalias"))
+		sh->alias = ft_unsetenv(sh->alias, &argv[1]);
+}
 
+static void ft_redir(t_tree *t, int fd[3])
+{
 	fd[0] = 0;
 	fd[1] =  1;
 	fd[2] = 2;
 	if(t->r && ft_redirect_builtin(t, fd) == -1)
 		warning("redirection fucked up", NULL);
-	envv = ft_get_set_envv(NULL);
+}
+
+
+int run_builtin(t_tree *t, char **argv)
+{
+	t_shell *sh;
+
+	sh = ft_get_set_shell(NULL);
+	int fd[3];
+
+	ft_redir(t, fd);
 	if (ft_strequ(*argv, "exit"))
 		ft_exit();
 	else if (ft_strequ(*argv, "env"))
-		ft_env(envv, argv);
+		ft_env(sh->env, argv);
 	else if (ft_strequ(*argv, "echo"))
 		ft_echo(&argv[1]);
 	else if (ft_strequ(*argv, "type"))
@@ -140,7 +147,7 @@ int run_builtin(t_tree *t, char **argv)
 	else if (ft_strequ(*argv, "42"))
 		exec_file(argv[1]);
 	else
-		ft_get_set_envv(change_envv(argv, envv));
+		change_envv(argv, sh);
 	if (t->r)
 		ft_reset_fd(fd);
 	return (0);

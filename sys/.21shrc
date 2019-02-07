@@ -3,14 +3,9 @@
 #alias cl /usr/bin/clear
 #alias PWD $PWD
 #alias la "ls -a" ll "ls -l" lz=ls
-#alias rm "rm -rf"
-#alias t "ls -R /"
-#/usr/bin/clear 
-#echo .21shrc [done]
+alias rm "rm -rf"
+/usr/bin/clear 
+echo .21shrc [done]
 
 #HEREDOC DOESNT WORK
 #ALIAS RM DOEST WORK
-
-#cat << eoi 
-ls | rev | cat -e | rev | grep '$' | rev > file
-cat < file

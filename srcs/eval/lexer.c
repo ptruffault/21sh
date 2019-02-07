@@ -165,7 +165,6 @@ void ft_lexword(t_eval *e)
 		e->eval[e->curr++] = 'e';
 }
 
-
 t_eval lexer(char *src)
 {
 	t_eval e;
