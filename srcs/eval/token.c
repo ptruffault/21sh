@@ -93,28 +93,39 @@ static t_word *ft_get_words(char *input, char *eval)
 
 //A REFAIRE C'EST DEGEU
 // BUG SUR ALIAS="ALIAS (...)" -> boucle infini qui segfault
+t_word *ft_alias_to_tword(t_word *w, char *val)
+{
+	t_word *w_alias;
+	t_eval  e_alias;
+	t_word *tmp;
 
-t_word *ft_check_alias(t_word *head ,t_shell *sh, t_eval *e)
+	e_alias = lexer(val);
+	w_alias = ft_get_words(val, e_alias.eval);
+	ft_strdel(&w->word);
+	w->word = ft_strdup(w_alias->word);
+	if (w_alias->next)
+	{
+		tmp = w_alias->next;
+		while (tmp && tmp->next)
+			tmp = tmp->next;
+		tmp->next = w->next;
+		w->next = w_alias->next;
+	}
+	w_alias->next = NULL;
+	ft_free_tword(w_alias);
+	return (w);
+}
+
+t_word *ft_check_alias(t_word *head ,t_shell *sh)
 {
 	t_word *tmp_w;
-	char *ptr;
 	char *val;
 
 	tmp_w = head;
 	while (tmp_w)
 	{
-		if (tmp_w->type == CMD && (val = get_tenvv_val(sh->alias, tmp_w->word)) 
-		&& (ptr = ft_strstr(e->s, tmp_w->word)))
-		{
-			ft_strdel(&e->eval);
-			ft_free_tword(head);
-			e->s = ft_strpull(e->s, ptr, ft_strlen(tmp_w->word), val);
-			printf("post strpull %s", e->s);
-			*e = lexer(e->s);
-			head = ft_get_words(e->s, e->eval);
-			tmp_w = head;
-			ft_strdel(&e->s);
-		}
+		if (tmp_w->type == CMD && (val = get_tenvv_val(sh->alias, tmp_w->word)))
+			tmp_w = ft_alias_to_tword(tmp_w, val);
 		tmp_w = tmp_w->next;
 	}
 	return (head);
@@ -131,7 +142,7 @@ t_word *eval_line(char *input)
 		return (NULL);
 	e = lexer(input);
 	head = ft_get_words(e.s, e.eval);
-	ft_check_alias(head, sh, &e);
+	ft_check_alias(head, sh);
 	if (head->type == OPERATEUR || head->type == REDIRECT)
 	{
 		error("syntax error near", head->word);
