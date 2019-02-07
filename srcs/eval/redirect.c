@@ -112,8 +112,8 @@ t_word *get_redirections(t_tree *t, t_word *w)
 			w = w->next;
 		if (w && w->next && w->next->type == REDIRECT)
 		{
-				tmp->next = new_redirection();
-				tmp = tmp->next;
+			tmp->next = new_redirection();
+			tmp = tmp->next;
 		}
 		w = w->next;
 	}

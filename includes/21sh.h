@@ -22,154 +22,11 @@
 # include "../libft/includes/libft.h"
 # include "termios.h"
 # include <termios.h>
-# include "term.h"
 # include <term.h>
+# include "structures.h"
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_CMD(x) (1 <= x && x <= 5)
 # define IS_EXP(x) (1 <= x && x <= 4)
-
-
-enum e_rtype{
-	UNDEF = 0,
-	R_LEFT = 1,
-    R_RIGHT = 2,
-   	R_DLEFT = 3,
-    R_DRIGHT = 4
-};
-
-enum e_otype{
-	UN = 0,
-	O_AND = 1,
-    O_OR = 2,
-    O_SEP = 3, 
-    O_PIPE = 4,
-    O_BACK = 5
-};
-
-enum e_wtype{ 
-    undef = 0,
-    CMD = 1,
-    ARG = 2,
-    DQUOTE = 3,
-    VAR = 4,
-    QUOTE = 5,
-    REDIRECT = 6,
-    OPERATEUR = 7
-};
-
-enum e_pstatus{
-	RUNNING_FG = 0,
-	RUNNING_BG = 1,
-	DONE = 2,
-	SUSPENDED = 3,
-	KILLED = 4
-};
-
-typedef struct	s_hist
-{
-	char *s;
-	struct s_hist *next;
-}				t_hist;
-
-
-typedef struct	s_termi
-{
-	int				x;
-	int				y;
-	int				nb_of_l;
-	int				width;
-}				t_termi;
-
-typedef struct	s_edit
-{
-	t_bool	edited;
-	char		*input;
-	int			curr;
-	int			size;
-	int			curr_history;
-	int			pos_hist;
-	int			select;
-	char		*clipboard;
-	t_hist	*hist;
-	t_termi	t;
-}				t_edit;
-
-enum e_error
-{
-	OK = 0,
-	SYNTAX = 1,
-	OA_MISS = 2,
-	OO_MISS = 3,
-	OP_MISS = 4,
-	Q_MISS = 5,
-	DQ_MISS = 6,
-	B_MISS = 7,
-	P_MISS = 8,
-};
-
-
-
-typedef struct 	s_eval
-{
-	char 		*s;
-	char 		*eval;
-	enum e_error err;
-	char 		c;
-	int curr;
-}				t_eval;
-
-typedef struct s_word
-{
-	enum e_wtype 	type;
-	char 			*word;
-	struct s_word 	*next;
-}				t_word;
-
-
-typedef struct s_redirect
-{
-	enum e_rtype 		t;
-	char 				*path;
-	int 				from;
-	int 				to;
-	char				*heredoc;
-	int 				done;
-	struct s_redirect	*next;
-}				t_redirect;
-
-typedef struct s_tree
-{
-	t_word 			*cmd;
-	t_redirect		*r;
-	int				ret;
-	enum e_otype	o_type;
-	struct s_tree	*next; 
-}				t_tree;
-
-typedef struct	s_process
-{
-	char 				*cmd;
-	enum e_pstatus 		status;
-	char  				**argv;
-	char 				**env;
-	int 				pid;
-	int 				ret;
-	struct s_process	*next;
-}				t_process;
-
-
-
-typedef struct s_shell
-{
-	t_envv			*env;
-	t_envv			*intern;
-	t_envv			*alias;
-	t_hist			*hist;
-	t_process		*process;
-	t_edit 			e;
-	struct termios	term;
-	struct termios	*saved_term;
-}				t_shell;
 
 
 
@@ -177,7 +34,7 @@ typedef struct s_shell
 //free
 void ft_free_thist(t_hist *h);
 void ft_free_redirection(t_redirect *r);
-void 		ft_free_tword(t_word *w);
+void ft_free_tword(t_word *w);
 void ft_free_tprocess(t_process *p);
 void ft_free_tshell(t_shell *sh);
 
@@ -270,16 +127,18 @@ int ft_hist_len(t_hist *hist);
 t_hist *new_hist(void);
 t_hist *add_hist(t_hist *head, char *s);
 
-t_word 		*ft_addtword(t_word *head, t_word *new);
-t_word 		*get_redirections(t_tree *t, t_word *w);
-t_tree 		*new_tree(void);
-t_redirect 	*new_redirection(void);
-t_eval 		lexer(char *src);
-t_word 		*eval_line(char *input);
-t_word 		*new_tword(void);
-char 		*heredoc_get_input(char *eoi);
-t_word 		*o_get_input(int type);
-char 		*q_get_input(char c);
-char 		*p_get_input(char c);
-char 		*backslash_get_input(void);
+t_word		*ft_check_alias(t_word *head ,t_shell *sh);
+t_word		*ft_addtword(t_word *head, t_word *new);
+t_word		*get_redirections(t_tree *t, t_word *w);
+t_tree		*new_tree(void);
+t_redirect	*new_redirection(void);
+t_word		*ft_get_words(char *input, char *eval);
+t_eval		lexer(char *src);
+t_word		*eval_line(char *input);
+t_word		*new_tword(void);
+char		*heredoc_get_input(char *eoi);
+t_word		*o_get_input(int type);
+char		*q_get_input(char c);
+char		*p_get_input(char c);
+char		*backslash_get_input(void);
 #endif

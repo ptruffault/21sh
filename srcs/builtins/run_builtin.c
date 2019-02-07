@@ -50,18 +50,13 @@ void set_var(char **argv, t_shell *sh)
 {
 	t_envv *head;
 	t_envv *end;
-	int i;
 
 	head = ft_setenv(new_tenvv(), argv);
 	end = head;
-	i = 0;
-	while (end && end->next && i++)
+	while (end && end->next)
 		end = end->next;
-	if (!(argv[i]))
-	{
-		end->next = sh->intern;
-		sh->intern = head;
-	}
+	end->next = sh->intern;
+	sh->intern = head;
 }
 
 void ft_jobs(t_shell *sh)

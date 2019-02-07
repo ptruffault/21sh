@@ -63,7 +63,7 @@ int ft_redirect(t_tree *t)
 		if (get_destination_fd(r) < 0 || fd_dup(r->to, r->from, 0) == -1)
 		{
 			error("redirection failed", NULL);
-			return (-1);
+			exit(-1);
 		}
 		r = r->next;
 	}

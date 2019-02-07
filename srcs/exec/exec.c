@@ -90,13 +90,17 @@ t_tree *exec_tree(t_tree *t)
 	t_tree *tmp;
 
 	tmp = t;
-	while (tmp && tmp->cmd)
+	while (tmp)
 	{
-		if (!tmp->cmd->word)
+		if (!tmp->cmd || !tmp->cmd->word)
 		{
 			if (tmp->o_type == O_SEP || tmp->o_type == 0 
 			|| tmp->o_type == O_BACK)
 				tmp = tmp->next;
+			else if (t->r)
+			{
+				printf("HERE I AM\n");
+			}
 			else
 			{
 				error("syntax error near", tmp->next->cmd->word);
