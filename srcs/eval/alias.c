@@ -19,7 +19,7 @@ static t_word	*ft_alias_to_tword(t_word *w, char *val)
 	t_word	*tmp;
 
 	e_alias = lexer(val);
-	w_alias = ft_get_words(val, e_alias.eval);
+	w_alias = ft_get_words(&e_alias);
 	ft_strdel(&e_alias.eval);
 	ft_strdel(&w->word);
 	w->word = ft_strdup(w_alias->word);

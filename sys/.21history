@@ -3902,3 +3902,77 @@ env
 clear
 ls
 exit
+ls | rev
+ls | cat -e | rev
+ls | rev
+exit
+ls
+exit
+exi
+exit
+ls|rev
+ls
+clear
+ls
+env
+clear
+exit
+ls | rev
+;s
+echo lol
+ls
+clear
+ls
+exit
+ls
+echo $PWD
+echo ${PWD:-LOL}
+echo ${PWDD:-LOL}
+echo ${PWDD:+LOL}
+echo ${PWD:+LOL}
+echo ${PWD:=LOL}
+echo ${PWDD:=LOL}
+exit
+echo $PWD ${PWDD:=LOL}
+env
+clear
+ls
+exit
+ls|rev
+ls
+env
+ls''
+clear
+ls
+''
+''
+exit
+''
+ 
+ 
+ 
+ 
+ls
+clear
+env
+clear
+ls
+env
+lr
+alias
+clear
+ls
+exit
+ls
+clear
+cl
+env
+ls | rev| cat -e
+ls
+env
+clear
+ls
+exit
+ls
+clear
+exit

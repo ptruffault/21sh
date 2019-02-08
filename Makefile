@@ -18,7 +18,8 @@ OBJ_FOLDER 	= 		./bin/
 FILES		=		main.c \
 					signal.c \
 					init_shell.c \
-					ft_get_set.c
+					ft_get_set.c \
+					ft_free_tshell.c 
 
 EXEC 		=		ft_execve.c \
 					exec.c \
@@ -30,7 +31,10 @@ EXEC 		=		ft_execve.c \
 					process_tools.c 
 
 EVAL			=	eval_tools.c \
+					tree_tools.c \
+					lexer_tools.c \
 					lexer.c \
+					heredoc_content.c \
 					free_tools.c \
 					get_instruction.c \
 					token.c \
@@ -65,10 +69,11 @@ GET_INPUT	=	curs_move.c	\
 				use_termcaps.c	\
 				term_settings.c\
 
-EXPANSION		=	var.c \
+EXPANSION		=	exp_var.c \
 					exp.c \
-					curly_exp.c \
-					exp_tools.c \
+					expantion_tools.c \
+					exp_parenth.c \
+					exp_sub_parenth.c
 
 
 

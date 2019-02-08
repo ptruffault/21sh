@@ -55,6 +55,7 @@ int 	get_content_size(char *s);
 char 	*ft_exp_param(char *ret, t_shell *sh, char *ptr);
 char *ft_exp_home_var(char *ret, char *ptr, t_envv *envv);
 char *ft_exp_envv_var(char *ret, char *ptr, t_shell *sh);
+char		*ft_exp_param_sub(char *parenth, t_shell *sh);
 
 t_tree 		*get_tree(char *input);
 void 		ft_free_tree(t_tree *t);
@@ -129,12 +130,18 @@ int ft_hist_len(t_hist *hist);
 t_hist *new_hist(void);
 t_hist *add_hist(t_hist *head, char *s);
 
+//eval
+void		ft_lex_backslash(t_eval *e);
+void		ft_lex_parenth(t_eval *e);
+void		ft_lex_var(t_eval *e);
+void		ft_lex_dquote(t_eval *e);
+void		ft_lex_quote(t_eval *e);
 t_word		*ft_check_alias(t_word *head ,t_shell *sh);
 t_word		*ft_addtword(t_word *head, t_word *new);
 t_word		*get_redirections(t_tree *t, t_word *w);
 t_tree		*new_tree(void);
 t_redirect	*new_redirection(void);
-t_word		*ft_get_words(char *input, char *eval);
+t_word		*ft_get_words(t_eval *e);
 t_eval		lexer(char *src);
 t_word		*eval_line(char *input);
 t_word		*new_tword(void);

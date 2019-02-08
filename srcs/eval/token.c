@@ -37,31 +37,31 @@ static t_word	*find_type(t_word *w, char c, int *pos)
 	return (w);
 }
 
-static t_word	*g_n_w(t_word *w, char *eval, char *input, int *i, int *pos)
+static t_word	*g_n_w(t_word *w, t_eval *e, int *i, int *pos)
 {
 	char	c;
 	int		begin;
 
 	begin = *i;
-	c = eval[*i];
-	if (eval[*i] == 'o' || eval[*i] == 'r')
+	c = e->eval[*i];
+	if (e->eval[*i] == 'o' || e->eval[*i] == 'r')
 	{
-		while (eval[*i] && eval[*i] == c)
+		while (e->eval[*i] && e->eval[*i] == c)
 			*i = *i + 1;
 		*pos = 0;
 	}
 	else
 	{
-		while (eval[*i] && eval[*i] != ' '
-				&& eval[*i] != 'o' && eval[*i] != 'r')
+		while (e->eval[*i] && e->eval[*i] != ' '
+				&& e->eval[*i] != 'o' && e->eval[*i] != 'r')
 			*i = *i + 1;
 	}
-	if (!(w->word = ft_strndup(input + begin, *i - begin)))
+	if (!(w->word = ft_strndup(e->s + begin, *i - begin)))
 		return (NULL);
 	return (find_type(w, c, pos));
 }
 
-t_word			*ft_get_words(char *input, char *eval)
+t_word			*ft_get_words(t_eval *e)
 {
 	t_word	*head;
 	t_word	*tmp_w;
@@ -73,18 +73,18 @@ t_word			*ft_get_words(char *input, char *eval)
 	pos = 0;
 	if (!(head = new_tword()))
 		return (NULL);
-	len = ft_strlen(input);
+	len = ft_strlen(e->s);
 	tmp_w = head;
-	while (eval[i] == ' ')
+	while (e->eval[i] == ' ')
 		i++;
 	while (i < len)
 	{
-		if (eval[i] == 0 || !(tmp_w = g_n_w(tmp_w, eval, input, &i, &pos)))
+		if (e->eval[i] == 0 || !(tmp_w = g_n_w(tmp_w, e, &i, &pos)))
 			return (head);
-		if (eval[i] == 0 || !(tmp_w->next = new_tword()))
+		if (e->eval[i] == 0 || !(tmp_w->next = new_tword()))
 			return (head);
 		tmp_w = tmp_w->next;
-		while (eval[i] && eval[i] == ' ')
+		while (e->eval[i] && e->eval[i] == ' ')
 			i++;
 	}
 	return (head);
@@ -100,7 +100,7 @@ t_word			*eval_line(char *input)
 	if (!input || !*input || ft_isempty(input))
 		return (NULL);
 	e = lexer(input);
-	head = ft_get_words(e.s, e.eval);
+	head = ft_get_words(&e);
 	ft_check_alias(head, sh);
 	if (head->type == OPERATEUR)
 	{

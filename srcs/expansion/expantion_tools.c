@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_set.c                                       :+:      :+:    :+:   */
+/*   expantion_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 12:18:04 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 12:18:05 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 16:13:02 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 16:13:03 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include <21sh.h>
 
-t_shell	*ft_get_set_shell(t_shell *sh)
+int	get_content_size(char *s)
 {
-	static t_shell *s = NULL;
+	int i;
 
-	if (sh != NULL)
-		s = sh;
-	return (s);
-}
-
-t_tree	*ft_get_set_tree(t_tree *new_t)
-{
-	static t_tree	*stored_t = NULL;
-
-	if (new_t)
-		stored_t = new_t;
-	return (stored_t);
+	i = 2;
+	while (s[i] && s[i] != '}')
+	{
+		if (s[i] == '$' && s[i + 1] == '{')
+			i = i + get_content_size(&s[i]) + 2;
+		i++;
+	}
+	return (i - 2);
 }

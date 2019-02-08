@@ -12,7 +12,7 @@
 
 #include <21sh.h>
 
-static t_tree *ft_end_of_pipe(t_tree *t, int pipes[2], int pid[2])
+static t_tree	*ft_end_of_pipe(t_tree *t, int pipes[2], int pid[2])
 {
 	close(pipes[0]);
 	close(pipes[1]);
@@ -23,16 +23,22 @@ static t_tree *ft_end_of_pipe(t_tree *t, int pipes[2], int pid[2])
 	return (t);
 }
 
-t_tree *exec_pipe(t_tree *t)
+static void		ft_exec_next(t_tree *t, int pipes[2])
+{
+	dup2(pipes[0], STDIN_FILENO);
+	close(pipes[1]);
+	exec_instruction(t->next);
+	ft_free_tree(t);
+	exit(0);
+}
+
+t_tree			*exec_pipe(t_tree *t)
 {
 	int			pipes[2];
 	int			pid[2];
 
 	if (pipe(pipes) != 0)
-	{
-		warning("pipe error", NULL);
 		return (t);
-	}
 	if ((pid[0] = fork()) < 0)
 		error("fork filed to create a new process in pipe", t->cmd->word);
 	else if (pid[0] == 0)
@@ -46,12 +52,6 @@ t_tree *exec_pipe(t_tree *t)
 	if ((pid[1] = fork()) < 0)
 		error("fork filed to create a new process in pipe", t->cmd->word);
 	else if (pid[1] == 0)
-	{
-		dup2(pipes[0], STDIN_FILENO);
-		close(pipes[1]);
-		exec_instruction(t->next);
-		ft_free_tree(t);
-		exit(0);
-	}
+		ft_exec_next(t, pipes);
 	return (ft_end_of_pipe(t, pipes, pid));
 }
