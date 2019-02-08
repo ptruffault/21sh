@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_exits.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 15:04:08 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/08/20 15:04:10 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 13:09:39 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 13:09:40 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-void ft_exit(void)
+void	ft_exit(void)
 {
-	t_tree *t;
-	t_shell *sh;
+	t_tree	*t;
+	t_shell	*sh;
 
 	sh = ft_get_set_shell(NULL);
 	t = ft_get_set_tree(NULL);

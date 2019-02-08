@@ -73,7 +73,6 @@ typedef struct	s_edit
 	int			curr;
 	int			size;
 	int			curr_history;
-	int			debug;
 	int			pos_hist;
 	int			select;
 	char		*clipboard;

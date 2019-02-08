@@ -3665,3 +3665,79 @@ eoi
 << fil
 fil
 > fil
+vim lol
+ls
+ls
+ls
+unsetenv PATH
+env
+ls
+clear
+clear
+exit
+ls > fie
+cat fie
+ls | rev > fie
+cat <fie
+cat fie
+cat < fie
+cat <1
+cat <&1
+echo end >> fie
+cat fie
+cat << eoi
+lol
+mdr
+eoi
+clear
+ls
+<<
+<< lol
+mdr
+lol
+ls >&2
+cat -z
+cat -z 2> file
+cat file
+rm -rf file
+ls
+rm -rf fie
+ls
+echo $PATH
+exit
+unset PATH
+unset
+unset PATH
+unsetenv
+unsetenv PATH
+env
+unset p
+unet
+unset
+unset PATH
+ls
+unset PATH
+unset PATH
+l=n
+set
+unset f
+unset l
+set
+clear
+42
+42 
+ 42 lol
+jobs
+clear
+ls
+ls|rev
+ls|clear
+cl|rev
+2J[[
+cl | cat -e
+echo "J"
+exit
+ls
+emv
+env
+exit

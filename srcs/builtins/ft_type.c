@@ -5,18 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:13:40 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:13:41 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 12:35:47 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 12:35:48 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
-#define OPTS_A(t) (t[0] == 1)
-#define OPTS_T(t) (t[1] == 1)
-#define OPTS_P(t) (t[2] == 1)
-#define OPTS_BP(t) (t[3] == 1)
 
-static t_word *init_opts(char opts[4], t_word *w)
+static t_word	*init_opts(char opts[4], t_word *w)
 {
 	int i;
 
@@ -45,35 +41,35 @@ static t_word *init_opts(char opts[4], t_word *w)
 	return (w);
 }
 
-static int handle_opts(t_word *w, char opts[4], t_shell *sh)
+static int		handle_opts(t_word *w, char opts[4], t_shell *sh)
 {
 	int ret;
 
 	ret = 0;
-	if (OPTS_BP(opts))
+	if (t[3] == 1)
 		return (putfile(w, sh->env, opts[1]));
-	else if (OPTS_P(opts))
+	else if (t[2] == 1)
 		return (putcmd(w, sh->env, opts[1]));
-	else if (OPTS_A(opts))
+	else if (t[0] == 1)
 	{
 		ret = ret + putword(w, opts[1]);
-	 	ret = ret + putalias(w, sh->alias, opts[1]);
-	 	ret = ret + putbuiltin(w, opts[1]);
+		ret = ret + putalias(w, sh->alias, opts[1]);
+		ret = ret + putbuiltin(w, opts[1]);
 		ret = ret + putfile(w, sh->env, opts[1]);
 		ret = ret + putcmd(w, sh->env, opts[1]);
 		return (ret);
 	}
-	else if (!putword(w, opts[1]) && !putalias(w, sh->alias, opts[1]) && !putbuiltin(w, opts[1]) &&
-	!putfile(w, sh->env, opts[1]) && !putcmd(w, sh->env, opts[1]))
+	else if (!putword(w, opts[1]) && !putalias(w, sh->alias, opts[1])
+	&& !putbuiltin(w, opts[1]) && !putfile(w, sh->env, opts[1])
+	&& !putcmd(w, sh->env, opts[1]))
 		return (0);
 	return (1);
-} 
+}
 
-
-void ft_type(t_word *w)
+void			ft_type(t_word *w)
 {
-	t_shell *sh;
-	char opts[4];
+	t_shell	*sh;
+	char	opts[4];
 
 	if (!w || !w->word || !(w = init_opts(opts, w)))
 		return ;

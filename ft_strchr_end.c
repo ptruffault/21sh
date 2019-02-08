@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_strchr_end.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:10:52 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:10:54 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 12:12:00 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 12:12:03 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../includes/libft.h"
 
-void		ft_echo(char **input)
+char	*ft_strchr_end(const char *s, char c)
 {
 	int i;
-	int opts_n;
 
-	i = 0;
-	opts_n = 0;
-	while (input[i])
+	i = ft_strlen(s);
+	while (i > 0)
 	{
-		if (i > 0)
-			ft_putchar('\t');
-		if (ft_strequ(input[i], "-n") && input[++i])
-			opts_n = 1;
-		ft_putstr(input[i++]);
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i--;
 	}
-	if (opts_n)
-		ft_putchar(0);
-	else
-		ft_putchar('\n');
+	return (NULL);
 }
+

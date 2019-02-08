@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_alias.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:10:52 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:10:54 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 12:43:00 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 12:43:02 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/21sh.h"
 
-void		ft_echo(char **input)
+void	ft_alias(t_shell *sh, char **argv)
 {
-	int i;
-	int opts_n;
-
-	i = 0;
-	opts_n = 0;
-	while (input[i])
-	{
-		if (i > 0)
-			ft_putchar('\t');
-		if (ft_strequ(input[i], "-n") && input[++i])
-			opts_n = 1;
-		ft_putstr(input[i++]);
-	}
-	if (opts_n)
-		ft_putchar(0);
+	if (argv[1] == NULL)
+		ft_puttenvv(sh->alias);
 	else
-		ft_putchar('\n');
+		sh->alias = ft_setenv(sh->alias, &argv[1]);
 }

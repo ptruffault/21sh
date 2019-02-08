@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:13:40 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:13:41 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 12:56:45 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 12:56:46 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-
-int putword(t_word *w, int t)
+int	putword(t_word *w, int t)
 {
-	if (ft_strequ(w->word, ";") || ft_strequ(w->word, "&&") || ft_strequ(w->word, "||")
-	|| ft_strequ(w->word, "||")  || ft_strequ(w->word, "|"))
+	if (ft_strequ(w->word, ";") || ft_strequ(w->word, "&&")
+	|| ft_strequ(w->word, "||") || ft_strequ(w->word, "||")
+	|| ft_strequ(w->word, "|"))
 	{
 		if (t)
 			ft_printf("keyword\n");
@@ -27,7 +27,7 @@ int putword(t_word *w, int t)
 	return (0);
 }
 
-int putfile(t_word *w, t_envv *env, int t)
+int	putfile(t_word *w, t_envv *env, int t)
 {
 	char *value;
 
@@ -43,7 +43,7 @@ int putfile(t_word *w, t_envv *env, int t)
 	return (0);
 }
 
-int putcmd(t_word *w, t_envv *env, int t)
+int	putcmd(t_word *w, t_envv *env, int t)
 {
 	char *value;
 
@@ -59,7 +59,7 @@ int putcmd(t_word *w, t_envv *env, int t)
 	return (0);
 }
 
-int putbuiltin(t_word *w, int t)
+int	putbuiltin(t_word *w, int t)
 {
 	if (check_builtin(w->word))
 	{
@@ -72,7 +72,7 @@ int putbuiltin(t_word *w, int t)
 	return (0);
 }
 
-int putalias(t_word *w, t_envv *alias, int t)
+int	putalias(t_word *w, t_envv *alias, int t)
 {
 	char *value;
 

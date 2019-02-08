@@ -40,7 +40,10 @@ BUILTINS		=	ft_echo.c \
 					ft_export.c \
 					ft_type.c \
 					ft_exit.c \
-					type_tools.c
+					type_tools.c \
+					ft_alias.c \
+					ft_jobs.c \
+					check_builtins.c 
 
 GET_INPUT	=	curs_move.c	\
 				get_input.c	\

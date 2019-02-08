@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_get_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:10:52 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:10:54 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 12:18:04 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 12:18:05 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../includes/21sh.h"
 
-void		ft_echo(char **input)
+t_shell	*ft_get_set_shell(t_shell *sh)
 {
-	int i;
-	int opts_n;
+	static t_shell *s = NULL;
 
-	i = 0;
-	opts_n = 0;
-	while (input[i])
-	{
-		if (i > 0)
-			ft_putchar('\t');
-		if (ft_strequ(input[i], "-n") && input[++i])
-			opts_n = 1;
-		ft_putstr(input[i++]);
-	}
-	if (opts_n)
-		ft_putchar(0);
-	else
-		ft_putchar('\n');
+	if (sh != NULL)
+		s = sh;
+	return (s);
+}
+
+t_tree		*ft_get_set_tree(t_tree *new_t)
+{
+	static t_tree	*stored_t = NULL;
+
+	if (new_t)
+		stored_t = new_t;
+	return (stored_t);
 }
