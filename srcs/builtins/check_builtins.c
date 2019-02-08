@@ -12,7 +12,7 @@
 
 #include "../../includes/21sh.h"
 
-static void	ft_init_builtins_tab(int builtins[14])
+static void	ft_init_builtins_tab(char *builtins[14])
 {
 	builtins[0] = "env";
 	builtins[1] = "setenv";
@@ -22,12 +22,13 @@ static void	ft_init_builtins_tab(int builtins[14])
 	builtins[5] = "echo";
 	builtins[6] = "export";
 	builtins[7] = "set";
-	builtins[0] = "unset";
-	builtins[0] = "alias";
+	builtins[8] = "unset";
+	builtins[9] = "alias";
 	builtins[10] = "unalias";
 	builtins[11] = "type";
 	builtins[12] = "42";
 	builtins[13] = "jobs";
+	builtins[14] = NULL;
 }
 
 int			check_builtin(char *input)
@@ -41,7 +42,7 @@ int			check_builtin(char *input)
 		return (0);
 	if (ft_isequal(input))
 		return (1);
-	while (i < 14)
+	while (i < 14 && builtins[i])
 		if (ft_strequ(builtins[i++], input))
 			return (1);
 	return (0);

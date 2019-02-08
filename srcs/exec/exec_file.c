@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_jobs.c                                          :+:      :+:    :+:   */
+/*   exec_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 12:42:19 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 12:42:21 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 13:59:48 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 13:59:49 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include <21sh.h>
 
-void		ft_jobs(t_shell *sh)
+void	exec_file(char *path)
 {
-	t_process	*tmp;
-	char		*stat[5];
-	int			i;
+	char	**instruct;
+	int		fd;
+	int		i;
+	t_tree	*t;
 
 	i = 0;
-	stat[0] = "running foreground";
-	stat[1] = "running background";
-	stat[2] = "done";
-	stat[3] = "suspended";
-	stat[4] = "killed";
-	tmp = sh->process;
-	while (tmp)
+	if ((fd = open(path, O_RDWR, S_IRWXU)) >= 0)
 	{
-		ft_printf("[%i] %s -> %3i\t%s {%i}\n",
-		i++, stat[tmp->status], tmp->ret, tmp->cmd, tmp->pid);
-		tmp = tmp->next;
+		if ((instruct = ft_get_txt(fd)))
+		{
+			while (instruct[i])
+			{
+				if (*instruct[i] && *instruct[i] != '#'
+				&& (t = get_tree(instruct[i])))
+					ft_free_tree(exec_tree(ft_get_set_tree(t)));
+				i++;
+			}
+			ft_freestrarr(instruct);
+		}
+		ft_close(fd);
 	}
+	else
+		perror(path);
 }

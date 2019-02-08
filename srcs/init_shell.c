@@ -62,7 +62,7 @@ void		init_shell(t_shell *sh, char **envv, char **argv)
 	sh->process = NULL;
 	sh->env = init_tenvv(envv);
 	sh->env = ft_new_envv(sh->env, "PWD", pwd);
-	if ((shell_path = ft_strjoin(pwd, (**argv == '.' ? *argv + 1 : *argv))))
+	if ((shell_path = get_shell_path(sh->env, *argv)))
 	{
 		init_env(sh, shell_path, pwd);
 		ft_strdel(&shell_path);

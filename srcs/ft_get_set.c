@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_jobs.c                                          :+:      :+:    :+:   */
+/*   ft_get_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 12:42:19 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 12:42:21 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 12:18:04 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 12:18:05 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include "../includes/21sh.h"
 
-void		ft_jobs(t_shell *sh)
+t_shell	*ft_get_set_shell(t_shell *sh)
 {
-	t_process	*tmp;
-	char		*stat[5];
-	int			i;
+	static t_shell *s = NULL;
 
-	i = 0;
-	stat[0] = "running foreground";
-	stat[1] = "running background";
-	stat[2] = "done";
-	stat[3] = "suspended";
-	stat[4] = "killed";
-	tmp = sh->process;
-	while (tmp)
-	{
-		ft_printf("[%i] %s -> %3i\t%s {%i}\n",
-		i++, stat[tmp->status], tmp->ret, tmp->cmd, tmp->pid);
-		tmp = tmp->next;
-	}
+	if (sh != NULL)
+		s = sh;
+	return (s);
+}
+
+t_tree		*ft_get_set_tree(t_tree *new_t)
+{
+	static t_tree	*stored_t = NULL;
+
+	if (new_t)
+		stored_t = new_t;
+	return (stored_t);
 }

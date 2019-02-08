@@ -63,6 +63,7 @@ typedef struct	s_edit
 	char		*input;
 	int			curr;
 	int			pos;
+	int 		width;
 	int			pos_hist;
 	int			select;
 	char		*clipboard;

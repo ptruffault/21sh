@@ -46,11 +46,11 @@ static int		handle_opts(t_word *w, char opts[4], t_shell *sh)
 	int ret;
 
 	ret = 0;
-	if (t[3] == 1)
+	if (opts[3] == 1)
 		return (putfile(w, sh->env, opts[1]));
-	else if (t[2] == 1)
+	else if (opts[2] == 1)
 		return (putcmd(w, sh->env, opts[1]));
-	else if (t[0] == 1)
+	else if (opts[0] == 1)
 	{
 		ret = ret + putword(w, opts[1]);
 		ret = ret + putalias(w, sh->alias, opts[1]);

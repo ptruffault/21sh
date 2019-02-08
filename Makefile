@@ -18,12 +18,16 @@ OBJ_FOLDER 	= 		./bin/
 FILES		=		main.c \
 					signal.c \
 					init_shell.c \
+					ft_get_set.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \
+					exec_pipe.c\
+					exec_file.c \
 					redirection.c \
+					redirect_builtins.c \
 					bin_search.c \
-					process_tools.c
+					process_tools.c 
 
 EVAL			=	eval_tools.c \
 					lexer.c \

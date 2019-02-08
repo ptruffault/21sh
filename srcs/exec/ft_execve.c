@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execve.c                                        :+:      :+:    :+:   */
+/*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:11:19 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:11:20 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 14:02:44 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 14:02:48 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-char **ft_arrdup(char **src)
+pid_t		ft_execve(t_process *p, t_tree *t, t_shell *sh)
 {
-	int i;
-	char **new;
-
-	i = -1;
-	if (!(new = (char **)malloc(sizeof(char) * ft_strarrlen(src))))
-		return (NULL);
-	while (src[++i])
-		new[i] = ft_strdup(src[i]);
-	return (new);
-}
-
-pid_t ft_execve(t_process *p, t_tree *t ,t_shell *sh)
-{
-	pid_t pid;
-	char **env;
-	char *bin_path;
+	pid_t	pid;
+	char	**env;
+	char	*bin_path;
 
 	bin_path = ft_strdup(p->cmd);
 	env = tenvv_to_tab(sh->env);
@@ -46,7 +33,7 @@ pid_t ft_execve(t_process *p, t_tree *t ,t_shell *sh)
 	return (pid);
 }
 
-t_process *init_process(t_tree *t, t_shell *sh)
+t_process	*init_process(t_tree *t, t_shell *sh)
 {
 	t_process	*new;
 
@@ -65,16 +52,15 @@ t_process *init_process(t_tree *t, t_shell *sh)
 			return (NULL);
 		}
 		new->next = sh->process;
-		sh->process = new; 
+		sh->process = new;
 	}
 	return (new);
 }
 
-int ft_exec(t_tree *t)
+int			ft_exec(t_tree *t)
 {
-	t_process *p;
-	t_shell *sh;
-
+	t_process	*p;
+	t_shell		*sh;
 
 	sh = ft_get_set_shell(NULL);
 	if ((p = init_process(t, sh)))

@@ -62,7 +62,9 @@ void 		ft_free_tree(t_tree *t);
 //redirection
 int ft_redirect(t_tree *t);
 int ft_redirect_builtin(t_tree *t, int fd[3]);
+int			get_destination_fd(t_redirect *r);
 void ft_reset_fd(int fd[3]);
+int			fd_dup(int fd1, int fd2, int close);
 
 
 t_shell 	*ft_get_set_shell(t_shell *sh);
@@ -112,7 +114,7 @@ void	ft_exit(void);
 void	ft_env(t_envv *envv, char **argv);
 t_envv	*ft_export(t_shell *sh, char **argv);
 void 	ft_alias(t_shell *sh, char **argv);
-
+void	ft_jobs(t_shell *sh);
 void	ft_type(t_word *w);
 int		putword(t_word *w, int t);
 int		putfile(t_word *w, t_envv *env, int t);
