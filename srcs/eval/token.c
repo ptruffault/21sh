@@ -6,13 +6,13 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:19:48 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/11/07 14:19:50 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/08 14:41:36 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/21sh.h"
 
-static t_word *find_type(t_word *w, char c, int *pos)
+static t_word	*find_type(t_word *w, char c, int *pos)
 {
 	if (c == 'o')
 		w->type = OPERATEUR;
@@ -37,12 +37,10 @@ static t_word *find_type(t_word *w, char c, int *pos)
 	return (w);
 }
 
-
-
-static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *pos)
+static t_word	*g_n_w(t_word *w, char *eval, char *input, int *i, int *pos)
 {
-	char c;
-	int begin;
+	char	c;
+	int		begin;
 
 	begin = *i;
 	c = eval[*i];
@@ -54,21 +52,22 @@ static t_word *get_next_word(t_word *w, char *eval, char *input, int *i, int *po
 	}
 	else
 	{
-		while (eval[*i] && eval[*i] != ' ' && eval[*i] != 'o' && eval[*i] != 'r')
+		while (eval[*i] && eval[*i] != ' '
+				&& eval[*i] != 'o' && eval[*i] != 'r')
 			*i = *i + 1;
 	}
-	 if (!(w->word = ft_strndup(input + begin, *i - begin)))
-	 	return (NULL);
-	 return (find_type(w, c, pos));
+	if (!(w->word = ft_strndup(input + begin, *i - begin)))
+		return (NULL);
+	return (find_type(w, c, pos));
 }
 
-t_word *ft_get_words(char *input, char *eval)
+t_word			*ft_get_words(char *input, char *eval)
 {
-	t_word *head;
-	t_word *tmp_w;
-	int pos;
-	int i;
-	int len;
+	t_word	*head;
+	t_word	*tmp_w;
+	int		pos;
+	int		i;
+	int		len;
 
 	i = 0;
 	pos = 0;
@@ -80,7 +79,7 @@ t_word *ft_get_words(char *input, char *eval)
 		i++;
 	while (i < len)
 	{
-		if (eval[i] == 0 || !(tmp_w = get_next_word(tmp_w, eval, input, &i, &pos)))
+		if (eval[i] == 0 || !(tmp_w = g_n_w(tmp_w, eval, input, &i, &pos)))
 			return (head);
 		if (eval[i] == 0 || !(tmp_w->next = new_tword()))
 			return (head);
@@ -91,15 +90,14 @@ t_word *ft_get_words(char *input, char *eval)
 	return (head);
 }
 
-
-t_word *eval_line(char *input)
+t_word			*eval_line(char *input)
 {
-	t_word *head;
-	t_eval e;
-	t_shell *sh;
+	t_word	*head;
+	t_eval	e;
+	t_shell	*sh;
 
 	sh = ft_get_set_shell(NULL);
-	if (!input|| !*input || ft_isempty(input))
+	if (!input || !*input || ft_isempty(input))
 		return (NULL);
 	e = lexer(input);
 	head = ft_get_words(e.s, e.eval);

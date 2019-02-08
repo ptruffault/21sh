@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 13:26:09 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/12/05 13:26:11 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 14:21:33 by adi-rosa          #+#    #+#             */
+/*   Updated: 2019/02/08 14:27:18 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/21sh.h"
 
-void ft_lex_backslash(t_eval *e)
+void	ft_lex_backslash(t_eval *e)
 {
 	e->eval[e->curr++] = ' ';
 	if (!(e->s[e->curr]))
@@ -24,14 +24,14 @@ void ft_lex_backslash(t_eval *e)
 		e->eval[e->curr++] = 'e';
 }
 
-void ft_lex_parenth(t_eval *e)
+void	ft_lex_parenth(t_eval *e)
 {
-	char c;
-	int save;
+	char	c;
+	int		save;
 
 	save = e->curr;
 	c = e->s[save];
-	while (e->s[e->curr] && ((c == '(' && e->s[e->curr] != ')') 
+	while (e->s[e->curr] && ((c == '(' && e->s[e->curr] != ')')
 	|| (c == '{' && e->s[e->curr] != '}')))
 	{
 		e->eval[e->curr++] = 'v';
@@ -47,27 +47,26 @@ void ft_lex_parenth(t_eval *e)
 		e->eval[e->curr++] = 'v';
 }
 
-void ft_lex_var(t_eval *e)
+void	ft_lex_var(t_eval *e)
 {
 	e->eval[e->curr++] = 'v';
 	if (e->s[e->curr - 1] == '$')
 	{
 		if (ft_isparenth(e->s[e->curr]))
 			ft_lex_parenth(e);
-		while(e->s[e->curr] && (ft_isalpha(e->s[e->curr]) || 
+		while (e->s[e->curr] && (ft_isalpha(e->s[e->curr]) ||
 		e->s[e->curr] == '_'))
 			e->eval[e->curr++] = 'v';
 	}
 }
 
-void ft_lex_dquote(t_eval *e)
+void	ft_lex_dquote(t_eval *e)
 {
-
 	e->eval[e->curr++] = ' ';
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '"')
 	{
 		if (e->s[e->curr] == '\\' && (e->eval[e->curr++] = 'q')
-		&&	e->s[e->curr + 1] == '"')
+		&& e->s[e->curr + 1] == '"')
 			e->eval[e->curr++] = 'q';
 		else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 			ft_lex_var(e);
@@ -83,7 +82,7 @@ void ft_lex_dquote(t_eval *e)
 		e->eval[e->curr++] = ' ';
 }
 
-void ft_lex_quote(t_eval *e)
+void	ft_lex_quote(t_eval *e)
 {
 	e->eval[e->curr++] = ' ';
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '\'')
@@ -97,16 +96,16 @@ void ft_lex_quote(t_eval *e)
 		e->eval[e->curr++] = ' ';
 }
 
-void ft_lex_redirect(t_eval *e)
+void	ft_lex_redirect(t_eval *e)
 {
-	int j;
+	int	j;
 
 	j = e->curr;
 	while (j > 0 && ft_isdigit(e->s[j - 1]))
 		e->eval[--j] = 'r';
 	e->eval[e->curr++] = 'r';
 	if (e->s[e->curr] == '&' && e->s[e->curr + 1]
-	&& (ft_isdigit(e->s[e->curr + 1]) || e->s[e->curr + 1] == '-'))
+		&& (ft_isdigit(e->s[e->curr + 1]) || e->s[e->curr + 1] == '-'))
 	{
 		e->eval[e->curr++] = 'r';
 		if (e->s[e->curr] == '-')
@@ -119,10 +118,9 @@ void ft_lex_redirect(t_eval *e)
 	}
 }
 
-
-void ft_lex_operateur(t_eval *e)
+void	ft_lex_operateur(t_eval *e)
 {
-	int i;
+	int	i;
 
 	e->c = e->s[e->curr];
 	i = 0;
@@ -132,7 +130,8 @@ void ft_lex_operateur(t_eval *e)
 		i = 1;
 		e->eval[e->curr++] = 'o';
 	}
-	if (e->c != ';' && !(e->c == '&' && i == 0) && (!e->s[e->curr] || ft_isempty(&e->s[e->curr])))
+	if (e->c != ';' && !(e->c == '&' && i == 0)
+		&& (!e->s[e->curr] || ft_isempty(&e->s[e->curr])))
 	{
 		if (e->c == '|' && i == 0)
 			e->err = OP_MISS;
@@ -141,11 +140,12 @@ void ft_lex_operateur(t_eval *e)
 		else
 			e->err = OA_MISS;
 	}
-	if (e->s[e->curr] != e->c && (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';'))
+	if (e->s[e->curr] != e->c && (e->s[e->curr] == '&'
+		|| e->s[e->curr] == '|' || e->s[e->curr] == ';'))
 		e->err = SYNTAX;
 }
 
-void ft_lexword(t_eval *e)
+void	ft_lexword(t_eval *e)
 {
 	while (ft_isspace(e->s[e->curr]))
 		e->eval[e->curr++] = ' ';
@@ -155,7 +155,8 @@ void ft_lexword(t_eval *e)
 		ft_lex_quote(e);
 	else if (e->s[e->curr] == '\\')
 		ft_lex_backslash(e);
-	else if (e->s[e->curr] == '&' || e->s[e->curr] == '|' || e->s[e->curr] == ';')
+	else if (e->s[e->curr] == '&'
+				|| e->s[e->curr] == '|' || e->s[e->curr] == ';')
 		ft_lex_operateur(e);
 	else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 		ft_lex_var(e);
@@ -165,9 +166,9 @@ void ft_lexword(t_eval *e)
 		e->eval[e->curr++] = 'e';
 }
 
-t_eval lexer(char *src)
+t_eval	lexer(char *src)
 {
-	t_eval e;
+	t_eval	e;
 
 	e.curr = 0;
 	e.err = OK;

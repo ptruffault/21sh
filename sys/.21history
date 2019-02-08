@@ -3882,3 +3882,23 @@ ls| rev
 ls | cat -e
 ls
 exit
+ls
+ls| rev
+norm
+ls
+clear
+env
+ls | rev | cat -e | grep $ 
+ls | rev | cat -e | grep '$' 
+ls | rev | cat -e | grep "$"
+ls | rev | cat -e 
+ls | rev | cat -e  | grep "$"
+ls | rev | cat -e  | grep $
+ls | rev | cat -e  | grep lo
+ls | rev | cat -e  | grep '$'
+clear
+ls
+env
+clear
+ls
+exit

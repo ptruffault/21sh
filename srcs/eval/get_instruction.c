@@ -6,13 +6,13 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:20:35 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/11/07 14:20:36 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/08 14:15:16 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/21sh.h"
 
-static t_word *get_argv(t_tree *t, t_word *w)
+static t_word	*get_argv(t_tree *t, t_word *w)
 {
 	while (w && w->word && IS_CMD(w->type))
 	{
@@ -22,13 +22,16 @@ static t_word *get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-static int find_operateur(char *op)
+static int		find_operateur(char *op)
 {
-	char *operateur[5] = {
-		"&&", "||", ";", "|", "&"
-	};
-	int i;
+	char	*operateur[5];
+	int		i;
 
+	operateur[0] = "&&";
+	operateur[1] = "||";
+	operateur[2] = ";";
+	operateur[3] = "|";
+	operateur[4] = "&";
 	i = 0;
 	while (i < 5)
 		if (ft_strequ(operateur[i++], op))
@@ -36,7 +39,7 @@ static int find_operateur(char *op)
 	return (0);
 }
 
-static t_tree *add_newttree(t_tree *tree, t_word *w)
+static t_tree	*add_newttree(t_tree *tree, t_word *w)
 {
 	tree->o_type = find_operateur(w->word);
 	if (w->type != 0)
@@ -48,11 +51,10 @@ static t_tree *add_newttree(t_tree *tree, t_word *w)
 	return (tree->next);
 }
 
-static t_tree *built_tree(t_tree *head, t_word *w)
+static t_tree	*built_tree(t_tree *head, t_word *w)
 {
-	t_word *tmp;
+	t_word	*tmp;
 	t_tree	*tree;
-
 
 	tmp = w;
 	tree = head;
@@ -60,7 +62,8 @@ static t_tree *built_tree(t_tree *head, t_word *w)
 	{
 		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
-		else if (tmp && tmp->type == REDIRECT && (tmp = get_redirections(tree, tmp))  && tmp->type == 0)
+		else if (tmp && tmp->type == REDIRECT
+				&& (tmp = get_redirections(tree, tmp)) && tmp->type == 0)
 		{
 			ft_free_tree(head);
 			return (NULL);
@@ -74,14 +77,15 @@ static t_tree *built_tree(t_tree *head, t_word *w)
 	return (head);
 }
 
-
-t_tree *get_tree(char *input)
+t_tree			*get_tree(char *input)
 {
 	t_tree	*head;
-	t_word *w;
+	t_word	*w;
 
-	if (!input || ft_isempty(input) || 
-	!(w = eval_line(input)) || !(head = new_tree()))
+	if (!input || ft_isempty(input) ||
+	!(w = eval_line(input)))
+		return (NULL);
+	if (!(head = new_tree()))
 		return (NULL);
 	head = built_tree(head, w);
 	ft_free_tword(w);

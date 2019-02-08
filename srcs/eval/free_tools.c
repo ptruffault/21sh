@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tools.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 14:19:48 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/11/07 14:19:50 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 14:09:06 by adi-rosa          #+#    #+#             */
+/*   Updated: 2019/02/08 14:10:52 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/21sh.h"
 
-void ft_free_tword(t_word *w)
+void	ft_free_tword(t_word *w)
 {
-	t_word *tmp;
+	t_word	*tmp;
 
 	while (w)
 	{
@@ -27,9 +27,9 @@ void ft_free_tword(t_word *w)
 	}
 }
 
-void ft_free_redirection(t_redirect *r)
+void	ft_free_redirection(t_redirect *r)
 {
-	t_redirect *tmp;
+	t_redirect	*tmp;
 
 	while (r)
 	{
@@ -42,9 +42,9 @@ void ft_free_redirection(t_redirect *r)
 	}
 }
 
-void ft_free_tree(t_tree *t)
+void	ft_free_tree(t_tree *t)
 {
-	t_tree *tmp;
+	t_tree	*tmp;
 
 	if (t == NULL)
 		return ;
@@ -59,7 +59,7 @@ void ft_free_tree(t_tree *t)
 	}
 }
 
-void ft_free_thist(t_hist *h)
+void	ft_free_thist(t_hist *h)
 {
 	t_hist *tmp;
 
@@ -72,7 +72,7 @@ void ft_free_thist(t_hist *h)
 	}
 }
 
-void ft_free_tprocess(t_process *p)
+void	ft_free_tprocess(t_process *p)
 {
 	t_process *tmp;
 
@@ -85,8 +85,7 @@ void ft_free_tprocess(t_process *p)
 	}
 }
 
-
-void ft_free_tshell(t_shell *sh)
+void	ft_free_tshell(t_shell *sh)
 {
 	ft_free_tenvv(sh->env);
 	ft_free_tenvv(sh->intern);
