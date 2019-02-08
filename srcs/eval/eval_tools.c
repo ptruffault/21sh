@@ -6,15 +6,15 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:19:48 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/11/07 14:19:50 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/08 14:02:47 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/21sh.h"
 
-int ft_twordlen(t_word *w)
+int			ft_twordlen(t_word *w)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (w)
@@ -25,9 +25,9 @@ int ft_twordlen(t_word *w)
 	return (i);
 }
 
-t_word *new_tword(void)
+t_word		*new_tword(void)
 {
-	t_word *n;
+	t_word	*n;
 
 	if (!(n = (t_word *)malloc(sizeof(t_word))))
 		return (NULL);
@@ -37,9 +37,9 @@ t_word *new_tword(void)
 	return (n);
 }
 
-t_word *ft_cpytword(t_word *src)
+t_word		*ft_cpytword(t_word *src)
 {
-	t_word *new;
+	t_word	*new;
 
 	if (!(new = new_tword()))
 		return (NULL);
@@ -48,13 +48,15 @@ t_word *ft_cpytword(t_word *src)
 	return (new);
 }
 
-char **ft_twordto_arr(t_word *w)
+char		**ft_twordto_arr(t_word *w)
 {
-	char **arr;
-	int i;
+	char	**arr;
+	int		i;
 
 	i = 0;
-	if (!(w = ft_expention(w)) || !(arr = (char **)malloc(sizeof(char *) * (ft_twordlen(w) + 1))))
+	if (!(w = ft_expention(w)))
+		return (NULL);
+	if (!(arr = malloc(sizeof(char *) * (ft_wordlen(w) + 1))))
 		return (NULL);
 	while (w)
 	{
@@ -66,10 +68,9 @@ char **ft_twordto_arr(t_word *w)
 	return (arr);
 }
 
-
-t_word *ft_addtword(t_word *head, t_word *new)
+t_word		*ft_addtword(t_word *head, t_word *new)
 {
-	t_word *tmp;
+	t_word	*tmp;
 
 	if (!new)
 		return (head);
@@ -82,10 +83,9 @@ t_word *ft_addtword(t_word *head, t_word *new)
 	return (head);
 }
 
-
-t_tree *new_tree(void)
+t_tree		*new_tree(void)
 {
-	t_tree *n;
+	t_tree	*n;
 
 	if (!(n = (t_tree *)malloc(sizeof(t_tree))))
 		return (NULL);
@@ -97,9 +97,9 @@ t_tree *new_tree(void)
 	return (n);
 }
 
-t_redirect *new_redirection(void)
+t_redirect	*new_redirection(void)
 {
-	t_redirect *new;
+	t_redirect	*new;
 
 	if (!(new = (t_redirect *)malloc(sizeof(t_redirect))))
 		return (NULL);
