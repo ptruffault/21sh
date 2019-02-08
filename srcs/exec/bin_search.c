@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execve.c                                        :+:      :+:    :+:   */
+/*   bin_search.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/04 14:11:19 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:11:20 by ptruffau         ###   ########.fr       */
+/*   Created: 2019/02/08 13:22:32 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 13:22:33 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*check_exe(char *bin_path, struct stat inf)
 	return (NULL);
 }
 
-char	*absolute_path(char *input, t_envv *envv)
+char		*absolute_path(char *input, t_envv *envv)
 {
 	char		*path;
 	struct stat	inf;
@@ -46,12 +46,12 @@ char	*absolute_path(char *input, t_envv *envv)
 	return (check_exe(path, inf));
 }
 
-char *search_in_envv(char *input, t_envv *envv)
+char		*search_in_envv(char *input, t_envv *envv)
 {
-	char *bin_path;
-	char **path;
+	char		*bin_path;
+	char		**path;
 	struct stat	inf;
-	int i;
+	int			i;
 
 	i = 0;
 	if (!(path = ft_strsplit(get_tenvv_val(envv, "PATH"), ':')))
@@ -72,13 +72,12 @@ char *search_in_envv(char *input, t_envv *envv)
 	return (NULL);
 }
 
-
-char	*get_bin_path(char *input, t_envv *envv)
+char		*get_bin_path(char *input, t_envv *envv)
 {
 	char		*bin_path;
 
 	if (ft_str_startwith(input, "./") || ft_str_startwith(input, "/"))
-	{ 
+	{
 		if ((bin_path = absolute_path(input, envv)))
 			return (bin_path);
 		error("no such file or directory", input);
