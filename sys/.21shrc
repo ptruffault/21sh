@@ -5,6 +5,3 @@ alias la "ls -a" ll "ls -l" lz=ls
 alias rm "rm -rf"
 /usr/bin/clear 
 echo .21shrc [done]
-#HEREDOC DOESNT WORK
-
-[H[2J.21shrc	[done]
