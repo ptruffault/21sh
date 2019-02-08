@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_input.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/08 16:50:42 by ptruffau          #+#    #+#             */
+/*   Updated: 2019/02/08 16:50:48 by ptruffau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FT_GET_INPUT_H
 # define FT_GET_INPUT_H
@@ -52,67 +63,36 @@
 # define UNDERLINE_CURS "uc"
 # define DELETE_LINE "dl"
 # define HOME_POS "ho"
+# define TOUCHE_SELECT_LEFT 74982532143899
+# define TOUCHE_SELECT_RIGHT 73883020516123
+# define TOUCHE_CMD_C 1
+# define TOUCHE_CMD_V 5
+# define TOUCHE_JP_MOT_LEFT 11
+# define TOUCHE_JP_MOT_RIGHT 21
 
-/* DEFINE DE TESTS */
+void			curr_move_right(t_edit *e);
+void			curr_move_left(t_edit *e);
+void			curs_go_last(t_edit *e);
 
-# define TOUCHE_SELECT_LEFT 74982532143899 /* MAJ_LEFT */
-# define TOUCHE_SELECT_RIGHT 73883020516123 /* MAJ_RIGHT */
-# define TOUCHE_CMD_C 1 /* CTRL_A */
-# define TOUCHE_CMD_V 5 /* CTRL_E */
-# define TOUCHE_JP_MOT_LEFT 11 /* CTRL_U */
-# define TOUCHE_JP_MOT_RIGHT 21 /* CTRL_K */
+void			ft_select_right(t_edit *e);
+void			ft_select_left(t_edit *e);
 
+void			entry_key(t_edit *e);
+void			clear_term(t_edit *e);
+void			reset_input(t_edit *e);
+void			just_exit(t_edit *e);
 
-/* DEFINE DE TESTS */
+void			ft_copy(t_edit *e);
+void			ft_paste(t_edit *e);
 
-/* arrow_move.c */
+void			ft_jp_word_right(t_edit *e);
+void			ft_jp_word_left(t_edit *e);
 
-void	curr_move_right(t_edit *e);
-void	curr_move_left(t_edit *e);
-void curs_go_last(t_edit *e);
-
-/* END arrow_move.c */
-
-/* ft_select.c */
-
-void ft_select_right(t_edit *e);
-void ft_select_left(t_edit *e);
-
-/* END ft_select.c */
-
-/* clear_and_all.c */
-
-void entry_key(t_edit *e);
-void clear_term(t_edit *e);
-void reset_input(t_edit *e);
-void just_exit(t_edit *e);
-
-/* END clear_and_all.c */
-
-/* ft_cop_pas.c */
-
-void ft_copy(t_edit *e);
-void ft_paste(t_edit *e);
-
-/* END ft_cop_pas.c */
-
-/* ft_jump_word.c */
-
-void ft_jp_word_right(t_edit *e);
-void ft_jp_word_left(t_edit *e);
-
-/* END ft_jump_word.c */
-
-/* use_termcaps.c */
-
-int term_actions(char *cmd);
-int term_goto(char *cmd, int row, int col);
-
-/* END use_termcaps.c	*/
-
+int				term_actions(char *cmd);
+int				term_goto(char *cmd, int row, int col);
 
 void			ft_delete_line(t_edit *e);
-void	curr_go_last(t_edit *e);
+void			curr_go_last(t_edit *e);
 void			hist_move_do(t_edit *e);
 void			hist_move_up(t_edit *e);
 void			delete_on(t_edit *e);
@@ -127,13 +107,13 @@ void			curs_reset(t_edit *e);
 void			ft_print_line(t_edit *e);
 void			ft_clear(t_edit *e);
 void			ft_delete_line(t_edit *e);
-void 			add_to_file(char *path, char *s);
+void			add_to_file(char *path, char *s);
 int				handle_input(unsigned long buf, t_edit *e);
 t_edit			*get_set_edit(t_edit *new_ed);
 t_edit			init_tedit(t_shell *sh);
 void			free_tedit(t_edit *e);
-void 			get_hist_path(t_edit *e);
-char 			**get_hist(int fd);
+void			get_hist_path(t_edit *e);
+char			**get_hist(int fd);
 void			update_input(t_edit *e, char *s);
 
 #endif
