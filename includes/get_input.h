@@ -40,11 +40,11 @@
 # define TOUCHE_F6 542091860763
 # define TOUCHE_DEL 2117294875
 # define CURSEUR_MOVE "cm"
-# define CURSEUR_UP "up"
-# define CURSEUR_DO "do"
-# define CURSEUR_LE "le"
-# define CURSEUR_RI "nd"
-# define CURSOR_MRIGHT "ch"
+# define CURSOR_UP "up"
+# define CURSOR_DO "do"
+# define CURSOR_LE "le"
+# define CURSOR_RI "nd"
+# define CURSOR_MHORIZ "ch"
 # define CURSEUR_MOVE "cm"
 # define SAVE_CURS  "sc"
 # define RESET_CURS "rc"
@@ -112,6 +112,7 @@ int term_goto(char *cmd, int row, int col);
 
 
 void			ft_delete_line(t_edit *e);
+void	curr_go_last(t_edit *e);
 void			hist_move_do(t_edit *e);
 void			hist_move_up(t_edit *e);
 void			delete_on(t_edit *e);

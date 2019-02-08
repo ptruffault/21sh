@@ -27,12 +27,12 @@ enum e_otype{
 	UN = 0,
 	O_AND = 1,
     O_OR = 2,
-    O_SEP = 3, 
+    O_SEP = 3,
     O_PIPE = 4,
     O_BACK = 5
 };
 
-enum e_wtype{ 
+enum e_wtype{
     undef = 0,
     CMD = 1,
     ARG = 2,
@@ -57,27 +57,16 @@ typedef struct	s_hist
 	struct s_hist *next;
 }				t_hist;
 
-
-typedef struct	s_termi
-{
-	int				x;
-	int				y;
-	int				nb_of_l;
-	int				width;
-}				t_termi;
-
 typedef struct	s_edit
 {
 	t_bool	edited;
 	char		*input;
 	int			curr;
-	int			size;
-	int			curr_history;
+	int			pos;
 	int			pos_hist;
 	int			select;
 	char		*clipboard;
 	t_hist	*hist;
-	t_termi	t;
 }				t_edit;
 
 enum e_error
@@ -92,8 +81,6 @@ enum e_error
 	B_MISS = 7,
 	P_MISS = 8,
 };
-
-
 
 typedef struct 	s_eval
 {
@@ -129,7 +116,7 @@ typedef struct s_tree
 	t_redirect		*r;
 	int				ret;
 	enum e_otype	o_type;
-	struct s_tree	*next; 
+	struct s_tree	*next;
 }				t_tree;
 
 typedef struct	s_process
