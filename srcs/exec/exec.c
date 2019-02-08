@@ -12,7 +12,7 @@
 
 #include <21sh.h>
 
-static t_tree *next_instruction(t_tree *t)
+static t_tree	*next_instruction(t_tree *t)
 {
 	if (t->o_type && t->next)
 	{
@@ -37,7 +37,7 @@ static t_tree *next_instruction(t_tree *t)
 	return (NULL);
 }
 
-t_tree *exec_pipe(t_tree *t)
+t_tree			*exec_pipe(t_tree *t)
 {
 	int			pipes[2];
 	int			pid[2];
@@ -76,7 +76,7 @@ t_tree *exec_pipe(t_tree *t)
 	return (t);
 }
 
-t_tree *exec_instruction(t_tree *t)
+t_tree			*exec_instruction(t_tree *t)
 {
 	if (t->o_type == O_PIPE  && t->next)
 		t = exec_pipe(t);
@@ -85,7 +85,7 @@ t_tree *exec_instruction(t_tree *t)
 	return (t);
 }
 
-t_tree *exec_tree(t_tree *t)
+t_tree 			*exec_tree(t_tree *t)
 {
 	t_tree *tmp;
 
@@ -116,7 +116,7 @@ t_tree *exec_tree(t_tree *t)
 	return (t);
 }
 
-void exec_file(char *path)
+void 		exec_file(char *path)
 {
 	char **instruct;
 	int fd;
