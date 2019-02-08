@@ -75,7 +75,6 @@ typedef struct	s_edit
 	int			width;
 	int			pos_hist;
 	int			select;
-	char		*clipboard;
 	t_hist		*hist;
 }				t_edit;
 
@@ -134,7 +133,7 @@ typedef struct	s_shell
 	t_hist			*hist;
 	t_process		*process;
 	t_edit			e;
-
+	char			*clipboard;
 	struct termios	term;
 	struct termios	*saved_term;
 }				t_shell;

@@ -58,6 +58,7 @@ void		init_shell(t_shell *sh, char **envv, char **argv)
 
 	pwd = getcwd(buff, 4096);
 	sh->intern = NULL;
+	sh->clipboard = NULL;
 	sh->alias = NULL;
 	sh->process = NULL;
 	sh->env = init_tenvv(envv);

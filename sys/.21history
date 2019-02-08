@@ -3976,3 +3976,11 @@ exit
 ls
 clear
 exit
+ls | rev | cat -e
+clear && ls
+c;ear
+clear
+exit
+qregugeergrgqregugeergrgqregugeergrgq
+regugeergrgqregugeergrgqregugeergrgqregugeergrgq
+regugeergrgqregugeergrgqregugeergrgq
