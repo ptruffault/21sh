@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include "../../includes/shell42.h"
 
 static t_word	*ft_alias_to_tword(t_word *w, char *val)
 {

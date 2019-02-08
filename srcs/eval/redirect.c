@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include "../../includes/shell42.h"
 
 static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
 {

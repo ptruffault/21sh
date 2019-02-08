@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 int			ft_redirect_builtin(t_tree *t, int fd[3])
 {

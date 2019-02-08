@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 static t_tree	*next_instruction(t_tree *t)
 {

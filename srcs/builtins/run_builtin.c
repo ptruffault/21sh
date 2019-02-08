@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 static void	set_var(char **argv, t_shell *sh)
 {

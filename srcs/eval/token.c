@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include "../../includes/shell42.h"
 
 static t_word	*find_type(t_word *w, char c, int *pos)
 {

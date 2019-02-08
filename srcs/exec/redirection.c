@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 int			fd_dup(int fd1, int fd2, int close)
 {

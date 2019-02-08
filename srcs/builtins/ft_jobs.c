@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include "../../includes/shell42.h"
 
 void		ft_jobs(t_shell *sh)
 {

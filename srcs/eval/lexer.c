@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/21sh.h"
+#include "../../includes/shell42.h"
 
 void	ft_lex_redirect(t_eval *e)
 {

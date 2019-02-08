@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 static t_tree	*ft_end_of_pipe(t_tree *t, int pipes[2], int pid[2])
 {

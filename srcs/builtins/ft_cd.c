@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 static t_envv	*change_dir(char *path, char *cwd, t_envv *envv)
 {

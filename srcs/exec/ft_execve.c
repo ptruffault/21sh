@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 pid_t		ft_execve(t_process *p, t_tree *t, t_shell *sh)
 {
