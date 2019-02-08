@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include "../includes/shell42.h"
 
 t_shell	*ft_get_set_shell(t_shell *sh)
 {

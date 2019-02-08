@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include "../includes/shell42.h"
 
 static char	*get_shell_path(t_envv *env, char *path)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <21sh.h>
+#include "../../includes/shell42.h"
 
 static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh)
 {

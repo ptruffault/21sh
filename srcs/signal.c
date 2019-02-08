@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/21sh.h"
+#include "../includes/shell42.h"
 #include "../includes/get_input.h"
 
 t_process	*ft_wait_background(t_process *p)
