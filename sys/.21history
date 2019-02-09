@@ -1,3995 +1,583 @@
+unsetenv PATH
 ls
+ls
+vim
 clear
-ls
-cl
 env
-ls&
+setenv PATH="bin"
+setenv PATH "bin"
 ls
 clear
 ls
+clear
 env
-ls
-ls
-clear
-l
-ls
-exur
 exit
-cl
-env
-ls &
-jobs
-exit
-ls
-ls&
-ls
-clear
-ls
-jobs
-ls &
-jobs
-ls &
-nam==val
-set
-jobs
-echo lol
-jobs
-ls &
-jobs
-./21sh &
+wef
+wefw
+lswefqwef
+qwedfvqds
+veqsvefdverfdsv
+efxv
+efsxv
+erfsxv
 e
-en
-nvv
-lsxt
-ext
-exi
-eiiti
-ls &
-ls |rev &
-ls
-ls
-ls|rev
-lsr
-fewfxcd
-ls
-ls &
-cl
-sls
-ls &
-l
-s
-cl
-env
-exit
-ls &
-ls
-env
-cl
-ks
-exit
-clear
-ls
-ls|rev
-lss
-ls
-ls
-ls|rev
-ls|rev
-l;s
-ls
-cd 
-cd 21sh
-ls
-clear
-ls|rev
-ls&
-ls
-clear
-ld
-ls
-env
-exit
-ls &
-ls &
-eit
-exit
-ls&
-exit
-exit
-ls&
-ls
-clear
-exit
-ls &
-ls&
-exit
-ls|rev
-ls
-ls &
-exit
-ls
-ls &
-exit
-exit
-ls
-<<<<<<< HEAD
-ls &
-=======
-env
-clear
-exit
-<<<<<<< HEAD
-ls
-type
-type type
-type ls
-type "ls"
-type "ls -r"
-type  name=val
-exit
-name=val
-set
-name=val v=lol
-set
-clear
-ls
-env
-echo -n "lol"
-exit
-echo -n lol
-exit
-ls
-echo "\a"
-echo '\a'
-echo "\a"
-"\a"
-exit
-echo "\a"
-echo "\""
-echo "\"
-"
-exit
-ls
-env
-clear
-echo "\a \n"
-"\a"
-'\a'
-"$PWD"
-echo '$PWD'
-echo '$PWD'
-exit
-clear
-env
-ls
-clear
-echo 'lol'
-echo "\a"
-exit
-echo "\a"
-\&
-exit
-ls
-cl
-exit
-cl
-env
-cl
-export PWD=mdr ; echo $PWD
-pwd
-ls
-env
-cl
-ls
-./21sh
-exit
-export LOL=MDR
-env
-cl
-export LOL
-env
-export MDR
-env
-exit
-ls
-env
-name=val
-set
-export name
-env
-export LOL=MDR;echo $LOL
-lol=mdr
-echo $lol
-echo $lol; export lol
-ls
-ls|rev
-ls
-ls;ls
-"lol"
-"lol";
-ls
-ls;ls
-cl
-ls&&ls|rev||env
-cl
-ls&&ls|rev||env
-echo $PWD
-export $PWD;echo $PWD
-export PWD=MDRLOL; echo $PWD
-cl
-env
-name=value ty=tty ls
-set
-name=val
-set
-name=val t=op
-set
-name=val
-set
-exit
-name=lol
-name=val
-set
-name=PWD
-set
-ls
-ls
-env
-name=valeu
-set
-name=lol lol=name
-set
-exit
-exi
-exit
-name=val
-set
-ls
-cl
-env
-exit
-exit
-ls
-exit
-exit
-ls
-env
-name=val
-exit
-exit
-e
-exit
-name=val
-exit
-name=val
-se
-set
-exit
-ls
-name=val
-set
-exit
-env
-ls
-ls>file
-rm -rf file
-ls
-cl
-env
-ck
-cl
-env
-cl
-env
-sh lol
-clar
-clear
-cl
-env
-type cl
-type cl
-type cl
-type -p cl
-type -P -p cl
-type -P env
-type -p env
-type -a env
-alias env=mdr
-type -a env
-env
-unalias env
-env
-cl
-env
-cl
-env
-exit
-ls
-cl
-efafj
-f
-fzef
-e
-fea
-zfe
+xsvef
+dsxv
 ef
-f
-f
-f
-ff;ghuh ty"hsm
-f
-"
+xver
+fxsv
+efx
+svfe
+dd
+ks
+ls
+type vim
+unsetenv PATH
+ls
+setenv PATH /usr/bin
+vim
 ls
 clear
+vim
+ls
+env
+clear
+ls
+env
+/binls
+/bin/ls
+clear
+ls
+env
+unsetenv PATH
+env
+reset
+reset
+ls
+clear
+/bin/ls
+clear
+ls
+ls
+/bin/ls
+vim
+echo $PATH
+vim
+ls
+export 
+ls
+ls
+ls
+ls
+ls
+ls
+env
+clear
+ls
+env | grep PWD
+ls
+ls
+clear
+unsetenv PATH
+env
+ls
+clear
+env
+vim
+cat << EOF
+ls
+mdr
+EOF
+ls
+vim
+clear
+ls
+lwef
+qwdfq
+wdv
 dc
-skl,fmfd
-=======
-cl
-env
-name=val l=mdr
-set
+qdc
+qdw
+c
+dccwd
+cw
+dsc
+wdsc
+wd
+cw
+ec
+w
+cls
 clear
-ls|rev
-cl
->>>>>>> 339425a5ebeb71bd6caa7604227949035e75ef7f
 ls
-exit
-ls &
-ls &
-ks
-ls
-ckear
-clear
 ls
 env
-ls
-ls
-clear
-<<<<<<< HEAD
-clear
-cl
-=======
-42 test
-42 test
-cd test
-ls
-42 test
-42 test
-42 test
-exit
-cd test
-42 test
-42 test
-exit
-42 tmp
-ls
-cat tmp
-cat tmp
-exit
-42 tmp
-exi
->>>>>>> 50bd471ce86d2f01ef48ec3778a3f4f6c4441a8b
-exit
-clear
-clear
-clear
-env
-clear
-ls
-env
-clear
-evks
-ckear
-ls
-clear
-env
-type clear
-exit
-exit
-ls
-jobs
-exi
-exit
-ls
-env
-jobs
-ls
-env
-cl
-env
-clear
-type -a clear
-type -a cl
-type c
-exit
-ls
-exit
-ls
-jobs
-l
-jobs
-exit
-jobs
-clear
-ls
-jobs
-exit
-ls
-jobs
-exit
-ls
-ls
-clar
-clear
-ls -R $HOME
-ls
-jobs
 echo lol
-jobs
-man kill
-man 2 kill
-exit
-ls -R /
-exit
-exit
-echo ${PWD:+LOL}
-echo ${PWD:-LOL}
-echo ${PWDD:-LOL}
-echo ${${PWD:+PWD}:-LOL}
-echo ${${PWD:-PWDD}:-LOL}
-echo ${${PWD:-PWDD}:-LOL}
-exit
-echo ${PWD:?lool}
-echo ${PWDD:?lool}
-${LOL:=mdr}
-env
-exit
-echo ${P:=l}
-echo $P
-env
-exit
-ls
-ls|rev
-exit
-test
-type test
-type -a test
-exit
-exi
-clear
-exit
-test
-ls & ls
-ls ;
-ls;ls
-ls&&ls
-ls;
-ls;
-ls
-ls;
-ls;env
-ls| ;ls
-ls| || ;ls
-clear
-|ls
-ls|
-rev
-ls||;
-ls;;|
-ls
-env
-clear
-se
-set
-jobs
-cat 
-cat
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-cat
-cat
-cat 
-ks
-s
-ls *
-env
-ls
-ls|
-rev
-ls
-ls|rev|cat -e
-exit
-ls
-exit
-ls
-ls|rev
-ls ai
-ls as
-test
-type test
-cl
-type cl
-exit
-exit
-ls
-clear
-ls|rev
-echo lol 
-echo lol &
-jobs
-ls&
-cl
-env
-set
-n=l
-set
-clear
-ls
-echo ${LOL}
-echo ${LOL} ${LOL:-PWD}
-echo ${LOL} ${LOL:-$PWD}
-clear
-s
-ls
-l;
-ls;;$
-ls::::
-ls;;
-ls|re 
-ls|rev
-cl
-env
-ls
-ls||
-le
-ls|||
-ls &
-cl
-env
-ls
-clear
-ls|rev
-cl
-env
-cl
-ls $HOME
-jobs
-exit
-cleqr
-clear
-ls $HOME -R
-ls $HOME -R
-ls $HOME -R
-ls $HOME -R
-ls $HOME -R
-ls $HOME -R
-ls -R $HOME 
-ls -R /
-jobs
-jobs
-ls
-jpbs
-jobs
-clear
-clear
-clear
-ls
-man signal
-jobs
-jobs
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-env
-cleqr
-cl
-ls
-ls
-ls
-sl
-exit
-$ls
-ls
-$PWD
-$p
-echo $OKEP
-cl
-env
-ls
-jobs
-cl
-jobs
-$jobs
-ls
-ls|rev$
-ls|rev
-ls|rev
-ls|cat|rev
-ls|cat|zerg
-ls$
-cleqr
-jobs
-ls
-jobs
-ls
-jobs
-ls -z
-jobs
-exit
-ls
-ls|rev
-cl
-jobs
-ls&
-ls
-clear
-ls|rev
-ls|rev
-ls
-ls&
-exit
-ls
-ls&
-ls&ls
-ls&ls
-ls&ls&ls
-exit
-ls &
-ls& ls
-exit
-ls&ms
-ls&&ms
-ls&ls
-ls&l
-cl
-ls
-ls&ls
-ls&l
-ls&l
-ls&ls
-clear
-ls
-ls|rev
-l&l
-cez&
-jobs
-exit
-export HOME=
-env
-cd
-cd
-exit
-ls
-exit
-ls
-ls &
-ls&ls
-clear
-ls -z &&ls
-ls -z &ls
-exit
-ls &ls
-ls
-./21sh &
-t
-xi
-t
-exietexils
-s
-l
-x
-eite
-ls
-ls &
-ls
->>>>>>> 339425a5ebeb71bd6caa7604227949035e75ef7f
-exit
-ls
-clear
-ls
-ls|rev
-ls
-ls
-ls
-lcear
-ls|rev
-ls &
-ls &
-jobs
-exiy
-exit
-ls &
-ls
-ls &
-jobs
-jobs
-ls &
-jobs
-exit
-ls &
-jobs
-exit
-ls|rev
-ls
-ls &
-jobs
-exit
-korepw'giof;bjgiof;vbjrgmoifv;cblkjrwgfmdiocbklvj ngfdmcxbklvjfdsgivl;fjdcgmvio;erldjxkvmerodslx;kfvmeidlsjvmerio;dsjxvmireoldsjfcmreds
-'
-'
-s
-'
-exit
-echo "lol
-wnehfuewgvuye
-qerngjkieqr
-ewbgnvjkew
-nqetlfbc
-bwefkw
-"
-cat << eoi
-eqrbug
-hwefiuygw
-beijv
-bvekrq
-eoi
-exit
-cat << eoi
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-exit
-exit
-exit
-exit
-exit
-exit
-ls
-eoi
-exit
-ls
-ls|rev
-env
-exit
-env
-ks
-ls
-ls &
-jobs
-ls &
-make fre
-exit
-env
-exit
-ls
-emv
-env
-la
-ls
-ls R
-n=v
-set
-expot n
-eexport
-export n
-env
-cl
-env
-  
-sl
-t
-test
-ls
-ls &
-ls
-exit
-ls
-ls|rev
-ls
-ls
-cl
-env
-ls
-ls
-exit
-exit
-exit
-ls
-ls $HOME
-ls -R $HOME
-dvyufyucu
-exit
-ls
-ls eqhruygqer ehqfuivlqeb ui veiruqdvb 
-ls els els els efdv
-ls
-clear
 clear
 ;s
-ls
-sl
-cl
 env
+export PATH bin
 ls
-ls $HOME
-ls $HOME
-ls $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-exit
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-ls -R $HOME
-lsls
-exit
-AEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; cuiehvjbioeAEEEEEEss eqvqev ewfdmlqekf eqrmvq eqflv vwe;ladv qel qvelrc   lqw  l f ; c
-ls
-ls
-ls
-exit
-exit
-ls
-ls
-ls
-exit
-ls
-ls &
-ls &
-ls /
-ls -R /
-ls -R /
-exirt
-exit
-ls -R /
-lsclear
-;d
-ls
-exit
-ls
-ls -R /
-ls
-clear
-ls
-clear
-ls
-ls -R /
-ls -R /
-ls -R /
-exit
-ls -R /
-ls -R /
-exit
-ls -R /
-exit
-ls
-ls -R /
-ls -R /
-ls -R /
-wqetrgweroighweiufviuewfhvuiehfvuihefuivefuvheryvuervjiefwnuivhefuivurehvurehvurhgvurehughreuqigphruiqpghrupqghurpqghur3pqghur3qpghu34pqhgu43pqghu43pqghu43pqhgu3qp
-clear
-ls &
-ls
-ls
-ls &
-ls
-ls &
-exit
-ls -R /
-ls -R /
-ls -R /
-exit
-exit
-exit
-ls -R /
-ls -R /
-ls -R /
-exit
-ls
-ls
-ls -R /
-ls -R /
-ls -R /
-ls -R /
-cat << eoi
-ls -R /
-exit
-ls 
-ls 
-jobs
-ls &
-ls &
-ls -R /
-ls -R /
-exit
-awdwawadwadawdawwdawdwdaadwadawdwad
+echo PATH
+echo $PATH
+env
+export PATH /bin
 env
 exit
-exit
-ls -R /
+export PATH bin
+env
+unsetenv PATH
+env
+clear
+PATH /bin:/usr/bin
+PATH=/bin:/usr/bin
+clear
+export PATH
+export PATH /bin
+unsetenv PATH
+export PATH /bin
+l
+clear
+unsetenv PATH
 env
 ls
-<<<<<<< HEAD
-exit
-ls
-exit
-exit
-exit
-exit
-ls
-exitr
-exit
-exit
-lkwefw ls
 clear
+l
+unetenv PATH
+unsetenv PATH
 ls
+PATH=/bin
 ls
-=======
+l
+echo $PATH
 ls
+l
+echo $PATH
+PATH=/bin:/usr/bin
 ls
-cat
-ls &
-jobs
+l
+wef
+w
+w
+w
+w
+w
+wls
+l
+wefls
+ls
+env
+export PATH
+ls
 exit
+clear
+env
+unsetenv PATH;PATH=/bin:/usr/bin
+export PATH
+l
+unsetenv PATH;PATH=/bin:/usr/bin
+export PATH
+l
+exit
+unsetenv PATH;PATH=/bin:/usr/bin; export PATH
+l
+unsetenv PATH;PATH=/bin:/usr/bin; export PATH
+l
+slw
+;s
 ls
-jobs
+unsetenv PATH;PATH=/bin:/usr/bin
+export PATH
+echo $PATH
 ls
-ls &
+env
+clear
+exit
+exit
+unsetenv PATH;PATH=/bin:/usr/bin
+export PATH
+l
+ls
+clear
+env
+qqd
 e
-exit
-ls
-ls &
-jobs
-exit
-ls &
-jobs
-exit
-ls
-ls
-exit
-ls
-ls &
-jobs
-ls
-jobs
-jobs
-exit
-ls
-ls
-clear
-ls|rev
-jobs
-ls | rev
-jobs
->>>>>>> e7b63790ebab80851a052cb6e555228660f1e010
-exit
-clear
-ls
-ls
-<<<<<<< HEAD
-exit
-exit
-exit
-exit
-exit
-ls
-ls|rev
-exit
-exit
-ls -R /
-ls
-ls -R $HOME
-ls -R $HOME
-jobs
-ls
-jobs
-ls
-exit
-ls -R $HOME
-jobs
-exity
-exit
-ls
-jobs
-clear
-ls -R /
-=======
-jobs
-cleqr
-clear
-ls
-jobs
-exit
-jobs
-exit
-jobs
-exit
-ls
-ls|rev
-jobs
-exit
-ls|rev
-jobs
-exit
-jobs
-jobexit
-jobexit
-exit
-jobs
-cl
-jobs
-ls
-ls|rev
-jobs
-ls &
-jobs
-jobs
-ls &
-exit
-ls&
-jobs
-exit
-jobs
-ls
-ls&
-jobs
-exit
-ls
->>>>>>> e7b63790ebab80851a052cb6e555228660f1e010
-jobs
-exit
-ls
-ls
-<<<<<<< HEAD
-ls -R /
-jobs
-ls
-cleare
-ls
-clear
-ls
-exit
-exit
-ls
-ls -R /
-ls -R /
-cat
-jobs
-exit
-ls
-cat
-jobs
-exit
-cat
-jobs
-exit
-cat
-jobs
-ls
-cat
-exit
-exit
-ls
-cat 
-stty
-stty -a
-ls
-weifwls
-exit
-ls
-ls|rev
-pwd
-ls-R
-ls -R
-ls -R /
-ls -R /
-jobs
-ls -R /
-stty -a
-exit
-ls
-ls -R /
-jobs
-cat
-jobs
-=======
-ls
-clear
-jobs
-exit
-exit
-ls
-ls
-clear
-ls &
-exit
-ls
-ls
-ls|rev
-ls&
-exit
-ls
-ls&
-jobs
-ls&
-jobs
-cl
-exit
-ls
-ls
-ls|rev
-ls&
-jobs
-cat &
-jobs
-cat &
-./21sh
-exit
-ls
-cat
-ls
-ls|rev
-ls
-ls|rev
-ls
-exit
-ls
-exit
-ls
-ls
-ls|rev
-jobs
-ls&
-jobs
-ls&
-cat
-ls
-cat &
-exit
-ls
-ls|rev
-clear
-ls&
-jos
-jobs
-ls|rev&
-jobs
-ls|rev&
-exit
-ls|rev
-jobs
-ls|rev
-jobs
-ls
-jobs
-ls|rev
-ls|rev
-ls
-ls|rev|cat -e
-ls
-jobs
-ls|rev
->>>>>>> e7b63790ebab80851a052cb6e555228660f1e010
-jobs
-exit
-ls
-jobs
-<<<<<<< HEAD
-ls &
-jobs
-ls
-jobs
-ls
-jobs
-exirt
-exirt
-exit
-ls
-exit
-ls
-clear
-ls
-ls
-cl
-env
-cl
-ls
-jobs
-exit
-ls
-jibs
-jobs
-exit
-l
-s
-ls
-jobs
-exit
-ls
-ls
-clear
-ls
-jobs
-exit
-exit
-lsd
-ls
-cleear
-clear
-env
-ls &
-jobns
-jobs
-clear
-jobs
-ls
-ls
-exitr
-exirt
-exit
-ls
-cl
-env
-jobs
-cat
-cat
-jobs
-exit
-ls
-cat
-jobs
-ls
-jobs
-exit
-jobs
-ls
-jobs
-ls | rev
-jobs
-clear
-ls &
-jobs
-cat
-jobs
-exit
-ls
-joibs
-jobs
-clear
-cat
-ls
-jobs
-exit
-jobs
-cat
-jobs
-cat
-cat
-jobs
-exit
-ls
-jobs
-exit
-ls
-ls -R /
-cat
-jobs
-exit
-cat
-exit
-cat
-jobs
-ls
-cat
-ls
-exit
-stty -a
-stty -a
-stty
-stty -a
-exit
-ls -R /
-cat
-cat -e 
-exit
-stty
-stty -a 
-cat
-cat -e
-exitr
-exit
-cat
-cat
-cat
-exit
-ls
-cat
-cat
-cat
-exit
-ls
-cat
-cat -e
-exit
-cat
-cat -e
-cat -e
-stty -a
-exit
-ls
-cat
-cat
-cat 
-cat
-jobs
-exit
-ls
-cat
-cat
-jobs
-cat -e
-cat -e l
-cat -e -
-cat -e _
-cat -e -
-exit
-ls
-cat
-cat
-cat
-=======
-jobs
-ls|rev|cat
-jobs
-ls|ls
-ls|ls &
-cat &
-jobs
-ls -R
-jobs
-exit
-exit
-ls
-ls -R /
-ls -R /
-clear
-ls
-ls|rev
-jobs
-ls
-ls -R $HOME
-ls -R $HOME
-ls
-clear
-ls
-ls|rev
-ls &
-jobs
-cat &
-jobs
-exit
-exit
-ls|rev
-jobs
-ls|rev
-jobs
-cleqr
-cl
-ls
-env
-ls
-cleqr
-cl
-env
-sl
-ls
-ls
-cleqr
-ls -R $HOME
-jobs
-exit
-ls|rev
-cleqr
-cl
-env
-cl
-exit
-ls
-ls|rev
-cleqr
-cl
-ls &
-jobs
-ls &
-jobs
-ls $HOME 
-ls -R $HOME 
-ls -R $HOME 
-$ls
-ls
-ls -R $HOME 
-ls -R $HOME 
-ls -R $HOME 
-ls -R $HOME 
-ls -R $HOME 
-ls -R /
-exit
-ls
-ls &
-jobs
-ls&
-jobs
-ls
-cleqr
-cleqr
-cl
-ls
-ls -R $HOME
-ls -R $HOME
-exit
-exit
-ls
-jobs
-ls
-cleqr
-clear
-ls
-jobs
-ls
-cleqr
-l
-la
-la -l
-lsl
-ls /
-exitr
-exit
-exirt
-ls
-cl
-env
-ls -R
-ls -R
-ls -R /
-ls -R /
-exit
-s
-ls
-ls
-cleqr
-ls
-ls &
-ls
-jobs
-ls& ; jobs | grep ls
-jobs |grep ls
-jobs |grep fore
-jobs |grep runn
-ls
-cl
-cat
-ls
-cleqr
-cat
-cat
-jobs
-cat
-exit
-ls
-cat
-ls
-jobs
-exit
-ls
-ldsls
-lsls
-cl
-cat
-jobs
-ls
-ls$HOME
-ls -R /
-exitr
-exit
-ls
-ls -R /
-exit
-ls
-cat1
-cat
-exit
-cat
-cat
-ls
-echo lol
-echo $LOL
-echo $PWD
-ls
-cl
-env
-cl
-exit
-cat
-ls
-env
-cl
-cat
-stty
-exit
-stty
-exit
-cat
-exiit
-exit
-exit
-ls
-cat
-cat -e
-cat
-cat
-cat
-cat
-cat
-cat
-cat
-jobs
-cat
-jobs
-cat
-jobs
-exit
-cat
-jobs
-ls
-cat
-exitr
-exit
-ls
-cleqr
-ls
-cl
-env
-ls&
-jobs
-cat
-jobs
-exit
-cat
-cat 
-cat
-cat
-stty
-cat
-cat
-cat
-cat
-cat
-cat
-cat
-exit
-cat
-cat
-catcat
-cat
-cat
-cat
-ls
-ls|rev
-cl
-la
-ls&
->>>>>>> e7b63790ebab80851a052cb6e555228660f1e010
-jobs
-cat
-jobs
-exit
-<<<<<<< HEAD
-ls
-exit
-ls
-cat
-cat
-ls
-tty -a
-stt -a
-stty -a
-exit
-ls
-ls
-cat
-=======
-exit
-ls
-cat
-jobs
-exit
-ls
->>>>>>> e7b63790ebab80851a052cb6e555228660f1e010
-cat
-exit
-ls
-cl
-<<<<<<< HEAD
-env
-cat
-cat -e
-exit
-ls
-cat
-ls
-ls|rev
-cat
-exit
-ls
-ls -R /
-cat
-ls
-cat
-cl
-env
-ls
-ls
-ls|rev
-jobs
-cat
-cat 
-stty -a
-exit
-ls|rev 
-cat
-cat
-man ascii
-=======
-cat
-cat
-cat
-cat
-exit
-ls &
-ls&
-cat
-jobs
-cat 
-cat
-exit
-cat
-jobs
-cat
-jobs
-ls|rev
-cat
-cat
-jobs
-jobs
-ls
-jobs
-cat
-jobs
-exit
-ls
-ls &
-jobs
-ls
-ls&
-jobs
-ls > &-
-jobs
-ls >&-
-jobs
-ls &
-ls &
-ls
-ls
-ls
-ls -R /
-exit
-ls
-rm "&"
->>>>>>> e7b63790ebab80851a052cb6e555228660f1e010
-ls
-ls|rev
-cat
-exit
-ls
-jobs
-ls -R /
-jobs
-ls
-jobs
-exit
-ls
-ls &
-jobs
-ls -R /
-jobs
-cat
-jobs
-cat 
-jobs
-exit
-ls
-jobs
-ls
-jobs
-exit
-ls|rev
-jobs
-ls
-env
-clear
-ls
-cat
-jobs
-cl
-ls
-clear
-exit
-ls
-cl
-env
-make fre
-ls
-cat
-cat
-exit
-cat
-cat -e
-exit
-cat
-cat
-cl
-ls
-env
-jobs
-ls |rev
-jobs
-ls
-ls &
-jobs
-exit
-ls &
-jobs
-cat
-ls
-exit
-ls
-ls|rev
-cat
-cat -e
-exit
-ls
-jobs
-clear
-ls
-ls &
-cat
-cat
-cat
-clear
-cat
-exit
-ls
-clear
-ls
-jobs
-ls|rev
-jobs
-ls
-clear
-ls | rev |rev &
-jobs
-ls
-ls
-ls&&ls
-env
-cl
-cat
-stty -a
-stty -a
-stty -a > 
-stty -a > 21conf
-ls
-ls
-stty -a
-stty -a > 21conf
-ls
-stty -a
-stty -a
-exit
-ls
-clear
-stty -a
-exit
-ls
-ls
-ls
-clear
-stty -a
-stty -a
-exit
-stty -a > 21confexit
-exi
-exit
-ls
-stty -a
-ls
-stty -a
-stty -a
-exit
-stty -a
-ls
-cat
-clear
-stty -a
- exit
-ls
-cat
-cat
-ls
-jobs
-cat
-ls
-ls|rev
-ls
-cat
-exit
-ls
-cat
-cat
-ls
-ls
-ls
-cat
-cat
-ls
-cleqr
-clear
-ls
-ls
-ls|rev
-cl
-env
-ls
-ls&&ls
-ls||ls
-clear
-ls
-env
-clear
-env -i ls
-clear
-ls
-exit
-clear
-ls
-ls|rev
-ls
-ls&&ls||ls
-ls -z||ls && echo OK
-env
-env|grep PWD | rev
-exit
-ls
-ls -R /
-jobs
-clear
-ls
-exit
-ls
-ls
-ls
-cle
-env
-stty -a
-stty -a
-stty -a
-stty -a
-sttyuezafhrezgfrehjfenarfgeragregergagrrrrrrrreerrrrrrrrrrrrrrrrrrrrrrrrrr
-exit
-sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssPaul
-cl
-env
-ls|rev
-ls
-ls &
-jobs
-exit
-ls
-cl
-env
-ls|rev
-ls
-cl
-env
-cl
-ls|rev
-ls
-ls &
-ls
-ls &
-ls
-exit
-exit
-t
-clear
-ls
-cat
-cart
-cat
-ls
-clear
-ls
-ls&
-ls&
-ls &
-ls & cat &
-jobs
-cat &
-jobqs
-jobs
-cl
-cat &
-jobs
-task
-  ls
-jobs
-echo "lol" > file ; cat file ; mv file dir || mkdir dir && mv file dir ; echo OK
-ls
-ls dir
-rm dir
-ls
-rm dir
-rm dir
-rm dir
-ls |rev
-ls;ls &&ls||ls
-ls | rev | cat -e | rev | grep 21
-cleqr
-clear
-ls
-rm -rf dir
-type sh
-sh 
-type 21sh
-type -a 21sh
-type 42
-type jobns
-type -a env
-clear
-ls
-echo lol
-exit
-ls
-lsexit
-exit
-ls
-ls
-env
-exit
-ls
-ls &
-jobs
-ls &ls
-ls & echo ok &
-echo ok &
-exit
-ls
-env
-l
-test
-t
-clear
-ls
-echo lol
-cl
-env
-ls
-stty -a
-exit
-ls
-ls
-clear
-rm dir
-ls
-ls
-exir
-exit
-ls -R /
-exirt
-exit
-ls
-ls
-ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssexitsssssssssssssssssssssssssssss
-exit
-sls
-ls
-lsl
-ls
-exit
-ls
-ls
-lssssss
-exit
-ls
-l
-l
-exit
-s
-ssls
-ls
-l
-l
-xit
-exit
-ls
-clear
-ls|rev
-clear
-l
-s
-l
-l
-s
-l
-exit
-ls
-l
-exit
-l
-ss
-ls
-cl
-env
-exit
-cl
-env
-ls
-type ls
-type ls type env -a
-type -a
-exit
-ls
-cl
-type
-type -a 
-type -a 
-ls
-clear
-ls&
-ls
-clear
-l
-ls
-ls|
-clear
-ls
-ls
-ls
-clear
-ls
-ls
-ls
-exit
-ls
-ls
-ls
-exit
-ls
-ls
-clear
-exit
-ls
-ls
-exit
-ls -R /
-ls
-clear
-ls
-cat
-cat
-ezafezc    
-clear
-ls
-env
-ls|rev
-ls
-eng
-env
-ls
-ls&&ls
-ls -R /
-ls -R /
-clear
-ls
-ls
-jobs
-cat &
-jobs
-echo lol &
-echo mo
-ls &
-clear
-ls&
-ls &
-jobs
-ls
-cat &
-jobs
-jobs & 
-ls
-ls
-ls
-ls&&ls
-clear
-env
-exit
-cat file
-cat -e file
-ls
-ls
-clear
-clear
-ls
-env
-ls
-ev
-env
-ls
-lsl -R /
-t
-cat 
-cat -e
-cl
-env
-type -a
-type ls
-type ls -a
-exit
-la
-exit
-la
-ll
-lla
-lz
-lls
-lss
-laa
-clear
-exit
-ls
-la
-ll
-clear
-ls
-ls
-ls
-cl
-env
-la
-cl
-type cl
-type cl
-echo ${PWD}
-echo $PWD
-echo $PWD $JEFI lol $PWD/lol $PO/klo
-echo ${PWD:-LOL}
-echo ${PWDD:-LOL}
-echo ${PWDD:?unsetvar}
-echo ${PWDD:?unset var}
-echo ${PWDD:+LOL}
-echo ${PWD:+LOL}
-echo ${PWDD=+LOL}
-env
-env
-echo $PWDD
-echo ${T:=TEST}
-ls
-clear
-ls
-ls
-ls
-ls
-clear
-ls
-clear
-ls
-rxit
-exit
-ls
-clear
-exit
-ls
-clear
-ls
-clear
-ls
-ll
-la
-clear
-ls
-set
-nam=val
-set
-clear
-ls
-ls|rev
-exit
-ls|rev
-ls
-jobs
-ls
-ls
-ls
-jobs
-rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-ls
-exit
-ls
-ls|rev
-ls
-clear
-ls
-exit
-ls
-jobs
-jobs
-jobs
-jobs
-ls
-jobs
-exit
-jobs
-exit
-ls
-ls|rev
-ls
-clear
-ls
-ls|rev
-ls|rev
-ls|rev
-ls
-ls
-ls
-jobs
-exit
-jobs
-ls|rev
-ls|rev
-exit
-ls
-jobs
-clear
-ls
-ls|rev
-clear
-env
-evm
-env
-ls
-cea
-clear
-ls
-jobs
-jobs
-jobs
-ls
-jobs
-jobs
-exit
-ls
-jobs
-exit
-jobs
-jobs
-jobs
-exit
-jobs
-jobs
-ls
-jobs
-exit
-ls
-jobs
-ls|rev
-jobs
-ls
-jobs
-ls
-jobs
-ls -R
-ls -R /
-jobs
-clear
-ls
-exit
-jobs
-exit
-jobs
-exit
-jobs
-jobs
-exit
-jobs
-clear
-ls
-ls|rev
-ls
-clear
-ls
-ls |rev
-ls
-clear
-ls
-]ls -R 
-ls -R /
-clear
-ls
-env 
-ls
-ls &&ls
-ls |rev
-exit
-ls
-ls|rev
-clear
-exit
-ls|rev
-exit
-ls
-ls|rev
-ls|rev
-ls|rev
-ls|rev
-cear
-exit
-ls
-ls|REV
-exit
-exit
-exit
-exit
-exit
-ls
-ls
-clear
-ls
-env
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-l
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-s
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls'
-ls|rev
-exit
-exit
-ls
-clear
-ls|rev
-cd 
-cd 21sh
-clear
-ls
-env
-ls
-cl
-$PWD
-$FEW
-$FEW
-ext
-exit
-$BEU
-exit
-$BEU
-$WRBHGDBDVUYHW
-clear
-ls|rev
-exit
-ls|rev|cat -e
-ls|rev|cat -e
-ls
-clear
-env
-setenv euge ergewr
-clear
-newfbiupwrf
-fs 
-we
- w
- d
- w
-w 
-rwg
- wrg
- wrg
-v 
-wrgdb
- wrfdg
-vew
-fdgv
-erdsg
-vetf
-cdbv
-efcdb
-vef
-cdbve
-fcv
-qefbc
-v e
-fcv 
-efcv
+ve
+fv
+efdv
 er
-fdcv
- efdcv
- t
-exit
+dv ;ev
+efve;fv
+fdc fc fc ; erf 
+qerdveqf ;ls
+ewclear
 ls
-ls&&ls
-cleqar
-cleazr
 clear
-ls||ls
 env
-ls||
-ls
-ls&
-ls&&
-ls
-echo "ef
-zfeifo
-ls
-ls ||
-ls
-echo 
-lol "
-lol
-ls
-ls||
-ls
-ls&&
-ls
-echo lol&&
-ls
-exit
-ls ||
-ls ||
-exit
-exit
-ls
-ls &&
-ls
-ls
-clear
-cat
-cat
-cat
-ls
-jobs
-cat
-jobs
-cat -e
-jobs
-clear
-ls
-clear
-clear
-ms
-ls
-ls||
-ls
-ls||
-ls
-ls||
-ls
-ls||
-exit
-exit
-ls
-ls ;
-ls &&
-ls
-ls ||
-ls
-echo "lol
-exit
-ls
-ls ||
-ls ||
-ls
-exit
-ls
-ls ||
-ls &&
-ls && ls
-clear
-ls
-exit
-ls
-clear
-ls|rev
-ls
-ls &&
-ls &&ls
-clear
-ls
-ls
-cat
-ls
-jobs
+vim
 ls
 clear
 ls
 env
-env -i ls
-clear
-exit
-exit
-exit
-ls
-clear
-ls|rev
-ls|rev &
-jobs
-ls |rev
-jobs
-clear
-ls||
-ls &&
-ls
-ls
-make fre
-ls
-exit
-ls
-clear
-ls||
-ls ||ls &&ls
-ls|rev
-ls
-ls||
-ls &&
-ls || 
-exit
-ls
-clewr
-ls
-ls ||
-ls && 
-ls &
-ls ;
-rexit
-exity
-exit
-ls
-ls ||
-ls
-ls|rev
-ls ||
-ls |
-ls "ewdf
-ls (ewiv
-echo $(newdvf
-echo $HWNEUIF
-echo ||
-echo ||   
-ls
-clear
-ls |
-EXIT
-exit
-ls|rev
-ls
-exi
-exit
-ls
-ls |
-ls
-ls &&
-ls ||
-ls &&
-ls && 
-ls
-clear
-ls
-ls &
-ls ;
-ls  &
-exit
-ls &
-ls &
-exit
-exit
-ls &
-ls ;
-ls &&
-ls ||
-clear
-ls
-ls
-clear
-ls
-ls|
-clear
-ls
-ls &&
-ls ;
-ls && 
-ls || 
-ls \
-ls |
-ls \
-exit
-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-ls
-lcew
-ls
-"lol
-exit
-ls ||
-ls || 
-ewrywt hrt
-exit
-ee oo
-l
-l
-l
-e
-e
-ls
-ls 
-eeee
-l
-e
-ee ooee
-ls && l–
-l
-e
-ls||clear
-ls &&ls
-ls && ls
-echo "lol mdr j'ai faim "
-clear
-ls
-ls ||exit
-exit
-ls &&ls
-ls && ls
-clear
-ls
- ls &&ls
-clar
-erfrhexir
-exut
-exit
-ls
-ls
-ls && clear
-ls
-ls && ls && echo OK
-clear
-ls
-exit
-ls||clear
-ls |rev
-lds \e
-ls \e
-ls $(ls)
-(
-(JIEWD
-wv{
-ls
-clear
-ls
-exit
-ls
-clear
-ls||ls
-clear
-ls &&ls
-ls && env
-ls&&env ||ls
-clear
-ls
-exit
-ls ||ls
-exit
-ls
-ls||ls
-ls &&ls
-clear
-ls
-ls |rev
-exit
-ls
-ls | ls
-exit
-ls |exit
-exit
-ls |rev
-ls 
-ls | rev
-ls 
-clear
-ls ;
-echo "lolverg"
-env
-exit
-exit
-ls
-clear
-ls |rev
-rm
-ls | rev |cat -e
-ls
-ls|rev
-ls &&ls &&ls || ls
-ls &&ls &&ls-z  || ls
-ls &&ls &&ls -z  || ls
-clear
-ls
-env
-env | ls
-env -o
-env -o || ls
-exirt
-exit
-ls|rev
-ls
-clear
-ls
-ls &&ls
-clear
-ls
-env
-wefwfwqdfqrwdsfcrqed
-wrdf
-vqedsv
-fdsv
-eqrdsv
- erfc
-v efd
-cv eqf
-cv 
-qefdcv
- fdcb
-ythfb
-njry
-hgbn
-htgb
-fn 
-gfv fd x
-efdsv
-c qrwdsx
-cr
-dsxv
-cwsa
-cat
-veqrdgnverfdvefw
-dcve
-fdcv
-ef
-cv 
-exit
-exit
-ls
-ls
-exit
-exit
-ls
-clear
-ls||env
-clear
-ls && env
-slc
-cew;r
-ls 
-exir
-exit
-exit
-ls |ls
-exit
-exit
-ls
-exit
-ls
-clear
-ls |rev
-exit
-ls
-ls |rev
-exit
-   
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-wdfveqwrv
-eqv
-eqf
-v
-eqf
-v
-eqr
-fd
+eqdvqefdv
+efdvefd
+vefd
 ver
 fdv
-ef
-v
-ef
-cbv
-er
-fdc
+erd
 ver
-fd
-scgv
-erdsgver
-ds
-gver
-dsg
-ver
-dg
-ver
-fdc
-ver
-fd
-gv
-erf
-dbv
-ef
-dvef
-vb
-|febv|redv
-wdvrwdf|verdsvs
-wdv|ewdsvdewsvc|vedsv;
-CLEAR
-ls | ls
+dve
+unsetenv PATH;PATH=/bin:/usr/bin;export PATH
 ls
-ewgrwdC
-ls
-wdv
-redsvw
-efdw
-ls
-ls|rev
-dd
-e
-e
-e
-de
-e
-ls
-./21
-ls
-ls |rev
-wf
-weqfq
-cqt
-cat
-jobs
-cat
-jobs
-ls
-ls||ls
-cealr
+exit
+unsetenv PATH;PATH=/bin:/usr/bin;export PATH
+l
 clear
-ls 
-ewdfw
+s
+w
+dwd
+l
+ll
+cla
+clear
 ls
+env
+clear
+echo ${PWDD:?LO:}
+clear
+echo ${PWDD:-LOL}
+exit
+exit
+echo ${PWDD:-LOL}
+echo ${PWDD:?LO:}
+echo ${PWDD:-LO:}
+echo ${PWDD:?LO}
+exit
+echo ${PWDD:?LO}
+echo ${PWDD:?LO}
+exit
+exit
+echo ${PWDD:?LO}
+exit
+echo ${PWDD:?LO}
+echo ${PWDD:?LO}
+echo ${PWDD:?LO}
+echo ${PWDD:-LO}
+echo ${PWDD:=LO}
+env
+clear
+ls
+env
 clear
 env
+env | grep PWD
 ls
-rev
 clear
-ls
-ls |rev
-ls
-wdsv
-wdv
-wdv
-ds
-vef
-vef
-dv
-efv
- dv
-dsv
- fdsv
- feds
-v 
-dsxv w
-s
-cemwdsvx
-exit
-ls
-ls|rev
-ls 
+erdv
+cat 
+cat
 ls
 clear
 ls
-ls && ls
-clear
-cat <<
-cat << 
-exit
-cat <<
-ls
-cat <<
-cat << eoi
-lol
-mdr
-eoi
-cat << eoi
-lol
-eoi
-cat << eoi
-wef
-weqf
-qwfg
-qwg
-qerg
-eqrg
-eqrfgetf
-g4r
-efg
-erfger
-ge
-eoi
-echo "lol "
-ls |rev
-exit
-ls
-exit
-exit
-jobs
-clear
-ls
-exit
-exit
-exit
-jobs
-exit
-ls
-jobs
-ls |rev
-exit
-exit
-exit
-exit
-cat file
-exit
-lsd
-cat <<
-cat << eoi
-ol
-lol
-eoi
-eoi
-cat << eoi
 ewf
-wf
-cat << eoi
-lol
-eoi
-cat << eoi
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-cat << eoi
-cat eoi
-cat << eoi
-ls
-eoi
-lds
 clear
 ls
-ls|rev
-exit
-ext
-exity
-exit
-cat << eoi
-lol
-mdr
-eoi
-cat -e << eoi
-lol
-mdr
-eoi
-exit
+env
+env -i ls
 clear
 ls
-ls |rev
+clear
 ls
-ls -
+env
+env | grep PWD
 ls
 clear
 ls | rev
-ls |rev
-ls -
-ls 
+echo lol 
+echo | lol
+echo lol | rev
+echo mdr | rev
 clear
 ls
-ls 
-ls
-clezar
+env
 clear
-ls -
+ls
+env
+ls | rev
+l
+ll
+env -i 
+env -u
+clear
+exit
+env -u
+exit
+env -u
+env -u 2>&-
+env -u 2>&-
+env -u 
+env -y
+env -i -u NAME
+env -u NAME
+env -u TERM 
+env -u 
+env -k
+env -i
+env -i -u LOL 
+env -i -u ls
+env -i  ls
+clear
+ls
+env
+clear
+ls
+env
+exit
+clear
+ls
+ls| rev
+exit
+clear
+ls
+ls | rev
+jobs
+ls | rev
+clear
+ls
+ls | rev
+exit
+ls
+ls | rev
+clear
+ls| rev
+ls | rev
+make
+make
+exit
+exit
+clear
+ls | rev
+make
+exit
+ls | rev
+exit
+ls | rev
+ls
+clear
+env
+cat -e aureur
+cd 21sh
+ls
+cat auteur
+cat -e auteur
+clear
+ls
+env
+ls
+env
+ls
+set
+clear
+echo $PATH
+ls
+echo lol &
 ls &
 jobs
-echo lo
-jobs
-exit
-ls|rev
-jobs
-ls | rev
-jobs
-clear
-ls
-jobs
-clear
-pwd
-ls
-clear
-env
-clear
-lms
-ls
-ls -ER
-env
-clear
-rm
-exit
-rm
-ls
-clear
-rm
-ls|rev
-rm
-rm lo
-ls
-echo ${lo)}
-clear
-cl
-rm
-exit
-ls
-rm
-alias
-alias
-jobs
-alias
-ls
-exit
-ls
-clear
-ls
-touch f
-rm f
-type rm
-type lo
-type cl
-type $PWD
-type $PWD
-exit
-ls
-type rm
-ls
-rm f
-ls
-ls
-rm f
-exit
-ls
-clear
-cl
-alias
-alias cl=clear
-cl
-type cl
-alias
-alias cl=clear
-alias
-alias
-exit
-exit
-type rm
-ls
-alias
-exit
-exit
-ls
-alias cl=clear
-ls
-alias
-alias cl=clear
-setenv l=m
-env
-l="mdr"
-l "mdr"
-l=\"mdr\"
-echo $l
-set
-setenv l=m
-env
-setenv  o p
-ls
-env
-setenv u i
-env
-l=m
-set
-alias
-alias test=mdr
-l=m1
-set
-exit
-exit
-alias
-type rm
-rm f
-ls
-exit
-$clear
-clear
-ls
-rm f
-ls
-touch f
-rm f
-ls
-alias
-alias
-alias
-ls
-clear
-ls
-alias
-touch t
-rm t
-type t
-ls
-type rm
-ls
-touch f
-ls
-rm f
-ls
-type rm
-ls$
-ls
-ls
-clear
-rm f
-ls
-ls
-clear
-ls|rev
-alias
-alias t=test
-alias
-t
-ls
-alias t type
-t ls
-alias
-exit
-alias
-alias cl=clear
-cl
-ls
-type cl
-cl
-exit
-ls
-clesar
-clear
-ls|rev
-ls
-ll
-cl
-alias
-alias cl clear
-cl
-ls
-ls|rev
-cl
-alias
-rm 
-ls
-alais cl clear
-alias cl clear
-cl
-exit
-cl
-cl
-cl
-ls
-ls|ref
-ls|rev
-cl
-exit
-cl
-alias
-ls
-touch f
-rm f
-ls
-ls
-clear
-ls
-ls|rev
-ls
-cl
-env
-cl cl
-echo cl
-echo rm
 clear
 exit
-ls |rev
-clear
-ls | re
-echo "mwdgdsfwdsdagbqefbdfadfbfdbfdbcaefdbgdfvbgrfvbrtfdbtrfbfdcbverfbtrgfdbtrfbtrferqfbtrfbrerfgbtfb"
-echo "mwdgdsfwdsdagbqefbdfadfbfdbfdbcaefdbgdfvbgrfvbrtfdbtrfbfdcbverfbtrgfdbtrfbtrferqfbtrfbrerfgbtfbwdvewdsvwefvcwdve rwrdgvtefbqergvtefgb twdfsergfvtefdtewfbrfbregrefg v"
-echo "mwdgdsfwdsdagbqefbdfadfbfdbfdbcaefdbgdfvbgrfvbrtfdbtrfbfdcbverfbtrgfdbtrfbtrferqfbtrfbrerfgbtfbwdvewdsvwefvcwdve rwrdgvtefbqergvtefgb twdfsergfvtefdtewfbrfbregrefg v"
-echo "refhbeqrfgbtrfbqrefgbwrtgfvbtefhbrwygnbgfrtwgfhntyhfbn trfhbrtyghn\n''"
-clear
-ls  ef 
-exit
-ls
-ls|rev
 ls
 clear
-ls
-emv
-env
-type -a env
-type 
-type cl
-typ rm
-type rm
-alias
-alias 
-exit
-clear
-alias
-ls
-exit
-clear
-ls
-cat << eof
-ls
-ls
-ls
-ls|rev
-ls
-clear
-ls
-ls|rev|cat -e
-ls
-clear
-emv
-env
-qwg
-erg
-edg
-ewf
-gqe
-dvq
-edvewf
-db
-vrwfdb
-rwgfd
-bwf
-db
-rwfdb
- wrfd
-b
-ls          -a         
-                                                                                                                              ls                                                                         -q
-                                                                                                                              ls                                                                         -a
-c;ear
-clar
-clear
-cl
-cle
-rnv
-clear
-alias
-clear
-env
-type alias
-ls
-clear
-ls
-jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-cl
-cl
-exit
-cl
-env
-ls|rev
-alias t "type ls |rev"
-t
-type "ls -R"
-type "ls "
-clear
-ls
-env
-type ls env
-clear
-type -a ls
-man type
-ls
-clear
-ls
-ls|rev|cat -e && ls ||env -i ls
-clear
-ls
-ls || ls
-ls -z || ls
-clear
-ls
-ls
-clwar
-clear
-ls
-ls||rev
-;s
-;ls
-l
-alias
-ls
-env
-clear
-cat << eoi
-cat << eoi
-eoi
+qweefwd
 cat << eoi
 ls
 ls
-ls&&ls
-clear
-deerqggggggggggggggggggggggggggggggggggggggg
-cl
-cd
-ls
-cd /dev
-ls
-cd
-clear
-exit
-clear
-ls
-ext
-env
-clear
-env nam=lol t=v ls
-setenv l=m
-cd
-exit
-ls
-l=m
-export l
-/usr/bin/env
-l=m
-l=m
-l=m
-l=m
-exit
-ls
-l=m
-exit
-l=m
-exit
-ls
-clear
-ls|rev
-l=m
-export l
-export
-l=
-l=
-l=
-set
-clear
-ls
-wefqq=
-set
-clear
-ls
-type fqregqreg=
-clear
-ls
-ls|rev
-clear
-ls
-echo "reverqdvqscveqrdvqefdbvqeeqfbeqfdb"
-cat <& 1
-cat <&3
-cat <&2
-cat <&1
-cat <&0
-ls > 3 ; cat <&3
-cat <&3
-cat <<
-cat << eoi
-lol
-ls
-eoi
-exit
-lsls
-clear
+ls| rev
 ls
 env
-ls
-clear
-ls |ev
-ls
 clear
 ls
-regre
-grefg
-ver
-fgver
-fg
-erf
-db
-efdb
-fb
-d
-ls /dev /home
-ls
-qwef
-qdsvvefverqdsfcqw
-wq
-> file
-<< file
-c;ear
+ls -l    -a 
+make
 exit
-<< 
-<< eoi 
-< file
-< file
-ls
-<file
-< vwv
-ls
-cat < erdvw
-< erdvw
-< file
-< ewg
-<rev
->file
-type <file
-type lol
-ls
-clear
-type <file
-type > file
-type lol 
-type lol > file
-ls
-git rm -rf 3 file
-ls
-rm -rf 3
-ls
-rm -rf file
-ls
-ls
 exit
+ls
+ls| rev
+ls
+env
+clear
+ls
 ls
 clear
 ls
 env
-< file
-clear
-<file
-ls
-ls > file
-<file
-exit
-exit
-< file
-<< eoi
-lol
-eoi
-< file
-ls
-exit
-<file
-<< eoi
-lol
-eoi
-exit
-ls
-< file
-exit
-ls
-ls
-exit
-ls
-clear
-ls|rev
-ls
-env
-clear
-cl
-env
-dwgergrtwgfh
-uythkjy5uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuoggg
-ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-exit
-< file
-ls
-effffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-clear
-efaggggggggggggggggggggggggggggggewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-< file
-clear
-< file
-ls
-exit
-ls
-< file
-exit
-./21
-ls
-clear
-ls|rev
-ls
-< file
-< file
-< file
-< file
-exirt
-exit
-< file
-exit
-< file
-<< eiu
-werg
-eiu
-< file
-> file
-clear
-ls
-> file
-<< 
-<< eoi
-dwf
-wef
-eoi
-< fil
-<< fil
-fil
-> fil
-vim lol
-ls
-ls
-ls
-unsetenv PATH
 env
 ls
-clear
-clear
-exit
-ls > fie
-cat fie
-ls | rev > fie
-cat <fie
-cat fie
-cat < fie
-cat <1
-cat <&1
-echo end >> fie
-cat fie
-cat << eoi
-lol
-mdr
-eoi
+cd 
+cd -
+ls
 clear
 ls
-<<
-<< lol
-mdr
-lol
-ls >&2
-cat -z
-cat -z 2> file
-cat file
-rm -rf file
-ls
-rm -rf fie
-ls
+env
+env -u
+env -u
+clear
+env
+setenv PATH 
+env
 echo $PATH
+setenv PATH=
+echo $PATH
+clear
+ls
 exit
-unset PATH
-unset
-unset PATH
-unsetenv
-unsetenv PATH
+exit
+exit
+cat << eof
+lol
+cat << eoi
+lol
+eoi
+l
+exit
+exit
+ls
+ls | rev
+clear
+cat << eoi
+lol 
+eoi
+ls
 env
-unset p
-unet
-unset
-unset PATH
-ls
-unset PATH
-unset PATH
-l=n
-set
-unset f
-unset l
-set
 clear
-42
-42 
- 42 lol
-jobs
-clear
+cl
+cat << eoi
 ls
-ls|rev
-ls|clear
-cl|rev
-2J[[
-cl | cat -e
-echo "J"
+ls
+cat << eoi
+cat << eoi
+lol
+cat << eoi
+cat << eoi
+lol
+cat << eoi 
+lol
+mdr
+cat << eoi
+lol
+mdr
+cat << eoi
+lol
+mdr
+xD
+cat << eoi
+lol
+cat << k
+mdr
+s
+w
+w
+w
+w
+w
+w
+w
+w
+ls
+cat << eoi
+lol
+ls
 exit
+cat << eoi
+lol
+ls
+;ssss
+ls
+ls
+clear
+clear
+ls
+cat < eoi
+cat << eoi
+lol
+ls
+cat << eoi
+lol
+mdr
+ls
+exit
+ls
+clear
 ls
 emv
 env
-exit
-ls
-clear
-ls|rev
-ls
-ls|rev
-s
-ls
-ls
-ls
-ls
-ls
-ls
-djgnreofvbrwfdhvjwtbfdgvhwejd
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
 clear
 exit
-ls
+cat << eoi
+cat << eoi
+lol
+cat << eoi
+cat << eoi
+eoi
+cat << eoi
+lol
+eoi
+clear
+cat << eoi
+eoi
+eoi
+cat << eoi
 clear
 ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-env
-echo lol
-ls
-exit
-ls
-ls
-exit
+eoi
+ls | rev
 ls
 ls
 clear
 ls
-clear
-ldwfnjqw
-qvqefdve
-ls
-ls
-clear
-ls
-exit
-ls
-ls
-exit
-ls
-clar
-ext
-exit
-ls
-ls
+cat 
+cat 
+cat 
 exit
 ls
 clear
 ls
 env
-wfw
-wqerdveqrdg
-veqrdgveqdv
-exit
-ls
 clear
-ls|rev
+ls << eoi
+lol
+cat << eoi
+lol
 ls
 clear
 ls
-env
-ls|rev
-ls|rev
-exit
-ls |rev
-exit
-ls
-clear
-env
-ls
-ls |rev
-ls|rev
-ls |rev
-exit
-ls |rev
-jobs
-ls
-clear
-jobs
-type
-echo lol
-type lol
-42 w
-jobs
-exit
-ls|rev
-exit
-ls
-env
-jobs
-ls
-ls|rev
-clear
-ls | rev
-exit
-ls | rev
-ls \ rev
-ls | rev
-ls | rev
-exit
-exit
-ls
-clear
-ls| rev
-exit
-exit
-ls| rev
-ls |re
-exit
-ls | rev
-clear
-ls
-exit
 ls | rev
 ls
 clear
-ls | rev | cat -e
-exit
-ls
-ls| rev
-ls | cat -e
-ls
-exit
-ls
-ls| rev
-norm
 ls
 clear
-env
-ls | rev | cat -e | grep $ 
-ls | rev | cat -e | grep '$' 
-ls | rev | cat -e | grep "$"
-ls | rev | cat -e 
-ls | rev | cat -e  | grep "$"
-ls | rev | cat -e  | grep $
-ls | rev | cat -e  | grep lo
-ls | rev | cat -e  | grep '$'
+ls
+ls
+clear
+ls
+eeeeeeewefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffeefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffffwefffffffffffffffffffffffffffffffffffff
 clear
 ls
 env
+i
+ls
+wfwew
+wv
+wdvw
+dvw
+dve
+d efc efc
+d fcd gr
+fdc 
+grwfdc 
+wgvdc 
+grv 
+gv 
+gv 
 clear
-ls
-exit
-ls | rev
-ls | cat -e | rev
-ls | rev
-exit
-ls
-exit
-exi
-exit
-ls|rev
-ls
-clear
-ls
-env
-clear
-exit
-ls | rev
-;s
-echo lol
-ls
-clear
-ls
-exit
-ls
-echo $PWD
-echo ${PWD:-LOL}
-echo ${PWDD:-LOL}
-echo ${PWDD:+LOL}
-echo ${PWD:+LOL}
-echo ${PWD:=LOL}
-echo ${PWDD:=LOL}
-exit
-echo $PWD ${PWDD:=LOL}
-env
-clear
-ls
-exit
-ls|rev
-ls
-env
-ls''
-clear
-ls
-''
-''
-exit
-''
- 
- 
- 
- 
-ls
-clear
-env
-clear
-ls
-env
-lr
-alias
-clear
-ls
-exit
-ls
-clear
-cl
-env
-ls | rev| cat -e
-ls
-env
-clear
-ls
-exit
-ls
-clear
-exit
-ls | rev | cat -e
-clear && ls
-c;ear
-clear
-exit
-qregugeergrgqregugeergrgqregugeergrgq
-regugeergrgqregugeergrgqregugeergrgqregugeergrgq
-regugeergrgqregugeergrgqregugeergrgq
-ks
-ls
-clear
-ls
-ls
-git pull
-ls
-ls
+ewdvqefdcvefqdv  fwcvefv wgfdc vwdcw wfd
 exit
