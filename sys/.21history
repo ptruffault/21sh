@@ -581,3 +581,6 @@ gv
 clear
 ewdvqefdcvefqdv  fwcvefv wgfdc vwdcw wfd
 exit
+env
+./21sh
+env | grep SHLVL
