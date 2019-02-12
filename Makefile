@@ -150,5 +150,10 @@ fclean: clean
 
 re: fclean all
 
-exe: re
+fre: clear sclean all
+
+exe: fre
 	./$(NAME)
+
+save:
+	git add -A && git commit -m "make save" && git push

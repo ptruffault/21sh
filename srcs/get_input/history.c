@@ -14,9 +14,6 @@
 
 void	update_input(t_edit *e, char *s)
 {
-	int i;
-
-	i = 0;
 	if (s == NULL)
 		ft_delete_line(e);
 	ft_strdel(&e->input);
