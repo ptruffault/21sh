@@ -155,5 +155,5 @@ fre: clear sclean all
 exe: fre
 	./$(NAME)
 
-save:
-	git add -A && git commit -m "make save" && git push
+save: fclean clear
+	@git add -A && git commit -m "make save" && git push
