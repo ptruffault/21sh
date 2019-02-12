@@ -156,4 +156,5 @@ exe: fre
 	./$(NAME)
 
 save: fclean clear
-	@git add -A && git commit -m "make save" && git push && printf "$(DONE)"
+	@git add -A && git commit -m "make save" && git push \
+	&& printf "save : $(DONE)\n" || printf"$(OP_COLOR)save : KO\n$(NO_COLOR)"
