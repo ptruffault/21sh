@@ -156,4 +156,4 @@ exe: fre
 	./$(NAME)
 
 save: fclean clear
-	@git add -A && git commit -m "make save" && git push
+	@git add -A && git commit -m "make save" && git push && printf "$(DONE)"
