@@ -12,15 +12,13 @@
 
 #include "../../includes/shell42.h"
 
-static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh)
+static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh, char *val2)
 {
 	char *val;
 	char *val1;
-	char *val2;
 
 	val = NULL;
-	val1 = ft_strsub(parenth, 0, ptr - parenth - 1);
-	val2 = ft_strdup(ptr + 1);
+	val1 = ft_get_secondvalue(parenth);
 	if (*ptr == '-' && !(val = ft_strdup(get_tenvv_val(sh->env, val1))))
 		val = ft_strdup(val2);
 	if (*ptr == '+')
@@ -31,24 +29,50 @@ static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh)
 	&& val2 && (sh->env = ft_new_envv(sh->env, val1, val2)))
 		val = ft_strdup(val2);
 	ft_strdel(&val1);
-	ft_strdel(&val2);
 	return (val);
 }
 
-static char	*ft_get_param_value(t_shell *sh, char *parenth)
+char *ft_strswap(char *s1, char *s2)
 {
-	char *ptr;
-	char *val;
+	ft_strdel(&s1);
+	return (s2);
+}
 
+char	*ft_get_param_value(t_shell *sh, char *parenth)
+{
+	int i;
+	char *val;
+	char *param;
+
+	i = 0;
 	val = NULL;
-	if (parenth && (ptr = ft_strchr(parenth, ':')) && ++ptr)
+	while (parenth && parenth[i])
 	{
-		if (!ft_strchr("-+?=", *ptr))
-			error_c("unrecognized modifier", *ptr);
-		else 
-			return (handle_modifier(parenth, ptr, sh));
+		if (parenth[i] == ':')
+		{
+			if (!ft_strchr("-+?=", parenth[i + 1]))
+				error_c("unrecognized modifier", parenth[i + 1]);
+			else if ((param = ft_get_secondvalue(&parenth[i + 2])))
+			{
+				if (val)
+					ft_strdel(&val);
+				val = handle_modifier(parenth, &parenth[i + 1], sh, param);
+				i = i + ft_strlen(param);
+			}
+		}
+		else if (parenth[i] == '#' || parenth[i] == '%')
+		{
+			if (!val)
+			{
+				param =  ft_get_secondvalue(parenth);
+				val = ft_strdup(get_tenvv_val(sh->env, param));
+				ft_strdel(&param);
+			}
+			val = ft_cut_string(parenth, val, &i);
+		}
+		i++;
 	}
-	else if (parenth)
+	if (!val)
 		val = ft_strdup(get_tenvv_val(sh->env, parenth));
 	return (val);
 }

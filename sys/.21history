@@ -584,3 +584,370 @@ exit
 env
 ./21sh
 env | grep SHLVL
+ls
+clear
+make clean
+ls
+make fclean
+ls
+env
+clear
+ls
+ls
+ls | rev
+ls
+env
+ls
+make
+clear
+exit
+ezlfezf
+exit
+ls
+echo $PWD
+echo ${PWD:-LOL}
+echo ${PWDD:-LOL}
+clear
+ls 
+env
+clear
+ls
+echo ${PWDD:-LOL}
+exit
+ls
+env
+clear
+echo ${PWDD:-LOL}
+echo ${PWDD:-LOL##L}
+exit
+ls
+clear
+echo ${PWD}
+echo ${PWD:-lol}
+echo ${PWD:-lol##}
+echo ${PWD:-lol##}
+exit
+ls
+clear
+env
+clear
+echo ${PWD:-lol##}
+exit
+exit
+env
+exit
+exit
+env
+echo ${PWD}
+echo ${PWD:-LOL}
+exit
+echo ${TEST}
+echo ${TEST:-LOL}
+exit
+ls
+echo $PWD
+echo ${PWD}
+echo ${PWD:-lo}
+echo ${PWD:-lo}
+exit
+ls
+echo ${PWD:-lo}
+echo ${PWDD:-lo}
+echo ${PWDD:?lo}
+echo ${PWDD:?lo##test}
+echo ${PWDD:?lo##test}
+exit
+ls
+exit
+env
+echo ${PWD#LOL}
+env
+exit
+ls
+clear
+echo ${PWDD:-LOLL}
+echo ${PWDD:-LOLL##}
+echo ${PWD##/home}
+exit
+ls
+clear
+env
+ls|rev
+ls
+echo ${PWD#hom}
+exit
+ls
+echo ${PWD#home}
+echo ${PWD#home}
+exit
+exit
+ls
+exit
+echo ${PWD#home}
+echo ${PWD#home}
+exit
+echo ${PWD#home}
+echo ${PWD#/home}
+echo ${PWD##/home}
+echo ${PWD##/home}
+exit
+exit
+exit
+exit
+exit
+exit
+env
+exit
+env
+exit
+env
+exit
+env
+exiy
+exit
+env
+exit
+env
+export lol name
+env
+exit
+env
+export lol m
+env
+l=m
+set
+export l=m
+env
+export tes=aabbcc
+env
+echo ${tes}
+echo ${tes##a}
+exit
+env
+exit
+clear
+env
+ls
+clear
+ls
+env*
+ls
+echo '$PWD'
+ls
+echo '$PWD'
+echo ${PWD#/}
+echo ${PWD#/home}
+echo ${TEST#}
+export TEST aaaabbbbccccc
+echo ${TEST##aa}
+echo ${TEST##a}
+env
+echo ${TEST##a}
+clear
+env
+clear
+exit
+ls
+env
+clear
+export LOL T
+env
+setenv L T
+env
+exit
+env
+export L T
+env
+export l m
+export l=NEZ
+env
+exit
+env
+exit
+exit
+env
+export LOL T
+exit
+export T L
+env
+set
+exit
+env
+export L = M
+export ezahuira tr"nt g"rtg '('tg
+export
+export l
+exit
+ls
+env
+export l
+exit
+ env
+export l
+type export
+export l m
+export l m
+export
+export l=m
+env
+export l
+export l m e
+export l e e
+env
+export l e
+env
+export e p
+env
+export e p
+env
+exit
+set
+exit
+nqme=vql
+set
+export nqme
+env
+export nqme lLOL EFZIEF
+exit
+ls
+./21sh
+env
+exit
+ls
+clear
+ls
+echo ${PWD#/home}
+echo ${TEST#/home}
+echo ${TEST#a}
+echo ${TEST##a}
+echo ${TEST##}
+echo ${TEST##a}
+echo ${TEST##}
+ls
+clear
+env
+echo ${TEST##a}
+echo ${TEST##}
+echo ${TEST##}
+ls
+env
+./21sh
+exit
+exit
+exit
+ls
+env
+export l=m
+env
+export l 
+env
+exit
+ls
+export TEST
+env
+export TEST=aaZambb
+env
+exit
+env
+exit
+env
+exit
+ls
+env
+exit
+env
+exit
+exit
+env
+exit
+exit
+ks
+ls
+env
+ls
+exit
+ls
+exit
+exit
+exit
+ls
+exit
+ls
+clear
+env
+clear
+env
+./21sh
+env
+exit
+ls
+env
+exit
+env
+env
+sh
+env
+./21sh
+env
+exit
+ls
+env
+ls
+clear
+ls
+clear
+env
+exit
+exit
+ks
+ls
+ear
+env
+ls
+echo ${TEST}
+echo ${TEST##a}
+echo ${TEST#a}
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+clear
+clear
+echo ${PWD##/home%%ptruffau}
+echo ${PWD##/home%%21sh}
+clear
+echo ${PWD#/home}
+echo ${PWD%21sh}
+echo ${PWD%21sh#/home}
+echo ${PWD%21sh#/home}
+echo ${PWD%21sh#/home:-LOL}
+echo ${PWD%21sh#/home:-?}
+echo ${PWD%21sh#/home:?lol}
+echo ${PWD%21sh#/home:?lol}
+echo ${PWD%21sh#/home:?lol}
+echo ${PWD%21sh#/home:?lol#/home}
+echo ${PWD%21sh#/home:?lol#/home}
+ls
+env
+clear
+ls|rev
+echo ${PWD:-LOL#:home}
+echo ${PWD:-LOL#/home}
+echo ${PWD#/home:-LOL}
+echo ${PWD#/home:-LOL}
+echo ${PWD#/home:-LOL}
+ls
+echo ${PWD#/home:-LOL}
+echo ${PWD#/home:-LOL}
+echo ${PWD#/home:-LOL}
+echo ${PWD#/home:-LOL#/home}
+echo ${PWD#/home:-LOL#/home:?lol}
+echo ${PWDD#/home:-LOL#/home:?lol}
+echo ${${PWD}#/home:-LOL#/home:?lol}
+echo ${${PWDD}#/home:-LOL#/home:?lol}
+echo ${${PWDD:-PWD}#/home:-LOL#/home:?lol}
+echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}
+echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}

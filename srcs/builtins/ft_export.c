@@ -30,7 +30,7 @@ t_envv	*ft_export(t_shell *sh, char **argv)
 			ft_strdel(&name);
 			ft_strdel(&val);
 		}
-		else if ((tmp = get_tenvv(sh->intern, argv[i])))
+		else if (sh->intern && (tmp = get_tenvv(sh->intern, argv[i])))
 			sh->env = ft_new_envv(sh->env, tmp->name, tmp->value);
 	}
 	return (sh->env);

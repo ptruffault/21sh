@@ -26,16 +26,11 @@ t_envv	*new_tenvv(void)
 
 t_envv	*get_tenvv(t_envv *envv, char *name)
 {
-	t_envv *tmp;
-
-	if (!envv)
-		return (NULL);
-	tmp = envv;
-	while (tmp)
+	while (name && envv)
 	{
-		if ((tmp->name) && ft_strequ(name, tmp->name))
-			return (tmp);
-		tmp = tmp->next;
+		if ((envv->name) && ft_strequ(name, envv->name))
+			return (envv);
+		envv = envv->next;
 	}
 	return (NULL);
 }
@@ -62,19 +57,10 @@ t_envv	*ft_changetenvv_val(t_envv *envv, char *name, char *new_val)
 {
 	t_envv *tmp;
 
-	tmp = envv;
-	if (!name)
-		return (envv);
-	while (tmp)
+	if ((tmp = get_tenvv(envv, name)))
 	{
-		if (ft_strequ(tmp->name, name))
-		{
-			ft_strdel(&tmp->value);
-			tmp->value = ft_strdup(new_val);
-			return (envv);
-		}
-		tmp = tmp->next;
+		ft_strdel(&tmp->value);
+		tmp->value = ft_strdup(new_val);
 	}
-	error("no such envv var", name);
 	return (envv);
 }

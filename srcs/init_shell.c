@@ -35,7 +35,7 @@ static void ft_update_shelvl(t_shell *sh)
 	else
 		lvl = 0;
 	nbr = ft_itoa(lvl + 1);
-	ft_new_envv(sh->env, "SHLVL", nbr);
+	sh->env = ft_new_envv(sh->env, "SHLVL", nbr);
 	ft_strdel(&nbr);
 }
 
@@ -56,12 +56,12 @@ static void	init_env(t_shell *sh, char *shell_path, char *pwd)
 			sh->hist = init_hist(hi_path);
 			ft_strdel(&hi_path);
 		}
+		ft_update_shelvl(sh);
 		if ((rc_path = ft_strjoin(shell_fold, "/sys/.21shrc")))
 		{
 			exec_file(rc_path);
 			ft_strdel(&rc_path);
 		}
-		ft_update_shelvl(sh);
 		ft_strdel(&shell_fold);
 	}
 }

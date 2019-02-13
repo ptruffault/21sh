@@ -44,6 +44,8 @@ char		*ft_exp_param(char *ret, t_shell *sh, char *ptr);
 char		*ft_exp_home_var(char *ret, char *ptr, t_envv *envv);
 char		*ft_exp_envv_var(char *ret, char *ptr, t_shell *sh);
 char		*ft_exp_param_sub(char *parenth, t_shell *sh);
+char		*ft_get_secondvalue(char *src);
+char		*ft_cut_string(char *parenth, char *val, int *curr);
 t_tree		*get_tree(char *input);
 void		ft_free_tree(t_tree *t);
 int			ft_redirect(t_tree *t);

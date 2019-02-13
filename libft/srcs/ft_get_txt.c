@@ -24,6 +24,8 @@ char	**ft_get_txt(int fd)
 		return (NULL);
 	while (get_next_line(fd, &ret[i]) && ret[i])
 	{
+		if (ft_isempty(ret[i]))
+			printf("GET TXT EMPTY LINE\n");
 		if ((ret = ft_realloc(ret,
 		(i + 1) * sizeof(char *), (i + 2) * sizeof(char *))))
 			i++;

@@ -30,7 +30,7 @@ EXEC 		=		ft_execve.c \
 					bin_search.c \
 					process_tools.c 
 
-EVAL			=	eval_tools.c \
+EVAL		=		eval_tools.c \
 					tree_tools.c \
 					lexer_tools.c \
 					lexer.c \
@@ -41,7 +41,7 @@ EVAL			=	eval_tools.c \
 					redirect.c \
 					alias.c
 
-BUILTINS		=	ft_echo.c \
+BUILTINS	=		ft_echo.c \
 					ft_cd.c \
 					run_builtin.c \
 					ft_env.c \
@@ -53,27 +53,28 @@ BUILTINS		=	ft_echo.c \
 					ft_jobs.c \
 					check_builtins.c 
 
-GET_INPUT	=	curs_move.c	\
-				get_input.c	\
-				handle_input.c	\
-				history.c	\
-				input_tools.c	\
-				print_line.c	\
-				setup.c	\
-				get_history.c	\
-				ft_cop_pas.c	\
-				ft_jump_word.c	\
-				arrow_move.c	\
-				ft_select.c	\
-				clear_and_all.c	\
-				use_termcaps.c	\
-				term_settings.c\
+GET_INPUT	=		curs_move.c	\
+					get_input.c	\
+					handle_input.c	\
+					history.c	\
+					input_tools.c	\
+					print_line.c	\
+					setup.c	\
+					get_history.c	\
+					ft_cop_pas.c	\
+					ft_jump_word.c	\
+					arrow_move.c	\
+					ft_select.c	\
+					clear_and_all.c	\
+					use_termcaps.c	\
+					term_settings.c\
 
-EXPANSION		=	exp_var.c \
+EXPANSION	=		exp_var.c \
 					exp.c \
 					expantion_tools.c \
 					exp_parenth.c \
-					exp_sub_parenth.c
+					exp_sub_parenth.c \
+					cut_string.c
 
 
 
@@ -91,12 +92,16 @@ OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
 					$(addprefix $(OBJ_FOLDER), $(GET_INPUT:.c=.o))	\
 					$(addprefix $(OBJ_FOLDER), $(EXPANSION:.c=.o))
 
-COLOR		= \033[01;34m
-NO_COLOR	= \033[00m
-OP_COLOR	= \033[1;31m
-DONE 		= $(NO_COLOR)[\033[1;32mOK$(NO_COLOR)]
+COLOR		= 		\033[01;34m
+NO_COLOR	= 		\033[00m
+OP_COLOR	= 		\033[1;31m
+DONE 		= 		$(NO_COLOR)[\033[1;32mOK$(NO_COLOR)]
+KO			= 		$(NO_COLOR)[\033[00;31mKO$(NO_COLOR)]
 
 all: $(NAME)
+
+bin:
+	@mkdir $@
 
 $(NAME): bin $(OBJ) Makefile 
 	@make -C libft all
@@ -104,36 +109,42 @@ $(NAME): bin $(OBJ) Makefile
 	@gcc  $(FLAG) $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
 	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
 
-bin:
-	@mkdir $@
 
 bin/%.o: srcs/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
+	
 
 bin/%.o: srcs/eval/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/builtins/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                   \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/exec/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/exec/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/expansion/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/get_input/%.c
-	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(DONE) $(COLOR)$<$(NO_COLOR)                     \r"
+	@printf "$(COLOR)$<$(NO_COLOR)"
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 clear:
 	@clear
@@ -142,8 +153,9 @@ sclean:
 	@rm -rf $(OBJ) $(NAME)
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf bin
 	@make -C ./libft clean
+
 fclean: clean
 	rm -rf $(NAME)
 	@make -C ./libft fclean
@@ -155,6 +167,11 @@ fre: clear sclean all
 exe: fre
 	./$(NAME)
 
+val: fre 
+	@valgrind --leak-check=full -v ./$(NAME)
+
 save: fclean clear
 	@git add -A && git commit -m "make save" && git push \
 	&& printf "$(COLOR)save$(NO_COLOR) : $(DONE)\n" || printf"$(OP_COLOR)save : KO\n$(NO_COLOR)"
+
+.PHONY: clear sclean clean fclean save

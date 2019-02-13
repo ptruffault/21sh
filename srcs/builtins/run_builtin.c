@@ -38,9 +38,9 @@ static void	change_envv(char **argv, t_shell *sh)
 	else if (ft_strequ(*argv, "unset") && argv[1])
 		sh->intern = ft_unsetenv(sh->intern, &argv[1]);
 	else if (ft_strequ(*argv, "cd"))
-		sh->env = ft_get_set_envv(ft_cd(argv, sh->env));
+		sh->env = ft_cd(argv, sh->env);
 	else if (ft_strequ(*argv, "export"))
-		sh->env = ft_get_set_envv(ft_export(sh, &argv[1]));
+		sh->env = ft_export(sh, &argv[1]);
 	else if (ft_strequ(*argv, "set"))
 		ft_puttenvv(sh->intern);
 	else if (ft_strequ(*argv, "alias"))
