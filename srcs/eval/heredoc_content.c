@@ -27,7 +27,7 @@ char	*heredoc_get_input(char *eoi)
 	else
 	{
 		sh->heredoc = 0;
-		ft_strdel(&ret);
-		return (NULL);
+		set_signals();
+		return (ret);
 	}
 }

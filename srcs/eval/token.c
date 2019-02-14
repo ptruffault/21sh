@@ -102,12 +102,12 @@ t_word			*eval_line(char *input)
 	e = lexer(input);
 	head = ft_get_words(&e);
 	ft_check_alias(head, sh);
+	ft_strdel(&e.eval);
 	if (head->type == OPERATEUR)
 	{
 		error("syntax error near", head->word);
 		ft_free_tword(head);
 		return (NULL);
 	}
-	ft_strdel(&e.eval);
 	return (head);
 }

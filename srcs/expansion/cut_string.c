@@ -3,6 +3,7 @@
 char *ft_get_secondvalue(char *src)
 {
 	char *cpy;
+	char *ret;
 	int i;
 
 	i = 0;
@@ -14,10 +15,10 @@ char *ft_get_secondvalue(char *src)
 	while (cpy && cpy[i] && !((cpy[i] == ':' && cpy[i + 1] && ft_strchr("?=+-", cpy[i + 1]))
 	|| (cpy[i] == '#' || cpy[i] == '%')))
 		i++;
-	return (ft_strndup(cpy, i));
+	ret = ft_strndup(cpy, i);
+	ft_strdel(&cpy);
+	return (ret);
 }
-
-
 
 static char *ft_get_op(char *s, int *i)
 {

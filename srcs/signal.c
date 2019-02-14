@@ -39,11 +39,12 @@ void		sig_handler(int sig)
 		if (!(sh && sh->process
 		&& kill_running_fg_process(sh->process, SIGINT)))
 		{
-			sh->heredoc = 0;
-			ft_putchar_fd('\n', 0);
+			if (!sh->heredoc)
+				ft_putchar_fd('\n', 0);
 			ft_delete_line(&sh->e);
 			ft_strdel(&sh->e.input);
-			ft_disp(sh);
+			if (!sh->heredoc)
+				ft_disp(sh);
 			sh->e = init_tedit(sh);
 		}
 	}
