@@ -111,6 +111,7 @@ int		ft_strcmp_castless(char *s1, char *s2);
 void	ft_freestrarr(char **arr);
 void	*ft_realloc(void *ptr, size_t prev_size, size_t new_size);
 int		ft_str_startwith(char *s1, char *s2);
+int		ft_str_endwith(char *s1, char *s2);
 char	**ft_get_txt(int fd);
 char	**ft_strsplit_whitespace(char *s);
 char	*ft_strpull(char *src, char *ptr, int len, char *value);

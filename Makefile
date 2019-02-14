@@ -117,6 +117,7 @@ bin/%.o: srcs/%.c
 	
 
 bin/%.o: srcs/eval/%.c
+	@PATH="$<"
 	@printf "$(COLOR)$<$(NO_COLOR)"
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"

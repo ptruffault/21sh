@@ -951,3 +951,35 @@ echo ${${PWDD}#/home:-LOL#/home:?lol}
 echo ${${PWDD:-PWD}#/home:-LOL#/home:?lol}
 echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}
 echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}
+ls
+exit
+echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}
+exit
+clear
+ls
+echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}
+exit
+exit
+clear
+env
+echo ${#${PWDD:-PWD}#/home:-LOL#/home:?lol}
+echo ${#${PWDD:-PWD}:?lol}
+echo ${#${PWDD:-PWD}:?lol}
+exit
+echo ${#${PWDD:-PWD}:?lol}
+echo ${${PWDD:-PWD}:?lol}
+echo ${${PWDD:-PWD}:-lol}
+echo ${#${PWDD:-PWD}}
+echo ${${PWDD:-PWD}}
+echo ${${PWDD:-PWD}:?lol}
+exit
+echo ${${PWDD:-PWD}:?lol}
+echo ${${PWDD:-PWD}:?lol}
+exit
+echo ${${PWDD:-PWD}:?lol}
+echo ${${PWDD:-PWD}:-lol}
+echo ${${PWD:-mdr}:-lol}
+echo ${${PWD:-mdr}:?lol}
+echo ${${PWD:?unset}:?lol}
+echo ${${PWDD:-PWD}:?unset}
+exit

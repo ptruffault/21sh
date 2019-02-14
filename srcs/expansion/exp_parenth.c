@@ -58,6 +58,7 @@ char	*ft_get_param_value(t_shell *sh, char *parenth)
 					ft_strdel(&val);
 				val = handle_modifier(parenth, &parenth[i + 1], sh, param);
 				i = i + ft_strlen(param);
+				ft_strdel(&param);
 			}
 		}
 		else if (parenth[i] == '#' || parenth[i] == '%')
@@ -115,7 +116,6 @@ char		*ft_exp_param(char *ret, t_shell *sh, char *ptr)
 			len = 1;
 			parenth = tmp;
 		}
-		parenth = ft_exp_param_sub(parenth, sh);
 		if ((value = ft_get_param_value(sh, parenth)))
 			ft_strdel(&parenth);
 		if (len == 1)
