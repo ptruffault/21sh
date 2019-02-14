@@ -27,7 +27,7 @@ void		ft_jobs(t_shell *sh)
 	tmp = sh->process;
 	while (tmp)
 	{
-		ft_printf("[%i] %s -> %3i\t%s {%i}\n",
+		ft_printf("[%i]\t%s -> %3i\t%s {%i}\n",
 		i++, stat[tmp->status], tmp->ret, tmp->cmd, tmp->pid);
 		tmp = tmp->next;
 	}

@@ -3,9 +3,8 @@ export PATH=${PATH:-/bin:/user/bin:/sbin:/usr/sbin:/usr/local/bin}
 alias cl /usr/bin/clear
 alias la "ls -a" ll "ls -l" lz=ls
 alias gitall "git add -A && git commit -m 'gitall' && git push"
-#/usr/bin/clear
+/usr/bin/clear
 setenv TEST=aaaZamerinebb
 echo ${TEST}
 echo ${TEST%b}
 echo ${TEST%%b}
-echo hereiam
