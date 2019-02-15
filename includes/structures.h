@@ -125,6 +125,7 @@ typedef struct	s_process
 
 typedef struct	s_shell
 {
+	int				fd[3];
 	int 			heredoc;
 	t_envv			*env;
 	t_envv			*intern;

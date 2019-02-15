@@ -31,12 +31,18 @@ char		*absolute_path(char *input, t_envv *envv)
 {
 	char		*path;
 	struct stat	inf;
+	char		*pwd;
 
-	if (lstat(input, &inf) == -1 && (path = ft_new_path(get_tenvv_val(envv, "PWD"), input))
-	&& (lstat(path, &inf) == -1))
+	path = NULL;
+	if (lstat(input, &inf) == -1)
 	{
-		ft_strdel(&path);
-		return (NULL);
+		if ((pwd = get_tenvv_val(envv, "PWD"))
+		&& (path = ft_new_path(pwd, input))
+		&& (lstat(path, &inf) == -1))
+		{
+			ft_strdel(&path);
+			return (NULL);
+		}
 	}
 	else
 		path = ft_strdup(input);
@@ -73,6 +79,8 @@ char		*get_bin_path(char *input, t_envv *envv)
 {
 	char		*bin_path;
 
+	if (ft_isempty(input))
+		return (NULL);
 	if (ft_str_startwith(input, "./") || ft_str_startwith(input, "/"))
 	{
 		if ((bin_path = absolute_path(input, envv)))

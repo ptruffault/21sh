@@ -12,23 +12,3 @@ echo '+#+#+#+#+#+   +#+        	        +#+ +#+    +#+		'
 echo '     #+#    #+#          	#+#    #+# #+#    #+#		'
 echo '    ###   ########.fr    	########  ###    ###		'
 echo ''
-
-cd
-cd -
-cd /
-cd -
-cd /var
-cd ewrger wfg
-cd qwer
-env
-env -i HOME=/ cd
-env -u PATH -i ls
-setenv 
-setenv test=lol test mdr test
-echo $test
-unsetenv
-unsetenv test PATH HOME SHLVL
-clear
-ls
-/bin/ls
-/bin/ls /bin $HOME ~/21sh/ /dev /home

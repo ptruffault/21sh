@@ -15,6 +15,7 @@
 char	**ft_get_txt(int fd)
 {
 	char	**ret;
+	char 	*tmp;
 	int		i;
 
 	i = 0;
@@ -22,13 +23,15 @@ char	**ft_get_txt(int fd)
 		return (NULL);
 	if (!(ret = (char **)malloc(sizeof(char *))))
 		return (NULL);
-	while (get_next_line(fd, &ret[i]) && ret[i])
+	while (get_next_line(fd, &tmp))
 	{
-		if (ft_isempty(ret[i]))
-			printf("GET TXT EMPTY LINE\n");
-		if ((ret = ft_realloc(ret,
-		(i + 1) * sizeof(char *), (i + 2) * sizeof(char *))))
+		if (tmp && !ft_isempty(tmp))
+		{
+			ret[i] = ft_strdup(tmp);
+			ret = ft_realloc(ret, (i + 1) * sizeof(char *), (i + 2) * sizeof(char *));
 			i++;
+		}
+		ft_strdel(&tmp);
 	}
 	ret[i] = NULL;
 	return (ret);

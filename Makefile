@@ -168,7 +168,7 @@ fre: clear sclean all
 exe: fre
 	./$(NAME)
 
-val: fre 
+val: all
 	@valgrind --leak-check=full -v ./$(NAME)
 
 save: fclean clear

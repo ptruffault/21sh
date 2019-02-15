@@ -42,8 +42,12 @@ char		*ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
 char		*ft_exp_home_var(char *ret, char *ptr, t_envv *envv)
 {
 	char *tmp;
+	char *val;
 
-	if ((tmp = ft_strpull(ret, ptr, 0, get_tenvv_val(envv, "HOME"))))
+
+	if (!(val = get_tenvv_val(envv, "HOME")))
+		ft_strdel(&ret);
+	else if ((tmp = ft_strpull(ret, ptr, 0, val)))
 	{
 		ft_strdel(&ret);
 		return (tmp);

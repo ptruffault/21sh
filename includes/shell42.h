@@ -114,5 +114,7 @@ t_word		*o_get_input(int type);
 char		*q_get_input(char c);
 char		*p_get_input(char c);
 char		*backslash_get_input(void);
+t_process	*init_process(t_tree *t, t_shell *sh);
+void		ft_delete_process(int pid);
 
 #endif

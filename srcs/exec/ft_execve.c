@@ -33,35 +33,13 @@ pid_t		ft_execve(t_process *p, t_tree *t, t_shell *sh)
 	return (pid);
 }
 
-t_process	*init_process(t_tree *t, t_shell *sh)
-{
-	t_process	*new;
-
-	new = NULL;
-	if ((new = (t_process *)malloc(sizeof(t_process))))
-	{
-		if (t->o_type == O_BACK)
-			new->status = RUNNING_BG;
-		else
-			new->status = RUNNING_FG;
-		new->ret = -1;
-		new->pid = 0;
-		if (!(new->argv = ft_twordto_arr(t->cmd)))
-		{
-			free(new);
-			return (NULL);
-		}
-		new->next = sh->process;
-		sh->process = new;
-	}
-	return (new);
-}
-
 int			ft_exec(t_tree *t)
 {
 	t_process	*p;
 	t_shell		*sh;
+	int 		ret;
 
+	ret = -1;
 	sh = ft_get_set_shell(NULL);
 	if ((p = init_process(t, sh)))
 	{
@@ -76,12 +54,14 @@ int			ft_exec(t_tree *t)
 			p->pid = ft_execve(p, t, sh);
 			if (p->status == RUNNING_FG)
 			{
-				wait(&p->ret);
+				wait(&ret);
+				p->ret = ret;
 				if (p->status != KILLED)
 					p->status = DONE;
 			}
 		}
+		else
+			ft_delete_process(p->pid);
 	}
-	ft_freestrarr(p->argv);
-	return (p->ret);
+	return (ret);
 }

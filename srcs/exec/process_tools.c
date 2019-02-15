@@ -48,3 +48,60 @@ int			kill_running_fg_process(t_process *p, int sig)
 	}
 	return (0);
 }
+
+
+t_process	*init_process(t_tree *t, t_shell *sh)
+{
+	t_process	*new;
+
+	new = NULL;
+	if ((new = (t_process *)malloc(sizeof(t_process))))
+	{
+		if (t->o_type == O_BACK)
+			new->status = RUNNING_BG;
+		else
+			new->status = RUNNING_FG;
+		new->ret = -1;
+		new->pid = 0;
+		if (!(new->argv = ft_twordto_arr(t->cmd)))
+		{
+			free(new);
+			return (NULL);
+		}
+		new->next = sh->process;
+		sh->process = new;
+	}
+	return (new);
+}
+
+void	ft_delete_process(int pid)
+{
+	t_shell *sh;
+	t_process *p;
+	t_process *tmp;
+
+	sh = ft_get_set_shell(NULL);
+	if ((p = sh->process))
+	{
+		if (p->pid == pid)
+		{
+			sh->process = p->next;
+			p->next = NULL;
+			ft_free_tprocess(p);
+		}
+	}
+	else
+	{
+		while (p && p->next)
+		{
+			if (p->next->pid == pid)
+			{
+				tmp = p->next;
+				p->next = tmp->next;
+				tmp->next = NULL;
+				ft_free_tprocess(tmp);
+			}
+			p = p->next;
+		}
+	}
+}
