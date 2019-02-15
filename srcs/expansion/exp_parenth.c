@@ -57,7 +57,6 @@ char	*ft_get_param_value(t_shell *sh, char *parenth)
 				if (val)
 					ft_strdel(&val);
 				val = handle_modifier(parenth, &parenth[i + 1], sh, param);
-				i = i + ft_strlen(param);
 				ft_strdel(&param);
 			}
 		}

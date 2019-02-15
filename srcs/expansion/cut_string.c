@@ -8,12 +8,10 @@ char *ft_get_secondvalue(char *src)
 
 	i = 0;
 	cpy = ft_strdup(src);
-	if (ft_str_startwith(cpy, "${"))
-		cpy = ft_exp_param(cpy, ft_get_set_shell(NULL), cpy);
-	else if (*src == '$')
+	if (*src == '$')
 		cpy = ft_exp_var(cpy, ft_get_set_shell(NULL));
 	while (cpy && cpy[i] && !((cpy[i] == ':' && cpy[i + 1] && ft_strchr("?=+-", cpy[i + 1]))
-	|| (cpy[i] == '#' || cpy[i] == '%')))
+	|| (cpy[i] == '#' || cpy[i] == '%') || cpy[i] == '}'))
 		i++;
 	ret = ft_strndup(cpy, i);
 	ft_strdel(&cpy);

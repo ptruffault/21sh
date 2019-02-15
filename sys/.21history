@@ -1415,3 +1415,164 @@ env
 ls
 env
 env
+exit
+clear
+ls
+env
+ls
+env
+ls
+ls | rev
+ls
+env
+clear
+ls | rev
+ls
+echo ${${LOL:_PWD}}
+echo ${${LOL:_PWD}}
+echo ${${LOL:-PWD}}
+echo ${${LOL:-PWD}##/home}
+echo ${${LOL:-PWD}%/home}
+echo ${${PWD:-LOL}%/home}
+echo ${${PWD:-LOL}%/home}
+echo ${${PWD:-LOL}%/home}
+echo ${${PWD:-LOL}%/home}
+echo ${${PWD:-LOL}%/home}
+echo ${${PWD:-LOL}%/home}
+echo ${PWD:-LOL}
+echo ${${PWD:-LOL}}
+echo ${${PWD:-LOL}}
+ls
+echo ${${PWD:-LOL}}
+echo ${${PWD:-LOL}}
+echo ${${PWD:-LOL}}
+echo ${${PWD:-LOL}}
+echo ${${PWD:-LOL}}
+ls
+echo ${${PWD:-LOL}}
+echo ${${PWD:-LOL}}
+echo ${PWD:-LOL}
+echo ${PWD:-LOL}
+echo ${$PWD:-LOL}
+echo ${PWD:-$LOL}
+echo ${PWDD:-$LOL}
+echo ${PWDD:-$PWD}
+echo ${PWDD:-PWD}
+echo ${PWDD:-$PWD}
+echo ${PWD:-$PWD}
+echo ${${LOL:-ELSE}:-$PWD}
+echo ${${LOL:-HOME}:-$PWD}
+echo ${${LOL:-HOME}:-$PWD}
+echo ${${LOL:-HOME}:-$PWD##/Users}
+echo ${PWDD:-PWD}
+echo ${${LOL}:-PWD}
+echo ${${LOL}:-$PWD}
+echo ${${LOL}:-$PWD}
+echo ${${LOL#L}:-$PWD}
+echo ${${LOL#L}:-$PWDD}
+echo ${${HOME}:-$PWDD}
+echo ${${HOME:-LOL}:-$PWDD}
+echo ${${HOME:-LOL}:-$PWDD}
+echo ${${HOME:?lol}:-$PWDD}
+echo ${${HOME:?lol}:-$PWD}
+echo ${${HOME:?lol}:-$PWDD}
+clear
+ls
+env
+ls -R
+ls -R /
+ls -R /
+clear
+ls
+env
+iqerjfne
+qergwefbgwgfdbwrfdb7& ls
+clear
+env
+clear
+ls
+env
+clear
+ls
+env
+clear
+cd /bin
+ls
+cd
+cd /
+exit
+exit
+ls
+cd -
+cd 
+cd -
+clear
+exit
+env
+env -i HOME=/ cd
+env
+clear
+clear
+clear
+clear
+clear
+env
+env
+exit
+exit
+ls
+clear
+ls
+clear
+/bin/ls 
+clear
+clear
+/bin/ls
+/bin/ls /bin
+/bin/ls /bin $HOME
+env
+/bin/ls  $HOME
+echo $HOME
+env
+/bin/ls  $SHELL
+/bin/ls  $SHELL
+/bin/ls -l  $SHELL
+/bin/ls -l  $SHELL_FOLD
+/bin/ls -l  $SHELL_FOL
+/bin/ls -l  $SHELL_FOL
+echo $WIEG | cat-e
+echo $WIEG | cat -e
+ls
+ls $WIGO
+ls $WIGO
+echo  $NWJ
+echo  $NWJ | cat -e
+echo  $NWJ | cat -e
+echo  $NWJ | cat -e
+echo | cat -e
+echo | cat -e
+echo | cat -e
+echo | cat -e
+/bin/ls
+/bin/ls $NWV
+clear
+exit
+ls
+ls $PD
+cat <&2
+cat <&2
+cat <&2
+ls
+clear
+echo  $NWJ
+ls $KD
+ls
+ls $DW
+ls $DW
+ls
+clear
+ls
+ls $WR
+ls $ERIG
+clear
+exit

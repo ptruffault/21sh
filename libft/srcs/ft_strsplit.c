@@ -12,61 +12,65 @@
 
 #include <libft.h>
 
-static int		ft_cnt_parts(const char *s, char c)
+static int		ft_countwords(char const *str, char c)
 {
-	int		cnt;
-	int		in_substring;
+	int count;
+	int	i;
 
-	in_substring = 0;
-	cnt = 0;
-	while (*s != '\0')
+	i = 0;
+	count = 0;
+	while (str[i])
 	{
-		if (in_substring == 1 && *s == c)
-			in_substring = 0;
-		if (in_substring == 0 && *s != c)
-		{
-			in_substring = 1;
-			cnt++;
-		}
-		s++;
+		while (str[i] == c)
+			i++;
+		if (str[i] != c && str[i] != '\0')
+			count++;
+		while (str[i] != c && str[i] != '\0')
+			i++;
 	}
-	return (cnt);
+	return (count);
 }
 
-static int		ft_wlen(const char *s, char c)
+static int		get_word_len(char const *str, char c)
 {
-	int		len;
+	int	i;
+	int	len;
 
+	i = 0;
 	len = 0;
-	while (*s != c && *s != '\0')
+	while (str[i] == c)
+		i++;
+	while (str[i] != c && str[i] != '\0')
 	{
+		i++;
 		len++;
-		s++;
 	}
 	return (len);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	**t;
-	int		nb_word;
-	int		index;
+	int		i;
+	int		j;
+	int		k;
+	char	**str2;
 
-	index = 0;
-	nb_word = ft_cnt_parts((const char *)s, c);
-	t = (char **)malloc(sizeof(*t) * (ft_cnt_parts((const char *)s, c) + 1));
-	if (t == NULL)
+	if (!s || !(str2 = (char **)malloc(sizeof(*str2) *
+		(ft_countwords(s, c) + 1))))
 		return (NULL);
-	while (nb_word--)
+	i = -1;
+	j = 0;
+	while (++i < ft_countwords(s, c))
 	{
-		while (*s == c && *s != '\0')
-			s++;
-		t[index] = ft_strsub((const char *)s, 0, ft_wlen((const char *)s, c));
-		if (t[index] == NULL)
-			return (NULL);
-		s = s + ft_wlen(s, c);
-		index++;
+		k = 0;
+		if (!(str2[i] = ft_strnew(get_word_len(&s[j], c) + 1)))
+			str2[i] = NULL;
+		while (s[j] == c)
+			j++;
+		while (s[j] != c && s[j])
+			str2[i][k++] = s[j++];
+		str2[i][k] = '\0';
 	}
-	t[index] = NULL;
-	return (t);
+	str2[i] = 0;
+	return (str2);
 }

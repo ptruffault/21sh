@@ -82,15 +82,15 @@ srcs:
 
 bin/%.o: $(FILE_FOLDER)%.c 
 	@gcc $(FLAG) -I includes -c $< -o $@
-	@printf "$(NO_COLOR)  $(DONE) $(COLOR)$<$(NO_COLOR)                               \r"
+	@printf "libft$(NO_COLOR)  $(DONE) $(COLOR)$<$(NO_COLOR)                               \r"
 
 bin/%.o: $(TENVV_FO)%.c
-	@gcc $(FLAG) -I includes -c $< -o $@		
-	@printf "tenvv $(DONE) $(COLOR)$<$(NO_COLOR)$(NO_COLOR)                \r"
+	@gcc $(FLAG) -I includes -c $< -o $@
+	@printf "tenvv$(NO_COLOR)  $(DONE) $(COLOR)$<$(NO_COLOR)                               \r"
 
 bin/%.o: $(FT_PRINTF_FO)%.c
-	@gcc $(FLAG) -I includes -c $< -o $@		
-	@printf "ft_printf $(DONE) $(COLOR)$<$(NO_COLOR)$(NO_COLOR)  \r"
+	@gcc $(FLAG) -I includes -c $< -o $@
+	@printf "ft_printf$(NO_COLOR)  $(DONE) $(COLOR)$<$(NO_COLOR)                               \r"
 
 clean:
 	@rm -rf bin/*

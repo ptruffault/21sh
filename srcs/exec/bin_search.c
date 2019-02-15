@@ -32,14 +32,11 @@ char		*absolute_path(char *input, t_envv *envv)
 	char		*path;
 	struct stat	inf;
 
-	if (lstat(input, &inf) == -1)
+	if (lstat(input, &inf) == -1 && (path = ft_new_path(get_tenvv_val(envv, "PWD"), input))
+	&& (lstat(path, &inf) == -1))
 	{
-		path = ft_new_path(get_tenvv_val(envv, "PWD"), input);
-		if (lstat(path, &inf) == -1)
-		{
-			ft_strdel(&path);
-			return (NULL);
-		}
+		ft_strdel(&path);
+		return (NULL);
 	}
 	else
 		path = ft_strdup(input);
