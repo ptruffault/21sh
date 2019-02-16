@@ -91,7 +91,6 @@ void		ft_init_fd(int fd[3])
 	fd[2] = 2;
 }
 
-
 t_process	*init_process(t_tree *t, t_shell *sh)
 {
 	t_process	*new;
@@ -117,11 +116,10 @@ t_process	*init_process(t_tree *t, t_shell *sh)
 			new->builtins = FALSE;
 		else
 		{
-			ft_delete_process(new->pid);
+			ft_freestrarr(new->argv);
+			free(new);
 			return (NULL);
 		}
-		new->next = sh->process;
-		sh->process = new;
 	}
 	return (new);
 }

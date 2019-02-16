@@ -39,10 +39,7 @@ void	exec_file(char *path)
 			{
 				if (*instruct[i] && *instruct[i] != '#'
 				&& (t = get_tree(instruct[i])))
-				{
-					ft_puttword(t->cmd);
 					ft_free_tree(exec_tree(ft_get_set_tree(t)));
-				}
 				i++;
 			}
 			ft_freestrarr(instruct);

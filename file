@@ -1,9 +1,38 @@
-[3J[H[2J        :::      ::::::::	      ::::::::  :::    :::	
-      :+:      :+:    :+:	    :+:    :+: :+:    :+:	
-    +:+ +:+         +:+  	   +:+        +:+    +:+	
-  +#+  +:+       +#+     	  +#++:++#++ +#++:++#++		
-+#+#+#+#+#+   +#+        	        +#+ +#+    +#+		
-     #+#    #+#          	#+#    #+# #+#    #+#		
-    ###   ########s    	########  ###    ###		
-ptruffau
-adi-rosa
+21sh
+21sh.dSYM
+Makefile
+auteur
+bin
+file
+includes
+libft
+srcs
+sys
+[H[2JTERM_PROGRAM=iTerm.app
+TERM=xterm-256color
+SHELL=/bin/zsh
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n00033qh000rxw/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.Bg8uflRs1W/Render
+TERM_PROGRAM_VERSION=3.2.3
+TERM_SESSION_ID=w0t0p1:409A2848-250B-4036-8661-B26E112D91D5
+ZSH=/Users/ptruffau/.oh-my-zsh
+USER=ptruffau
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.xr2OZM9Ho4/Listeners
+__CF_USER_TEXT_ENCODING=0x63BC:0:0
+PAGER=less
+LSCOLORS=Gxfxcxdxbxegedabagacad
+PATH=/Users/ptruffau/.brew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/VMware Fusion.app/Contents/Public/:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/munki
+PWD=/Users/ptruffau/21sh
+LANG=en_US.UTF-8
+ITERM_PROFILE=Default
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=2
+HOME=/Users/ptruffau
+COLORFGBG=7;0
+ITERM_SESSION_ID=w0t0p1:409A2848-250B-4036-8661-B26E112D91D5
+LESS=-R
+LOGNAME=ptruffau
+LC_CTYPE=en_US.UTF-8
+COLORTERM=truecolor
+_=/usr/bin/env
