@@ -66,6 +66,7 @@ static void	init_env(t_shell *sh, char *shell_path, char *pwd)
 	}
 }
 
+
 void		init_shell(t_shell *sh, char **envv, char **argv)
 {
 	char *shell_path;
@@ -77,6 +78,7 @@ void		init_shell(t_shell *sh, char **envv, char **argv)
 	sh->intern = NULL;
 	sh->clipboard = NULL;
 	sh->alias = NULL;
+	sh->saved_term = NULL;
 	sh->process = NULL;
 	sh->env = init_tenvv(envv);
 	sh->env = ft_new_envv(sh->env, "PWD", pwd);

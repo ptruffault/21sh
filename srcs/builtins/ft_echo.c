@@ -19,12 +19,12 @@ void		ft_echo(char **input)
 
 	i = 0;
 	opts_n = 0;
-	while (input[i])
+	if (*input && ft_strequ(input[i], "-n") && input[++i])
+		opts_n = 1;
+	while (input && input[i])
 	{
-		if (i > 0)
-			ft_putchar('\t');
-		if (ft_strequ(input[i], "-n") && input[++i])
-			opts_n = 1;
+		if (i > opts_n)
+			ft_putstr("    ");
 		ft_putstr(input[i++]);
 	}
 	if (opts_n)

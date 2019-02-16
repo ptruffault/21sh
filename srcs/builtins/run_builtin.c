@@ -49,22 +49,11 @@ static void	change_envv(char **argv, t_shell *sh)
 		sh->alias = ft_unsetenv(sh->alias, &argv[1]);
 }
 
-static void	ft_redir(t_tree *t, int fd[3])
-{
-	fd[0] = 0;
-	fd[1] = 1;
-	fd[2] = 2;
-	if (t->r && ft_redirect_builtin(t, fd) == -1)
-		warning("redirection fucked up", NULL);
-}
-
 int			run_builtin(t_tree *t, char **argv)
 {
 	t_shell *sh;
-	int		fd[3];
 
 	sh = ft_get_set_shell(NULL);
-	ft_redir(t, fd);
 	if (ft_strequ(*argv, "exit"))
 		ft_exit();
 	else if (ft_strequ(*argv, "env"))
@@ -77,7 +66,5 @@ int			run_builtin(t_tree *t, char **argv)
 		exec_file(argv[1]);
 	else
 		change_envv(argv, sh);
-	if (t->r)
-		ft_reset_fd(fd);
 	return (0);
 }

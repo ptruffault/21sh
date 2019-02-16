@@ -35,8 +35,11 @@ t_tree			*exec_pipe(t_tree *t)
 {
 	int			pipes[2];
 	int			pid[2];
+	t_process	*p;
+	t_shell		*sh;
 
-	if (pipe(pipes) != 0)
+	sh = ft_get_set_shell(NULL);
+	if (pipe(pipes) != 0 || !(p = init_process(t, sh)))
 		return (t);
 	if ((pid[0] = fork()) < 0)
 		error("fork filed to create a new process in pipe", t->cmd->word);
@@ -44,9 +47,10 @@ t_tree			*exec_pipe(t_tree *t)
 	{
 		dup2(pipes[1], STDOUT_FILENO);
 		close(pipes[0]);
-		t->ret = ft_exec(t);
+		t->ret = ft_exec(t, p);
 		exit(0);
 	}
+
 	if ((pid[1] = fork()) < 0)
 		error("fork filed to create a new process in pipe", t->cmd->word);
 	else if (pid[1] == 0)

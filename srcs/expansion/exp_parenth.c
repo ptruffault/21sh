@@ -48,17 +48,13 @@ char	*ft_get_param_value(t_shell *sh, char *parenth)
 	val = NULL;
 	while (parenth && parenth[i])
 	{
-		if (parenth[i] == ':')
+		if (parenth[i] == ':' && ft_strchr("-+?=", parenth[i + 1])
+		&& (param = ft_get_secondvalue(&parenth[i + 2])))
 		{
-			if (!ft_strchr("-+?=", parenth[i + 1]))
-				error_c("unrecognized modifier", parenth[i + 1]);
-			else if ((param = ft_get_secondvalue(&parenth[i + 2])))
-			{
-				if (val)
-					ft_strdel(&val);
-				val = handle_modifier(parenth, &parenth[i + 1], sh, param);
-				ft_strdel(&param);
-			}
+			if (val)
+				ft_strdel(&val);
+			val = handle_modifier(parenth, &parenth[i + 1], sh, param);
+			ft_strdel(&param);
 		}
 		else if (parenth[i] == '#' || parenth[i] == '%')
 		{

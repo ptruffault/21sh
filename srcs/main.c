@@ -14,7 +14,7 @@
 
 void	ft_disp(t_shell *sh)
 {
-	ft_printf("\033[1;32m 21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n",
+	ft_printf("\033[1;32m21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n",
 	get_tenvv_val(sh->env, "PWD"));
 }
 

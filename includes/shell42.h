@@ -24,9 +24,6 @@
 # include <termios.h>
 # include <term.h>
 # include "structures.h"
-# define IS_STD(x) (0 <= x && x <= 2)
-# define IS_CMD(x) (1 <= x && x <= 5)
-# define IS_EXP(x) (1 <= x && x <= 4)
 
 void		ft_free_thist(t_hist *h);
 void		ft_free_redirection(t_redirect *r);
@@ -57,7 +54,7 @@ t_shell		*ft_get_set_shell(t_shell *sh);
 void		reset_term(void);
 void		init_shell(t_shell *sh, char **envv, char **argv);
 void		set_signals(void);
-int			ft_exec(t_tree *t);
+int			ft_exec(t_tree *t, t_process *p);
 t_tree		*exec_pipe(t_tree *t);
 t_tree		*exec_instruction(t_tree *t);
 int			run_builtin(t_tree *t, char **argv);

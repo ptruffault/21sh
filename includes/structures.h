@@ -12,7 +12,9 @@
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
-
+# define IS_STD(x) (0 <= x && x <= 2)
+# define IS_CMD(x) (1 <= x && x <= 5)
+# define IS_EXP(x) (1 <= x && x <= 4)
 enum	e_rtype{
 	UNDEF = 0,
 	R_LEFT = 1,
@@ -115,6 +117,8 @@ typedef struct	s_tree
 
 typedef struct	s_process
 {
+	int					fd[3];
+	t_bool				builtins;
 	char				*cmd;
 	enum e_pstatus		status;
 	char				**argv;
@@ -125,7 +129,7 @@ typedef struct	s_process
 
 typedef struct	s_shell
 {
-	int				fd[3];
+
 	int 			heredoc;
 	t_envv			*env;
 	t_envv			*intern;

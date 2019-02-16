@@ -1849,3 +1849,296 @@ ls
 wefqwdv
 qwdvqefdbv fgd 2>&-
 gitall
+clear
+ls
+env
+ls|rev
+ls -l
+ls
+exit
+ls >file
+cat file
+ls
+ls >&2
+ls >&2 | rev
+ls > file
+exit
+ls
+clear
+exit
+clear
+ls
+env
+ls|rev
+ls
+env
+echo $PWD
+echo $PWDzae
+ls $z"f"
+ls $zazdfaz
+ls $zazdfaz auteur
+clear
+ls
+ls -R
+ls
+env
+ls >file
+ls
+cat file
+exit
+clear
+ls
+env
+echo lol > file
+cat file
+cat file
+cat file >> file
+cat file >> f
+cat file >> f
+cat file >> f
+cat f
+clear
+ls
+rm -rf f file
+ls
+ls
+clear
+ls
+ls
+clear
+ls
+env | grep PWD 
+clear
+ls
+ls -z 2>&-
+ls -z 2>&1 | rev
+cat << eoi
+lol
+clear
+ls &
+ls& ls
+clear
+ls &ls
+ls &ls
+ls &env
+echo lol &ls
+clear
+ls
+ls|rev
+exit
+ls|rev
+env
+env|grep PWD
+clear
+exit
+clear
+exit
+zls
+ls
+cmear
+ls
+clear
+env
+ls
+jobs
+alias
+alias
+clear
+alis
+alias
+alias lz
+lz
+clear
+ls
+exit
+la
+exit
+ls
+clear
+env
+ls
+env
+cd ls
+ls
+alias
+ls
+clear
+env
+exit
+ls |rev
+clear
+exit
+ls>file
+cat file
+ls -z 2>&-
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z 2>&1 
+ls -z 2>&1 
+ls -z 2>&
+ls -z 2>
+ls -z 2> file
+cat file
+ls >&2
+ls > file
+cat file
+ls -z 2>&1 
+ls -z 2>&1 | rev
+exit
+ls |rev
+clear
+clea |rev
+clear | rev
+ls
+exit
+exit
+env
+exit
+jobs
+ls
+clear
+env
+ll
+ls
+env
+echo lol
+42sh sys/.21shrc
+42 sys/.21shrc
+42 sys/.21shrc > file
+42 .sys/.21shrc > file
+42 ./sys/.21shrc > file
+env
+exit
+jobs
+ls
+jobs
+zreza
+zeaf
+jobs
+jobs
+exit
+ls
+clear
+ls
+e,v
+echo lol
+echo 'lol                               lol'
+echo 'lol                               lol';echo'lol                      lol'
+exit
+exit
+exit
+exit
+exit
+exit
+echo lol
+echo lol echo lol
+echo mdr lol ptrde
+echo LOL
+echo LOL PWD
+echo LOL PWD POURQUOI
+echo LOL PWD POURQUOI HEIN ?
+echo LOL PWD POURQUOI_ HEIN ?
+echo LOL PWD POURQUOIHEIN ?
+echo LOL PWD POURQUOI HEIN ?
+echo LOL PWD POU RQUOI HEIN ?
+exit
+ls
+echo LOL
+echo LOL PWD
+echo LOL PWD PQ
+ls
+ls-l
+ls -l
+ls -l auteur
+ls -l auteur Makefile
+ls -l auteur Makefile /bin
+echo lol
+echo MDR
+echo MDR LOL
+exit
+ls
+clear
+exit
+echo lol mdr ptrdr
+exit
+echo lol MDR PTDR
+exit
+echo lol MDR PTDR
+exiyt
+exit
+ls
+echo lol mdr
+exit
+echo lol mdr
+echo lol mdr ptdr
+echo lol mdr ptdr xptdr
+clear
+ls
+env
+exit
+ls
+clear
+ls|rev
+exit
+ls
+clear
+exit
+exit
+exit
+exit
+echo LOL;echo LOL
+echo LOL echo LOL
+ls
+exit
+exit
+exit
+clear
+exit
+echo LOL PWD
+echo MDR
+echo MDR | cat -e
+ls
+exit
+ls
+echo LOL MDR ;
+echo LOL MDR PTDR
+s
+cleaez
+exit
+clear
+exit
+ls
+clear
+env
+clear
+ls
+ll
+clear
+ls
+ls -R
+clear
+ls
+env
+clear
+ls
+env
+echo LOL PTDRE
+ exut
+exit
+exit
+exit
+exit
+exit
+exit
+ls
+ls
+clear
+env
+clear
+ls
+ls|rev
+echo LOL PTDR NUEIF EZYFEF EZFCEZFZEF
+clear
+exit
+exit
+gitall

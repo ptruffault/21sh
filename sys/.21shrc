@@ -1,14 +1,14 @@
 export TERM=${TERM:-xterm-256color} 
 export PATH=${PATH:-/bin:/user/bin:/sbin:/usr/sbin:/usr/local/bin}
 alias cl /usr/bin/clear
-alias la "ls -a" ll "ls -l" lz=ls
+alias la "ls -a --color=tty" ll "ls -l --color=tty" ls "ls --color=tty"
 alias gitall "git add -A && git commit -m 'gitall' && git push"
 /usr/bin/clear
-echo '        :::      ::::::::	      ::::::::  :::    :::	'
-echo '      :+:      :+:    :+:	    :+:    :+: :+:    :+:	'
-echo '    +:+ +:+         +:+  	   +:+        +:+    +:+	'
-echo '  +#+  +:+       +#+     	  +#++:++#++ +#++:++#++		'
-echo '+#+#+#+#+#+   +#+        	        +#+ +#+    +#+		'
-echo '     #+#    #+#          	#+#    #+# #+#    #+#		'
-echo '    ###   ########.fr    	########  ###    ###		'
-echo ''
+echo '        :::      ::::::::	      ::::::::  :::    :::		'
+#echo '      :+:      :+:    :+:	    :+:    :+: :+:    :+:	'
+#echo '    +:+ +:+         +:+  	   +:+        +:+    +:+	'
+#echo '  +#+  +:+       +#+     	  +#++:++#++ +#++:++#++		'
+#echo '+#+#+#+#+#+   +#+        	        +#+ +#+    +#+		'
+#echo '     #+#    #+#          	#+#    #+# #+#    #+#		'
+#echo '    ###   ########s    	########  ###    ###		'
+cat $SHELL_FOLD/auteur

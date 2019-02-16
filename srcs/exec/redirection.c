@@ -23,6 +23,7 @@ int			fd_dup(int fd1, int fd2, int close)
 	return (0);
 }
 
+
 static void	ft_heredoc_content(t_redirect *r)
 {
 	int fd[2];

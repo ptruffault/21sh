@@ -39,10 +39,19 @@ static t_tree	*next_instruction(t_tree *t)
 
 t_tree			*exec_instruction(t_tree *t)
 {
+	t_process	*p;
+	t_shell		*sh;
+
+	sh = ft_get_set_shell(NULL);
 	if (t->o_type == O_PIPE && t->next)
 		t = exec_pipe(t);
-	else
-		t->ret = ft_exec(t);
+	else if ((p = init_process(t, sh)))
+	{
+		if (t->r && ft_redirect_builtin(t, p->fd) == -1)
+			warning("redirection fucked up", NULL);
+		t->ret = ft_exec(t, p);
+		ft_reset_fd(p->fd);
+	}
 	return (t);
 }
 
