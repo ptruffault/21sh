@@ -99,6 +99,8 @@ t_process	*init_process(t_tree *t, t_shell *sh)
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
 		ft_init_fd(new->fd);
+		if (t->r && ft_redirect_builtin(t, new->fd) == -1)
+			warning("redirection fucked up", NULL);
 		if (t->o_type == O_BACK)
 			new->status = RUNNING_BG;
 		else
@@ -120,6 +122,8 @@ t_process	*init_process(t_tree *t, t_shell *sh)
 			free(new);
 			return (NULL);
 		}
+		new->next = sh->process;
+		sh->process = new;
 	}
 	return (new);
 }

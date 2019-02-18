@@ -58,29 +58,3 @@ char		*get_input(void)
 	}
 	return (ft_update_hist(sh));
 }
-/*
-char	*get_heredoc(char *eoi)
-{
-	char			*content;
-	t_shell			*sh;
-	unsigned long	buf;
-
-	sh = ft_get_set_shell(NULL);
-	sh->e = init_tedit(sh);
-	if (!(ft_setup_edit_term(sh)))
-		return (dumb_term(sh));
-	while (sh->e.edited == FALSE)
-	{
-		buf = 0;
-		read(0, &buf, 8);
-		if (sh->e.edited == FALSE)
-		{
-			buf = handle_input(buf, &sh->e);
-			ft_print_line(&sh->e);
-		}
-	}
-	if (!ft_strequ(e.input))
-		content = ft_strjoin_fr(content, ft_stradd_char(sh->e.input, '\n'));
-	ft_free_tedit(sh->e);
-	return (content);
-}*/

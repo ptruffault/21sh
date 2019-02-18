@@ -47,10 +47,6 @@ t_tree			*exec_instruction(t_tree *t)
 		t = exec_pipe(t);
 	else if ((p = init_process(t, sh)))
 	{
-		p->next = sh->process;
-		sh->process = p;
-		if (t->r && ft_redirect_builtin(t, p->fd) == -1)
-			warning("redirection fucked up", NULL);
 		t->ret = ft_exec(t, p);
 		ft_reset_fd(p->fd);
 	}
