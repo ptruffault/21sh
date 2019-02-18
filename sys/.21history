@@ -376,3 +376,56 @@ clear
 ls
 env
 exit
+ls
+clear
+type ls
+ls
+alias
+clear
+ls|rev
+ls > file
+cat file
+ls
+rm -rf file
+ls
+clear
+ls
+ls
+ls|rev
+clear
+ls
+ls|rev
+ls
+env
+exit 11
+clear
+exit
+ls|rev
+clear
+ls
+ls |rev
+ls |rev
+exit
+ls
+clear
+env
+ls|ev
+ls|rev
+ls|rev
+ls
+clear
+ls|rev|cat -e
+make fre
+ls
+exit
+ls|rev|cat -e | rev|cat -e 
+ls
+clear
+exit
+clear
+ls > file
+rm -rf file
+clear
+ls |rev | cat -e |cat
+cat | rev | cat -e | rev | cat -e
+exit

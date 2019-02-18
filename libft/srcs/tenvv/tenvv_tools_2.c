@@ -43,7 +43,6 @@ void	del_tenvv(t_envv *envv)
 	ft_strdel(&envv->value);
 	envv->next = NULL;
 	free(envv);
-	envv = NULL;
 }
 
 void	ft_free_tenvv(t_envv *envv)
