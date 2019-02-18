@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:17:51 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 14:17:52 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:52:58 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ int			ft_redirect_builtin(t_tree *t, int fd[3])
 	return (0);
 }
 
-
 void		ft_reset_fd(int fd[3])
 {
-	int i;
-	int tmp;
+	int	i;
+	int	tmp;
 
 	i = 0;
 	while (i <= 2)
