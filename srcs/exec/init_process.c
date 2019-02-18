@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-static void	ft_init_fd(t_process *new)
+static void	ft_init_fd(t_process *new, t_tree *t)
 {
 	new->fd[0] = 0;
 	new->fd[1] = 1;
@@ -31,7 +31,7 @@ t_process	*init_process(t_tree *t, t_shell *sh)
 	new = NULL;
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
-		ft_init_fd(new);
+		ft_init_fd(new, t);
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
 		{
 			free(new);
