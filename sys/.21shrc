@@ -1,0 +1,14 @@
+export TERM=${TERM:-xterm-256color} 
+export PATH=${PATH:-/bin:/user/bin:/sbin:/usr/sbin:/usr/local/bin}
+alias cl /usr/bin/clear
+alias la "ls -a -G" ll "ls -l -G" ls "ls -G"
+alias gitall "git add -A && git commit -m 'gitall' && git push"
+/usr/bin/clear
+echo '        :::      ::::::::	      ::::::::  :::    :::		'
+echo '      :+:      :+:    :+:	    :+:    :+: :+:    :+:	'
+echo '    +:+ +:+         +:+  	   +:+        +:+    +:+	'
+echo '  +#+  +:+       +#+     	  +#++:++#++ +#++:++#++		'
+echo '+#+#+#+#+#+   +#+        	        +#+ +#+    +#+		'
+echo '     #+#    #+#          	#+#    #+# #+#    #+#		'
+echo '    ###   ########s    	########  ###    ###		'
+cat $SHELL_FOLD/auteur
