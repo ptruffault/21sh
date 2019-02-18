@@ -54,7 +54,7 @@ char		**tenvv_to_tab(t_envv *envv)
 	t[i] = NULL;
 	if (i == 1)
 	{
-		free(t)
+		free(t);
 		return (NULL);
 	}
 	return (t);

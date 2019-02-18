@@ -87,4 +87,10 @@ void		init_shell(t_shell *sh, char **envv, char **argv)
 		init_env(sh, shell_path, pwd);
 		ft_strdel(&shell_path);
 	}
+	if (isatty(0) == 0)
+	{
+		exec_fd(0);
+		ft_free_tshell(sh);
+		exit(0);
+	}
 }

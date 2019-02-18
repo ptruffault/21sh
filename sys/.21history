@@ -429,3 +429,22 @@ clear
 ls |rev | cat -e |cat
 cat | rev | cat -e | rev | cat -e
 exit
+ls
+clear
+env
+exit
+ls
+clear
+jobs
+clear
+env
+ls -R /
+ls -R /
+clear
+clear
+cat | rev | cat -e |rev | cat -e
+clear
+ls
+env
+exit
+exit

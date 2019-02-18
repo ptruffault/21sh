@@ -22,27 +22,33 @@ void	ft_puttword(t_word *w)
 	ft_putchar('\n');
 }
 
-void	exec_file(char *path)
+void 	exec_fd(int fd)
 {
 	char	**instruct;
-	int		fd;
 	int		i;
 	t_tree	*t;
 
 	i = 0;
+	if ((instruct = ft_get_txt(fd)))
+	{
+		while (instruct[i])
+		{
+			if (*instruct[i] && *instruct[i] != '#'
+			&& (t = get_tree(instruct[i])))
+				ft_free_tree(exec_tree(ft_get_set_tree(t)));
+			i++;
+		}
+		ft_freestrarr(instruct);
+	}
+}
+
+void	exec_file(char *path)
+{
+	int		fd;
+
 	if ((fd = open(path, O_RDWR, S_IRWXU)) >= 0)
 	{
-		if ((instruct = ft_get_txt(fd)))
-		{
-			while (instruct[i])
-			{
-				if (*instruct[i] && *instruct[i] != '#'
-				&& (t = get_tree(instruct[i])))
-					ft_free_tree(exec_tree(ft_get_set_tree(t)));
-				i++;
-			}
-			ft_freestrarr(instruct);
-		}
+		exec_fd(fd);
 		ft_close(fd);
 	}
 	else
