@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:09:28 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 14:09:29 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/18 14:05:10 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int			fd_dup(int fd1, int fd2, int close)
 		return (-1);
 	return (0);
 }
-
 
 static void	ft_heredoc_content(t_redirect *r)
 {
