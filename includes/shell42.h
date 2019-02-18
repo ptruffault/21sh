@@ -77,7 +77,7 @@ void		init_termcaps(t_shell *sh);
 int			check_builtin(char *input);
 t_envv		*ft_cd(char **input, t_envv *envv);
 void		ft_echo(char **input);
-void		ft_exit(void);
+void		ft_exit(char *nbr);
 void		ft_env(t_envv *envv, char **argv);
 t_envv		*ft_export(t_shell *sh, char **argv);
 void		ft_alias(t_shell *sh, char **argv);

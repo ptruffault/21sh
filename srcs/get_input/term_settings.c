@@ -23,9 +23,8 @@ void	ft_update_windows(t_edit *e)
 void	init_termcaps(t_shell *sh)
 {
 	if (tgetent(NULL, get_tenvv_val(sh->env, "TERM")) != 1)
-		warning("$TERM not valid, no termcaps", NULL);
-	else if (
-			(sh->saved_term = (struct termios *)malloc(sizeof(struct termios)))
+		sh->env = ft_new_envv(sh->env, "TERM", "xterm-256color");
+	else if ((sh->saved_term = (struct termios *)malloc(sizeof(struct termios)))
 	&& (tcgetattr(0, sh->saved_term) == -1))
 		warning("no termcaps", NULL);
 	ft_update_windows(&sh->e);
@@ -36,7 +35,7 @@ int		ft_setup_edit_term(t_shell *sh)
 	if (!sh->saved_term)
 		return (0);
 	if (!get_tenvv_val(sh->env, "TERM"))
-		return (0);
+		sh->env = ft_new_envv(sh->env, "TERM", "xterm-256color");
 	ft_memcpy(&sh->term, sh->saved_term, sizeof(struct termios));
 	sh->term.c_lflag &= ~(ICANON | ECHO | ECHOK | ECHOKE | ECHONL | ECHOCTL);
 	sh->term.c_cc[VMIN] = 1;

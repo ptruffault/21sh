@@ -21,9 +21,9 @@ int			ft_redirect_builtin(t_tree *t, int fd[3])
 	{
 		if (get_destination_fd(r) < 0)
 			return (-1);
-		if (IS_STD(r->from))
+		if (IS_STD(r->from) && IS_STD(fd[r->from]))
 			fd[r->from] = dup(r->from);
-		if (fd_dup(r->to, r->from, 1) == -1)
+		if (fd_dup(r->to, r->from, 0) == -1)
 		{
 			error("redirection failed", NULL);
 			return (-1);

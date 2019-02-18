@@ -55,7 +55,7 @@ int			run_builtin(t_tree *t, char **argv)
 
 	sh = ft_get_set_shell(NULL);
 	if (ft_strequ(*argv, "exit"))
-		ft_exit();
+		ft_exit(argv[1]);
 	else if (ft_strequ(*argv, "env"))
 		ft_env(sh->env, argv);
 	else if (ft_strequ(*argv, "echo"))

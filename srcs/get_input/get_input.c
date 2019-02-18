@@ -31,15 +31,6 @@ char		*ft_update_hist(t_shell *sh)
 	return (ret);
 }
 
-static char	*dumb_term(t_shell *sh)
-{
-	ft_free_tshell(sh);
-	error("No termcaps, so not working, so exiting", NULL);
-	ft_putendl_fd("\033[00;31m21sh get killed\033[00m", 2);
-	free_tedit(&sh->e);
-	exit(0);
-}
-
 char		*get_input(void)
 {
 	t_shell			*sh;
@@ -47,8 +38,7 @@ char		*get_input(void)
 
 	sh = ft_get_set_shell(NULL);
 	sh->e = init_tedit(sh);
-	if (!(ft_setup_edit_term(sh)))
-		return (dumb_term(sh));
+	ft_setup_edit_term(sh);
 	while (sh->e.edited == FALSE)
 	{
 		buf = 0;
