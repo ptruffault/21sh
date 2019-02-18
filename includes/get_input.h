@@ -78,12 +78,12 @@ void			curs_go_last(t_edit *e);
 
 void			ft_select_right(t_edit *e);
 void			ft_select_left(t_edit *e);
-void ft_select_end(t_edit *e);
-void ft_select_home(t_edit *e);
-void	ft_home_key(t_edit *e);
+void			ft_select_end(t_edit *e);
+void			ft_select_home(t_edit *e);
+void			ft_home_key(t_edit *e);
 
-void ft_jump_line_down(t_edit *e);
-void ft_jump_line_up(t_edit *e);
+void			ft_jump_line_down(t_edit *e);
+void			ft_jump_line_up(t_edit *e);
 
 void			entry_key(t_edit *e);
 void			clear_term(t_edit *e);

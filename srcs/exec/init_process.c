@@ -12,20 +12,17 @@
 
 #include "../../includes/shell42.h"
 
-static void		ft_init_fd(int fd[3])
+static void	ft_init_fd(t_process *new)
 {
-	fd[0] = 0;
-	fd[1] = 1;
-	fd[2] = 2;
-
+	new->fd[0] = 0;
+	new->fd[1] = 1;
+	new->fd[2] = 2;
 	if (t->r && ft_redirect_builtin(t, new->fd) == -1)
 		warning("redirection fucked up", NULL);
 	new->status = t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG;
 	new->ret = -1;
 	new->pid = 0;
 }
-
-static void setup_process(t_tree *t, t_process *p)
 
 t_process	*init_process(t_tree *t, t_shell *sh)
 {
@@ -34,7 +31,7 @@ t_process	*init_process(t_tree *t, t_shell *sh)
 	new = NULL;
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
-		ft_init_fd(new->fd);
+		ft_init_fd(new);
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
 		{
 			free(new);

@@ -15,6 +15,7 @@
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_CMD(x) (1 <= x && x <= 5)
 # define IS_EXP(x) (1 <= x && x <= 4)
+
 enum	e_rtype{
 	UNDEF = 0,
 	R_LEFT = 1,
@@ -130,7 +131,7 @@ typedef struct	s_process
 typedef struct	s_shell
 {
 
-	int 			heredoc;
+	int				heredoc;
 	t_envv			*env;
 	t_envv			*intern;
 	t_envv			*alias;

@@ -15,7 +15,7 @@
 char	**ft_get_txt(int fd)
 {
 	char	**ret;
-	char 	*tmp;
+	char	*tmp;
 	int		i;
 
 	i = 0;
@@ -27,9 +27,8 @@ char	**ft_get_txt(int fd)
 	{
 		if (tmp && !ft_isempty(tmp))
 		{
-			ret[i] = ft_strdup(tmp);
-			ret = ft_realloc(ret, (i + 1) * sizeof(char *), (i + 2) * sizeof(char *));
-			i++;
+			ret[i++] = ft_strdup(tmp);
+			ret = ft_realloc(ret, i * sizeof(char *), (i + 1) * sizeof(char *));
 		}
 		ft_strdel(&tmp);
 	}

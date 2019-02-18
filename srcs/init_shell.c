@@ -24,11 +24,11 @@ static char	*get_shell_path(t_envv *env, char *path)
 	return (NULL);
 }
 
-static void ft_update_shelvl(t_shell *sh)
+static void	ft_update_shelvl(t_shell *sh)
 {
-	t_envv *shell_lvl;
-	char *nbr;
-	int lvl;
+	t_envv	*shell_lvl;
+	char	*nbr;
+	int		lvl;
 
 	if ((shell_lvl = get_tenvv(sh->env, "SHLVL")))
 		lvl = ft_atoi(shell_lvl->value);
@@ -65,7 +65,6 @@ static void	init_env(t_shell *sh, char *shell_path, char *pwd)
 		ft_strdel(&shell_fold);
 	}
 }
-
 
 void		init_shell(t_shell *sh, char **envv, char **argv)
 {

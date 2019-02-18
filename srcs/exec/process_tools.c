@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-void			ft_delete_process(int pid)
+void		ft_delete_process(int pid)
 {
 	t_shell		*sh;
 	t_process	*p;
@@ -40,7 +40,7 @@ void			ft_delete_process(int pid)
 		}
 }
 
-t_process		*ft_get_process(t_process *s, int pid)
+t_process	*ft_get_process(t_process *s, int pid)
 {
 	t_process *ret;
 
@@ -50,7 +50,7 @@ t_process		*ft_get_process(t_process *s, int pid)
 	return (ret);
 }
 
-t_process		*ft_get_running_process(t_process *p)
+t_process	*ft_get_running_process(t_process *p)
 {
 	while (p)
 	{

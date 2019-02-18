@@ -28,7 +28,8 @@ EXEC 		=		ft_execve.c \
 					redirection.c \
 					redirect_builtins.c \
 					bin_search.c \
-					process_tools.c
+					process_tools.c \
+					init_process.c
 
 EVAL		=		eval_tools.c \
 					tree_tools.c \
