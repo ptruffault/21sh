@@ -65,10 +65,12 @@
 # define HOME_POS "ho"
 # define TOUCHE_SELECT_LEFT 74982532143899
 # define TOUCHE_SELECT_RIGHT 73883020516123
+# define TOUCHE_MAJ_END 77181555399451
+# define TOUCHE_MAJ_HOME 79380578655003
+# define TOUCHE_MAJ_ARROW_UP 71683997260571
+# define TOUCHE_MAJ_ARROW_DOWN 72783508888347
 # define TOUCHE_CMD_C 1
 # define TOUCHE_CMD_V 5
-# define TOUCHE_JP_MOT_LEFT 11
-# define TOUCHE_JP_MOT_RIGHT 21
 
 void			curr_move_right(t_edit *e);
 void			curr_move_left(t_edit *e);
@@ -76,6 +78,12 @@ void			curs_go_last(t_edit *e);
 
 void			ft_select_right(t_edit *e);
 void			ft_select_left(t_edit *e);
+void ft_select_end(t_edit *e);
+void ft_select_home(t_edit *e);
+void	ft_home_key(t_edit *e);
+
+void ft_jump_line_down(t_edit *e);
+void ft_jump_line_up(t_edit *e);
 
 void			entry_key(t_edit *e);
 void			clear_term(t_edit *e);

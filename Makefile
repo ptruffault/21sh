@@ -19,7 +19,7 @@ FILES		=		main.c \
 					signal.c \
 					init_shell.c \
 					ft_get_set.c \
-					ft_free_tshell.c 
+					ft_free_tshell.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \
@@ -28,7 +28,7 @@ EXEC 		=		ft_execve.c \
 					redirection.c \
 					redirect_builtins.c \
 					bin_search.c \
-					process_tools.c 
+					process_tools.c
 
 EVAL		=		eval_tools.c \
 					tree_tools.c \
@@ -51,7 +51,7 @@ BUILTINS	=		ft_echo.c \
 					type_tools.c \
 					ft_alias.c \
 					ft_jobs.c \
-					check_builtins.c 
+					check_builtins.c
 
 GET_INPUT	=		curs_move.c	\
 					get_input.c	\
@@ -67,7 +67,8 @@ GET_INPUT	=		curs_move.c	\
 					ft_select.c	\
 					clear_and_all.c	\
 					use_termcaps.c	\
-					term_settings.c\
+					term_settings.c \
+					ft_jump_line.c	\
 
 EXPANSION	=		exp_var.c \
 					exp.c \
@@ -103,7 +104,7 @@ all: $(NAME)
 bin:
 	@mkdir $@
 
-$(NAME): bin $(OBJ) Makefile 
+$(NAME): bin $(OBJ) Makefile
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
 	@gcc  $(FLAG) $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
@@ -114,7 +115,7 @@ bin/%.o: srcs/%.c
 	@printf "$(COLOR)$<$(NO_COLOR)"
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
-	
+
 
 bin/%.o: srcs/eval/%.c
 	@PATH="$<"

@@ -18,7 +18,10 @@ void	ft_add_char(char buf, t_edit *e)
 	int size;
 
 	if (e->select != -1)
+	{
+		delete_left(e);
 		e->select = -1;
+	}
 	if (!ft_isprint(buf))
 		return ;
 	i = ft_strlen(e->input);
@@ -32,9 +35,11 @@ void	ft_add_char(char buf, t_edit *e)
 	e->input = ft_realloc(e->input, size, size + 1);
 	e->input[size] = '\0';
 	e->curr++;
+	if (e->select != -1)
+		e->select = -1;
 }
 
-void	delete_left(t_edit *e)
+static void	delete_simple_left(t_edit *e)
 {
 	int		i;
 	int		j;
@@ -55,6 +60,36 @@ void	delete_left(t_edit *e)
 	ft_strdel(&e->input);
 	e->input = tmp;
 	curr_move_left(e);
+}
+
+void delete_left(t_edit *e)
+{
+	char *tmp;
+	int stop;
+	int i;
+	int x;
+
+	if (e->select == -1)
+		delete_simple_left(e);
+	else
+	{
+		stop = e->curr > e->select ? e->select : e->curr;
+		x = 0;
+		i = 0;
+		tmp = ft_strnew(ft_strlen(e->input));
+		while (e->input[i] && i < stop)
+			tmp[x++] = e->input[i++];
+		i = (e->curr > e->select ? e->curr : e->select) + 1;
+		while (e->input[i])
+			tmp[x++] = e->input[i++];
+		tmp[x] = '\0';
+		ft_strdel(&e->input);
+		e->input = tmp;
+		e->curr = e->curr > e->select ? e->select : e->curr;
+		if ((size_t)e->curr > ft_strlen(e->input))
+			e->curr = ft_strlen(e->input);
+	}
+	e->select = -1;
 }
 
 void	delete_on(t_edit *e)

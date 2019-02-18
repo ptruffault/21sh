@@ -32,3 +32,8 @@ void	curr_go_last(t_edit *e)
 {
 	e->curr = ft_strlen(e->input);
 }
+
+void	ft_home_key(t_edit *e)
+{
+	e->curr = 0;
+}
