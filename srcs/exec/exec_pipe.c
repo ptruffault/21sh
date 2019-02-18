@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 13:53:23 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 13:53:24 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:51:14 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static t_tree	*ft_end_of_pipe(t_tree *t, int pipes[2], int pid[2])
 		t = t->next;
 	return (t);
 }
-
 
 static void		ft_exec_next(t_tree *t, int pipes[2])
 {

@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:02:44 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 14:02:48 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:52:08 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int			ft_exec(t_tree *t, t_process *p)
 	t_shell		*sh;
 
 	sh = ft_get_set_shell(NULL);
-
 	p->pid = ft_execve(p, sh, t);
 	if (p->status == RUNNING_FG)
 	{

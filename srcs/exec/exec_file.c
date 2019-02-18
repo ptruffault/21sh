@@ -6,14 +6,13 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 13:59:48 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 13:59:49 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:49:57 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell42.h"
 
-
-void ft_puttword(t_word *w)
+void	ft_puttword(t_word *w)
 {
 	while (w)
 	{
