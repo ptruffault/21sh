@@ -21,6 +21,8 @@ char		*ft_update_hist(t_shell *sh)
 		ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), sh->e.input);
 		sh->hist = add_hist(sh->hist, sh->e.input);
 	}
+	sh->e.curr = ft_strlen(sh->e.input);
+	ft_print_line(&sh->e);
 	ret = ft_strdup(sh->e.input);
 	ft_set_old_term(sh);
 	free_tedit(&sh->e);
