@@ -6,13 +6,13 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 13:21:10 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/01 18:00:37 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/02/18 14:40:22 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/get_input.h"
 
-void	ft_add_char(char buf, t_edit *e)
+void		ft_add_char(char buf, t_edit *e)
 {
 	int i;
 	int size;
@@ -61,38 +61,45 @@ static void	delete_simple_left(t_edit *e)
 	e->input = tmp;
 	curr_move_left(e);
 }
-
-void delete_left(t_edit *e)
+static void delete_multiple_left(t_edit *e, int stop)
 {
-	char *tmp;
-	int stop;
-	int i;
-	int x;
+	char	*tmp;
+	int		i;
+	int		x;
+
+	x = 0;
+	i = 0;
+	tmp = ft_strnew(ft_strlen(e->input));
+	while (e->input[i] && i < stop)
+		tmp[x++] = e->input[i++];
+	i = (e->curr > e->select ? e->curr : e->select);
+	if (e->input[i])
+		++i;
+	while (e->input[i])
+		tmp[x++] = e->input[i++];
+	tmp[x] = '\0';
+	ft_strdel(&e->input);
+	e->input = tmp;
+	e->curr = e->curr > e->select ? e->select : e->curr;
+	if ((size_t)e->curr > ft_strlen(e->input))
+		e->curr = ft_strlen(e->input);
+}
+
+void		delete_left(t_edit *e)
+{
+	int		stop;
 
 	if (e->select == -1)
 		delete_simple_left(e);
 	else
 	{
 		stop = e->curr > e->select ? e->select : e->curr;
-		x = 0;
-		i = 0;
-		tmp = ft_strnew(ft_strlen(e->input));
-		while (e->input[i] && i < stop)
-			tmp[x++] = e->input[i++];
-		i = (e->curr > e->select ? e->curr : e->select) + 1;
-		while (e->input[i])
-			tmp[x++] = e->input[i++];
-		tmp[x] = '\0';
-		ft_strdel(&e->input);
-		e->input = tmp;
-		e->curr = e->curr > e->select ? e->select : e->curr;
-		if ((size_t)e->curr > ft_strlen(e->input))
-			e->curr = ft_strlen(e->input);
+		delete_multiple_left(e, stop);
 	}
 	e->select = -1;
 }
 
-void	delete_on(t_edit *e)
+void		delete_on(t_edit *e)
 {
 	int		i;
 	int		j;

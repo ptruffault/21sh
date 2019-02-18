@@ -6,7 +6,7 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:56:09 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/01 17:54:56 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/02/18 14:23:03 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	ft_select_left(t_edit *e)
 		e->curr--;
 }
 
-void ft_select_end(t_edit *e)
+void	ft_select_end(t_edit *e)
 {
 	if (e->select == -1)
 		e->select = e->curr;
 	curr_go_last(e);
 }
 
-void ft_select_home(t_edit *e)
+void	ft_select_home(t_edit *e)
 {
 	if (e->select == -1)
 		e->select = e->curr;
