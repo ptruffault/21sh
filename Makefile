@@ -76,7 +76,8 @@ EXPANSION	=		exp_var.c \
 					expantion_tools.c \
 					exp_parenth.c \
 					exp_sub_parenth.c \
-					cut_string.c
+					cut_string.c\
+					parenth_tools.c
 
 
 

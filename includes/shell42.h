@@ -40,6 +40,8 @@ int			get_content_size(char *s);
 char		*ft_exp_param(char *ret, t_shell *sh, char *ptr);
 char		*ft_exp_home_var(char *ret, char *ptr, t_envv *envv);
 char		*ft_exp_envv_var(char *ret, char *ptr, t_shell *sh);
+char		*ft_exp_end(char *ret, char *ptr, char *value, char *parenth);
+char		*ft_get_len(char *value);
 char		*ft_exp_param_sub(char *parenth, t_shell *sh);
 char		*ft_get_secondvalue(char *src);
 char		*ft_cut_string(char *parenth, char *val, int *curr);

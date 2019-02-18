@@ -127,3 +127,18 @@ clear
 wregggggggggggggggggggggggggggggggggggggggggggggggggP
 clear
 exit
+ls
+ls|rev
+ls
+ls
+exit
+echo ${PWD:-LOL}
+echo ${PWDD:-LOL}
+echo ${PWDD:-LOL%LL}
+echo ${PWDD:-LOL%L}
+echo ${PWDD:-LOL%LO}
+echo ${PWDD:-LOL%OL}
+echo ${PWDD:-LOL%}
+echo ${PWDD:-LOL}
+ls
+exit

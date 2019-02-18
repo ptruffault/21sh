@@ -32,10 +32,18 @@ static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh, char *val2)
 	return (val);
 }
 
-char		*ft_strswap(char *s1, char *s2)
+char		*ft_get_cutted_value(char *parenth, t_shell *sh, char *val, int *i)
 {
-	ft_strdel(&s1);
-	return (s2);
+	char *param;
+
+	if (!val)
+	{
+		param = ft_get_secondvalue(parenth);
+		val = ft_strdup(get_tenvv_val(sh->env, param));
+		ft_strdel(&param);
+	}
+	val = ft_cut_string(parenth, val, i);
+	return (val);
 }
 
 char		*ft_get_param_value(t_shell *sh, char *parenth)
@@ -56,36 +64,8 @@ char		*ft_get_param_value(t_shell *sh, char *parenth)
 			ft_strdel(&param);
 		}
 		else if (parenth[i] == '#' || parenth[i] == '%')
-		{
-			if (!val)
-			{
-				param = ft_get_secondvalue(parenth);
-				val = ft_strdup(get_tenvv_val(sh->env, param));
-				ft_strdel(&param);
-			}
-			val = ft_cut_string(parenth, val, &i);
-		}
+			val = ft_get_cutted_value(parenth, sh, val, &i);
 	return (!val ? ft_strdup(get_tenvv_val(sh->env, parenth)) : val);
-}
-
-static char	*ft_exp_end(char *ret, char *ptr, char *value, char *parenth)
-{
-	char *tmp;
-
-	tmp = ft_strpull(ret, ptr, get_content_size(ptr) + 2, value);
-	ft_strdel(&ret);
-	ft_strdel(&value);
-	ft_strdel(&parenth);
-	return (tmp);
-}
-
-static char	*ft_get_len(char *value)
-{
-	char *tmp;
-
-	tmp = ft_itoa(ft_strlen(value));
-	ft_strdel(&value);
-	return (tmp);
 }
 
 char		*ft_exp_param(char *ret, t_shell *sh, char *ptr)
