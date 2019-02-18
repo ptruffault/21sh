@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-static void	ft_init_fd(t_process *new, t_tree *t)
+static void			ft_init_fd(t_process *new, t_tree *t)
 {
 	new->fd[0] = 0;
 	new->fd[1] = 1;
@@ -24,7 +24,16 @@ static void	ft_init_fd(t_process *new, t_tree *t)
 	new->pid = 0;
 }
 
-t_process	*init_process(t_tree *t, t_shell *sh)
+static t_process	*abort(t_process *p)
+{
+	ft_reset_fd(p->fd);
+	if (p->argv)
+		ft_freestrarr(new->argv);
+	free(p);
+	return (NULL);
+}
+
+t_process			*init_process(t_tree *t, t_shell *sh)
 {
 	t_process	*new;
 
@@ -33,20 +42,13 @@ t_process	*init_process(t_tree *t, t_shell *sh)
 	{
 		ft_init_fd(new, t);
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
-		{
-			free(new);
-			return (NULL);
-		}
+			return (abort(new));
 		if (check_builtin(*new->argv) && (new->cmd = ft_strdup(*new->argv)))
 			new->builtins = TRUE;
 		else if ((new->cmd = get_bin_path(*new->argv, sh->env)))
 			new->builtins = FALSE;
 		else
-		{
-			ft_freestrarr(new->argv);
-			free(new);
-			return (NULL);
-		}
+			return (abort(new));
 		new->next = sh->process;
 		sh->process = new;
 	}

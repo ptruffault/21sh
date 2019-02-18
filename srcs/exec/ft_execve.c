@@ -43,7 +43,10 @@ int			ft_exec(t_tree *t, t_process *p)
 		if (p->builtins == FALSE)
 			wait(&p->ret);
 		if (p->status != KILLED)
+		{
+			ft_reset_fd(p->fd);
 			p->status = DONE;
+		}
 	}
 	return (p->ret);
 }

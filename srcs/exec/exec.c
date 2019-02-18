@@ -46,10 +46,7 @@ t_tree			*exec_instruction(t_tree *t)
 	if (t->o_type == O_PIPE && t->next)
 		t = exec_pipe(t);
 	else if ((p = init_process(t, sh)))
-	{
 		t->ret = ft_exec(t, p);
-		ft_reset_fd(p->fd);
-	}
 	return (t);
 }
 
