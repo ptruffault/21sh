@@ -1,0 +1,19 @@
+[0]	running foreground ->  -1	jobs {0}
+[1]	running foreground ->  -1	jobs {0}
+[2]	done ->   0	jobs {-1}
+[3]	done ->   0	/bin/ls {64105}
+[4]	done ->   0	/bin/cat {64104}
+[5]	done ->   0	echo {-1}
+[6]	done ->   0	echo {-1}
+[7]	done ->   0	echo {-1}
+[8]	done ->   0	echo {-1}
+[9]	done ->   0	echo {-1}
+[10]	done ->   0	echo {-1}
+[11]	done ->   0	echo {-1}
+[12]	done ->   0	/usr/bin/clear {64103}
+[13]	done ->   0	alias {-1}
+[14]	done ->   0	alias {-1}
+[15]	done ->   0	alias {-1}
+[16]	done ->   0	export {-1}
+[17]	done ->   0	export {-1}
+[18]	done ->   0	echo {-1}

@@ -47,6 +47,8 @@ t_tree			*exec_instruction(t_tree *t)
 		t = exec_pipe(t);
 	else if ((p = init_process(t, sh)))
 		t->ret = ft_exec(t, p);
+	else 
+		t->ret = -2;
 	return (t);
 }
 

@@ -336,3 +336,43 @@ rm -rf fi file
 ls
 make fclean
 gitall
+ls
+clear
+exit
+ls
+jobs
+jobs | cat
+jobs > file ; cat < file
+jobs
+jobs
+echo LOL
+jobs
+clear
+ls
+env
+ls|rev
+ls
+ls|| rev
+ls || env
+qwdvqefv || env
+qwdvqefv || env
+wefqwfv|| env
+ls && ls
+ls -z || wqfqverd
+ls || rev
+wefqwd|| LS
+wefqwd|| ls
+wqidfqred && ls
+wefqwd|| LS
+ls
+ls || rev
+wefwe ||ls
+wefrwedfwe && ls
+wefrwedfwe  || ls
+clear
+clear || ls
+clear && ls ||ls
+clear
+ls
+env
+exit
