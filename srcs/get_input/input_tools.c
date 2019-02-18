@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 13:21:10 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/18 14:40:22 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/02/18 15:42:21 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static void	delete_simple_left(t_edit *e)
 	e->input = tmp;
 	curr_move_left(e);
 }
-static void delete_multiple_left(t_edit *e, int stop)
+
+static void	delete_multiple_left(t_edit *e, int stop)
 {
 	char	*tmp;
 	int		i;
