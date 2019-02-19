@@ -1,0 +1,397 @@
+ls
+clear
+ls
+ls|rev
+ls
+clear
+ls
+ls
+ls
+ls
+lclear
+clear
+ls
+ls|rev
+env
+ls
+clear
+ls
+ls|rev
+ls|cat
+ls
+ls
+ls
+sl
+sl
+ls
+ls > file
+cat < file << eoi
+eoi
+cat << eoi
+lol
+eoi
+cat eoi
+cat << eoi
+MDR
+eoi
+echo LOL
+clear
+ls
+exit
+exit 12
+exit 12
+exit 12
+exit
+exit
+exit
+exit -1
+clear
+ls|rev
+ls
+env
+env
+env
+ls |revssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+clear
+ls
+sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeee
+clear
+ls
+env
+clear
+sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+clear
+ls|./21sh
+echo ls../21sh
+echo ls ./21sh
+echo ls | ./21sh
+echo ls | ./21sh < file
+ls
+echo ls -l > file
+cat file
+./21sh <file
+echo ls  | ./21sh <file
+./21sh << oei
+lol
+ls
+ls
+env
+env |grep PWD
+ls
+ls | rev && ls
+ls ||ls
+clear
+ls
+env
+type ls
+./21sh
+./21sh
+ls
+clear
+ls
+env
+ls|rev
+typels
+clear
+env''
+ls|rev|cat -e > file
+cat file
+mkdir test ; cd test ; ls -a > ../file ; mkdir t; cd t
+ls
+ls
+ls -a
+cd ..
+ls
+env
+cd 
+ls
+ls
+cd ptruffau2
+ls
+cat file
+mkdir test ;cd test mkdir t; cd t
+ls
+ls
+ls -a
+mkdir t
+cd t
+cd ..
+ls
+ls -a
+clear
+cd
+ls -a
+cd ptruffau2
+mkdir test
+cd test
+mkdit t
+mkdir t
+cd t
+clear
+ls -a
+cd ..
+env
+ls -a
+cd -
+ls
+cd ..
+cat < eoi | rev
+ls
+cat << eoi | rev
+MDR
+cat | ls
+cat -e | ls
+ls
+ls
+exit
+./21sh
+./21sh
+ls
+ls
+?!!!!!!!!!!?!!!
+ls
+cat << eoi
+LAUL
+cat << eoi | rev
+LAUL
+cat << eoi | rev
+ls
+ls|rev
+cat << eoi
+LAUL
+LAUL
+cat << eoi
+laul
+ls
+clear
+ls
+ls|rev
+cat | rev
+cat | rev
+clear
+cat <<eoi | rev
+laul
+cat << eoi
+LAUL
+D
+ls
+ls
+cat << eoi | rev
+LAUL
+clear
+ls|rev
+ls|rev
+ls |cat
+cat
+ls
+ls
+ls|rev
+ls|rev > file
+cat file
+cat << eoi
+LSUL
+ls|rev
+cat << eoi 
+LAUL
+cat << eoi 
+LAUL
+cat << eoi
+LAUL
+ls
+ls|rev
+cat 
+ls
+cat << eoi
+LOL
+cat << eoi
+LAUL
+eoi
+cat << eoi
+LAUL
+ls
+LAUL
+cat << eoi
+eoi
+ls
+cat << eoi
+cat << eoi
+laul
+cat << eoi
+cat << eoi
+laul
+ls
+cat << eoi
+LAUL
+eoi
+cat << eoi
+laul
+cat << eoi
+LAUL
+clear
+cat << eoi
+laul
+laul
+cat << eoi
+laul
+cat << eoi | rev
+laul
+cat << eoi
+LAUL
+cat << eoi | rev
+LAUL
+ls | rev 
+cat << eoi | rev
+LAUL
+ls
+ls | rev
+cat << oei|| rev
+LAUL
+ls
+cat << oei| rev
+LAUL
+ls
+ls|rev
+car << eoi | rev
+LAUL
+cat << eoi | rev
+LAUL
+cat << eoi
+LAUL
+LAUL
+cat << eoi
+LAUL
+ls > file
+cat file
+cat << eoi 
+LAUL
+cat << eoi 
+LAUL
+eoi
+cat << eoi
+LAYL
+cat << eoi
+LAUL
+cat << eoi | rev
+LAUL
+cat << eoi
+LAU
+LOL
+eoi
+cat << eoi | rev
+LAUL
+eoi
+clear
+ls
+cat << oei
+laul
+cat << oei | rev
+LAUL
+cat << eoi
+LAUL
+eoi
+cat << eoi
+ 
+cat << eoi
+cat << eoi
+eoi
+ls
+cat << eoi|rev
+LAUL
+ls
+celar
+clear
+ls|rev
+cat << oei
+laul
+cat << oei
+laul
+cat << oei | rev
+LAUL
+cat << eoi 
+LAUL
+cat << eoi 
+LAUL
+cat << eoi 
+lol
+eoi
+cat << eoi 
+LAUUUUL
+ls
+cat << eoi
+LAL
+cat << eoi
+ls
+clear
+clear
+ecit
+exit
+clear
+cat << eoi
+LAUL
+cat << eoi
+MDR
+cat << eoi | rev
+MDR
+clear
+cat << eoi
+LAUL
+ls
+clear
+cat << eoi
+LAUL
+MDR
+clear
+s
+ls
+clear
+ls << eoi | rev | cat -e
+ls
+ls
+clear
+ls|rev
+ls|rev
+ls|rev
+cat << eoi | rev
+LAUL
+MDR
+clear
+cat | rev
+clear
+ls | rev 
+jobs
+clear
+ls
+ls | rev
+ls | rev
+ls
+ls
+ls| rev
+exit
+ls | rev
+clear
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+clear
+cat << oei | rev
+LAUL
+ls | rev
+clear
+ls | rev
+cat << eoi | rev
+LAUL
+clear
+ls
+ls
+clear
+ls
+clear
+clear |rev
+ls>file
+cat file
+clear
+ls
+rm -rf file
+ls
+make save
