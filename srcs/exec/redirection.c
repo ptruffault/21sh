@@ -12,15 +12,17 @@
 
 #include "../../includes/shell42.h"
 
-int			fd_dup(int fd1, int fd2, int close)
+int			fd_dup(int fd1, int fd2)
 {
+	int ret;
+
 	if (fd1 == fd2)
 		return (0);
-	if (dup2(fd1, fd2) < 0)
+	if ((ret = dup2(fd1, fd2)) < 0)
 		return (-1);
-	if ((close || !IS_STD(fd1)) && fd1 != 0 && ft_close(fd1) == -1)
+	if (!IS_STD(fd1) && ft_close(fd1) == -1)
 		return (-1);
-	return (0);
+	return (ret);
 }
 
 static void	ft_heredoc_content(t_redirect *r)
@@ -65,29 +67,10 @@ void		ft_redirect_back(void)
 	if ((fd = open("/dev/null",
 	O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) != -1)
 	{
-		fd_dup(0, fd, 1);
-		fd_dup(1, fd, 1);
-		fd_dup(2, fd, 1);
+		fd_dup(0, fd);
+		fd_dup(1, fd);
+		fd_dup(2, fd);
 	}
 	else
 		error("can't open", "/dev/null");
-}
-
-int			ft_redirect(t_tree *t)
-{
-	t_redirect	*r;
-
-	r = t->r;
-	if (t->o_type == O_BACK)
-		ft_redirect_back();
-	while (r)
-	{
-		if (get_destination_fd(r) < 0 || fd_dup(r->to, r->from, 0) == -1)
-		{
-			error("redirection failed", NULL);
-			exit(-1);
-		}
-		r = r->next;
-	}
-	return (0);
 }

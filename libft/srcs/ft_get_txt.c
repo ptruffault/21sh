@@ -14,7 +14,6 @@
 
 char	**ft_get_txt(int fd)
 {
-	printf("in llop\n");
 	char	**ret;
 	char	*tmp;
 	int		i;
@@ -27,7 +26,7 @@ char	**ft_get_txt(int fd)
 	tmp = NULL;
 	while (get_next_line(fd, &tmp) && tmp && !ft_isempty(tmp))
 	{
-		ret = ft_realloc(ret, i * sizeof(char *), (i + 1) * sizeof(char *));
+		ret = ft_realloc(ret, (i + 1) * sizeof(char *), (i + 2) * sizeof(char *));
 		ret[i++] = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}

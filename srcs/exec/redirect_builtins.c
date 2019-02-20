@@ -12,22 +12,29 @@
 
 #include "../../includes/shell42.h"
 
-int			ft_redirect_builtin(t_tree *t, int fd[3])
+int			ft_redirect_builtin(t_tree *t, t_process *p)
 {
 	t_redirect *r;
+	int ret;
 
 	r = t->r;
 	while (r)
 	{
 		if (get_destination_fd(r) < 0)
 			return (-1);
-		if (IS_STD(r->from) && IS_STD(fd[r->from]))
-			fd[r->from] = dup(r->from);
-		if (fd_dup(r->to, r->from, 0) == -1)
+		if (IS_STD(r->from) && IS_STD(p->save[r->from]))
+			p->save[r->from] = dup(r->from);
+		printf("%i -> %i\n",r->from, r->to );
+		if ((ret = fd_dup(r->to, r->from)) == -1)
 		{
 			error("redirection failed", NULL);
 			return (-1);
 		}
+		if (IS_STD(r->to) && IS_STD(r->from))
+		{
+			p->fd[r->to] = r->from;
+		}
+		printf("in = %i\nout = %i\nerr = %i\n",p->fd[0], p->fd[1], p->fd[2] );
 		r = r->next;
 	}
 	return (0);

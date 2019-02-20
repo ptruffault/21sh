@@ -46,7 +46,7 @@ int			ft_exec(t_tree *t, t_process *p)
 			p->ret = 0;
 		if (p->status != KILLED)
 		{
-			ft_reset_fd(p->fd);
+			ft_reset_fd(p->save);
 			p->status = DONE;
 		}
 	}

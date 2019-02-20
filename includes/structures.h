@@ -118,7 +118,8 @@ typedef struct	s_tree
 
 typedef struct	s_process
 {
-	int					fd[3];
+	int					save[3];
+	int 				fd[3];
 	t_bool				builtins;
 	char				*cmd;
 	enum e_pstatus		status;

@@ -36,7 +36,6 @@ static void		ft_exec_next(t_tree *t, int pipes[2], t_shell *sh, t_process *p)
 		t = exec_pipe(t);
 	else
 		t->ret = ft_exec(t, p);
-	ft_reset_fd(p->fd);
 	ft_free_tshell(sh);
 	ft_free_tree(t);
 	exit(0);
@@ -72,7 +71,7 @@ t_tree			*exec_pipe(t_tree *t)
 	}
 	else if (pid[0] == 0)
 		ft_exec_son(t, p1, pipes, sh);
-	ft_reset_fd(p1->fd);
+	ft_reset_fd(p1->save);
 	if ( !(p2 = init_process(t->next, sh)) || (pid[1] = fork()) < 0)
 	{
 		error("fork filed to create a new process in pipe", t->cmd->word);
@@ -80,6 +79,6 @@ t_tree			*exec_pipe(t_tree *t)
 	}
 	else if (pid[1] == 0)
 		ft_exec_next(t->next, pipes, sh, p2);
-	ft_reset_fd(p2->fd);
+	ft_reset_fd(p2->save);
 	return (ft_end_of_pipe(t, pipes, pid));
 }

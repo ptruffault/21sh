@@ -14,11 +14,14 @@
 
 static void			ft_init_fd(t_process *new, t_tree *t)
 {
+	new->save[0] = 0;
+	new->save[1] = 1;
+	new->save[2] = 2;
 	new->fd[0] = 0;
 	new->fd[1] = 1;
 	new->fd[2] = 2;
 	if (t->r)
-		ft_redirect_builtin(t, new->fd);
+		ft_redirect_builtin(t, new);
 	new->status = t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG;
 	new->ret = -1;
 	new->pid = 0;
@@ -26,7 +29,7 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 
 static t_process	*ft_abort(t_process *p)
 {
-	ft_reset_fd(p->fd);
+	ft_reset_fd(p->save);
 	if (p->argv)
 		ft_freestrarr(p->argv);
 	free(p);

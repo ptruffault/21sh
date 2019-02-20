@@ -1,3 +1,4 @@
+RET = 1
 21sh
 Makefile
 auteur
@@ -5,5 +6,6 @@ bin
 file
 includes
 libft
+log
 srcs
 sys
