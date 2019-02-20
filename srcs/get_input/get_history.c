@@ -67,7 +67,7 @@ t_hist	*init_hist(char *hist)
 	int		i;
 
 	new = NULL;
-	if ((fd = open(hist, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) > 0)
+	if ((fd = open(hist, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) >= 0)
 	{
 		if ((arr = ft_get_txt(fd)))
 		{

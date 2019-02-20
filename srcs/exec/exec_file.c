@@ -21,10 +21,8 @@ int		exec_fd(int fd)
 	i = 0;
 	if ((instruct = ft_get_txt(fd)))
 	{
-
 		while (instruct[i])
 		{
-			printf("->%s\n",instruct[i] );
 			if (*instruct[i] && *instruct[i] != '#'
 			&& (t = get_tree(instruct[i])))
 				ft_free_tree(exec_tree(ft_get_set_tree(t)));
