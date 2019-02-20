@@ -26,7 +26,7 @@ char	**ft_get_txt(int fd)
 	tmp = NULL;
 	while (get_next_line(fd, &tmp) && tmp)
 	{
-		if (tmp && !ft_isempty(tmp))
+		if (!ft_isempty(tmp))
 		{
 			ret[i++] = ft_strdup(tmp);
 			ret = ft_realloc(ret, i * sizeof(char *), (i + 1) * sizeof(char *));

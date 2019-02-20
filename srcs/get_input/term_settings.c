@@ -23,11 +23,15 @@ void	ft_update_windows(t_edit *e)
 void	init_termcaps(t_shell *sh)
 {
 	if ((tgetent(NULL, get_tenvv_val(sh->env, "TERM")) != 1
-	|| tgetent(NULL, "xterm-256color") != -1)
-	&& (sh->saved_term = (struct termios *)malloc(sizeof(struct termios)))
+	|| tgetent(NULL, "xterm-256color") != 1))
+	{
+		error("no termcaps", NULL);
+		exit(0);
+	}
+	if ((sh->saved_term = (struct termios *)malloc(sizeof(struct termios)))
 	&& (tcgetattr(0, sh->saved_term) == -1))
 	{
-		warning("no termcaps", NULL);
+		error("can't save termios", NULL);
 		exit(0);
 	}
 	ft_update_windows(&sh->e);

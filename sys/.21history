@@ -395,3 +395,86 @@ ls
 rm -rf file
 ls
 make save
+ls
+ls |rev
+clear
+ls
+exit
+ls
+clear
+exit
+ls
+clear
+ls|rev
+exit
+ls
+exit
+ls
+ls
+clear
+ls|rev|cat -e
+clear
+ls
+rm -rf file sh_tmp 21tmp
+ls
+ls
+clear
+exit
+cat << eoi
+cat << eoi
+cat << eoi
+eoi
+exit
+ls
+clear
+cat << eoi
+ls
+clear
+cat << eoi
+MDR
+cat << eoi
+exit
+ls
+cat << eoi
+cat << eoi
+cat << eoi
+cat << eoi
+cat << eoi
+cat << eoi
+lol
+eoi
+cat << eoi
+exit
+clear
+ls
+clear
+cat << eoi
+cat << eoi
+eoi
+cat << eoi | rev
+LAUL
+clear
+ls
+env
+ls
+clear
+ls|rev
+clear |rev
+cat
+clear
+env
+ls
+clear
+ls
+env
+ls
+env
+clea
+clzeaer
+cat << eoi | rev > file
+LAUL
+cat << eoi | rev > file
+LAUL
+cat file
+clezar
+gitall

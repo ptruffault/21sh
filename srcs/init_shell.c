@@ -39,7 +39,25 @@ static void	ft_update_shelvl(t_shell *sh)
 	ft_strdel(&nbr);
 }
 
-static void	init_env(t_shell *sh, char *shell_path, char *pwd)
+static void		check_mode(char **argv, t_shell *sh)
+{
+	if (isatty(0) == 0)
+	{
+		if (exec_fd(0) == 0)
+			error("no standart input", NULL);
+		ft_free_tshell(sh);
+		exit(0);
+	}
+	printf("ELSE\n");
+	if (argv[1] && !ft_isempty(argv[1]))
+	{
+		exec_file(argv[1]);
+		ft_free_tshell(sh);
+		exit(0);
+	}
+}
+
+static void	init_env(t_shell *sh, char *shell_path, char *pwd, char **argv)
 {
 	char *shell_fold;
 	char *hi_path;
@@ -57,6 +75,7 @@ static void	init_env(t_shell *sh, char *shell_path, char *pwd)
 			sh->hist = init_hist(hi_path);
 			ft_strdel(&hi_path);
 		}
+		check_mode(argv, sh);
 		ft_update_shelvl(sh);
 		if ((rc_path = ft_strjoin(shell_fold, "/sys/.21shrc")))
 		{
@@ -80,17 +99,10 @@ void		init_shell(t_shell *sh, char **envv, char **argv)
 	sh->process = NULL;
 	sh->env = init_tenvv(envv);
 	sh->env = ft_new_envv(sh->env, "PWD", getcwd(buff, 4096));
-	if (isatty(0) == 0)
-	{
-		if (exec_fd(0) == 0)
-			error("no standart input", NULL);
-		ft_free_tenvv(sh->env);
-		exit(0);
-	}
-	init_termcaps(sh);
 	if ((shell_path = get_shell_path(sh->env, *argv)))
 	{
-		init_env(sh, shell_path, getcwd(buff, 4096));
+		init_env(sh, shell_path, getcwd(buff, 4096), argv);
 		ft_strdel(&shell_path);
 	}
+	init_termcaps(sh);
 }

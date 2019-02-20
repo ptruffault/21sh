@@ -51,7 +51,7 @@ int			get_destination_fd(t_redirect *r)
 		perror(NULL);
 		return (-1);
 	}
-	else if (r->t == R_DLEFT && r->heredoc)
+	else if (r->t == R_DLEFT)
 		ft_heredoc_content(r);
 	if (r->to >= 0 && r->from >= 0)
 		return (1);
