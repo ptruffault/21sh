@@ -1,16 +1,2 @@
 #!/bin/sh
-if [-z "$1"] ; then
-	echo "usage ./test [file]";
-	exit
-fi
-
-sh sys/$1 > s
-./21sh sys/$1 > m
-if [$(diff s m)] ; then
-	echo $1 
-	echo "BASH"
-	cat s
-	echo "21SH"
-	cat m
-fi
-rm -rf s m
+sh ./sys/$1 >> s 2>> s ;./21sh ./sys/$1 >> m 2>> m ; diff s m 

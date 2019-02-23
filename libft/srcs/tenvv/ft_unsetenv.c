@@ -45,6 +45,8 @@ t_envv		*ft_unsetenv(t_envv *envv, char **t)
 	int i;
 
 	i = 0;
+	if (!envv)
+		return (NULL);
 	while (t[i])
 		envv = ft_del_envv(envv, t[i++]);
 	return (envv);

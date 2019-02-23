@@ -25,6 +25,8 @@ pid_t		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 		warning("fork failed to create a new process", p->cmd);
 	else if (pid == 0)
 	{
+		if (t->r)
+			ft_redirect_builtin(t, p);
 		execve(p->cmd, p->argv, env);
 		warning("execve fucked up", p->cmd);
 	}
@@ -43,12 +45,12 @@ int			ft_exec(t_tree *t, t_process *p)
 		if (p->builtins == FALSE)
 			wait(&p->ret);
 		else
-			p->ret = 0;
-		if (p->status != KILLED)
 		{
 			ft_reset_fd(p->save);
-			p->status = DONE;
+			p->ret = 0;
 		}
+		if (p->status != KILLED)
+			p->status = DONE;
 	}
 	return (p->ret);
 }

@@ -42,6 +42,7 @@ static void	ft_heredoc_content(t_redirect *r)
 
 int			get_destination_fd(t_redirect *r)
 {
+	r->path = ft_exp_var(r->path, ft_get_set_shell(NULL));
 	if ((r->t == R_RIGHT && r->to == -2 &&
 	(r->to = open(r->path, O_WRONLY | O_TRUNC | O_CREAT, S_IRWXU)) == -1)
 	|| (r->t == R_DRIGHT && r->to == -2 &&

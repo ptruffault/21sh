@@ -524,3 +524,594 @@ ls -l auteur zefazef 2>&1 1>&- | rev
 clear
 lms
 ls
+ls
+clear
+ls| rev
+cat << eoi | rev | grep RDM
+MDR
+LAUL
+YEUZHFH
+cleqr
+cat << eoi > file
+LAUL
+enf
+cat file
+rm -rf file
+ls
+ls
+rm -rf log
+ls
+ls| rev
+ls >&2
+clear
+ls
+env
+env
+env |rev
+ls
+ls | rev
+grep < file
+clear
+ls
+cat file
+ls
+ls > file
+ls
+cat file
+ls
+cat << eoi
+LAUL
+cat < file << eoi
+LAUL
+ls
+ls
+clezar
+ls
+cleazr
+env
+clear
+ls
+env
+ls | grep PWD
+ls -l
+ls -l auteur
+ls -l
+type ls -l
+type ls 
+unalias ls
+ls
+type ls
+ls -l
+type ls
+unalias ls
+ls -l
+clear
+ls
+ls
+ls
+export PATH=
+env
+ls
+clear
+ls
+env
+ls
+export PATH=
+ls
+clear
+ls
+/bin:ls
+/bin/ls
+echo $PWD
+echo $PWD $PATH
+echo $PWD $PATH lol
+export FOO=bar
+echo $FOO
+export PATH=/bin:/usr/bin
+ls
+clear
+ls
+env
+clear
+ls | rev
+exit
+./21sh tess
+./21sh sys/test
+ls $HOME
+ls -l $HOME $HOME/aezerty 
+ls -l $HOME $HOME/aezerty  2>&1
+ls -l $HOME $HOME/aezerty  2>&1 | rev
+ls -l $HOME $HOME/aezerty  2>&1 | rev
+ls -l auteur zefaze  2>&1 | rev
+cat << eoi | rev
+LAUL
+clear
+cat << eoi | rev > file 
+LAUL
+MDR
+j'ai faim'
+cat file
+ls
+ls | rev > file
+cat file
+cat << eoi | rev > file 
+LAUL
+cat file
+cat << eoi | rev 
+LAUL
+ls
+cleare
+clear
+ls
+ls -l
+ls -l auteur zfaefzef
+ls -l auteur zfaefzef 2>&1
+ls -l auteur zfaefzef 2>&1 | rev
+ls
+ls -l auteur zfaefzef 2>&1 | rev
+ls -l auteur zfaefzef 2>&1 | rev
+ls
+ls -l auteur zfaefzef 2>&1 | rev
+sl
+cat < file
+clear
+ls 1>&2
+ls 1>&2 | rev
+ls 1>&2 | rev
+ls 2>&1
+exit
+ls 2>&1
+ls 2>&1 | rev
+ls 2>&1 | rev
+ls 1>&2 | rev
+ls 1>&2 | rev
+ls 1>&2 | rev
+ls -l auteur zefze 2>&1 | rev
+ls
+clear
+env
+ls
+ls
+ls
+clear
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -l auteur ezfaze 2>&1
+ls -l auteur ezfaze 2>&1 | rev
+ls -l auteur ezfaze 2>&1 | rev
+ls -z 2>&1 
+ls -z 2>&1 
+ls -z 2>&1 | rev
+ls -z 2>&1 
+ls -z 
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -l auteur azdeazd 2>&1 | rev
+ls -z 2>&1 
+ls -z 
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -l auteur ezfzeaf 2>&1 | rev
+ls | rev
+clear
+ls -l auteur ezfzeaf 2>&1 | rev
+ls>file
+cat file
+ls > file
+cat file
+cat < file
+ls
+ls -l auteur zfefze 2>&1
+ls -l auteur zfefze 2>&1 | rev
+ls 1>&2
+ls -l auteur zfefze 2>&1 | rev
+ls -l auteur zfefze 2>&1 | rev
+ls >&2
+ls
+ls >&1
+ls >&1 | rev
+ls >&2 | rev
+ls 
+clear
+ls
+env
+ls | rev
+ls
+ls -z 2>&-
+ls -z 2>&1
+ls -z 2>&1 | revc
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z
+ls -z | rev
+ls -l auteur | rev
+ls -l auteur azd | rev
+ls -l auteur azd 2>&1 | rev
+ls > file
+ls
+ls > file
+ls
+clear
+ls|rev
+clear
+ls
+l |rev
+ls|rev
+ls | rev | rev
+clea
+clear
+ls -z 2>&-
+ls -z 2>&1
+clear
+ls
+ls 2>&1
+ls -z2>&-
+ls -z 2>&-
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls > file
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&1
+ls > file
+cat file
+ls |rev
+clear
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls > file
+ls -z
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls auteur zdf 2>&1
+ls auteur zdf 2>&1  | rev
+ls -l auteur zdf 2>&1  | rev
+ls  auteur zdf 2>&1  | rev
+ls -z 2>&-
+ls -l auteur zdf 2>&1  | rev
+ls auteur zdf 2>&1  | rev
+ls auteur zdf 2>&1  | rev
+ls >&-
+ls -s >&-
+ls -z >&-
+ls -z >&-
+ls >&-
+ls >&-
+ls
+ls | rev
+ls -l auteur ezuif 2>&1 | rev
+ls >&-
+ls
+clear
+ls -z 2>&-
+ls -z
+clear
+cat < file
+clear
+ls
+env |grep PWD
+clear
+ls
+cat < file | rev
+clear
+cat < file | rev << eoi
+LAUL
+MDR
+clear
+ls | rev
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls auteur aezfaezf 2>&1 | rev
+ls
+ls | rev
+ls 2>&1 | rev
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls >file
+cat file
+clear
+ll
+la
+ll
+lz
+lq
+la
+clear
+env
+clear
+ls |rev
+ls
+ls auteur zefze 2>&1
+ls auteur zefze 2>&1 | rev
+ls
+clear
+ls -R
+ls | rev
+clear
+ls | rev | cat -e
+jobs
+ls | rev
+jobs
+exit
+ls |rev
+jobs
+ls |rev
+ls 1>&-
+ls 1>&2
+ls 1>&2 | rev
+ls -z 2>&1 | rev
+clear
+ls
+ls
+ls |rev
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls
+ls |rev
+jobs
+ls| rev
+jobs
+ls>file
+cat file
+cat << eoi
+LAUL
+cat << eoi | rev
+LAUL
+clear
+ls
+env
+ls
+lqs
+ls
+clear
+ls
+env
+jobs
+ls | rev | cat -e
+jobs
+ls
+clear
+ls| refv
+ls | rev
+cat
+cat
+cat
+clear
+ls
+rev |rev
+ls
+ls
+jobs
+clear
+ls | rev
+jobs
+clear
+ls
+env
+cleqr
+clear
+ls >&1
+ls >&1
+ls
+clezarf
+clear
+ls | rev
+ls -z 2>&1
+ls -z 2>&1 | rev 
+ls -z 2>&-
+ls -z
+clear
+ls
+env
+clear
+ls
+clezar
+ls
+./21sh
+clear
+ls
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls
+ls -z 2>&1 | reb
+ls -z 2>&1 | rev
+clear
+ls -z 2>&1 | rev
+ls
+ls 2>&
+ls 2>&1
+ls 2>&-
+ls -z 2>&-
+ls
+clear
+env
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1 | rev
+ls -l auteur eazrfaezr 2>&1
+exec
+exec 1>&3
+ls 3>&1
+ls >&3
+ls
+clear
+ls
+exit
+ls
+ls -l auteur  zaefzez 2>&1
+ls -l auteur  zaefzez 2>&1 | rev
+ls
+clear
+ls|rev
+clear
+ls -l auteur zefzea 2>&1 | rev
+ls -l auteur zefzea 2>&1 | rev
+clear
+ls -z 2>&1 | rev
+exit
+ls -l azeafez eazfez 2>&1 | rev
+ls -l azeafez eazfez 2>&1 | rev | grep no
+ls
+clear
+ls | rev
+clea
+clear
+ls
+ls -z 2>&1 | rev
+ls | rev | cat -e
+ls | rev
+ls|rev |cat
+ls
+clezar
+clear
+ls|rev
+ls -R
+ls -R | cat -e | cat
+echo LOOOOL >&-
+ls
+echo LAUL 1>&2 2>&1 | rev
+echo LAUL 1>&2  | rev
+echo LAUL 1>&2 | rev
+clear
+ls -l auteur zaefezrf 2>&1
+ls -l auteur zaefezrf 2>&1 | rev
+ls -l auteur zaefezrf 1>&- 2>&1 | rev
+ls -l auteur zaefezrf  2>&1 1>&- | rev
+ls -l auteur zaefezrf  2>&1  | rev
+clear
+ls
+ls
+ls | rev
+ls | rev | cat
+ls
+clear
+ls| rev
+ls -l >&2
+ls | rev | cta
+ls
+clear
+ls
+clear
+ls| re 
+ls|rev
+ls|rev|cat
+clear
+ls|rv|cat -e
+ls|rev|cat -e
+ls|rev|cat- e
+ls
+ls
+clear
+ls| rev|cat -e
+ls| rev
+ls| rev | cat -e
+clear
+ls
+ls | rev | cat -e
+ls | rev | cat -e
+ls
+ls| rev
+ls | rev | cat
+clear
+ls| rev | cat
+ls
+clear
+ls
+ls | rev
+ls | rev
+ls | rev | rev
+clear
+ls
+pwd
+clear
+ls |rev |cat -e
+clzear
+clear
+ls| rev
+ls| rev|cat -e
+clear
+ls|rev
+ls | rev | cat -e
+ls| rev
+clear
+ls
+ls| rev
+exit
+./21
+ls 2>&1
+ls 2>&-
+ls -z 2>&-
+clear
+ls
+clear
+ls|rev
+ls -z 2>&1 | rev
+clear
+ls
+ls 2>&1 | rev
+ls auteur zaefze 2>&1 | rev
+ls -l auteur zaefze 2>&1 | rev
+clear
+ls
+ls | rev | cat
+clear
+ls
+ls| rev 
+ls| rev | cat
+clear
+ls|rev
+ls|rev| cat
+clear
+ls| rev
+ls | rev | rev
+clear
+ls|rev| cat -e
+ls
+ls | rev | cat -e | rev
+clear
+ls| rev
+ls| rev | rev | cat -ze
+ls | cat -e  | rev | cat -e
+ls | rev | cat -e | rev
+ls | cat -e | rev | cat -e | rev | cat -e | rev| cat -e
+clear
+exit
+clear
+ls | cat -e | rev | cat -e | rev | cat -e | rev| cat -e
+clear
+ls| rev
+ls | cat -e | rev | cat -e | rev | cat -e | rev| cat -e
+ls | cat -e | rev | cat -e | rev | cat -e | rev| cat -e
+ls -l auteur zefaze 2>&1 | rev
+clear
+ls | rev
+ls| rev
+ls -l auteur zefaze 2>&1 | rev| cat -e | rev | cat-e
+ls -l auteur zefaze 2>&1 | rev| cat -e | rev | cat -e
+clear
+ls| rev
+ls
+clear
+ls| rev
+ls$
+ls
+clear
+ls
+exit
+cat $HOME/21sh/ateur
+env
+ls $HOME
+ls $HOME/21sh
+ls $HOME/21sh/auteur
+cat HHOME/21sh/auteur
+cat $HOME/21sh/auteur
+cat < $HOME/21sh/auteur
+cat < $HOME/21sh/auteur
+cat < $HOME/21sh/auteur
+clear

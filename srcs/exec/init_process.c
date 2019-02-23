@@ -20,8 +20,6 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 	new->fd[0] = 0;
 	new->fd[1] = 1;
 	new->fd[2] = 2;
-	if (t->r)
-		ft_redirect_builtin(t, new);
 	new->status = t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG;
 	new->ret = -1;
 	new->pid = 0;
@@ -29,7 +27,8 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 
 static t_process	*ft_abort(t_process *p)
 {
-	ft_reset_fd(p->save);
+	if (p->builtins == TRUE)
+		ft_reset_fd(p->save);
 	if (p->argv)
 		ft_freestrarr(p->argv);
 	free(p);
@@ -47,7 +46,11 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
 			return (ft_abort(new));
 		if (check_builtin(*new->argv) && (new->cmd = ft_strdup(*new->argv)))
+		{
 			new->builtins = TRUE;
+			if (t->r)
+				ft_redirect_builtin(t, new);
+		}
 		else if ((new->cmd = get_bin_path(*new->argv, sh->env)))
 			new->builtins = FALSE;
 		else
