@@ -85,10 +85,9 @@ char		*get_bin_path(char *input, t_envv *envv)
 	{
 		if ((bin_path = absolute_path(input, envv)))
 			return (bin_path);
-		error("no such file or directory", input);
 		return (NULL);
 	}
 	if (!(bin_path = search_in_envv(input, envv)))
-		error("command not found", input);
+		return (NULL);
 	return (bin_path);
 }

@@ -106,7 +106,7 @@ chmod:
 	@chmod 777 *
 	@chmod 777 srcs/*
 	@chmod 777 srcs/tenvv/*
-	@chmod 777 srcs/get_input/*
+	@chmod 777 srcs/ft_printf/*
 	@chmod 777 includes/*
 
 save: clean fclean

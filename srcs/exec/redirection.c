@@ -16,12 +16,12 @@ int			fd_dup(int fd1, int fd2)
 {
 	int ret;
 
+	ret = 0;
 	if (fd1 == fd2)
 		return (0);
-	if ((ret = dup2(fd1, fd2)) < 0)
-		return (-1);
-	if (!IS_STD(fd1) && ft_close(fd1) == -1)
-		return (-1);
+	ret = dup2(fd1, fd2);
+	if (!IS_STD(fd1))
+		ft_close(fd1);
 	return (ret);
 }
 

@@ -54,7 +54,10 @@ void		sig_handler(int sig)
 		kill_running_fg_process(sh->process, SIGTSTP);
 	if (sig == SIGCHLD && sh && sh->process
 	&& (tmp = ft_wait_background(sh->process)))
+	{
+		ft_reset_fd(tmp->save);
 		tmp->status = DONE;
+	}
 }
 
 void		set_signals(void)

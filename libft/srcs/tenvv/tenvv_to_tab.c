@@ -52,7 +52,7 @@ char		**tenvv_to_tab(t_envv *envv)
 		envv = envv->next;
 	}
 	t[i] = NULL;
-	if (i == 1)
+	if (i == 0)
 	{
 		free(t);
 		return (NULL);

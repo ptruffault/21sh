@@ -12,10 +12,12 @@
 
 #include "../../includes/shell42.h"
 
-static t_envv	*change_dir(char *path, char *cwd, t_envv *envv)
+t_envv	*change_dir(char *path, t_envv *envv)
 {
 	char	buff[4097];
+	char 	*cwd;
 
+	cwd = getcwd(buff, 4096);
 	if (!chdir(path))
 	{
 		envv = ft_new_envv(envv, "OLDPWD", cwd);
@@ -35,17 +37,17 @@ static t_envv	*change_dir(char *path, char *cwd, t_envv *envv)
 
 t_envv			*ft_cd(char **input, t_envv *envv)
 {
-	char *cwd;
-	char buff[4097];
-
-	cwd = getcwd(buff, 4096);
-	if (!get_tenvv(envv, "HOME"))
-		warning("envvironnement \'$HOME\' var not set", NULL);
-	else if (!(input[1]))
-		return (change_dir(get_tenvv_val(envv, "HOME"), cwd, envv));
+	if (!(input[1]))
+		if (get_tenvv_val(envv, "HOME"))
+			return (change_dir(get_tenvv_val(envv, "HOME"), envv));
+		else
+			error("UNSET VAR", "HOME");
 	else if (input[1][0] == '-' && input[1][1] == '\0')
-		return (envv = change_dir(get_tenvv_val(envv, "OLDPWD"), cwd, envv));
+		if (get_tenvv_val(envv, "HOME"))
+			return (change_dir(get_tenvv_val(envv, "OLDPWD"), envv));
+		else
+			error("UNSET VAR", "OLDPWD");	
 	else if (input[1])
-		return (change_dir(input[1], cwd, envv));
+		return (change_dir(input[1], envv));
 	return (envv);
 }

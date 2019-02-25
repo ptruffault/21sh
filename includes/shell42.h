@@ -79,6 +79,7 @@ void		ft_update_windows(t_edit *e);
 void		init_termcaps(t_shell *sh);
 int			check_builtin(char *input);
 t_envv		*ft_cd(char **input, t_envv *envv);
+t_envv		*change_dir(char *path, t_envv *envv);
 void		ft_echo(char **input);
 void		ft_exit(char *nbr);
 void		ft_env(t_envv *envv, char **argv);

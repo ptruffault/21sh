@@ -1,1 +1,1 @@
-export PATH= && /bin/ls && echo $PWD $PATH && export FOO=bar; echo $FOO ;unset FOO ;export PATH=/bin:/usr/bin:.
+export PATH= && /bin/ls && echo $PWD $PATH && export FOO=bar; echo $FOO ;unset FOO ;export PATH=/bin:/usr/bin:.;export TERM=;clear;

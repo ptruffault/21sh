@@ -63,7 +63,7 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
 		else if (tmp && tmp->type == REDIRECT
-				&& (tmp = get_redirections(tree, tmp)) && tmp->type == 0)
+		&& (tmp = get_redirections(tree, tmp)) && tmp->type == 0)
 		{
 			ft_free_tree(head);
 			return (NULL);

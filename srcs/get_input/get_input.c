@@ -15,10 +15,12 @@
 char		*ft_update_hist(t_shell *sh)
 {
 	char	*ret;
+	char	*hi_path;
 
-	if (sh->e.input[0] != '\0')
+	if (sh->e.input[0] != '\0'
+	&& (hi_path = get_tenvv_val(sh->env, "HISTORY")))
 	{
-		ft_write_in_file(get_tenvv_val(sh->env, "HISTORY"), sh->e.input);
+		ft_write_in_file(hi_path, sh->e.input);
 		sh->hist = add_hist(sh->hist, sh->e.input);
 	}
 	sh->e.curr = ft_strlen(sh->e.input);

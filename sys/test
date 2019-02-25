@@ -1,2 +1,2 @@
 #!/bin/sh
-sh ./sys/$1 >> s 2>> s ;./21sh ./sys/$1 >> m 2>> m ; diff s m 
+sh ./sys/$1 > s 2>> s ;./21sh ./sys/$1 > m 2>> m ; diff s m 

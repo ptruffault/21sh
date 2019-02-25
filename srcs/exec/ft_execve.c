@@ -20,15 +20,27 @@ pid_t		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 	env = tenvv_to_tab(sh->env);
 	pid = -1;
 	if (p->builtins == TRUE)
+	{
+		if (t->r)
+			ft_redirect_builtin(t, p);
 		p->ret = run_builtin(t, p->argv);
+	}
 	else if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", p->cmd);
 	else if (pid == 0)
 	{
 		if (t->r)
 			ft_redirect_builtin(t, p);
-		execve(p->cmd, p->argv, env);
-		warning("execve fucked up", p->cmd);
+		if (!p->cmd)
+			error("unknow command",t->cmd->word);
+		else
+		{
+			execve(p->cmd, p->argv, env);
+			warning("execve fucked up", p->cmd);
+		}
+		ft_free_tshell(sh);
+		ft_free_tree(ft_get_set_tree(NULL));
+		exit(-1);
 	}
 	ft_freestrarr(env);
 	return (pid);
@@ -44,11 +56,7 @@ int			ft_exec(t_tree *t, t_process *p)
 	{
 		if (p->builtins == FALSE)
 			wait(&p->ret);
-		else
-		{
-			ft_reset_fd(p->save);
-			p->ret = 0;
-		}
+		ft_reset_fd(p->save);
 		if (p->status != KILLED)
 			p->status = DONE;
 	}
