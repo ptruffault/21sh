@@ -12,13 +12,32 @@
 
 #include "../../includes/shell42.h"
 
-int			fd_dup(int fd1, int fd2)
+int check_fd(t_process *p, int fd)
+{
+	if (IS_STD(fd))
+	{
+		if (p->fd[fd] == -1)
+		{
+			ft_reset_fd(p);
+			error_i("bad file descriptor", fd);
+			return (-2);
+		}
+	}
+	return (fd);
+}
+
+int			fd_dup(int fd1, int fd2, t_process *p)
 {
 	int ret;
 
 	ret = 0;
 	if (fd1 == fd2)
-		return (0);
+		return (-1);
+	if ((fd1 = check_fd(p, fd1)) == -2
+	|| (fd2 = check_fd(p, fd2)) == -2)
+		return (-1);
+	if (fd1 == -1)
+		fd1 = open("/dev/null", O_RDWR | O_TRUNC | O_CREAT , S_IRWXU);
 	ret = dup2(fd1, fd2);
 	if (!IS_STD(fd1))
 		ft_close(fd1);
@@ -44,34 +63,19 @@ int			get_destination_fd(t_redirect *r)
 {
 	r->path = ft_exp_var(r->path, ft_get_set_shell(NULL));
 	if ((r->t == R_RIGHT && r->to == -2 &&
-	(r->to = open(r->path, O_WRONLY | O_TRUNC | O_CREAT, S_IRWXU)) == -1)
+	(r->to = open(r->path, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU)) == -1)
 	|| (r->t == R_DRIGHT && r->to == -2 &&
-	(r->to = open(r->path, O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) == -1)
+	(r->to = open(r->path, O_RDWR | O_APPEND | O_CREAT, S_IRWXU)) == -1)
 	|| (r->t == R_LEFT && r->to == -2 &&
-	(r->to = open(r->path, O_RDONLY, S_IRWXU)) == -1))
+	(r->to = open(r->path, O_RDWR , S_IRWXU)) == -1))
 	{
 		warning("can't open this file", r->path);
 		perror(NULL);
-		return (-1);
+		return (0);
 	}
 	else if (r->t == R_DLEFT)
 		ft_heredoc_content(r);
-	if (r->to >= 0 && r->from >= 0)
+	if (r->to != -2 && r->from != -2)
 		return (1);
-	return (-1);
-}
-
-void		ft_redirect_back(void)
-{
-	int fd;
-
-	if ((fd = open("/dev/null",
-	O_WRONLY | O_APPEND | O_CREAT, S_IRWXU)) != -1)
-	{
-		fd_dup(0, fd);
-		fd_dup(1, fd);
-		fd_dup(2, fd);
-	}
-	else
-		error("can't open", "/dev/null");
+	return (0);
 }

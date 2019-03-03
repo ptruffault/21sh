@@ -33,7 +33,7 @@ int		exec_fd(int fd)
 	return (i);
 }
 
-void	exec_file(char *path)
+int	exec_file(char *path)
 {
 	int		fd;
 
@@ -43,5 +43,9 @@ void	exec_file(char *path)
 		ft_close(fd);
 	}
 	else
+	{
 		perror(path);
+		return (-1);
+	}
+	return (0);
 }

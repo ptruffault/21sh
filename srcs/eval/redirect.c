@@ -21,8 +21,8 @@ static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
 	{
 		if (ft_isdigit(*(ptr + 1)))
 			new->to = ft_atoi(ptr + 1);
-		if (*(ptr + 1) == '-')
-			new->path = ft_strdup("/dev/null");
+		else if (*(ptr + 1) == '-')
+			new->to = -1;
 	}
 	else if (w->next && w->next->word)
 		new->path = ft_strdup(w->next->word);
@@ -48,6 +48,8 @@ static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
 	}
 	else if ((ptr = ft_strchr(w->word, '&')) && ft_isdigit(*(ptr + 1)))
 		new->to = ft_atoi(ptr + 1);
+	else if ((ptr = ft_strchr(w->word, '&')) && *(ptr + 1) == '-')
+			new->to = -1;
 	else if (w->next && w->next->word)
 		new->path = ft_strdup(w->next->word);
 	else
@@ -72,11 +74,10 @@ static t_redirect	*get_redirection(t_word *w)
 
 	new = new_redirection();
 	new->t = ft_find_redirect_type(w->word);
-	new->to = -2;
 	if (((new->t == R_RIGHT || new->t == R_DRIGHT)
-				&& !(new = parse_right_redirect(new, w)))
+	&& !(new = parse_right_redirect(new, w)))
 	|| ((new->t == R_LEFT || new->t == R_DLEFT)
-		&& !(new = parse_left_redirect(new, w))))
+	&& !(new = parse_left_redirect(new, w))))
 	{
 		error("invalid redirection", "argument needed");
 		return (NULL);
@@ -86,14 +87,23 @@ static t_redirect	*get_redirection(t_word *w)
 
 t_word				*get_redirections(t_tree *t, t_word *w)
 {
+	t_redirect *new;
 	t_redirect	*tmp;
 
-	if ((tmp = get_redirection(w)))
+	if ((new = get_redirection(w)))
 	{
-		 if (tmp->path && w->next && !ft_strequ(tmp->path, "/dev/null"))
+		 if (new->path && w->next)
 			w = w->next;
-		tmp->next = t->r;
-		t->r = tmp;
+		if (t->r)
+		{
+			tmp = t->r;
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp->next = new;
+		}
+		else
+			t->r = new;
+		return (w);
 	}
-	return (w->next);
+	return (NULL);
 }

@@ -27,7 +27,7 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 
 static t_process	*ft_abort(t_process *p)
 {
-	ft_reset_fd(p->save);
+	ft_reset_fd(p);
 	if (p->argv)
 		ft_freestrarr(p->argv);
 	free(p);
@@ -47,8 +47,11 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 			return (ft_abort(new));
 		if (check_builtin(*new->argv) && (new->cmd = ft_strdup(*new->argv)))
 			new->builtins = TRUE;
-		else
-			new->cmd = get_bin_path(*new->argv, sh->env);
+		else if (!(new->cmd = get_bin_path(*new->argv, sh->env)))
+		{
+			error("command not found", *new->argv);
+			return (ft_abort(new));
+		}
 		new->next = sh->process;
 		sh->process = new;
 	}

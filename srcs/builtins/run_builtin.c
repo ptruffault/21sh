@@ -25,7 +25,7 @@ static void	set_var(char **argv, t_shell *sh)
 	sh->intern = head;
 }
 
-static void	change_envv(char **argv, t_shell *sh)
+static int	change_envv(char **argv, t_shell *sh)
 {
 	if (ft_strequ(*argv, "unsetenv") && argv[1])
 		sh->env = ft_unsetenv(sh->env, &argv[1]);
@@ -47,6 +47,7 @@ static void	change_envv(char **argv, t_shell *sh)
 		ft_alias(sh, argv);
 	else if (ft_strequ(*argv, "unalias") && argv[1])
 		sh->alias = ft_unsetenv(sh->alias, &argv[1]);
+	return (0);
 }
 
 int			run_builtin(t_tree *t, char **argv)
@@ -57,14 +58,12 @@ int			run_builtin(t_tree *t, char **argv)
 	if (ft_strequ(*argv, "exit"))
 		ft_exit(argv[1]);
 	else if (ft_strequ(*argv, "env"))
-		ft_env(sh->env, argv);
+		return (ft_env(sh->env, argv));
 	else if (ft_strequ(*argv, "echo"))
-		ft_echo(&argv[1]);
+		return (ft_echo(&argv[1]));
 	else if (ft_strequ(*argv, "type"))
-		ft_type(t->cmd->next);
+		return (ft_type(t->cmd->next));
 	else if (ft_strequ(*argv, "42"))
-		exec_file(argv[1]);
-	else
-		change_envv(argv, sh);
-	return (0);
+		return (exec_file(argv[1]));
+	return(change_envv(argv, sh));
 }

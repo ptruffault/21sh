@@ -36,7 +36,6 @@ t_envv		*ft_del_envv(t_envv *envv, char *name)
 		prev = tmp;
 		tmp = tmp->next;
 	}
-	warning("there is no such var name in env", name);
 	return (envv);
 }
 
@@ -47,6 +46,11 @@ t_envv		*ft_unsetenv(t_envv *envv, char **t)
 	i = 0;
 	if (!envv)
 		return (NULL);
+	if (ft_strequ(*t, "-all"))
+	{
+		ft_free_tenvv(envv);
+		return (NULL);
+	}
 	while (t[i])
 		envv = ft_del_envv(envv, t[i++]);
 	return (envv);

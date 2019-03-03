@@ -64,6 +64,11 @@ char		**ft_twordto_arr(t_word *w)
 			i++;
 		w = w->next;
 	}
+	if (i == 0)
+	{
+		free(arr);
+		return (NULL);
+	}
 	arr[i] = NULL;
 	return (arr);
 }

@@ -23,7 +23,6 @@ void		ft_delete_process(int pid)
 	{
 		sh->process = p->next;
 		p->next = NULL;
-		ft_reset_fd(p->save);
 		ft_free_tprocess(p);
 	}
 	else

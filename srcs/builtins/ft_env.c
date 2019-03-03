@@ -12,22 +12,29 @@
 
 #include "../../includes/shell42.h"
 
-static void		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
+static int		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 {
 	char	**e;
 	char	*path;
 	int		pid;
 
 	if (!(path = get_bin_path(*arr, envv)))
-		return ;
+		return (-1);
 	e = tenvv_to_tab(tmp);
 	if ((pid = fork()) == -1)
+	{
 		warning("fork failed to create a new process", *arr);
+		return (-1);
+	}
 	if (pid == 0 && execve(path, arr, e) == -1)
+	{
 		warning("{env} execve fucked up", *arr);
+		return (-1);
+	}
 	ft_strdel(&path);
 	ft_freestrarr(e);
 	wait(&pid);
+	return (pid);
 }
 
 static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
@@ -86,12 +93,13 @@ static t_envv	*ft_env_option(t_envv *tmp, char **input, int *i)
 	return (tmp);
 }
 
-void			ft_env(t_envv *envv, char **argv)
+int			ft_env(t_envv *envv, char **argv)
 {
 	t_envv	*tmp;
 	int		i;
 
-	tmp = init(&i, envv);
+	if (!(tmp = init(&i, envv)))
+		return (-1);
 	while (argv[i])
 	{
 		if (argv[i][0] == '-')
@@ -100,12 +108,12 @@ void			ft_env(t_envv *envv, char **argv)
 			tmp = ft_tmpsetenv(tmp, argv[i]);
 		else
 		{
-			ft_env_exec(&argv[i], tmp, envv);
+			i = ft_env_exec(&argv[i], tmp, envv);
 			ft_free_tenvv(tmp);
-			return ;
 		}
 		i++;
 	}
 	ft_puttenvv(tmp);
 	ft_free_tenvv(tmp);
+	return (0);
 }

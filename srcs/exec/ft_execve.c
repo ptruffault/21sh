@@ -12,25 +12,23 @@
 
 #include "../../includes/shell42.h"
 
-pid_t		ft_execve(t_process *p, t_shell *sh, t_tree *t)
+void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
-	pid_t	pid;
 	char	**env;
 
 	env = tenvv_to_tab(sh->env);
-	pid = -1;
 	if (p->builtins == TRUE)
 	{
-		if (t->r)
-			ft_redirect_builtin(t, p);
+		if (t->r && !ft_redirect_builtin(t, p))
+			return ;	
 		p->ret = run_builtin(t, p->argv);
 	}
-	else if ((pid = fork()) == -1)
+	else if ((p->pid = fork()) == -1)
 		warning("fork failed to create a new process", p->cmd);
-	else if (pid == 0)
+	else if (p->pid == 0)
 	{
-		if (t->r)
-			ft_redirect_builtin(t, p);
+		if (t->r && !ft_redirect_builtin(t, p))
+			exit(-1);
 		if (!p->cmd)
 			error("unknow command",t->cmd->word);
 		else
@@ -39,11 +37,11 @@ pid_t		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 			warning("execve fucked up", p->cmd);
 		}
 		ft_free_tshell(sh);
+		ft_freestrarr(env);
 		ft_free_tree(ft_get_set_tree(NULL));
 		exit(-1);
 	}
 	ft_freestrarr(env);
-	return (pid);
 }
 
 int			ft_exec(t_tree *t, t_process *p)
@@ -51,12 +49,13 @@ int			ft_exec(t_tree *t, t_process *p)
 	t_shell		*sh;
 
 	sh = ft_get_set_shell(NULL);
-	p->pid = ft_execve(p, sh, t);
+	ft_execve(p, sh, t);
 	if (p->status == RUNNING_FG)
 	{
 		if (p->builtins == FALSE)
 			wait(&p->ret);
-		ft_reset_fd(p->save);
+		else
+			ft_reset_fd(p);
 		if (p->status != KILLED)
 			p->status = DONE;
 	}

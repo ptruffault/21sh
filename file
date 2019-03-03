@@ -1,11 +1,10 @@
-21sh
-Makefile
-auteur
-bin
-file
-includes
-libft
-m
-s
-srcs
-sys
+total 1800
+-rwxr-xr-x 1 root     root     377384 Mar  3 11:55 21sh
+-rw-rw-rw- 1 ptruffau ptruffau   4736 Feb 19 18:21 Makefile
+-rwxrwxrwx 1 ptruffau ptruffau     18 Feb 19 18:21 auteur
+drwxr-xr-x 1 root     root       4096 Mar  3 11:55 bin
+-rwx------ 1 ptruffau ptruffau      0 Mar  3 11:56 file
+drwxrwxrwx 1 ptruffau ptruffau   4096 Feb 19 18:21 includes
+drwxrwxrwx 1 ptruffau ptruffau   4096 Feb 27 16:07 libft
+drwxrwxrwx 1 ptruffau ptruffau   4096 Feb 19 18:21 srcs
+drwxrwxrwx 1 ptruffau ptruffau   4096 Feb 25 00:00 sys

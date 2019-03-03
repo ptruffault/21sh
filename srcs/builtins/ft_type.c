@@ -66,13 +66,13 @@ static int		handle_opts(t_word *w, char opts[4], t_shell *sh)
 	return (1);
 }
 
-void			ft_type(t_word *w)
+int			ft_type(t_word *w)
 {
 	t_shell	*sh;
 	char	opts[4];
 
 	if (!w || !w->word || !(w = init_opts(opts, w)))
-		return ;
+		return (-1);
 	sh = ft_get_set_shell(NULL);
 	while (w)
 	{
@@ -80,4 +80,5 @@ void			ft_type(t_word *w)
 			warning("not found", w->word);
 		w = w->next;
 	}
+	return (0);
 }

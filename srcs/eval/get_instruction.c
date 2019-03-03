@@ -62,11 +62,16 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 	{
 		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
-		else if (tmp && tmp->type == REDIRECT
-		&& (tmp = get_redirections(tree, tmp)) && tmp->type == 0)
+		else if (tmp && tmp->type == REDIRECT)
 		{
-			ft_free_tree(head);
-			return (NULL);
+			if (!(tmp = get_redirections(tree, tmp)))
+			{
+				error("invalid redirection syntax", NULL);
+				ft_free_tree(head);
+				return (NULL);
+			}
+			else
+				tmp = tmp->next;
 		}
 		else if (tmp && tmp->type == OPERATEUR)
 		{

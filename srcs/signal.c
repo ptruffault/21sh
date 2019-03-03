@@ -55,7 +55,7 @@ void		sig_handler(int sig)
 	if (sig == SIGCHLD && sh && sh->process
 	&& (tmp = ft_wait_background(sh->process)))
 	{
-		ft_reset_fd(tmp->save);
+		ft_reset_fd(tmp);
 		tmp->status = DONE;
 	}
 }

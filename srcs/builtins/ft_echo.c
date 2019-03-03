@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-void		ft_echo(char **input)
+int		ft_echo(char **input)
 {
 	int i;
 	int opts_n;
@@ -31,4 +31,5 @@ void		ft_echo(char **input)
 		ft_putchar(0);
 	else
 		ft_putchar('\n');
+	return (0);
 }

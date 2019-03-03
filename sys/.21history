@@ -100,3 +100,1637 @@ rm -rf file1
 ls
 ls
 sudo make save
+ls
+clar
+ls
+clear
+ls
+ls >&- -z 2>&-
+ls >&- -z 
+ls 2>&- -z 
+ls 2>&- -z 
+clear
+cl
+ls -l . zefaze
+ls -l . zefaze 2>&1
+ls -l . zefaze 2>&1 1>&-
+ls -l . zefaze 1>&- 2>&1 
+ls >&1
+ls >&2
+ls >&2 | rev
+ls >&- | rev
+>&- ls
+>&- ls -z
+>&- ls -z 2>&1 
+>&- ls -z 2>&1 
+ls
+>&- ls -z 2>&1 
+ls
+ls 1>&2 2>&1
+ls
+rm -rf -3
+rm -rf \-3
+rm -rf '-3'
+rm -rf ./-3
+ls
+rm -rf f m s
+ls
+./21
+ls >&- 2>&1
+ls . zdfaze >&- 2>&1
+ls >&- 2>&1
+ls >&-
+ls >&- 2>&1
+ls >&- 2>&1
+ls >&- 2>&1
+ls >&2 2>&1
+ls >&2 2>&1
+ls >&-
+ls >&-
+ls >&-
+ls > file
+ls>&-
+ls>&- 2>&1
+ls>file 2>&1
+cat file
+ls 2>&- >&-
+ls 2>&- >&-
+ls
+ls >&-
+ls >&-
+ls
+ls >&-
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&-
+ls -z 2>&-
+2>&- ls -z 
+2>&- ls -z 1>&2
+ls . zeafze 2>&1 >&-
+ls . zeafze >&- 2>&-
+ls . zeafze > file 2>&-
+cat file
+ls >&-
+ls . zeafze > file 2>&-
+cat file
+ls . zeafze > file 2>&1
+cat file
+ls . zeafze > file 2>&1
+ls . zeafze > file 2>&1
+ls . zeafze > file 2>&1
+cat file
+ls >&-
+ls >&- 2>&1
+ls > file 2>&1
+cat file
+ls
+clear
+ls > file 2>&1
+ls . zeafze > file 2>&1
+ls . zeafze >&- 2>&1
+ls
+ls . zeafze >&- 2>&1
+ls
+cl
+ls . zeafze >&- 2>&1
+ls -l . azefz >&- 2>&1
+ls -l . azefz >&- 2>&1
+ls
+ls 2>&1
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1 1>&2
+ls -z 2>&2
+ls -z 2>&1
+ls -z 2>&1 2>&1
+ls -z 2>&1 2>&-
+ls -z 2>&1 2>&-
+ls -z 2>&1 1>&-
+ls -z 2>&1 1>&-
+ls
+clear
+ls -z 2>&1 1>&-
+ls -l . azefz >&- 2>&1
+ls
+clear
+ls -z 2>&1 
+ls -z 2>&1 
+ls -z 1>&2
+ls  1>&2
+ls  
+ls >&2
+ls  
+ls  >&-
+ls  > file
+cat file
+cat file$
+git status
+make
+ls >&-
+ls > file
+cat file
+ls >file
+cat file
+ls
+ls > file
+cat file
+ls > file
+cat file
+ls
+ls >&-
+ls
+ls >&2
+ls
+ls > file ; cat file
+ls > file ; cat file
+cat < auteur
+ls
+ls > file
+cat file
+ls
+clear
+ls>file
+cat file
+ls 1>&- 2>&1
+ls
+ls . zefze 2>&1 1>&-
+sh
+ls
+clear
+ls 2>&1 1>&-
+ls . zearze 2>&1 1>&-
+ls . zearze 2>&1 1> file
+ls . zearze 2>&1 1> file
+cat file
+ls . zearze 2>&1 1>&-
+ls
+clear
+ls
+clear
+ls . zaefez 2>&1 
+ls . zaefez 2>&1 
+ls . zaefez 
+ls . zaefez  2>&1
+ls . zaefez  2>&1
+ls . zaefez  2>&1
+ls . zaefez  2>&1
+ls . zaefez  2>&1
+ls 2>&- 
+ls -z
+2>&-
+ls -z
+ls 2>&- -z 1>&-
+ls 2>&- -z 
+2>&- ls
+clear
+2>&- ls -z
+ls
+clzar
+clear
+cat < auteur
+cat << EOI | rev
+LAUL
+ls
+cat | rev
+$ls
+ls
+$ls
+$zefaz
+s$zeaf
+$azef
+ls
+clear
+ls
+$EZD
+$EZD
+ls
+ls>&-
+ls 2>&- -z
+ls 2>&1 -z
+ls 2>&1 -z | rev
+$EZD
+ls
+clear
+ze
+$EZF
+${}
+${efaz}
+ls -l auteur 1>&- 2>&1
+cat < file
+ls
+l
+ls
+ll
+clear
+ls > ezraf
+cat < erazfz
+cat < file
+ls
+echo > file
+echo >file
+echo lol > file
+cat file
+ls
+rm -rf file
+echo lol > file
+echo lol > file
+ls > file
+cat file
+cat < file
+echo lol > file
+echo lol > file
+echo lol > file
+cat file
+ls > file
+ls > file
+ls
+clear
+env
+ls > file
+cat file
+ls
+echo lol > file
+cat file
+ls
+echo >file
+ls -l . zefe 2>&1 1>&-
+ls > file
+ls -l . zefe 2>&1 1>&-
+ls -l . zefe 1>&- 2>&1
+ls
+ls -l . zefe 2>&1 1>&-
+ls -l . zefe 1>&- 2>&1
+ls
+cat file
+cat < file
+clear
+ls
+ll > file
+cat file
+ls -l . zefe 1>&- 2>&1
+clear
+env
+ls -l . zefe 1>&- 2>&1
+ls -l . zefe 1>&- 2>&1 | rev
+ls .
+ls . -z
+ls /
+cd /
+cd -
+clear
+unsetenv TERM
+unsetenv TERM PATH
+env
+ls
+env
+ls
+setenv TERM LOL
+ls
+clear
+ls
+ls >&-
+ls . zeaez >&- 2>&1
+ls . zeaez 2>&1 >&-
+ls . zeaez 2>&1 > file
+cat file
+ls
+env
+tty
+ls
+home
+HOME
+alias
+echo lol > file ; cat < file | rev 
+echo laul > file ; cat < file | rev 
+echo laul > file ; cat < file | rev >> file 
+echo laul > file ; cat < file | rev >> file ; cat < file  > file
+cat file
+ls
+ls
+ls > file
+cat file
+cat < file > file
+cat file
+cat << eoi | rev
+LAUL
+echo -n lol
+sh 
+ls
+cat < auteur
+cat | rev
+cat
+cat | rev
+jobs
+jobs
+ls
+cl
+env
+alis
+alias
+jobs
+zefze1
+jobs
+cl
+env
+ls | rev
+jobs
+ls
+ls
+clear
+ls
+jobs
+ls
+jobs
+jobs
+ls
+alias
+ls
+env
+ls
+clear
+jobs
+clear
+ls
+ls
+clear
+ls| rev
+jobs
+cat | rev
+ls
+cat | rev | rev
+cat | rev | cat | rev | cat
+jobs
+exit
+cat | rev | catg
+cat | rev | cat
+jobs
+jobs
+cat|rev |rev
+jobs
+cat | rev
+echo ls | ./21sh1
+echo ls | ./21sh
+echo ls | ./21sh
+echo ls | ./21sh
+echo ls | ./21sh
+echo ls | ./21sh
+ls
+./21sh < f
+ls
+./21sh < t
+./21sh < t
+echo ls | ./21sh
+ls| rev | cat -z
+ls| rev | cat -e
+cat | cat
+jobs
+cl
+ls
+ls|rev
+cat|cat
+cat|cat|cat
+ls|rev|rev
+ls|rev|rev|rev
+ls|rev|rev
+ls
+ls|rev|rev
+ls|rev
+ls|rev|re 
+ls|rev|rev
+cat|cat|cat
+clear
+ls -l  2>&1 . zee >&- 
+ls -l  >&- . zee 2>&1 
+ls -l  >&- . zee 2>&1 
+ls > fil
+cat fil
+cat < fil
+cat < file
+cat < fileezfzef
+cat < file
+cat < fil
+cat < fil > file
+cat file
+cat < fil>fil
+cat fil
+cat << o
+eoi
+ls
+cat eoi | rev 
+cat << eoi | rev
+laul
+mdr
+./21sh
+env
+ls
+ls
+ls -l 
+sh
+ls
+clear|refv
+clear|rev
+clear | erafezragfre 
+ls && eraagfer
+ls
+pwd
+ls|rev
+ls|daegfe
+ls
+ls|rev
+ls|rev
+ls
+cat|cat
+ls
+ls|rev
+ls|rev
+ls-rev
+ls|rev
+ls|rev|cat -e
+ls|rev|cat -e|rev|cat -e
+ls|rev|cat -e|rev|cat -e
+ls|rev|cat -e|rev|cat -e 
+cat | ls
+ls | cat -e 
+cat | rev | cat -e | cat | rev
+cat | rev | cat -e | cat | rev
+jobs
+clear
+cat | rev | cat -e | cat | rev
+cat | rev | cat -e | cat | rev
+ls -l . erzaf
+ls -l . erzaf >&-
+ls -l . erzaf >&- 2>&1
+ls -l . erzaf 2>&1 >&- 
+cl
+alias
+PWD
+cl
+alias
+env
+env
+unsetenv PWD TERM SHELL 
+env
+unsetenv SHELL_FOLD
+env
+unsetenv SHLVL HISTORY
+type -a kls
+type -a env
+type -a 
+ls
+env
+ls
+./21
+ls
+dzefdzef
+f
+ze
+f
+ezl | rev
+ls
+ls
+cl
+ev
+sl
+jobs
+ergfe
+jobs
+ls
+ls -l
+type ls
+clear
+ls
+alias
+HOME
+clear
+echo 
+ls
+env
+env -i ./21sh
+ls
+env
+unsetenv *
+ls
+clear
+ls
+env
+ls|rev
+cat|rev
+cat|rev
+env
+exit
+ls
+/bin/ls
+cleazr
+clear
+czfezf
+zefez
+ezfezfaezf
+ls ezafzef
+ezfezf
+ls
+echo $PZEAD
+ls
+lsdfaef
+clear
+env
+zeefz
+ls
+sl
+efe
+env
+sl
+LS
+sl
+/bin/ls
+zefz
+/bin/ls -l
+         ls
+clear
+env
+clear
+env
+env
+unsetenv SHELL SHELL_FOLD TERM PATH SHLVL
+env
+unsetenv HISTORY PWD
+ls
+env
+unsetenv SHELL SHELL_FOLD TERM PATH SHLVL PWD
+unsetenv SHELL SHELL_FOLD TERM PATH SHLVL PWD HISTORY
+unsetenv SHELL SHELL_FOLD TERM PATH SHLVL PWD HISTORY
+         ls
+unsetenv SHELL SHELL_FOLD TERM PATH SHLVL PWD HISTORY
+/bin/ls
+ls
+/bin/ls
+env
+cl
+env
+unsetenv -all
+env
+unsetenv -all
+ls
+env
+unsetenv -all
+cl
+alias
+env
+unsetenv -all
+unalias -all
+alias
+unset -all
+ls
+cl
+unsetenv -all
+clear
+ls
+rm -rf m s
+ls
+echo ls | ./21sh
+ls
+echo ls > file
+cat file | ./21sh
+echo ls | ./211sh
+sl | gerg
+clear
+echo ls
+echo ls | ./21sh
+echo ls | zaefze
+ls|earagfre
+echo lol | reearg
+zeafaze | rev
+ls
+clear
+alias
+cl
+env
+ls|age
+valazf
+ls|zaef
+zefze|gea
+ls|ezg
+zefze|rev
+ls| aerge
+ll
+cl
+alias
+unalias -all
+alias
+unsetenv -all
+zcho ls|erg
+ls|rev
+ls|ezrg
+cat << eoi | rev
+LAUL
+MDR
+PAUL
+clear
+ls
+ls|ezrg
+clear
+ls|ezargf
+fze|rev
+ls|rerez
+ls
+clear
+clear
+ls
+ls
+./fillit/fillit 
+cd fillit
+fillit t
+./fillit t
+cl
+alias
+make
+make re
+clear
+ls
+alias
+clear
+ll
+cat < eoi | rev
+ls
+cl
+zefze
+cat < eoi | rev
+cl
+alias
+azerf ze| rev
+ls | ezrzger
+ls
+ll
+ls|rgzerg
+l
+ll
+ls|ezrge
+ls|rev
+ls|rezg
+ls|zerzg
+ls|ezarzg
+ls|ezarzg
+ls
+ls|ezg
+zaefz|earag
+ls|rev
+ls|aerfg
+aezrf|zeg
+cat|rev|cat
+cat|rev|ergaz
+ls
+ls| rev
+l
+la
+cl
+alias
+env
+la
+ls
+ls|erzag
+ls -l . aezre
+ls -l . aezre
+ls -l . aezre
+ls -l . aezre
+jons
+jobs
+ls
+ls -l
+ls
+type ls -l
+type 'ls -l'
+type 
+ls
+ls -l
+ls -l
+ls
+cleazr
+clear
+ls-l
+ls -l
+clear
+clear
+ll
+cl
+alias
+ls
+ls -l
+ls
+clear
+ls
+s -l
+ll -s
+ll 
+cl
+alias
+ls|rev
+zefaze| rev
+cat < eoi | rev
+zeaf
+clear
+lzefzeaf
+ls
+rezfaazef
+ls
+ll
+ll -z
+ls . zefraezfa 2>&1
+ls . zefraezfa 2>&1 1>&-
+ls . zefraezfa 1>&- 2>&1
+ls . zefraezfa 1> file 2>&1
+ls >&-
+ls . >&- 2>&1
+ls . 2>&1 >&-
+ls . 2>&1 >&-
+ls .  zefze 2>&1 >&-
+ls .  zefze 2>&1 >&-
+ls
+clear
+ls >&-1
+ls
+ls >&-
+ls -z 2>&1
+ls -z 2>&-
+ls . zeafze 2>&-
+ls . zeafze 
+ls . zeafze 2>&1
+ls . zeafze 2>&-
+ls >&-
+zefze >&-
+ls
+ls .
+ls . zefa
+ls . zefa 2>&1
+ls . zefa 2>&1 | rev
+ls . zefa 2>&-
+ls>&-
+ls>&-
+ls . zefa 2>&-
+ls .
+ls . zeafze
+ls . zeafze 2>&-
+ls . zeafze 2>&-
+ls .
+ls -l
+ls -l >file 
+cat file
+clear
+ls
+ls 2>&-
+ls -l . zaefze 2>&-
+ls -l . zaefze 2>&-
+ls -l . zaefze 2>&-
+exit
+ls
+ll
+ls > file
+cat file
+ls >&-
+clear
+ls
+ls >&-
+ls . zefaze 2>&1
+ls . zefaze 2>&-
+ls . zefaze 2>&-
+ls > &-
+ls
+ls >&-
+ls . eazer 2>&-
+ls . eazer 2>&-
+ls . eazer 2>&-
+ls
+ll
+cl
+ls >&-
+ls . eazer 2>&-
+ls /dev/null
+ls
+ls >&-
+ls . eazer 2>&-
+ls . eazer 2>&-
+ls . eazer 2>&-
+ls . eazer 2>&-
+cat <&-
+cat <&-
+cat <&-
+cat < /dev/null
+cat < auteur
+ls
+ll
+cat < auteur
+cat < /dev/null
+cat <&-
+cat >&-
+cl
+cat <&-
+cat < file
+cat > file
+ls >&-
+ls > /dev/null
+ls >&+
+ls >&-
+ls -z >&-
+ls
+ls -z >&-
+ls . zeafze 2>&1
+ls . zeafze 2>&-
+cat <&-
+cat <&-
+cat >&-
+cat 2>&1 >&-
+cat 2>&1 1>&-
+ls . zaerfzea 2>&1 1>&-
+ls . zaerfzea 2>&1 1>&-
+ls . zaerfzea 1>&- 2>&1
+ls . zaerfzea 
+ls . zaerfzea 2>&-
+ls . zaerfzea 2>&-
+ls . zaerfzea 1>&- 2>&1
+ls . zaerfzea 2>&1 >&- 
+ll
+cl
+ls
+ls >&2
+ls >&2
+ls >&-
+ls 
+ls >&-
+ls >&-
+ls . zaerfzea 2>&1 1>&-
+ls . zaerfzea 2>&1 
+ls . zaerfzea 
+ls . zaerfzea 2>&-
+ls . zaerfzea 2>&1
+ls . zaerfzea 2>&-
+ls . zaerfzea 2>&- >&-
+ls . zaerfzea 2>&1 >&-
+ls . zaerfzea >&- 2>&1
+ls . zaerfzea >&- 2>&1
+ls . zaerfzea > file 2>&1
+cat file
+ls . zaerfzea > file 
+cat file
+ls .zefaze > file
+cat file
+ls
+ls .zefaze > file
+cat file
+ls .zefaze > file
+ls .zefaze >&- 
+ls .zefaze >&- 
+ls .zefaze >&- 
+ls .zefaze >&- 
+ls .zefaze >&- 
+ls . zefaze >&- 
+ls . zefaze 
+ls . zefaze 
+ls . zefaze >&-
+ls . zefaze >&-
+ls . zefaze >&-
+ls
+ls . zefaze >&-
+ls . zefaze >&- 2>&1
+ls . zefaze >&- 2>&1
+ls . zefaze >&- 
+ls . zefaze
+ls . zefaze >&-
+ls . zefaze >&- 2>&1
+ls . zefaze >&-
+ls . zefaze >&-
+ls . zefaze >&- 2>&1
+ls . zefaze 2>&1 >&- 
+ls . zefaze 2>&1 | rev
+ls azefaze 2>&1 | rev
+ls azefaze 2>&1 
+ls azefaze 
+ls azefaze 2>&1
+ls azefaze 2>&1| rev
+ls . zefaze 2>&1 | rev
+ls . zefaze 2>&1 | rev
+ls . zefaze 2>&1 | rev
+ls . zefaze 2>&1 
+ls . zefaze 2>&1 
+ls . zefaze 
+ls . zefaze 2>&1 
+ls . zefaze >&-
+ls . zefaze 
+ls . zefaze 
+ls . zefaze 2>&-
+ls . zefaze 2>&-
+ls . zefaze 2>&-
+ls . zefaze 2>&-
+ls . zefaze 2>&-
+ls . zefaze 2>&-
+ls . zefaze 2>&1 | rev
+ls . zefaze 2>&1 
+ls . zefaze 
+ls . zefaze 2>&1
+ls . zefaze 2>&1| rev
+ls . zefaze 2>&1
+clear
+ls | rev
+ls >file
+cat file
+ls 2>&file
+cat file
+ls
+rm -rf &
+ls
+rm -rf file
+ls
+ls > file
+cat file
+cl
+ll
+la
+cl
+ll >&1
+ll >&2
+ll >&2 | rev
+ll >&2 
+ll >&2
+ll >&2
+ls 2>&file
+lw
+ls
+cat &
+ls
+cat &
+jos
+jobs
+kill 23208
+kill 23208
+jobs
+cat &
+clr
+cl
+job
+cl
+alias
+ls >&-
+ls > file
+cat file
+ls . zaefz 2>&1
+ls . zaefz 2>&1 | rev
+ls . zaefz 2>&-1
+ls . zaefz 2>&-
+ls
+cl
+ls
+ls -z 2>&-
+ls -z 2> file
+cat file
+ls -z 2> file 1>&-
+cat file
+ls -z >&- 2> file 
+cat file
+ls
+ls -z
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&-
+ls -z 2>&-ls
+clear
+ls
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1 
+ls -z 
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>err
+cat err
+ls . zeafz 2>err 
+ls . zeafz 
+ls . zeafz  2>&-
+ls . zeafz  2>err
+ls . zeafz 2>err 
+ls . zeafz 2>err 
+pwd
+ls . zeafz 2>err 
+ls . zefze 
+ls . zefze 2>err
+ls . zefze 2>err
+ls . zefze 2>err
+ls . zefze 2>err >out
+cat out
+ls
+ls . zefze 2>err >out 
+ls
+ls
+ls . zefze 2>err >out
+ls
+cat err
+ls
+ls -z 2>&1
+ls -z 2>&1 | cat
+ls -z 2>&1 
+ls -z 2>&1 
+ls -z
+ls
+ls . zefze 2>err 
+cat err
+ls
+pwd
+cat| rev
+cat| rev|rev
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&-
+ls -z 2>&-
+ls . zaer 2>&-
+ls . zaer 2>&-
+ls -z 2>&1
+ls -z 2>&1|rev
+ls -z 2>&1
+ls -z 2>&-
+ls -z 1>&- 2>&1
+ls
+cat err
+ls . rezgfareg 2>err
+ls . rezgfareg 2>err >&-
+ls . rezgfareg 2>err 
+ls . rezgfareg 2>err 
+ls 2>&1
+ls
+ls 
+ls 2>&1
+ls 2>&1|rev
+ls 2>&-
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&2
+ls -z 2>&3
+ls -z 2>&8
+ls -z 2>&4
+ls -z 2>&3
+ls -z 2>&1
+ls -z 2>&3
+ls -z 2>&4
+ls -z 2>&3
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&-
+alias
+ls
+ls 2>&1
+ls 2>&1 | rev
+ls 2>&1 | rev
+ls
+ls 2>&1 | rev
+ls 2>&1 | rev
+ls 2>&1 
+ls 
+ls 2>&1
+ls 2>&1
+ls 2>&1 | rev
+ls 2>&11
+ls 2>&1
+ls 2>&1 | rev
+ls 2>&1
+ls 2>&1 | rev
+ls 2>&1
+ls 2>&1 | rev
+ls 2>&1 
+ls 2>&1 
+ls 2>&1 
+ls 2>&1 | rev
+ls 2>&1 
+ls -z 2>&1
+ls -z 2>&1|rev
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&-
+ls -z 2>&- 1>&2
+ls -z 2>&- 1>&2
+ls -z 2>&- 1>&2
+ls -z 2>&- 
+ls
+ls -z
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&1 
+ls -z 2>&1  >&-
+ls -z 2>&1  >file
+cat file
+ls
+ls
+ls . rezra 2>&1
+ls . rezra 2>&-
+ls . rezra 2>&1
+ls . rezra 2>&1 1>&-
+ls . rezra 2>&1 1> file
+cat file
+ls
+ls -l
+ls -z 2>&1
+clear
+ls . zaefaze 1>file
+cat file
+ls . zaefaze 1>file 2>&-
+cat file
+ls . zaefaze 1>file 2>err
+cat err
+cat file
+ls -l . azef 2>&1
+ls -l . azef 2>&1 1>&-
+ls
+clear
+ls >&-
+ls >&-
+ls >&-
+ls >file
+cat file
+ls . azeez 2>&1
+ls . azeez 2>&1 2>&1
+ls . azeez 2>&1 2>&1
+ls . azeez 2>&1 1>&2
+ls . azeez 2>err 1>file
+cat file
+cat err
+ls
+ls>file
+cat file
+ls . zaefez 2>&1
+ls . zaefez 2>&1 | rev
+ls . zaefez 2>&1 
+ls . zaefez 2>&1
+./21sh 0>&-
+./21sh 
+ls -z 2>err
+ls
+cat err
+ls
+ls -l . azefeae >file 
+ls -l . azefeae >file 
+cat file
+ls
+ls -l zzaer auteur
+ls -l zzaer auteur 2> /dev/null
+ls -l zzaer auteur 2>&1 | rev
+ls -l zzaer auteur 2> /dev/null
+ls -l zzaer auteur 2> /dev/nul
+ls
+ls 2>&1
+ls 1>&2
+ls 1>&2 | rev
+ls | rev
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1
+ls
+ls
+ls >&-
+ls >&-
+ls >&-
+ls
+ls -z
+ls >&-
+ls > file
+cat file
+ls
+ls >&-
+ls
+ls >&-
+ls
+ls >&-
+ls >&-
+ls
+ls >&-
+clear
+ls >&-
+ls 2>&1 1>&-
+ls >&- 2>&1
+ls -l . zaefzea
+ls -l . zaefzea >&-
+ls -l . zaefzea >&- 2>&1
+ls
+ls >&-
+ls >&- 2>&1
+ls >&- 2>&1
+ls >&- 
+ls >&- 
+ls -l . zaefzea >&- 2>&1
+ls -l . zaefzea >&- 
+ls -l . zaefzea >&- 
+ls -l . zaefzea 
+ls -l . zaefzea >&- 
+ls -z >&-
+ls -z >&- 2>&1
+ls -z >&- 
+ls -z >&- 2>&1
+exit
+ls -z 2>&-
+ls -z 2>&- 1>&2
+ls -z 2>&- 
+ls -z 2>&- 
+ls -z 
+ls -z 2>&- 
+ls -z 2>&- 
+ls -z 
+ls -z  2>&1
+ls -z  2>&1 1>&-
+ls -z  2>&1 
+ls -z  2>&1 
+ls -z  2>&1 
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&1
+ls -z 2>&-
+ls -z 2>&-
+ls -z 2>&-
+ls -z 2>&- 1>&2
+ls -z 2>&- 1>&2
+ls -z 2> file  1>&2
+cat file
+ls -z 2> file  1>&2
+cat file
+ls
+rm -rf file
+ls -z 2> file 
+cat file
+ls
+ls -z 2> file 
+ls
+ls -z >file
+ls
+ls -z 2>err
+cat err
+rm -rf err
+ls -z 2>err
+cat err
+ls . zefezf 2>err
+cat err
+ls . zefezf 2>err >&-
+ls . zefezf 2>err >file
+cat file
+ls . zefezf 2>err >file
+cat file
+ls -z 2>err
+cat err
+clear
+ls
+ls >&-
+clear
+ls
+ls -v
+ls -z
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1 
+ls -z 2>&1 
+ls -z 2>&1 
+ls
+ls -z 2>&1 
+ls -z 2>&1 
+ls -z 
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls
+clea
+rls
+ls
+ls 2>&1
+clear
+ls
+ls -l . 
+ls -l . zefz
+ls -l . zefz 1>&-
+ls -l . zefz >&- 2>&1
+ls -l . zefz 2>&-
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>&- 
+ls -l . zefz 2>&- 
+ls -l . zefz 2>&- 
+ls -l . zefz 2>&- 
+ls -l . azerfze
+ls -l . azerfze 2>&-
+ls -l . azerfze 2>&-
+ls -l . azerfze 2>&-
+ls -l . azerfze 2>&-
+ls -l . azerfze 2>&-
+ls -l . azerfze 2>&-
+ls -l . azerfze 2>&- 1>&-
+ls -l . azerfze 2>&- 
+ls -l . azerfze 2>&- 
+ls -l . azerfze 2>&- 
+ls -l . azerfze 2>&- 
+ls
+ls -l . zefz 2>&- 
+ls -l . zefz 2>&- 
+zef
+ls -l . zefz 2>&- 
+ls -l . zefz 
+ls -l . zefz 2>&-
+echo lol > file
+cat file
+ls
+ls
+ls
+echo lol > file
+cat file
+ls
+ls . zaerfze 2>err
+ls . zaerfze 2>err
+ls . zaerfze 2>&-
+ls . zaerfze 2>&- 1>&2
+ls . zaerfze 2>&- 
+ls . zaerfze 
+ls . zaerfze 2>&- 
+ls
+ls
+ls > file
+file
+cat file
+ls -l . zefz 2>&- 
+ls -l . zefz 
+ls -l . zefz 2> /dev/null
+ls -l . zefz 2>&-
+ls -l . zefz 2>&-
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>err
+ls -l . zefz 2>err 1>file
+cat file
+ls -l . zefz 2>err 1>file
+cat file
+echo lol > file
+ls -l . zefz 2>err 1>file
+cat file
+cat file
+ls
+ls -l . zefz 2>err 1>file
+cat file
+cat err
+ls -l . zefz 2>&- 1>&2
+ls -l . zefz 2>&- 1> file
+cat file
+echo lol 2>&1 >file
+cat file
+echo mdr  2>&1 >file; cat file
+cat file
+echo mdr  2>&1 >file; cat file
+echo mdr  2>&1 >file; cat file
+echo mdr  2>err >file; cat file
+cat err
+ls
+clear
+ls
+cat < file
+ls >&-
+ls -z 2>&1
+ls -z 2>&1 1>&2
+ls -z 2>&1 1>&2
+ls -z 2>&1 1>&2
+ls
+ls >&1
+ls >&2
+ls >&2 | rev
+ls -z 2>&1 | rev
+ls -z 
+ls -z 2>&1
+ls -z 2>&1 1>&-
+ls -z 2>&1 1>file
+cat file
+ls -z 2>err 1>file
+cat err
+ls 
+ls > file
+cat file
+env
+clear
+ls
+ls >&-
+ls >file 2>&1
+cat file
+ls >file 2>&1
+ls >file 2>err
+cat err
+cat file
+clear
+ls
+ls 2>&1
+ls 2>&1 2>file
+ls 2>&1 2>file
+ls
+ls 2>&1
+ls 2>&1 1>&2
+ls
+ls >&1
+ls >&2
+ls >&2 >&1
+ls >&2 >&1
+ls
+ls 1>&2 2>&1
+ls
+ls 1>&2 2>&1
+ls
+ls -z
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1
+ls -z 2>&1 | rev
+ls -z 2>&1 1>&2
+ls -z 2>&- 1>&2
+ls -z >&- 2>&1
+ls -z 2>&1 1>&-
+clear
+l
+ls
+clar
+l
+ll
+clear
+l
+ls
+clear
+ls
+cat < file
+cat << eoi| rev
+aezf
+azefda
+zefaze
+faez
+f
+eazf
+eoi
+cleare
+clear
+clear | rev >&2
+clear |1>&- rev >&2
+0>&- ./21sh
+clear
+l
+ls -l . zefzefaze 2>&1
+ls -l . zefzefaze 2>&1 >&-
+cl
+cl
+cl
+env
+ls
+ls . azefazef 2>&1 1>&-
+ls . azefazef 1>&- 2>&1
+ls
+ls . azefazef 1>&- 2>&1
+cl
+ls . azefazef 1>&- 2>&1
+ls . azefazef 1>&- 2>&1
+clear
+l
+ll
+ca
+cat < file >file
+cat file
+ls
+ls > file$
+rev < file
+rev < file >nfile
+cat nfile
+clear
+ls
+ls
+m -rf file nfile err
+ls
+rm -rf file err nfile
+ls
+ls
+pwd
+ls -z 2>&1 | rev
+ls
+ls| rev
+cat << eoi| rev
+LAUL
+ls
+cat auteur
+ls
+ls
+ls
+ls . ezfze
+clear
+l
+scat | rev
+cat | zegfaz
+cat | reag| ergza| fgae
+ls| rev|rev|rev|ezgae
+ls
+env
+clear
+ls
+ls|rev
+ls|rev|rev
+ls|rev|rev|cat
+ls|rev|rev|cat
+ls|rev|rev|cat| zeagergae
+sl
+SL
+LSD
+LS
+ls
+clear
+ls
+ls | rev
+cat 
+ls
+cat
+ls
+cat
+cat
+cat
+clear
+ls
+ls|rev
+alias
+vv1
+azf
+zaef
+f
+z
+ef
+ls|rev
+ls|rev|rev
+ls|rev|rev|cat
+cat| rev|rev
+ls|rev|rev|rev
+ls . zaefzerfazerd 2>&1 | rev
+ls . zaefzerfazerd 2>&1 >&- | rev
+ls . zaefzerfazerd 2>&1 >&- | rev
+ls . zaefzerfazerd 2>&1 > /dev/null | rev
+ls >file|rev
+cat file
+ls >file
+cat file
+ls >file|rev
+cat fime
+cat file
+cat file
+ls > file  | rev
+cat file
+ls > file
+cat file
+ls > file| rev
+cat file
+ls >file | rev
+ls|rev
+ls >file | rev
+ ls|rev
+ls
+sl
+ls>&-
+ls . zaefzerfazerd 2>&1 
+ls . zaefzerfazerd 2>&1 >&-
+ls . zaefzerfazerd >&- 2>&1
+ls . zaefzerfazerd >&- 2>&1
+ls . zaefzerfazerd >&- 2>&1
+ls
+ls . zaefzerfazerd >&- 2>&1
+ls . zaefzerfazerd >&- 2>&1
+sudo make fre
+ls . zaefzerfazerd >&- 2>&1
+ls . zaefzerfazerd >&- 2>&1
+ls . zaefzerfazerd >&- | rev
+ls . zaefzerfazerd >&- 2>&1
+ls . zaefzerfazerd >&1 
+ls > file| rev
+cat file
+ls -l > file | rev
+cat file
+cleazr
+cl
+env
+ls
+env
+ls -l . zefzef
+ls -l . zefzef 2>&-
+ls -l . zefzef 2>&- 1>&2
+ls -l . zefzef 2>&- 
+clra
+clear
+ls
+clear
+ls
+ls >&- | rev
+type gdb
+ls
+clezra
+clear
+ls
+env
+ls|rev
+sudo make save

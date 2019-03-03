@@ -34,7 +34,7 @@ t_redirect	*new_redirection(void)
 		return (NULL);
 	new->t = 0;
 	new->to = -2;
-	new->from = -1;
+	new->from = -2;
 	new->path = NULL;
 	new->heredoc = NULL;
 	new->next = NULL;

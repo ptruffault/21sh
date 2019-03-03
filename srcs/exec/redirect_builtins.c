@@ -19,24 +19,30 @@ int			ft_redirect_builtin(t_tree *t, t_process *p)
 	r = t->r;
 	while (r)
 	{
-		if (get_destination_fd(r) < 0)
-			return (-1);
+		if (!get_destination_fd(r))
+		{
+			error("can't set redirect", NULL);
+			return (0);
+		}
 		if (IS_STD(r->from) && IS_STD(p->save[r->from]))
 			p->save[r->from] = dup(r->from);
 		if (IS_STD(r->to) && IS_STD(p->save[r->to]))
 			p->save[r->to] = dup(r->to);
-		if (fd_dup(r->to, r->from) < 0)
-			error("redirection failed", NULL);
+		if (fd_dup(r->to, r->from, p) < 0)
+			return (0);
+		if (IS_STD(r->from))
+			p->fd[r->from] = r->to;
 		r = r->next;
 	}
-	return (0);
+	return (1);
 }
 
-void		ft_reset_fd(int fd[3])
+void		ft_reset_fd(t_process *p)
 {
 	int	i;
 
 	i = -1;
 	while (++i <= 2)
-		fd[i] = fd_dup(fd[i], i);
+		if (p->save[i] != i)
+			p->fd[i] = dup2(p->save[i], i);
 }

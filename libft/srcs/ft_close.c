@@ -16,11 +16,12 @@ int	ft_close(int fd)
 {
 	char *n;
 
-	if (!(n = ft_itoa(fd)) || close(fd) == -1)
+	if (fd >= 0  && close(fd) == -1)
 	{
+		n = ft_itoa(fd);
 		warning("close failure fd ->", n);
+		ft_strdel(&n);
 		return (0);
 	}
-	ft_strdel(&n);
 	return (1);
 }

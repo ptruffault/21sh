@@ -87,6 +87,7 @@ void	warning(char *descript, char *opts);
 void	error(char *descript, char *opts);
 void	warning_c(char *descript, char opts);
 void	error_c(char *descript, char opts);
+void	error_i(char *descrpt, int i);
 char	*ft_char_to_str(char c);
 char	*ft_itoa_base(intmax_t value, int base);
 char	*ft_itoa_base_u(uintmax_t value, int base);
