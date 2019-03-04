@@ -30,23 +30,16 @@ static t_tree	*ft_end(t_tree *t, t_process *p1, t_process *p2, int pip[2])
 
 static void		ft_exec_right(t_tree *t, int pip[2], t_shell *sh, t_process *p)
 {
-	int ret;
-
 	dup2(pip[0], STDIN_FILENO);
 	ft_close(pip[1]);
 	if (t->next->o_type == O_PIPE && t->next->next)
-	{
 		exec_pipe(t->next);
-		ret = t->next->ret;
-	}
 	else
-	{
 		ft_exec_son(p, t->next);
-		ret = t->ret;
-	}
+	warning("execve fucked up", p->cmd);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
-	exit(ret);
+	exit(-1);
 }
 
 static void		ft_exec_left(t_tree *t, t_process *p, int pip[2], t_shell *sh)
@@ -54,9 +47,10 @@ static void		ft_exec_left(t_tree *t, t_process *p, int pip[2], t_shell *sh)
 	dup2(pip[1], STDOUT_FILENO);
 	close(pip[0]);
 	ft_exec_son(p, t);
+	warning("execve fucked up", p->cmd);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
-	exit(p->ret);
+	exit(-1);
 }
 
 t_tree			*exec_pipe(t_tree *t)

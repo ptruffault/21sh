@@ -272,3 +272,96 @@ clear
 ls
 cat /dev/random
 make save
+ls
+clear
+ls
+ls
+./21sh
+echo ls | //21sh
+echo ls | //21sh
+ls
+ls
+ls|refv
+ls|rev
+ls
+clear
+ls
+clear
+ls
+ls
+clear
+la
+la
+ls
+clear
+ls
+ls
+clear
+ls|rev
+ls
+ls
+cat << eoi
+LAUL
+rev
+l
+ll
+clear
+ls > k | grep 1
+> k ls
+< k cat
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+ll
+LS
+ls
+clear
+make re
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+base64 /dev/random | head -c 1000 | grep 42
+clear
+;ls
+echo $PWD
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+ls
+ls
+clear
+ls
+env
+ls | rev
+echo $L
+echo $L
+echo $?
+jobs
+ls
+ls|rev
+jobs
+clear
+ls
+env
+ls
+cat << eoi | rev
+LAUL
+eoi
+ls
+emv
+wdfqw
+qwe
+q

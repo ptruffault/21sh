@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-static void	ft_execv_son(t_process *p, t_tree *t)
+void	ft_exec_son(t_process *p, t_tree *t)
 {
 	if (ft_redirect_builtin(t, p))
 	{
@@ -21,21 +21,6 @@ static void	ft_execv_son(t_process *p, t_tree *t)
 		else if (p->builtins == TRUE)
 			p->ret = run_builtin(t, p->argv);
 		else if (p->cmd)
-		{
 			execve(p->cmd, p->argv, p->env);
-			warning("execve fucked up", p->cmd);
-		}
-	}
-}
-
-void		ft_exec_son(t_process *p, t_tree *t)
-{
-	ft_execv_son(p, t);
-	if (p->status == RUNNING_FG)
-	{
-		if (p->builtins == FALSE)
-			wait(&p->ret);
-		if (p->status != KILLED)
-			p->status = DONE;
 	}
 }

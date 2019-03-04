@@ -16,7 +16,7 @@ void	error(char *descript, char *opts)
 {
 	ft_putstr_fd("\a\033[04m\033[00;31mError: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
-	if (opts)
+	if (opts && *opts)
 	{
 		ft_putstr_fd(" \033[1;32m(\033[00m", STDERR_FILENO);
 		ft_putstr_fd(opts, STDERR_FILENO);
@@ -47,7 +47,7 @@ void	warning(char *descript, char *opts)
 {
 	ft_putstr_fd("\a\033[04m\033[1;35mWarning: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
-	if (opts)
+	if (opts && *opts)
 	{
 		ft_putstr_fd(" \033[1;32m(\033[00m", STDERR_FILENO);
 		ft_putstr_fd(opts, STDERR_FILENO);

@@ -14,12 +14,6 @@
 
 t_edit	init_tedit(t_shell *sh)
 {
-	if (!isatty(0))
-	{
-		ft_free_tshell(sh);
-		error("STDIN is broken", NULL);
-		exit(0);
-	}
 	ft_update_windows(&sh->e);
 	sh->e.edited = FALSE;
 	sh->e.curr = 0;

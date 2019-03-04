@@ -17,5 +17,8 @@ char	*ft_strpull(char *src, char *ptr, int len, char *value)
 	char *p1;
 
 	p1 = ft_strjoin_fr(ft_strndup(src, ptr - src), ft_strdup(value));
-	return (ft_strjoin_fr(p1, ft_strdup(ptr + len + 1)));
+	if (len <= (int)ft_strlen(ptr))
+		return (ft_strjoin_fr(p1, ft_strdup(ptr + len + 1)));
+	else
+		return (p1);
 }

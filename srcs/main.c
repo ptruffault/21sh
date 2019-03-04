@@ -25,8 +25,6 @@ int		main(int argc, char **argv, char **envv)
 	char	*in;
 
 	(void)argc;
-	set_signals();
-	ft_get_set_shell(&sh);
 	init_shell(&sh, envv, argv);
 	while (42)
 	{

@@ -16,7 +16,7 @@ t_process	*get_last_done_process(t_process *p)
 {
 	while (p)
 	{
-		if (p->status == DONE)
+		if (p && p->status == DONE)
 			return (p);
 		p = p->next;
 	}
@@ -29,14 +29,14 @@ char		*ft_exp_spec(char *ret, char *ptr, t_shell *sh)
 	t_process	*p;
 
 	val = NULL;
-	if ((p = get_last_done_process(sh->process)))
+	if (sh->process && (p = get_last_done_process(sh->process)))
 	{
 		if (ptr[1] == '!')
 			val = ft_itoa(p->pid);
 		else if (ptr[1] == '?')
 			val = ft_itoa(p->ret);
 	}
-	ptr = ft_strpull(ret, ptr, 1, val);
+	ptr = ft_strpull(ret, ptr, 2, val);
 	ft_strdel(&val);
 	ft_strdel(&ret);
 	return (ptr);
@@ -75,7 +75,8 @@ t_word		*ft_expention(t_word *w)
 	while (w)
 	{
 		if (IS_EXP(w->type) && w->word)
-			w->word = ft_exp_var(w->word, sh);
+			if (!(w->word = ft_exp_var(w->word, sh)))
+				return (head);
 		w = w->next;
 	}
 	return (head);

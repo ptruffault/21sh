@@ -72,15 +72,17 @@ static t_redirect	*get_redirection(t_word *w)
 {
 	t_redirect *new;
 
-	new = new_redirection();
-	new->t = ft_find_redirect_type(w->word);
-	if (((new->t == R_RIGHT || new->t == R_DRIGHT)
-	&& !(new = parse_right_redirect(new, w)))
-	|| ((new->t == R_LEFT || new->t == R_DLEFT)
-	&& !(new = parse_left_redirect(new, w))))
+	if ((new = new_redirection()))
 	{
-		error("invalid redirection", "argument needed");
-		return (NULL);
+		new->t = ft_find_redirect_type(w->word);
+		if (((new->t == R_RIGHT || new->t == R_DRIGHT)
+		&& !(new = parse_right_redirect(new, w)))
+		|| ((new->t == R_LEFT || new->t == R_DLEFT)
+		&& !(new = parse_left_redirect(new, w))))
+		{
+			error("invalid redirection", "argument needed");
+			return (NULL);
+		}
 	}
 	return (new);
 }

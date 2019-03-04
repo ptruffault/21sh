@@ -1,0 +1,1 @@
+ls  > tmp;rm -rf `diff tmp sys/files | cut -d "<" -f2` tmp

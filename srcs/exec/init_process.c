@@ -24,6 +24,7 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 	new->ret = 0;
 	new->pid = 0;
 	new->env = NULL;
+	new->builtins = FALSE;
 }
 
 static t_process	*ft_abort(t_process *p)
@@ -31,6 +32,7 @@ static t_process	*ft_abort(t_process *p)
 	ft_reset_fd(p);
 	if (p->argv)
 		ft_freestrarr(p->argv);
+	ft_freestrarr(p->env);
 	free(p);
 	return (NULL);
 }
@@ -42,15 +44,13 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 	new = NULL;
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
-		new->builtins = FALSE;
 		ft_init_fd(new, t);
+		new->env = tenvv_to_tab(sh->env);
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
 			return (ft_abort(new));
 		if (check_builtin(*new->argv) && (new->cmd = ft_strdup(*new->argv)))
 			new->builtins = TRUE;
-		else if ((new->cmd = get_bin_path(*new->argv, sh->env)))
-			new->env = tenvv_to_tab(sh->env);
-		else
+		else if (!(new->cmd = get_bin_path(*new->argv, sh->env)))
 		{
 			error("command not found", *new->argv);
 			return (ft_abort(new));

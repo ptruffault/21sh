@@ -16,6 +16,8 @@ int			ft_redirect_builtin(t_tree *t, t_process *p)
 {
 	t_redirect *r;
 
+	if (!t->r)
+		return (1);
 	r = t->r;
 	while (r)
 	{

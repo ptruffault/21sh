@@ -50,7 +50,7 @@ void	ft_lex_parenth(t_eval *e)
 void	ft_lex_var(t_eval *e)
 {
 	e->eval[e->curr++] = 'v';
-	if (e->s[e->curr - 1] == '$')
+	if (e->s[e->curr - 1] == '$' && e->s[e->curr])
 	{
 		if (ft_isparenth(e->s[e->curr]))
 			ft_lex_parenth(e);
@@ -68,7 +68,7 @@ void	ft_lex_var(t_eval *e)
 void	ft_lex_dquote(t_eval *e)
 {
 	e->eval[e->curr++] = ' ';
-	while (e->s[e->curr] != 0 && e->s[e->curr] != '"')
+	while (e->s[e->curr] && e->s[e->curr] != '"')
 	{
 		if (e->s[e->curr] == '\\' && (e->eval[e->curr++] = 'q')
 		&& e->s[e->curr + 1] == '"')
