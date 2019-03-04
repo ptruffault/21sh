@@ -93,7 +93,7 @@ static t_envv	*ft_env_option(t_envv *tmp, char **input, int *i)
 	return (tmp);
 }
 
-int			ft_env(t_envv *envv, char **argv)
+int				ft_env(t_envv *envv, char **argv)
 {
 	t_envv	*tmp;
 	int		i;

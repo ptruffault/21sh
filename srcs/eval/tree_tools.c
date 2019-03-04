@@ -40,3 +40,32 @@ t_redirect	*new_redirection(void)
 	new->next = NULL;
 	return (new);
 }
+
+static int	find_operateur(char *op)
+{
+	char	*operateur[5];
+	int		i;
+
+	operateur[0] = "&&";
+	operateur[1] = "||";
+	operateur[2] = ";";
+	operateur[3] = "|";
+	operateur[4] = "&";
+	i = 0;
+	while (i < 5)
+		if (ft_strequ(operateur[i++], op))
+			return (i);
+	return (0);
+}
+
+t_tree		*add_newttree(t_tree *tree, t_word *w)
+{
+	tree->o_type = find_operateur(w->word);
+	if (w->type != 0)
+	{
+		if (!(tree->next = new_tree()))
+			return (tree);
+		w = w->next;
+	}
+	return (tree->next);
+}

@@ -14,12 +14,12 @@
 
 char	*ft_get_prev_path(char *path)
 {
-	char *new;
-	int len;
-	int i;
+	char	*new;
+	int		len;
+	int		i;
 
 	new = NULL;
-	if (ft_strchr(path , '/'))
+	if (ft_strchr(path, '/'))
 	{
 		len = ft_strlen(path);
 		i = len - 1;

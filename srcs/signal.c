@@ -28,6 +28,21 @@ t_process	*ft_wait_background(t_process *p)
 	return (NULL);
 }
 
+void		ft_sigint(t_shell *sh)
+{
+	if (!(sh && sh->process
+	&& kill_running_fg_process(sh->process, SIGINT)))
+	{
+		if (sh->heredoc == 0)
+			ft_putchar_fd('\n', 0);
+		ft_delete_line(&sh->e);
+		ft_strdel(&sh->e.input);
+		if (sh->heredoc == 0)
+			ft_disp(sh);
+		sh->e = init_tedit(sh);
+	}
+}
+
 void		sig_handler(int sig)
 {
 	t_shell		*sh;
@@ -35,19 +50,7 @@ void		sig_handler(int sig)
 
 	sh = ft_get_set_shell(NULL);
 	if (sig == SIGINT)
-	{
-		if (!(sh && sh->process
-		&& kill_running_fg_process(sh->process, SIGINT)))
-		{
-			if (sh->heredoc == 0)
-				ft_putchar_fd('\n', 0);
-			ft_delete_line(&sh->e);
-			ft_strdel(&sh->e.input);
-			if (sh->heredoc == 0)
-				ft_disp(sh);
-			sh->e = init_tedit(sh);
-		}
-	}
+		ft_sigint(sh);
 	if (sig == SIGWINCH)
 		ft_update_windows(&sh->e);
 	if (sig == SIGTSTP && sh && sh->process)

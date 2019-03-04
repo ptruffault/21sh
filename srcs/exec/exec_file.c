@@ -33,7 +33,7 @@ int		exec_fd(int fd)
 	return (i);
 }
 
-int	exec_file(char *path)
+int		exec_file(char *path)
 {
 	int		fd;
 

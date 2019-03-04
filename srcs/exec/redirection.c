@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-int check_fd(t_process *p, int fd)
+int			check_fd(t_process *p, int fd)
 {
 	if (IS_STD(fd))
 	{
@@ -37,7 +37,7 @@ int			fd_dup(int fd1, int fd2, t_process *p)
 	|| (fd2 = check_fd(p, fd2)) == -2)
 		return (-1);
 	if (fd1 == -1)
-		fd1 = open("/dev/null", O_RDWR | O_TRUNC | O_CREAT , S_IRWXU);
+		fd1 = open("/dev/null", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
 	ret = dup2(fd1, fd2);
 	if (!IS_STD(fd1))
 		ft_close(fd1);
@@ -67,7 +67,7 @@ int			get_destination_fd(t_redirect *r)
 	|| (r->t == R_DRIGHT && r->to == -2 &&
 	(r->to = open(r->path, O_RDWR | O_APPEND | O_CREAT, S_IRWXU)) == -1)
 	|| (r->t == R_LEFT && r->to == -2 &&
-	(r->to = open(r->path, O_RDWR , S_IRWXU)) == -1))
+	(r->to = open(r->path, O_RDWR, S_IRWXU)) == -1))
 	{
 		warning("can't open this file", r->path);
 		perror(NULL);

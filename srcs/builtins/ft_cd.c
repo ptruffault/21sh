@@ -12,10 +12,10 @@
 
 #include "../../includes/shell42.h"
 
-t_envv	*change_dir(char *path, t_envv *envv)
+t_envv		*change_dir(char *path, t_envv *envv)
 {
 	char	buff[4097];
-	char 	*cwd;
+	char	*cwd;
 
 	cwd = getcwd(buff, 4096);
 	if (!chdir(path))
@@ -35,7 +35,7 @@ t_envv	*change_dir(char *path, t_envv *envv)
 	return (envv);
 }
 
-t_envv			*ft_cd(char **input, t_envv *envv)
+t_envv		*ft_cd(char **input, t_envv *envv)
 {
 	if (!(input[1]))
 		if (get_tenvv_val(envv, "HOME"))
@@ -46,7 +46,7 @@ t_envv			*ft_cd(char **input, t_envv *envv)
 		if (get_tenvv_val(envv, "HOME"))
 			return (change_dir(get_tenvv_val(envv, "OLDPWD"), envv));
 		else
-			error("UNSET VAR", "OLDPWD");	
+			error("UNSET VAR", "OLDPWD");
 	else if (input[1])
 		return (change_dir(input[1], envv));
 	return (envv);

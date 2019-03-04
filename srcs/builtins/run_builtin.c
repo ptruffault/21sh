@@ -65,5 +65,5 @@ int			run_builtin(t_tree *t, char **argv)
 		return (ft_type(t->cmd->next));
 	else if (ft_strequ(*argv, "42"))
 		return (exec_file(argv[1]));
-	return(change_envv(argv, sh));
+	return (change_envv(argv, sh));
 }

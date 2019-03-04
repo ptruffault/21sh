@@ -119,7 +119,7 @@ typedef struct	s_tree
 typedef struct	s_process
 {
 	int					save[3];
-	int 				fd[4];
+	int					fd[4];
 	t_bool				builtins;
 	char				*cmd;
 	enum e_pstatus		status;
@@ -131,7 +131,7 @@ typedef struct	s_process
 
 typedef struct	s_shell
 {
-	int 			pid;
+	int				pid;
 	int				heredoc;
 	t_envv			*env;
 	t_envv			*intern;

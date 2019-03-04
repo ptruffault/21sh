@@ -12,7 +12,7 @@
 
 #include "../includes/shell42.h"
 
-static void		ft_null(t_shell *sh, char **envv)
+static void	ft_null(t_shell *sh, char **envv)
 {
 	sh->heredoc = 0;
 	sh->intern = NULL;
@@ -27,7 +27,7 @@ static void		ft_null(t_shell *sh, char **envv)
 void		init_shell(t_shell *sh, char **envv, char **argv)
 {
 	ft_null(sh, envv);
-	init_env(sh,  argv);
+	init_env(sh, argv);
 	if (isatty(0) == 0)
 	{
 		if (exec_fd(0) == 0)

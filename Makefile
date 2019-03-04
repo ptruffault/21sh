@@ -20,11 +20,12 @@ FILES		=		main.c \
 					init_shell.c \
 					ft_get_set.c \
 					ft_free_tshell.c \
-					init_env.c
+					init_envv.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \
 					exec_pipe.c\
+					execve_pipe.c \
 					exec_file.c \
 					redirection.c \
 					redirect_builtins.c \

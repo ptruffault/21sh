@@ -1873,3 +1873,102 @@ echo $?
 echo $?
 ls -z
 echo $?
+ls
+ls
+alias
+ls
+clear
+env
+cl
+ls | rev |cat -e | rev |cat -e
+cl
+alias
+ls
+alias
+type ls
+clear
+type name=bal
+name=vql
+name=vwlq cd
+jobs
+env
+cl
+env
+ls -G
+ls
+ls
+ls
+ls
+ls
+sl
+sls
+ls -l
+ls -a
+ls *
+ls
+env
+ls | rev
+ls -l auteur qweqfef
+ls -l auteur qweqfef 2>&1 | rev
+ls -l auteur qweqfef 2>&1 
+ls -l auteur qweqfef 2>&1 >&-
+ls -l auteur qweqfef >&- 2>&1
+cat << eoi
+LAUL
+cat << eoi | rev
+LAUL
+env
+ls
+ls
+ls
+clear
+jobs
+echo lol | jobs
+echo lol | jobs | echo mdr
+echo lol | jobs 
+vim src/exec/execv_pipe.c
+ls
+clear
+ls|rev
+ls |rev |cat
+cat |cat
+cat|rev|cat |rev
+clear
+ls
+env
+ls . erqgqerg 2>&1
+ls . erqgqerg 2>&1 | rev
+ls
+ls -l 
+ls -l > file
+ls -l > file && ls && ls -z || env
+cat file
+ls > file
+cat file
+ls
+ls > file
+ls
+ls > file && ls -z || env
+cat file
+clear
+ls
+./21
+cl
+alias
+ls | rev
+ls
+env
+ls
+ls && ls | rev
+ls
+env
+ls
+ls
+clear
+ls|rev
+cat
+jobs
+ls
+clear
+ls
+env

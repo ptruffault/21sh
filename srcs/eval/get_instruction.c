@@ -22,33 +22,11 @@ static t_word	*get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-static int		find_operateur(char *op)
+static t_tree	*ft_syntax(t_tree *t)
 {
-	char	*operateur[5];
-	int		i;
-
-	operateur[0] = "&&";
-	operateur[1] = "||";
-	operateur[2] = ";";
-	operateur[3] = "|";
-	operateur[4] = "&";
-	i = 0;
-	while (i < 5)
-		if (ft_strequ(operateur[i++], op))
-			return (i);
-	return (0);
-}
-
-static t_tree	*add_newttree(t_tree *tree, t_word *w)
-{
-	tree->o_type = find_operateur(w->word);
-	if (w->type != 0)
-	{
-		if (!(tree->next = new_tree()))
-			return (tree);
-		w = w->next;
-	}
-	return (tree->next);
+	error("invalid redirection syntax", NULL);
+	ft_free_tree(t);
+	return (NULL);
 }
 
 static t_tree	*built_tree(t_tree *head, t_word *w)
@@ -63,16 +41,10 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
 		else if (tmp && tmp->type == REDIRECT)
-		{
-			if (!(tmp = get_redirections(tree, tmp)))
-			{
-				error("invalid redirection syntax", NULL);
-				ft_free_tree(head);
-				return (NULL);
-			}
-			else
+			if ((tmp = get_redirections(tree, tmp)))
 				tmp = tmp->next;
-		}
+			else
+				return (ft_syntax(head));
 		else if (tmp && tmp->type == OPERATEUR)
 		{
 			tree = add_newttree(tree, tmp);

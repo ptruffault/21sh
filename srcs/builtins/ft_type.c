@@ -66,7 +66,7 @@ static int		handle_opts(t_word *w, char opts[4], t_shell *sh)
 	return (1);
 }
 
-int			ft_type(t_word *w)
+int				ft_type(t_word *w)
 {
 	t_shell	*sh;
 	char	opts[4];

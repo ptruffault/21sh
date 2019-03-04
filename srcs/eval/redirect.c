@@ -49,7 +49,7 @@ static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
 	else if ((ptr = ft_strchr(w->word, '&')) && ft_isdigit(*(ptr + 1)))
 		new->to = ft_atoi(ptr + 1);
 	else if ((ptr = ft_strchr(w->word, '&')) && *(ptr + 1) == '-')
-			new->to = -1;
+		new->to = -1;
 	else if (w->next && w->next->word)
 		new->path = ft_strdup(w->next->word);
 	else
@@ -87,12 +87,12 @@ static t_redirect	*get_redirection(t_word *w)
 
 t_word				*get_redirections(t_tree *t, t_word *w)
 {
-	t_redirect *new;
+	t_redirect	*new;
 	t_redirect	*tmp;
 
 	if ((new = get_redirection(w)))
 	{
-		 if (new->path && w->next)
+		if (new->path && w->next)
 			w = w->next;
 		if (t->r)
 		{

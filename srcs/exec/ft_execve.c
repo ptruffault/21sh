@@ -12,6 +12,23 @@
 
 #include "../../includes/shell42.h"
 
+static void	ft_son(t_tree *t, t_process *p, t_shell *sh, char **env)
+{
+	if (t->r && !ft_redirect_builtin(t, p))
+		exit(-1);
+	if (!p->cmd)
+		error("unknow command", t->cmd->word);
+	else
+	{
+		execve(p->cmd, p->argv, env);
+		warning("execve fucked up", p->cmd);
+	}
+	ft_free_tshell(sh);
+	ft_freestrarr(env);
+	ft_free_tree(ft_get_set_tree(NULL));
+	exit(-1);
+}
+
 void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
 	char	**env;
@@ -20,27 +37,13 @@ void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 	if (p->builtins == TRUE)
 	{
 		if (t->r && !ft_redirect_builtin(t, p))
-			return ;	
+			return ;
 		p->ret = run_builtin(t, p->argv);
 	}
 	else if ((p->pid = fork()) == -1)
 		warning("fork failed to create a new process", p->cmd);
 	else if (p->pid == 0)
-	{
-		if (t->r && !ft_redirect_builtin(t, p))
-			exit(-1);
-		if (!p->cmd)
-			error("unknow command",t->cmd->word);
-		else
-		{
-			execve(p->cmd, p->argv, env);
-			warning("execve fucked up", p->cmd);
-		}
-		ft_free_tshell(sh);
-		ft_freestrarr(env);
-		ft_free_tree(ft_get_set_tree(NULL));
-		exit(-1);
-	}
+		ft_son(t, p, sh, env);
 	ft_freestrarr(env);
 }
 
