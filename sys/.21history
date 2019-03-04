@@ -87,3 +87,188 @@ cat << eoi| cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev
 LAUL
 ls
 alias
+ls
+ls > file
+cat << eoi | rev | cat -e | rev
+LAUL
+clear
+ls
+env
+ls | rev
+ls -l
+ll -l -l -l -l       -l > file ; cat < file 
+cat file
+clear
+rm -rf file
+ls
+cat \ rev
+cat | rev
+cat | rev
+ls
+cat
+top
+top
+clear
+vim lol
+ls
+vim lol
+cat lol
+rm -rf lol
+s
+ls
+./21
+echo ls | ./21sh
+ls
+echo ls|rev |./21sh
+echo ls|rev | ./21sh
+echo "ls|rev" | ./21sh
+ls
+ls | rev
+env
+pwd
+unsetenv -all
+echo $?
+echo $?
+echo $?
+echo $PWD
+echo $PWD $WEFE ${LOL} 
+echo $?
+exit
+ls
+clear
+alias
+clear
+cat << eoi | rev | cat -e 
+LAUL
+MDR
+echo $!
+echo $!
+ls
+ls|rev
+ls | rev
+ls | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e 
+echo $!
+echo $!
+ls | rev
+cat << eoi | rev > file ; cat < file && ls -z || echo OK
+LAUL
+rthwrth 2>&1 | rev
+exit
+ls
+cat < eoi 
+cat
+ls
+cat < file
+ls
+sys
+cd sys
+s
+sll
+ll
+ll
+ls
+la
+alias
+clear
+file
+type ls
+type clear
+ls
+la
+ll
+cl
+env
+ls
+cl
+env
+env -i ls -l
+env -i ls -l
+env -i ls
+ls
+clear
+ls
+jobs
+ls
+env -i ls
+env -i echo $PWD
+ls
+env -i ls
+cl
+cl
+env
+ls
+alias
+ls
+clear
+alias
+ls | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev | cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e | rev |cat -e 
+ls
+clar
+cleare
+cl
+env
+eifhqerglwerjgorwei;kfgnwejm 
+erkglj;twregiklwretjhiow;rtklghnrtw;oklhjbrtwm;hik l,bnrh;kbl.
+cldefar
+clear
+ls
+LS
+CLEAR
+type LS
+LS
+CD /BIN
+cd bin
+cd /bin
+ls
+type LS
+ls LS
+CAT 
+CAT cp
+awdwad
+awdaw
+ls
+ll
+cd -
+unsetenv -all
+./21SH 
+ENV
+LS
+ENV -I LS
+env -i ls
+clear
+l
+wefnjiqer
+erqg
+qerg
+erg
+er
+ef
+geqr
+gqer
+geq
+rg
+qerg
+bqer
+gqer
+b
+qe
+r
+g
+eqr
+ls
+ls | rev
+cat << eoi | rev > file ; cat < file 
+LAUL
+ls 
+echo $PWD
+echo $PWqwfq
+echo ${LOL}
+echo ${LOL:-LOL}
+awawdawd
+ls | cat < eof
+ls > ls > ls | cat -e 21sh | ./21sh
+ls
+clear
+ls
+cat /dev/random
+make save

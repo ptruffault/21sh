@@ -36,8 +36,10 @@ char		*ft_exp_spec(char *ret, char *ptr, t_shell *sh)
 		else if (ptr[1] == '?')
 			val = ft_itoa(p->ret);
 	}
-	ret = ft_strpull(ret, ptr, 1, val);
-	return (ret);
+	ptr = ft_strpull(ret, ptr, 1, val);
+	ft_strdel(&val);
+	ft_strdel(&ret);
+	return (ptr);
 }
 
 char		*ft_exp_var(char *ret, t_shell *sh)
@@ -54,6 +56,7 @@ char		*ft_exp_var(char *ret, t_shell *sh)
 		|| (ret && ret[i] == '$' && ft_strchr("$!?", ret[i + 1])
 		&& !(ret = ft_exp_spec(ret, &ret[i], sh)))
 		|| (ret && ret[i] == '$' && ret[i + 1] != '{'
+		&& !ft_strchr("$!?", ret[i + 1])
 		&& !(ret = ft_exp_envv_var(ret, &ret[i], sh))))
 			return (NULL);
 		i++;

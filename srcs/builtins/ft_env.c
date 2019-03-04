@@ -12,29 +12,22 @@
 
 #include "../../includes/shell42.h"
 
-static int		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
+static void		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 {
 	char	**e;
 	char	*path;
 	int		pid;
 
 	if (!(path = get_bin_path(*arr, envv)))
-		return (-1);
+		return ;
 	e = tenvv_to_tab(tmp);
 	if ((pid = fork()) == -1)
-	{
 		warning("fork failed to create a new process", *arr);
-		return (-1);
-	}
 	if (pid == 0 && execve(path, arr, e) == -1)
-	{
 		warning("{env} execve fucked up", *arr);
-		return (-1);
-	}
 	ft_strdel(&path);
 	ft_freestrarr(e);
 	wait(&pid);
-	return (pid);
 }
 
 static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
@@ -108,7 +101,7 @@ int				ft_env(t_envv *envv, char **argv)
 			tmp = ft_tmpsetenv(tmp, argv[i]);
 		else
 		{
-			i = ft_env_exec(&argv[i], tmp, envv);
+			ft_env_exec(&argv[i], tmp, envv);
 			ft_free_tenvv(tmp);
 		}
 		i++;

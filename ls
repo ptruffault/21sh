@@ -1,0 +1,11 @@
+21sh
+21sh.dSYM
+Makefile
+auteur
+bin
+file
+includes
+libft
+ls
+srcs
+sys
