@@ -24,7 +24,9 @@
 # include <termios.h>
 # include <term.h>
 # include "structures.h"
+# include <pwd.h>
 
+void		init_env(t_shell *sh, char **argv);
 void		ft_free_thist(t_hist *h);
 void		ft_free_redirection(t_redirect *r);
 void		ft_free_tword(t_word *w);

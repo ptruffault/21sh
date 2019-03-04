@@ -19,7 +19,8 @@ FILES		=		main.c \
 					signal.c \
 					init_shell.c \
 					ft_get_set.c \
-					ft_free_tshell.c
+					ft_free_tshell.c \
+					init_env.c
 
 EXEC 		=		ft_execve.c \
 					exec.c \

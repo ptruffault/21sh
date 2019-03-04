@@ -12,6 +12,37 @@
 
 #include "../../includes/shell42.h"
 
+t_process *get_last_done_process(t_process *p)
+{
+	while (p)
+	{
+		if (p->status == DONE)
+			return (p);
+		p = p->next;
+	}
+	return (NULL);
+}
+
+char *ft_exp_spec(char *ret, char *ptr, t_shell *sh)
+{
+	int r;
+	char *val;
+	t_process *p;
+
+	val = NULL;
+	if ((p = get_last_done_process(sh->process)))
+	{
+		if (ptr[1] == '!')
+			r = p->pid;
+		else if (ptr[1] == '?')
+			r = p->ret;
+		val = ft_itoa(r);
+	}
+	ret = ft_strpull(ret, ptr, 1, val);
+	return (ret);
+}
+
+
 char	*ft_exp_var(char *ret, t_shell *sh)
 {
 	int i;
@@ -21,9 +52,11 @@ char	*ft_exp_var(char *ret, t_shell *sh)
 	{
 		if ((ret && ret[i] == '~'
 		&& !(ret = ft_exp_home_var(ret, &ret[i], sh->env)))
-		|| ((ret && ret[i] == '$') && ret[i + 1] == '{'
+		|| (ret && ret[i] == '$' && ret[i + 1] == '{'
 		&& !(ret = ft_exp_param(ret, sh, &ret[i])))
-		|| (ret && (ret[i] == '$') && ret[i + 1] != '{'
+		|| (ret && ret[i] == '$' && ft_strchr("$!?", ret[i + 1])
+		&& !(ret = ft_exp_spec(ret, &ret[i], sh)))
+		|| (ret && ret[i] == '$' && ret[i + 1] != '{'
 		&& !(ret = ft_exp_envv_var(ret, &ret[i], sh))))
 			return (NULL);
 		i++;
