@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-static void	ft_son(t_tree *t, t_process *p, t_shell *sh, char **env)
+static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 {
 	if (t->r && !ft_redirect_builtin(t, p))
 		exit(-1);
@@ -20,20 +20,16 @@ static void	ft_son(t_tree *t, t_process *p, t_shell *sh, char **env)
 		error("unknow command", t->cmd->word);
 	else
 	{
-		execve(p->cmd, p->argv, env);
+		execve(p->cmd, p->argv, p->env);
 		warning("execve fucked up", p->cmd);
 	}
 	ft_free_tshell(sh);
-	ft_freestrarr(env);
 	ft_free_tree(ft_get_set_tree(NULL));
 	exit(-1);
 }
 
 void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
-	char	**env;
-
-	env = tenvv_to_tab(sh->env);
 	if (p->builtins == TRUE)
 	{
 		if (t->r && !ft_redirect_builtin(t, p))
@@ -43,8 +39,7 @@ void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 	else if ((p->pid = fork()) == -1)
 		warning("fork failed to create a new process", p->cmd);
 	else if (p->pid == 0)
-		ft_son(t, p, sh, env);
-	ft_freestrarr(env);
+		ft_son(t, p, sh);
 }
 
 int			ft_exec(t_tree *t, t_process *p)

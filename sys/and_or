@@ -1,1 +1,0 @@
-ls  -z || echo OK | rev && ls && ls uzief || echo KO && ls || /usr/bin/env  || echo OK| rev && ls -z || ls -z || ls -z && ls -z||/usr/bin/rev < ~/21sh/sys/.21shrc

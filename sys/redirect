@@ -1,1 +1,0 @@
-ls -z 2>&1 1>&-; ls -l auteur 1>&- 2>&1 | rev;ls ~ > file; cat < file; echo end >> file;cat < file;rm file; ls -l ~ ~/azerty 2>&1 | cat -e | rev | cat -e;cat < ~/21sh/auteur | rev; ls -z 2>&1 1>&2 | rev;

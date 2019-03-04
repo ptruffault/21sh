@@ -41,7 +41,7 @@ static void		ft_exec_right(t_tree *t, int pip[2], t_shell *sh, t_process *p)
 	}
 	else
 	{
-		ft_exec_son(p, sh, t->next);
+		ft_exec_son(p, t->next);
 		ret = t->ret;
 	}
 	ft_free_tshell(sh);
@@ -53,7 +53,7 @@ static void		ft_exec_left(t_tree *t, t_process *p, int pip[2], t_shell *sh)
 {
 	dup2(pip[1], STDOUT_FILENO);
 	close(pip[0]);
-	ft_exec_son(p, sh, t);
+	ft_exec_son(p, t);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
 	exit(p->ret);

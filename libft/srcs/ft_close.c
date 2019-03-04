@@ -20,6 +20,7 @@ int	ft_close(int fd)
 	{
 		n = ft_itoa(fd);
 		warning("close failure fd ->", n);
+		perror(NULL);
 		ft_strdel(&n);
 		return (0);
 	}

@@ -23,6 +23,7 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 	new->status = t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG;
 	new->ret = 0;
 	new->pid = 0;
+	new->env = NULL;
 }
 
 static t_process	*ft_abort(t_process *p)
@@ -47,7 +48,9 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 			return (ft_abort(new));
 		if (check_builtin(*new->argv) && (new->cmd = ft_strdup(*new->argv)))
 			new->builtins = TRUE;
-		else if (!(new->cmd = get_bin_path(*new->argv, sh->env)))
+		else if ((new->cmd = get_bin_path(*new->argv, sh->env)))
+			new->env = tenvv_to_tab(sh->env);
+		else
 		{
 			error("command not found", *new->argv);
 			return (ft_abort(new));

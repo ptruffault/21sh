@@ -12,10 +12,8 @@
 
 #include "../../includes/shell42.h"
 
-static void	ft_execv_son(t_process *p, t_shell *sh, t_tree *t)
+static void	ft_execv_son(t_process *p, t_tree *t)
 {
-	char	**env;
-
 	if (ft_redirect_builtin(t, p))
 	{
 		if (!p->cmd)
@@ -24,17 +22,15 @@ static void	ft_execv_son(t_process *p, t_shell *sh, t_tree *t)
 			p->ret = run_builtin(t, p->argv);
 		else if (p->cmd)
 		{
-			env = tenvv_to_tab(sh->env);
-			execve(p->cmd, p->argv, env);
+			execve(p->cmd, p->argv, p->env);
 			warning("execve fucked up", p->cmd);
-			ft_freestrarr(env);
 		}
 	}
 }
 
-void		ft_exec_son(t_process *p, t_shell *sh, t_tree *t)
+void		ft_exec_son(t_process *p, t_tree *t)
 {
-	ft_execv_son(p, sh, t);
+	ft_execv_son(p, t);
 	if (p->status == RUNNING_FG)
 	{
 		if (p->builtins == FALSE)
