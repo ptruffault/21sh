@@ -14,11 +14,10 @@
 
 char	*ft_strpull(char *src, char *ptr, int len, char *value)
 {
-	char *p1;
-
-	p1 = ft_strjoin_fr(ft_strndup(src, ptr - src), ft_strdup(value));
-	if (len <= (int)ft_strlen(ptr))
-		return (ft_strjoin_fr(p1, ft_strdup(ptr + len + 1)));
-	else
-		return (p1);
+	if (src - ptr == 0)
+		return (ft_strjoin(value, src + len + 1));
+	else if (src - ptr > 0)
+		return (ft_strjoin_fr(ft_strndup(src, src - ptr), 
+	ft_strjoin(value, ptr + len)));
+	return (NULL);
 }

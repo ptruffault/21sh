@@ -14,16 +14,18 @@
 
 static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 {
-	if (t->r && !ft_redirect_builtin(t, p))
-		exit(-1);
-	if (!p->cmd)
-		error("unknow command", t->cmd->word);
-	else
+	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
-		execve(p->cmd, p->argv, p->env);
-		warning("execve fucked up", p->cmd);
+		if (p->cmd)
+		{
+			execve(p->cmd, p->argv, p->env);
+			warning("execve fucked up", p->cmd);
+		}
+		else
+			error("unknow command", t->cmd->word);
 	}
 	ft_free_tshell(sh);
+	ft_freestrarr(sh->txt);
 	ft_free_tree(ft_get_set_tree(NULL));
 	exit(-1);
 }

@@ -24,11 +24,11 @@ static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
 		else if (*(ptr + 1) == '-')
 			new->to = -1;
 	}
-	else if (w->next && w->next->word)
-		new->path = ft_strdup(w->next->word);
-	else
-		return (NULL);
-	return (new);
+	else if (w->next && w->next->word && 
+	(new->path = ft_strdup(w->next->word)))
+		return (new);
+	ft_free_redirection(new);
+	return (NULL);
 }
 
 static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
@@ -44,7 +44,10 @@ static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
 			new->heredoc = heredoc_get_input(new->path);
 		}
 		else
+		{
+			ft_free_redirection(new);
 			return (NULL);
+		}
 	}
 	else if ((ptr = ft_strchr(w->word, '&')) && ft_isdigit(*(ptr + 1)))
 		new->to = ft_atoi(ptr + 1);
@@ -53,7 +56,10 @@ static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
 	else if (w->next && w->next->word)
 		new->path = ft_strdup(w->next->word);
 	else
+	{
+		ft_free_redirection(new);
 		return (NULL);
+	}
 	return (new);
 }
 
@@ -87,15 +93,23 @@ static t_redirect	*get_redirection(t_word *w)
 	return (new);
 }
 
-t_word				*get_redirections(t_tree *t, t_word *w)
+t_word		*ft_deltword(t_word *prev, t_word *src)
 {
-	t_redirect	*new;
+	prev->next = src->next;
+	src->next = NULL;
+	ft_free_tword(src);
+	return (prev);
+}
+
+t_word			*get_redirections(t_tree *t, t_word *w)
+{
 	t_redirect	*tmp;
+	t_redirect *new;
 
 	if ((new = get_redirection(w)))
 	{
-		if (new->path && w->next)
-			w = w->next;
+		if (new->path)
+			w = ft_deltword(w, w->next);
 		if (t->r)
 		{
 			tmp = t->r;

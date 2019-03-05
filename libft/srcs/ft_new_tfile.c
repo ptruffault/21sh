@@ -18,10 +18,7 @@ t_file		*ft_new_tfile(void)
 
 	new = NULL;
 	if (!(new = (t_file *)malloc(sizeof(t_file))))
-	{
-		ft_putendl_fd("ft_new_tfile : allocation failed", 2);
-		exit(-1);
-	}
+		return (NULL);
 	new->type = '?';
 	new->next = NULL;
 	new->sdir = NULL;

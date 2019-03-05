@@ -46,8 +46,6 @@ void	ft_free_tree(t_tree *t)
 {
 	t_tree	*tmp;
 
-	if (t == NULL)
-		return ;
 	while (t)
 	{
 		ft_free_tword(t->cmd);

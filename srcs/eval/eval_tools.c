@@ -44,7 +44,11 @@ t_word		*ft_cpytword(t_word *src)
 	if (!(new = new_tword()))
 		return (NULL);
 	new->type = src->type;
-	new->word = ft_strdup(src->word);
+	if (!(new->word = ft_strdup(src->word)))
+	{
+		free(new);
+		return (NULL);
+	}
 	return (new);
 }
 

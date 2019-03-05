@@ -57,9 +57,8 @@ void	just_exit(t_edit *e)
 	else if (!e->input[0])
 	{
 		ft_set_old_term(sh);
+		ft_freestrarr(sh->txt);
 		ft_free_tshell(sh);
-		free_tedit(e);
-		ft_putendl_fd("\033[00;31m21sh get killed\033[00m", 2);
-		exit(0);
+		exit(4);
 	}
 }

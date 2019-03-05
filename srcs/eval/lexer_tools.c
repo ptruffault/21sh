@@ -70,12 +70,9 @@ void	ft_lex_dquote(t_eval *e)
 	e->eval[e->curr++] = ' ';
 	while (e->s[e->curr] && e->s[e->curr] != '"')
 	{
-		if (e->s[e->curr] == '\\' && (e->eval[e->curr++] = 'q')
-		&& e->s[e->curr + 1] == '"')
+		if (e->s[e->curr] == '\\')
 			e->eval[e->curr++] = 'q';
-		else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
-			ft_lex_var(e);
-		else
+		if (e->s[e->curr])
 			e->eval[e->curr++] = 'q';
 	}
 	if (!e->s[e->curr])

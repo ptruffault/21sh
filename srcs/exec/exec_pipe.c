@@ -37,6 +37,7 @@ static void		ft_exec_right(t_tree *t, int pip[2], t_shell *sh, t_process *p)
 	else
 		ft_exec_son(p, t->next);
 	warning("execve fucked up", p->cmd);
+	ft_freestrarr(sh->txt);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
 	exit(-1);
@@ -48,6 +49,7 @@ static void		ft_exec_left(t_tree *t, t_process *p, int pip[2], t_shell *sh)
 	close(pip[0]);
 	ft_exec_son(p, t);
 	warning("execve fucked up", p->cmd);
+	ft_freestrarr(sh->txt);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
 	exit(-1);

@@ -22,10 +22,11 @@ static t_word	*get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-static t_tree	*ft_syntax(t_tree *t)
+static t_tree	*ft_syntax(t_tree *t, t_word *w)
 {
-	error("invalid redirection syntax", NULL);
+	error("syntax error", t->cmd->word);
 	ft_free_tree(t);
+	ft_free_tword(w);
 	return (NULL);
 }
 
@@ -41,16 +42,18 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
 		else if (tmp && tmp->type == REDIRECT)
-			if ((tmp = get_redirections(tree, tmp)))
-				tmp = tmp->next;
-			else
-				return (ft_syntax(head));
+		{
+			if (!(tmp = get_redirections(tree, tmp)))
+				return (ft_syntax(head, w));
+			tmp = tmp->next;
+		}
 		else if (tmp && tmp->type == OPERATEUR)
 		{
 			tree = add_newttree(tree, tmp);
 			tmp = tmp->next;
 		}
 	}
+	ft_free_tword(w);
 	return (head);
 }
 
@@ -65,6 +68,6 @@ t_tree			*get_tree(char *input)
 	if (!(head = new_tree()))
 		return (NULL);
 	head = built_tree(head, w);
-	ft_free_tword(w);
+	ft_get_set_tree(head);
 	return (head);
 }

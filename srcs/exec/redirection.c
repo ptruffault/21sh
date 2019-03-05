@@ -44,12 +44,17 @@ int			fd_dup(int fd1, int fd2, t_process *p)
 	return (ret);
 }
 
-static void	ft_heredoc_content(t_redirect *r)
+static void	ft_heredoc_content(t_redirect *r, t_shell *sh)
 {
 	int fd[2];
 
 	if (pipe(fd) == -1)
+	{
+		ft_freestrarr(sh->txt);
+		ft_free_tshell(sh);
+		ft_free_tree(ft_get_set_tree(NULL));
 		exit(13);
+	}
 	else
 	{
 		ft_putstr_fd(r->heredoc, fd[1]);
@@ -62,11 +67,11 @@ static void	ft_heredoc_content(t_redirect *r)
 int			get_destination_fd(t_redirect *r)
 {
 	r->path = ft_exp_var(r->path, ft_get_set_shell(NULL));
-	if ((r->t == R_RIGHT && r->to == -2 &&
+	if ((r->t == R_RIGHT && r->to == -2 && r->path &&
 	(r->to = open(r->path, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU)) == -1)
-	|| (r->t == R_DRIGHT && r->to == -2 &&
+	|| (r->t == R_DRIGHT && r->to == -2 && r->path &&
 	(r->to = open(r->path, O_RDWR | O_APPEND | O_CREAT, S_IRWXU)) == -1)
-	|| (r->t == R_LEFT && r->to == -2 &&
+	|| (r->t == R_LEFT && r->to == -2 && r->path &&
 	(r->to = open(r->path, O_RDWR, S_IRWXU)) == -1))
 	{
 		warning("can't open this file", r->path);
@@ -74,7 +79,7 @@ int			get_destination_fd(t_redirect *r)
 		return (0);
 	}
 	else if (r->t == R_DLEFT)
-		ft_heredoc_content(r);
+		ft_heredoc_content(r, ft_get_set_shell(NULL));
 	if (r->to != -2 && r->from != -2)
 		return (1);
 	return (0);

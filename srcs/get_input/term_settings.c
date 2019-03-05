@@ -31,6 +31,8 @@ void	init_termcaps(t_shell *sh)
 	&& (tcgetattr(0, sh->saved_term) == -1))
 	{
 		error("can't save termios", NULL);
+		ft_free_tshell(sh);
+		ft_free_tree(ft_get_set_tree(NULL));
 		exit(0);
 	}
 	ft_update_windows(&sh->e);

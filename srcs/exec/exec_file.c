@@ -12,39 +12,38 @@
 
 #include "../../includes/shell42.h"
 
-int		exec_fd(int fd)
+int		exec_fd(t_shell *sh, int fd)
 {
-	char	**instruct;
 	int		i;
 	t_tree	*t;
 
 	i = 0;
-	if ((instruct = ft_get_txt(fd)))
+	if ((sh->txt = ft_get_txt(fd)))
 	{
-		while (instruct[i])
+		while (sh->txt[i])
 		{
-			if (*instruct[i] && *instruct[i] != '#'
-			&& (t = get_tree(instruct[i])))
+			if (*sh->txt[i] && *sh->txt[i] != '#'
+			&& (t = get_tree(sh->txt[i])))
 				ft_free_tree(exec_tree(ft_get_set_tree(t)));
 			i++;
 		}
-		ft_freestrarr(instruct);
+		ft_freestrarr(sh->txt);
 	}
 	return (i);
 }
 
-int		exec_file(char *path)
+int		exec_file(char *path, t_shell *sh)
 {
 	int		fd;
 
 	if ((fd = open(path, O_RDWR, S_IRWXU)) >= 0)
 	{
-		exec_fd(fd);
+		exec_fd(sh, fd);
 		ft_close(fd);
 	}
 	else
 	{
-		perror(path);
+		error("can't exec this file", path);
 		return (-1);
 	}
 	return (0);

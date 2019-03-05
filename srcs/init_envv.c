@@ -61,7 +61,7 @@ static void	ft_setup_env(t_shell *sh, char *shell_fold)
 	ft_update_shelvl(sh);
 	if ((rc_path = ft_strjoin(shell_fold, "/sys/.21shrc")))
 	{
-		exec_file(rc_path);
+		exec_file(rc_path, sh);
 		ft_strdel(&rc_path);
 	}
 }

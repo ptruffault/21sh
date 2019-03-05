@@ -30,13 +30,18 @@ char		*ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
 	char	*value;
 	char	*tmp;
 
-	name = ft_get_varname(ptr);
-	if (!(value = get_tenvv_val(sh->env, name)))
-		value = get_tenvv_val(sh->intern, name);
-	tmp = ft_strpull(ret, ptr, ft_strlen(name), value);
-	ft_strdel(&ret);
-	ft_strdel(&name);
-	return (tmp);
+	if ((name = ft_get_varname(ptr)))
+	{
+		if (!(value = get_tenvv_val(sh->env, name)))
+			value = get_tenvv_val(sh->intern, name);
+		if ((tmp = ft_strpull(ret, ptr, ft_strlen(name), value)))
+		{
+			ft_strdel(&ret);
+			ret = tmp;
+		}
+		ft_strdel(&name);
+	}
+	return (ret);
 }
 
 char		*ft_exp_home_var(char *ret, char *ptr, t_envv *envv)

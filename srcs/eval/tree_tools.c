@@ -64,7 +64,7 @@ t_tree		*add_newttree(t_tree *tree, t_word *w)
 	if (w->type != 0)
 	{
 		if (!(tree->next = new_tree()))
-			return (tree);
+			return (NULL);
 		w = w->next;
 	}
 	return (tree->next);
