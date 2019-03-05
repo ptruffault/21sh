@@ -75,7 +75,7 @@ char		*search_in_envv(char *input, t_envv *envv)
 	return (NULL);
 }
 
-static int ft_check_ascii(char *input)
+int 	ft_check_ascii(char *input)
 {
 	int i;
 

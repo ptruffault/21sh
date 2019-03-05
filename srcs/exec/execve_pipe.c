@@ -14,13 +14,13 @@
 
 void	ft_exec_son(t_process *p, t_tree *t)
 {
-	if (ft_redirect_builtin(t, p))
+	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
-		if (!p->cmd)
-			error("unknow command", t->cmd->word);
-		else if (p->builtins == TRUE)
+		if (p->builtins == TRUE)
 			p->ret = run_builtin(t, p->argv);
 		else if (p->cmd)
 			execve(p->cmd, p->argv, p->env);
+		else
+			error("unknow cmd", t->cmd->word);
 	}
 }

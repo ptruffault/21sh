@@ -75,6 +75,7 @@ t_process	*ft_get_running_process(t_process *p);
 char		*search_in_envv(char *input, t_envv *envv);
 char		*absolute_path(char *input, t_envv *envv);
 char		*get_bin_path(char *input, t_envv *envv);
+int 		ft_check_ascii(char *input);
 int			ft_isparenth(char c);
 int			ft_setup_edit_term(t_shell *sh);
 void		ft_set_old_term(t_shell *sh);

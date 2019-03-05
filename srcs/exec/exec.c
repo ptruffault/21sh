@@ -45,10 +45,10 @@ t_tree			*exec_instruction(t_tree *t)
 	sh = ft_get_set_shell(NULL);
 	if (t->o_type == O_PIPE && t->next)
 		t = exec_pipe(t);
-	else if ((p = init_process(t, sh)))
+	else if ((p = init_process(t, sh)) && p->cmd)
 		t->ret = ft_exec(t, p);
 	else
-		t->ret = -2;
+		error("unknow cmd", t->cmd->word);
 	return (t);
 }
 

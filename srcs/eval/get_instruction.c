@@ -61,7 +61,7 @@ t_tree			*get_tree(char *input)
 	t_tree	*head;
 	t_word	*w;
 
-	if (!input || ft_isempty(input) ||
+	if (!input || ft_isempty(input) || !ft_check_ascii(input) ||
 	!(w = eval_line(input)))
 		return (NULL);
 	if (!(head = new_tree()))
