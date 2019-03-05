@@ -23,7 +23,6 @@ void	ft_exit(char *nbr)
 		exit_code = 0;
 	sh = ft_get_set_shell(NULL);
 	ft_set_old_term(sh);
-	ft_freestrarr(sh->txt);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
 	ft_putendl_fd("\033[00;31m21sh get killed\033[00m", 2);

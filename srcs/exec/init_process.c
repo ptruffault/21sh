@@ -22,6 +22,7 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 	new->fd[2] = 2;
 	new->status = t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG;
 	new->ret = 0;
+	new->argv = NULL;
 	new->pid = 0;
 	new->env = NULL;
 	new->builtins = FALSE;

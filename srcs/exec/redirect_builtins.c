@@ -16,14 +16,13 @@ int			ft_redirect_builtin(t_tree *t, t_process *p)
 {
 	t_redirect *r;
 
-	if (!t->r)
-		return (1);
 	r = t->r;
 	while (r)
 	{
 		if (!get_destination_fd(r))
 		{
 			error("can't set redirect", NULL);
+			ft_reset_fd(p);
 			return (0);
 		}
 		if (IS_STD(r->from) && IS_STD(p->save[r->from]))

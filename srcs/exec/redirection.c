@@ -50,7 +50,6 @@ static void	ft_heredoc_content(t_redirect *r, t_shell *sh)
 
 	if (pipe(fd) == -1)
 	{
-		ft_freestrarr(sh->txt);
 		ft_free_tshell(sh);
 		ft_free_tree(ft_get_set_tree(NULL));
 		exit(13);

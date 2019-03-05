@@ -64,7 +64,7 @@ int			kill_running_fg_process(t_process *p, int sig)
 {
 	t_process *tmp;
 
-	if ((tmp = ft_get_running_process(p)))
+	if (p && (tmp = ft_get_running_process(p)))
 	{
 		if (sig == SIGINT)
 			p->status = KILLED;

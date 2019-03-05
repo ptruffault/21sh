@@ -57,7 +57,6 @@ void	just_exit(t_edit *e)
 	else if (!e->input[0])
 	{
 		ft_set_old_term(sh);
-		ft_freestrarr(sh->txt);
 		ft_free_tshell(sh);
 		exit(4);
 	}

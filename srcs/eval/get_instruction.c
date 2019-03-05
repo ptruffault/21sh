@@ -53,7 +53,6 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 			tmp = tmp->next;
 		}
 	}
-	ft_free_tword(w);
 	return (head);
 }
 
@@ -68,6 +67,7 @@ t_tree			*get_tree(char *input)
 	if (!(head = new_tree()))
 		return (NULL);
 	head = built_tree(head, w);
+	ft_free_tword(w);
 	ft_get_set_tree(head);
 	return (head);
 }
