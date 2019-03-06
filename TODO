@@ -1,0 +1,12 @@
+
+-> env -u ./21h
+
+-> sigint dans un heredoc
+
+-> reset fd before error dans redirect
+
+-> \ in dquote 
+
+-> before alias
+
+-> SIGSTOP 

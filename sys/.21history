@@ -1,0 +1,159 @@
+ls
+ls | rev
+env
+cat << eoi
+cau
+cat << eoi | rev 
+LAUL
+;s
+ls
+clear
+ls
+lsls
+ls|ls
+clear
+ls
+ls
+sl
+ls
+sl > file
+ls
+sl | rev
+sl 
+clear
+ls
+cat | cat | echo test
+echo $PWD | rev
+echo $PWD | rev | rev
+ls
+ls
+ls
+ls
+ls
+sl
+dwadwwdwadwa
+d
+wada
+wd
+aw
+ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev 
+ls | rev ls | rev ls lsls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev ls | rev 
+ls
+ls
+ewfff
+qer
+gwerg
+qerg
+qregerqfgverdgveardgvercgerc
+ls
+ls
+alias
+alias
+ls
+ls
+ls | rev
+ls
+name-=vl
+set
+env
+ls
+clea
+ls
+cat | cat | cat | ls
+ls
+ls
+./21sh
+./21sh
+echo test 2>&- 1>&2
+echo test 2>&- 1>&1
+echo test 2>&- 1>&-
+echo test 2>&- 1>&2
+ls -la
+cd sys
+ls -la
+cd ..
+ls
+chmod 000 sys
+./21sh
+env
+VAR=bar
+echo $VAR
+export
+env
+export VAR
+env
+set
+history
+type ls
+type -a env
+env -i VAR=bar env
+env -i Var="ffwfew"
+ls -la
+echo test
+ls
+cd sys
+ls -la
+rm .21shrc
+ls
+ls -la
+exit
+exit
+rm rewrwr
+echo $?
+echo $?
+rm wewef
+echo $?
+echo test
+echo $?
+env -wfew
+env -w
+echo $?
+cd /
+cd ..
+cd 
+cd ../././
+pwd
+env
+unsetenv OLDPWD
+env
+cd -
+cd 
+cd ..
+unsetenv HOME
+cd
+ls
+cat << EOF
+env -u HOME ./21sh
+cd
+cd ..
+env
+exit
+exit
+env -u HOME ./21sh
+exit
+exit
+env
+set
+cat | cat | ls
+ls
+echo "test" > file1 > file2
+cat file1
+cat file2
+ls ; ls | grep i | tr i I > ok
+cat ok
+rm ok
+help
+"'"
+echo test
+echo "wwfe"
+echo \test
+echo test \\
+echo `ls`
+echo -e "\x38"
+\w
+w
+echo "\\"
+echo '\\'
+\\
+"\\"
+touch TODO
