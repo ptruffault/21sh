@@ -29,8 +29,8 @@ static void	ft_null(t_shell *sh, char **envv)
 void		init_shell(t_shell *sh, char **envv, char **argv)
 {
 	ft_null(sh, envv);
-	set_signals();
 	init_env(sh, argv);
+	set_signals();
 	if (!isatty(0))
 	{
 		if (exec_fd(sh, 0) == 0)

@@ -119,44 +119,37 @@ $(NAME): bin $(OBJ) Makefile
 bin/%.o: srcs/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $< 
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 
 bin/%.o: srcs/eval/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $< 
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/builtins/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/exec/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $< && pr(KO)"
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/exec/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/expansion/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 bin/%.o: srcs/get_input/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
-	@norminette $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 clear:
