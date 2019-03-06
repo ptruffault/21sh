@@ -23,6 +23,7 @@ static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
 			new->to = ft_atoi(ptr + 1);
 		else if (*(ptr + 1) == '-')
 			new->to = -1;
+		return (new);
 	}
 	else if (w->next && w->next->word &&
 	(new->path = ft_strdup(w->next->word)))

@@ -35,9 +35,8 @@ void		ft_sigint(t_shell *sh)
 	{
 		if (sh->heredoc == 0)
 			ft_putchar_fd('\n', 0);
-		if (isatty(0))
+		if (isatty(0) && sh->e.input)
 		{
-			ft_delete_line(&sh->e);
 			ft_strdel(&sh->e.input);
 			sh->e = init_tedit(sh);
 		}

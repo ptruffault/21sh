@@ -31,6 +31,11 @@ char	**ft_get_txt(int fd)
 		ret[i++] = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}
+	if (i == 0)
+	{
+		free(ret);
+		return (NULL);
+	}
 	ret[i] = NULL;
 	return (ret);
 }

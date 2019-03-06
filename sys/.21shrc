@@ -1,5 +1,4 @@
 export PATH=${PATH:-/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin}
-echo OKAYYYY
 export USER=${USER:-ptruffau}
 alias cl /usr/bin/clear
 alias la "ls -aG" ll "ls -lG" ls "ls -G"

@@ -25,7 +25,7 @@ int			ft_twordlen(t_word *w)
 	return (i);
 }
 
-t_redirect	*parse_heredoc(t_redirect *new, t_word)
+t_redirect	*parse_heredoc(t_redirect *new, t_word *w)
 {
 	if (w->next && w->next->word)
 	{
