@@ -42,7 +42,8 @@ EVAL		=		eval_tools.c \
 					heredoc_content.c\
 					token.c \
 					redirect.c \
-					alias.c
+					alias.c \
+					t_word_tools.c \
 
 BUILTINS	=		ft_echo.c \
 					ft_cd.c \

@@ -30,8 +30,9 @@ void		init_shell(t_shell *sh, char **envv, char **argv)
 {
 	ft_null(sh, envv);
 	set_signals();
+	printf("BEFORE\n");
 	init_env(sh, argv);
-	if (isatty(0) == 0)
+	if (!isatty(0))
 	{
 		if (exec_fd(sh, 0) == 0)
 			error("abort", "no standart input");

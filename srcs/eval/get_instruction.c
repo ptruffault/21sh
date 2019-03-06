@@ -22,11 +22,10 @@ static t_word	*get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-static t_tree	*ft_syntax(t_tree *t, t_word *w)
+static t_tree	*ft_syntax(t_tree *t)
 {
 	error("syntax error", t->cmd->word);
 	ft_free_tree(t);
-	ft_free_tword(w);
 	return (NULL);
 }
 
@@ -44,7 +43,7 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 		else if (tmp && tmp->type == REDIRECT)
 		{
 			if (!(tmp = get_redirections(tree, tmp)))
-				return (ft_syntax(head, w));
+				return (ft_syntax(head));
 			tmp = tmp->next;
 		}
 		else if (tmp && tmp->type == OPERATEUR)

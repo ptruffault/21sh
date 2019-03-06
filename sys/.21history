@@ -1,112 +1,52 @@
+awdwadawdawdaw
+awdawdwwwdawd
+wawdawada
+awdawd
+exit
 ls
-ls -l
-ls > fime
-cat fime
-ls > file ; ls
-cat file
-rm -rf fime file 
-ll
-:s
-ls
-lzsafz
-zefzefze
-ls
-ls
+lear
 clear
-env
-ls
-env
-ls
-zef
-env
-cleazr
-ls
-clear
-ls|rev
-ls|rev
-ls | cat
-ls ..
-ls .. |rev
-ls
-ls
-ls|rev
-ls
-cleazr
-clear
-env
-tty
-ls
-ls141
-alias
-cl
-ls
-cl
-env
-ez
-ze
-ze
-ze
-ez
-v
-dv
+wadwad
+awdawdawdaadaw
+awdwadawdawdawwadd
+dwawad
+"loawdwadawdwdawdawdawdawdawdvdwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdadwdawdawdawdawdawdaawdawdawdwdawdwa\""
+b
+./21sh | ./21sh
+awdadwawdwa
+w
+aaw
 d
-ervervb 2>&-
-ervervb > foile
-ls
-ls > file
-ls >&-
-ls
-8=P+(
-lsl
-set
-ls
-szfzefze
-zefze
-frzearezdv
-ls
-ezfffffffffffffe
-e
-e
-e
-e
-e
-e
-e
-e
-s
-s
-s
-ls|rev
-ls|rev > file ; cat file grep 42
-ls|rev > file ; cat file|  grep 42
-ls|rev > file ; cat file|  grep t
-ls|rev > file ; cat file|  grep Rw
-ls|rev > file ; cat file|  grep O
-ls|rev > file ; cat file|  grep O
-ls|rev > file ; cat file|  grep O
-ls|rev > file ; cat file| ls
+awd
+aw
+wda
+l
 env
-env|rev
-ls
-ls
-a
-ls
-clear
-e,v
+unsetenv PWD
+unsetenv TERM
+awdaw
+unsetenv TPAGER
+unsetenv PAGER
+wadwa
+aw
+d
+wad
 env
-ls
-clezar
+unsetenv PATH
+unsetenv HISTORY
+wada
+w
+setenv FOO BAR
+ll
 env
-erge
-ls
-wefwe
-ewfwq
-ls
-clear
-ls|rev
-unalias -all
-ls
-clear
-ls|rev
-clear
-cat >
+env
+cd ~/21sh/../../../
+cd ../
+cd ../././.../..//.
+ll
+cd -
+cd ~/
+cd ~
+env
+    
+exit

@@ -25,31 +25,16 @@ int			ft_twordlen(t_word *w)
 	return (i);
 }
 
-t_word		*new_tword(void)
+t_redirect	*parse_heredoc(t_redirect *new, t_word)
 {
-	t_word	*n;
-
-	if (!(n = (t_word *)malloc(sizeof(t_word))))
-		return (NULL);
-	n->word = NULL;
-	n->type = undef;
-	n->next = NULL;
-	return (n);
-}
-
-t_word		*ft_cpytword(t_word *src)
-{
-	t_word	*new;
-
-	if (!(new = new_tword()))
-		return (NULL);
-	new->type = src->type;
-	if (!(new->word = ft_strdup(src->word)))
+	if (w->next && w->next->word)
 	{
-		free(new);
-		return (NULL);
+		new->path = ft_strdup(w->next->word);
+		new->heredoc = heredoc_get_input(new->path);
+		return (new);
 	}
-	return (new);
+	ft_free_redirection(new);
+	return (NULL);
 }
 
 char		**ft_twordto_arr(t_word *w)
@@ -68,26 +53,11 @@ char		**ft_twordto_arr(t_word *w)
 			i++;
 		w = w->next;
 	}
-	if (i == 0 && arr)
+	if (i == 0)
 	{
-		ft_freestrarr(arr);
+		free(arr);
 		return (NULL);
 	}
 	arr[i] = NULL;
 	return (arr);
-}
-
-t_word		*ft_addtword(t_word *head, t_word *new)
-{
-	t_word	*tmp;
-
-	if (!new)
-		return (head);
-	if (!head)
-		return (ft_cpytword(new));
-	tmp = head;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = ft_cpytword(new);
-	return (head);
 }

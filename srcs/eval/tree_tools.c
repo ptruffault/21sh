@@ -12,6 +12,17 @@
 
 #include "../../includes/shell42.h"
 
+int			ft_check_ascii(char *input)
+{
+	int i;
+
+	i = 0;
+	while (input[i])
+		if (!ft_isascii(input[i++]))
+			return (0);
+	return (1);
+}
+
 t_tree		*new_tree(void)
 {
 	t_tree	*n;

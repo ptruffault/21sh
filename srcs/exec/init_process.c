@@ -51,7 +51,7 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 			return (ft_abort(new));
 		if (check_builtin(*new->argv) && (new->cmd = ft_strdup(*new->argv)))
 			new->builtins = TRUE;
-		else 
+		else
 			new->cmd = get_bin_path(*new->argv, sh->env);
 		new->next = sh->process;
 		sh->process = new;

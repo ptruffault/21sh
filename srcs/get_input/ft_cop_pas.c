@@ -48,23 +48,20 @@ void	ft_paste(t_edit *e)
 	char	*tmp;
 
 	sh = ft_get_set_shell(NULL);
-	if (sh->clipboard)
+	if (sh->clipboard &&
+	(tmp = ft_strnew(ft_strlen(e->input) + ft_strlen(sh->clipboard) + 1)))
 	{
-		c = ft_strlen(e->input) + ft_strlen(sh->clipboard);
-		if ((tmp = ft_strnew(c + 1)))
-		{
-			b = 0;
-			x = 0;
-			c = 0;
-			while (x < e->curr)
-				tmp[b++] = e->input[x++];
-			while (sh->clipboard[c])
-				tmp[b++] = sh->clipboard[c++];
-			while (e->input[x])
-				tmp[b++] = e->input[x++];
-			ft_strdel(&e->input);
-			e->input = tmp;
-		}
+		b = 0;
+		x = 0;
+		c = 0;
+		while (x < e->curr)
+			tmp[b++] = e->input[x++];
+		while (sh->clipboard[c])
+			tmp[b++] = sh->clipboard[c++];
+		while (e->input[x])
+			tmp[b++] = e->input[x++];
+		ft_strdel(&e->input);
+		e->input = tmp;
 	}
 	e->select = -1;
 }

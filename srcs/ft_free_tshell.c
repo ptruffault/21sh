@@ -14,7 +14,6 @@
 
 void	ft_free_tshell(t_shell *sh)
 {
-	ft_freestrarr(sh->txt);
 	ft_free_tenvv(sh->env);
 	ft_free_tenvv(sh->intern);
 	ft_free_tenvv(sh->alias);

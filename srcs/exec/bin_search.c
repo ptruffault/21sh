@@ -75,22 +75,11 @@ char		*search_in_envv(char *input, t_envv *envv)
 	return (NULL);
 }
 
-int 	ft_check_ascii(char *input)
-{
-	int i;
-
-	i = 0;
-	while (input[i])
-		if (!ft_isascii(input[i++]))
-			return (0);
-	return (1);
-}
-
 char		*get_bin_path(char *input, t_envv *envv)
 {
 	if (!ft_isempty(input) && ft_check_ascii(input))
 	{
-		if (ft_str_startwith(input, "./") || *input ==  '/')
+		if (ft_str_startwith(input, "./") || *input == '/')
 			return (absolute_path(input, envv));
 		return (search_in_envv(input, envv));
 	}

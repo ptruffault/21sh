@@ -36,16 +36,6 @@ static void	ft_update_shelvl(t_shell *sh)
 	ft_strdel(&nbr);
 }
 
-static void	ft_setup_user(t_shell *sh)
-{
-	struct passwd	*user;
-	char			*user_name;
-
-	if ((user_name = get_tenvv_val(sh->env, "USER")) &&
-	(user = getpwnam(user_name)) && user->pw_dir)
-		sh->env = ft_new_envv(sh->env, "HOME", user->pw_dir);
-}
-
 static void	ft_setup_env(t_shell *sh, char *shell_fold)
 {
 	char *hi_path;
@@ -76,13 +66,14 @@ void		init_env(t_shell *sh, char **argv)
 	sh->env = ft_new_envv(sh->env, "TERM", "xterm-256color");
 	pwd = getcwd(buff, 4096);
 	sh->env = ft_new_envv(sh->env, "PWD", pwd);
-	if ((shell_path = get_shell_path(*argv, pwd))
-	&& (shell_fold = ft_get_prev_path(shell_path)))
+	if ((shell_path = get_shell_path(*argv, pwd)))
 	{
 		sh->env = ft_new_envv(sh->env, "SHELL", shell_path);
-		ft_setup_env(sh, shell_fold);
-		ft_strdel(&shell_fold);
+		if ((shell_fold = ft_get_prev_path(shell_path)))
+		{
+			ft_setup_env(sh, shell_fold);
+			ft_strdel(&shell_fold);
+		}
 		ft_strdel(&shell_path);
 	}
-	ft_setup_user(sh);
 }

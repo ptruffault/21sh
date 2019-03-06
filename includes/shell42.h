@@ -26,7 +26,9 @@
 # include "structures.h"
 # include <pwd.h>
 
+t_redirect	*parse_heredoc(t_redirect *new, t_word);
 void		init_env(t_shell *sh, char **argv);
+t_word		*ft_deltword(t_word *prev, t_word *src);
 void		ft_free_thist(t_hist *h);
 void		ft_free_redirection(t_redirect *r);
 void		ft_free_tword(t_word *w);
