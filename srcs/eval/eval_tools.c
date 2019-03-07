@@ -52,10 +52,8 @@ t_redirect	*parse_heredoc(t_redirect *new, t_word *w)
 		new->path = ft_strdup(w->next->word);
 		sh->heredoc = 1;
 		new->heredoc = heredoc_get_input(new->path, sh);
-		if (sh->heredoc != -1)
-			return (new);
-		ft_strdel(&new->heredoc);
 		sh->heredoc = 0;
+		return (new);
 	}
 	ft_free_redirection(new);
 	return (NULL);

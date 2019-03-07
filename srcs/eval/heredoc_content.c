@@ -15,14 +15,25 @@
 char	*heredoc_get_input(char *eoi, t_shell *sh)
 {
 	char	*ret;
+	char	*in;
 
+	ret = NULL;
 	ft_putstr("\033[00;34mheredoc>\n\033[00m");
-	ret = get_input();
-	if (!ft_strequ(ret, eoi) && sh->heredoc == 1)
-		return (ft_strjoin_fr(ft_stradd_char(ret, '\n'),
-		heredoc_get_input(eoi, sh)));
-	else if (sh->heredoc != -1)
-		sh->heredoc = 0;
-	ft_strdel(&ret);
-	return (NULL);
+	if ((in = get_input()))
+	{
+		while (!ft_strequ(in, eoi) && sh->heredoc == 1)
+		{
+			in = ft_stradd_char(in, '\n');
+			ret = ft_strjoin_fr(ret, in);
+			ft_putstr("\033[00;34mheredoc>\n\033[00m");
+			if (!(in = get_input()))
+			{
+				ft_strdel(&in);
+				ft_strdel(&ret);
+				return (NULL);
+			}
+		}
+		ft_strdel(&in);
+	}
+	return (ret);
 }

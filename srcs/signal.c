@@ -32,7 +32,9 @@ void		ft_sigint(t_shell *sh)
 {
 	if (!(sh && sh->process
 	&& kill_running_fg_process(sh->process, SIGINT)))
+	{
 		ft_disp(sh);
+	}
 }
 
 void		sig_handler(int sig)
