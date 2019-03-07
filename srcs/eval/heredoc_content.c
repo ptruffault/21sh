@@ -19,10 +19,10 @@ char	*heredoc_get_input(char *eoi, t_shell *sh)
 	ft_putstr("\033[00;34mheredoc>\n\033[00m");
 	ret = get_input();
 	if (!ft_strequ(ret, eoi) && sh->heredoc == 1)
-		return (ft_strjoin_fr(ft_stradd_char(ret, '\n')
-		, heredoc_get_input(eoi, sh)));
+		return (ft_strjoin_fr(ft_stradd_char(ret, '\n'),
+		heredoc_get_input(eoi, sh)));
+	else if (sh->heredoc != -1)
+		sh->heredoc = 0;
 	ft_strdel(&ret);
-	sh->heredoc = 0;
-	printf("END OF HEREDOC\n");
-	return (ret);
+	return (NULL);
 }

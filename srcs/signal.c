@@ -30,6 +30,9 @@ t_process	*ft_wait_background(t_process *p)
 
 void		ft_sigint(t_shell *sh)
 {
+	unsigned long key;
+
+	key = KEY_ENTER;
 	if (!(sh && sh->process
 	&& kill_running_fg_process(sh->process, SIGINT)))
 	{
@@ -42,6 +45,7 @@ void		ft_sigint(t_shell *sh)
 		{
 			sh->heredoc = -1;
 			sh->e.edited = TRUE;
+			write(8, &key, 0);
 		}
 		ft_disp(sh);
 	}

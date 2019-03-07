@@ -26,6 +26,7 @@
 # include "structures.h"
 # include <pwd.h>
 
+void		ft_delete_char(t_eval *e);
 char		*ft_update_pwd(t_shell *sh);
 t_redirect	*parse_heredoc(t_redirect *new, t_word *w);
 void		init_env(t_shell *sh, char **argv);

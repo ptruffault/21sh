@@ -19,7 +19,8 @@ static char	*ft_get_varname(char *s)
 
 	i = 0;
 	ptr = s + 1;
-	while (ptr[i] && (ft_isalpha(ptr[i]) || ptr[i] == '_'))
+	while (ptr[i] && (ptr[i] == '_' || ft_isalpha(ptr[i])
+	|| ft_isdigit(ptr[i]) || ptr[i] == '~' || ptr[i] == '@'))
 		i++;
 	return (ft_strsub(s, ptr - s, i));
 }
@@ -30,17 +31,18 @@ char		*ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
 	char	*value;
 	char	*tmp;
 
-	if ((name = ft_get_varname(ptr)))
+	name = NULL;
+	value = NULL;
+	if ((name = ft_get_varname(ptr))
+	&& !(value = get_tenvv_val(sh->env, name)))
+		value = get_tenvv_val(sh->intern, name);
+	if ((tmp = ft_strpull(ret, ptr, ft_strlen(name), value)))
 	{
-		if (!(value = get_tenvv_val(sh->env, name)))
-			value = get_tenvv_val(sh->intern, name);
-		if ((tmp = ft_strpull(ret, ptr, ft_strlen(name), value)))
-		{
-			ft_strdel(&ret);
-			ret = tmp;
-		}
-		ft_strdel(&name);
+		ft_strdel(&ret);
+		ret = tmp;
 	}
+	if (name)
+		ft_strdel(&name);
 	return (ret);
 }
 

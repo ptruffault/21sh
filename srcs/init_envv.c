@@ -15,8 +15,8 @@
 static char	*get_shell_path(char *path, char *pwd)
 {
 	if (*path == '/')
-		return (ft_strdup(path + 1));
-	if (ft_str_startwith(path, "./"))
+		return (ft_strdup(path));
+	if (ft_str_startwith(path, "./") && pwd)
 		return (ft_strjoin(pwd, path + 1));
 	return (NULL);
 }
@@ -63,7 +63,7 @@ char		*ft_update_pwd(t_shell *sh)
 
 	pwd = getcwd(buff, 4096);
 	sh->env = ft_new_envv(sh->env, "PWD", pwd);
-	return (pwd);
+	return (ft_strdup(pwd));
 }
 
 void		init_env(t_shell *sh, char **argv)
@@ -73,15 +73,18 @@ void		init_env(t_shell *sh, char **argv)
 	char *pwd;
 
 	sh->env = ft_new_envv(sh->env, "TERM", "xterm-256color");
-	pwd = ft_update_pwd(sh);
-	if ((shell_path = get_shell_path(*argv, pwd)))
+	if ((pwd = ft_update_pwd(sh)))
 	{
-		sh->env = ft_new_envv(sh->env, "SHELL", shell_path);
-		if ((shell_fold = ft_get_prev_path(shell_path)))
+		if ((shell_path = get_shell_path(*argv, pwd)))
 		{
-			ft_setup_env(sh, shell_fold);
-			ft_strdel(&shell_fold);
+			sh->env = ft_new_envv(sh->env, "SHELL", shell_path);
+			if ((shell_fold = ft_get_prev_path(shell_path)))
+			{
+				ft_setup_env(sh, shell_fold);
+				ft_strdel(&shell_fold);
+			}
+			ft_strdel(&shell_path);
 		}
-		ft_strdel(&shell_path);
+		ft_strdel(&pwd);
 	}
 }

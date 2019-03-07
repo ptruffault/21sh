@@ -12,23 +12,6 @@
 
 #include "../../includes/shell42.h"
 
-void	ft_delete_char(t_eval *e)
-{
-	int i;
-	int len;
-
-	i = e->curr;
-	len = ft_strlen(e->s);
-	while (i < len && e->s[i + 1])
-	{
-		e->s[i] = e->s[i + 1];
-		i++;
-	}
-	e->s[i] = 0;
-	e->s = ft_realloc(e->s, len + 1, len);
-	e->eval = ft_realloc(e->eval, len + 1, len);
-}
-
 void	ft_lex_backslash(t_eval *e)
 {
 	ft_delete_char(e);
