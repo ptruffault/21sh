@@ -26,6 +26,7 @@
 # include "structures.h"
 # include <pwd.h>
 
+void		ft_execve_pip(t_process *p, t_shell *sh, t_tree *t, int mode);
 void		ft_delete_char(t_eval *e);
 char		*ft_update_pwd(t_shell *sh);
 t_redirect	*parse_heredoc(t_redirect *new, t_word *w);
@@ -57,12 +58,12 @@ int			ft_redirect(t_tree *t);
 int			ft_redirect_builtin(t_tree *t, t_process *p);
 int			get_destination_fd(t_redirect *r);
 void		ft_reset_fd(t_process *p);
-int			fd_dup(int fd1, int fd2, t_process *p);
+int			fd_dup(int fd1, int fd2, t_process *p, int close);
 t_shell		*ft_get_set_shell(t_shell *sh);
 void		reset_term(void);
 void		init_shell(t_shell *sh, char **envv, char **argv);
 void		set_signals(void);
-int			ft_exec(t_tree *t, t_process *p);
+void		ft_execve(t_process *p, t_shell *sh, t_tree *t);
 t_tree		*exec_pipe(t_tree *t);
 void		ft_exec_son(t_process *p, t_tree *t);
 t_tree		*exec_instruction(t_tree *t);

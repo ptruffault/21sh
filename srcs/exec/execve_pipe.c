@@ -16,7 +16,9 @@ void	ft_exec_son(t_process *p, t_tree *t)
 {
 	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
-		if (p->cmd)
+		if (p->builtins == TRUE)
+			run_builtin(t, p->argv);
+		else if (p->cmd)
 		{
 			execve(p->cmd, p->argv, p->env);
 			error("execve fucked up", p->cmd);

@@ -14,16 +14,13 @@
 
 static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 {
-	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
+	if (p->cmd)
 	{
-		if (p->cmd)
-		{
-			execve(p->cmd, p->argv, p->env);
-			warning("execve fucked up", p->cmd);
-		}
-		else
-			error("command not found", t->cmd->word);
+		execve(p->cmd, p->argv, p->env);
+		warning("execve fucked up", p->cmd);
 	}
+	else
+		error("command not found", t->cmd->word);
 	ft_free_tshell(sh);
 	ft_free_tree(t);
 	exit(-1);
@@ -31,10 +28,10 @@ static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 
 void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
+	if (t->r && !ft_redirect_builtin(t, p))
+			return ;
 	if (p->builtins == TRUE)
 	{
-		if (t->r && !ft_redirect_builtin(t, p))
-			return ;
 		p->ret = run_builtin(t, p->argv);
 	}
 	else if ((p->pid = fork()) == -1)
@@ -43,20 +40,3 @@ void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 		ft_son(t, p, sh);
 }
 
-int			ft_exec(t_tree *t, t_process *p)
-{
-	t_shell		*sh;
-
-	sh = ft_get_set_shell(NULL);
-	ft_execve(p, sh, t);
-	if (p->status == RUNNING_FG)
-	{
-		if (p->builtins == FALSE)
-			wait(&p->ret);
-		else
-			ft_reset_fd(p);
-		if (p->status != KILLED)
-			p->status = DONE;
-	}
-	return (p->ret);
-}

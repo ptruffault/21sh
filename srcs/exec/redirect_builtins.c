@@ -31,7 +31,7 @@ int			ft_redirect_builtin(t_tree *t, t_process *p)
 			p->save[r->from] = dup(r->from);
 		if (IS_STD(r->to) && IS_STD(p->save[r->to]))
 			p->save[r->to] = dup(r->to);
-		if (fd_dup(r->to, r->from, p) < 0)
+		if (fd_dup(r->to, r->from, p, 1) < 0)
 			return (ft_redir_failure(r));
 		if (IS_STD(r->from))
 			p->fd[r->from] = r->to;

@@ -132,6 +132,7 @@ typedef struct	s_process
 
 typedef struct	s_shell
 {
+	int				pipes[2];
 	int				pid;
 	char			**txt;
 	int				heredoc;
