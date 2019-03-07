@@ -14,7 +14,7 @@
 
 void	ft_init_inputs_kval(unsigned long kval[])
 {
-	kval[0] = KEY_ENTER;
+	kval[0] = TOUCHE_CTRL_C;
 	kval[1] = ARROW_LEFT;
 	kval[2] = ARROW_RIGHT;
 	kval[3] = TOUCHE_HOME;
@@ -35,12 +35,13 @@ void	ft_init_inputs_kval(unsigned long kval[])
 	kval[18] = TOUCHE_MAJ_HOME;
 	kval[19] = TOUCHE_MAJ_ARROW_UP;
 	kval[20] = TOUCHE_MAJ_ARROW_DOWN;
+	kval[21] = KEY_ENTER;
 }
 
 void	ft_init_inputs_tab(unsigned long kval[], void (*ft_tab[])(t_edit *e))
 {
 	ft_init_inputs_kval(kval);
-	ft_tab[0] = entry_key;
+	ft_tab[0] = reset_get_input;
 	ft_tab[1] = curr_move_left;
 	ft_tab[2] = curr_move_right;
 	ft_tab[3] = ft_home_key;
@@ -61,27 +62,30 @@ void	ft_init_inputs_tab(unsigned long kval[], void (*ft_tab[])(t_edit *e))
 	ft_tab[18] = ft_select_home;
 	ft_tab[19] = ft_jump_line_up;
 	ft_tab[20] = ft_jump_line_down;
+	ft_tab[21] = entry_key;
 }
 
 int		handle_input(unsigned long buf, t_edit *e)
 {
 	int				x;
-	unsigned long	kval[21];
-	void			(*ft_tab[21])(t_edit *e);
+	unsigned long	kval[22];
+	void			(*ft_tab[22])(t_edit *e);
 
 	ft_init_inputs_tab(kval, ft_tab);
 	x = -1;
-	while (++x < 21)
+	while (++x < 22)
 	{
 		if (kval[x] == buf)
 		{
 			if (x != 7 && x < 12)
 				e->select = -1;
 			ft_tab[x](e);
+			if (x == 0)
+				return (0);
 			break ;
 		}
 	}
-	if (x == 21 && ft_isascii(buf))
+	if (x == 22 && ft_isascii(buf))
 		ft_add_char((char)buf, e);
 	return (x);
 }

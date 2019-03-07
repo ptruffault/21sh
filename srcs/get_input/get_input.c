@@ -48,6 +48,10 @@ char		*get_input(void)
 		buf = 0;
 		read(0, &buf, 8);
 		buf = handle_input(buf, &sh->e);
+		if (buf == 0)
+		{
+			return (NULL);
+		}
 		ft_print_line(&sh->e);
 	}
 	return (ft_update_hist(sh));

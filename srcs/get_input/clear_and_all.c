@@ -40,9 +40,14 @@ void	entry_key(t_edit *e)
 
 void	clear_term(t_edit *e)
 {
-	term_actions(CLEAR);
 	term_actions(HOME_POS);
+	term_actions(CLEAR);
 	ft_putstr(e->input);
+}
+
+void reset_get_input(t_edit *e)
+{
+	ft_strdel(&e->input);
 }
 
 void	just_exit(t_edit *e)

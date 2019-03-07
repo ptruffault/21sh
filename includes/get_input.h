@@ -87,7 +87,7 @@ void			ft_jump_line_up(t_edit *e);
 
 void			entry_key(t_edit *e);
 void			clear_term(t_edit *e);
-void			reset_input(t_edit *e);
+void			reset_get_input(t_edit *e);
 void			just_exit(t_edit *e);
 
 void			ft_copy(t_edit *e);
