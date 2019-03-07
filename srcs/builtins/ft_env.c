@@ -40,9 +40,9 @@ static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
 	char	*v;
 
 	ret = NULL;
-	if (!(n = get_name(equal)) ||
-	!(v = get_value(equal)) ||
-	!(ret = ft_new_envv(tmp, n, v)))
+	if (!(n = get_name(equal))
+	|| !(v = get_value(equal))
+	|| !(ret = ft_new_envv(tmp, n, v)))
 		warning("impossible to create tmp envv value", NULL);
 	ft_strdel(&n);
 	ft_strdel(&v);

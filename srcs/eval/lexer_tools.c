@@ -67,7 +67,7 @@ void	ft_lex_var(t_eval *e)
 
 void	ft_lex_dquote(t_eval *e)
 {
-	e->eval[e->curr++] = ' ';
+	ft_delete_char(e);
 	while (e->s[e->curr] && e->s[e->curr] != '"')
 	{
 		if (e->s[e->curr] == '\\' && e->s[e->curr + 1])
@@ -81,12 +81,12 @@ void	ft_lex_dquote(t_eval *e)
 		e->c = '"';
 	}
 	else
-		e->eval[e->curr++] = ' ';
+		ft_delete_char(e);
 }
 
 void	ft_lex_quote(t_eval *e)
 {
-	e->eval[e->curr++] = ' ';
+	ft_delete_char(e);
 	while (e->s[e->curr] != 0 && e->s[e->curr] != '\'')
 		e->eval[e->curr++] = 's';
 	if (!e->s[e->curr])
@@ -95,5 +95,5 @@ void	ft_lex_quote(t_eval *e)
 		e->c = '\'';
 	}
 	else
-		e->eval[e->curr++] = ' ';
+		ft_delete_char(e);
 }

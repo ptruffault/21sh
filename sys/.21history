@@ -635,3 +635,80 @@ ls
 clear
 ls
 env
+clear
+ls
+ls|rev
+ll
+clear
+file
+ls
+wefw
+wf
+file || ls
+clear
+ls
+echo $?
+echo $?
+echo $?
+echo $?
+file
+echo $?
+ls 2>&-
+ls 1>&2
+ls ><< k
+lol
+cat > << lol
+ls
+cd - | ls
+cd | ls
+ls
+rm -rf \<\<
+ls
+ls
+'e'ch'o' test
+"e"cho
+'e'cho test
+'e'ch'o' test
+clear
+exit | exit
+'e'ch'o'
+echo "awdw"
+echo "erguerergeergegrgewgegewegwewrerg"
+echo "ewfw\n"
+echo "ewfw\n\n "
+echo 'qwefqwweweewew'
+echo "dwgferwfgwer"
+echo '\n'
+echo 'qwefqwefqweasfvqvclear'
+clear
+ls
+ls
+l
+ll
+ls
+cd | ls
+ls | rev
+ls | rev
+ls
+ls|rev
+ls| rev
+ls
+ls | rev
+clear
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | rev
+ls | cd
+cd | rev
+ls |rev
+cat << oie
+l
+s
+ls
+ls
+ls
+lsl
+clear
+env
