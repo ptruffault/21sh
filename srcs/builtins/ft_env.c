@@ -23,8 +23,11 @@ static void		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 	e = tenvv_to_tab(tmp);
 	if ((pid = fork()) == -1)
 		warning("fork failed to create a new process", *arr);
-	if (pid == 0 && execve(path, arr, e) == -1)
+	if (pid == 0)
+	{
+		execve(path, arr, e);
 		warning("{env} execve fucked up", *arr);
+	}
 	ft_strdel(&path);
 	ft_freestrarr(e);
 	wait(&pid);
@@ -103,6 +106,7 @@ int				ft_env(t_envv *envv, char **argv)
 		{
 			ft_env_exec(&argv[i], tmp, envv);
 			ft_free_tenvv(tmp);
+			return (0);
 		}
 		i++;
 	}

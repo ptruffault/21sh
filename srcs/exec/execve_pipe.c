@@ -24,6 +24,6 @@ void	ft_exec_son(t_process *p, t_tree *t)
 			error("execve fucked up", p->cmd);
 		}
 		else
-			error("unknow cmd", t->cmd->word);
+			error("command not found", t->cmd->word);
 	}
 }

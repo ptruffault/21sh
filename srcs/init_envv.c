@@ -56,16 +56,24 @@ static void	ft_setup_env(t_shell *sh, char *shell_fold)
 	}
 }
 
+char		*ft_update_pwd(t_shell *sh)
+{
+	char buff[4097];
+	char *pwd;
+
+	pwd = getcwd(buff, 4096);
+	sh->env = ft_new_envv(sh->env, "PWD", pwd);
+	return (pwd);
+}
+
 void		init_env(t_shell *sh, char **argv)
 {
 	char *shell_fold;
 	char *shell_path;
-	char buff[4097];
 	char *pwd;
 
 	sh->env = ft_new_envv(sh->env, "TERM", "xterm-256color");
-	pwd = getcwd(buff, 4096);
-	sh->env = ft_new_envv(sh->env, "PWD", pwd);
+	pwd = ft_update_pwd(sh);
 	if ((shell_path = get_shell_path(*argv, pwd)))
 	{
 		sh->env = ft_new_envv(sh->env, "SHELL", shell_path);

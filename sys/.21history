@@ -157,3 +157,214 @@ echo '\\'
 \\
 "\\"
 touch TODO
+ls
+ls
+clear
+env
+env -u HOME=LOL ./21sh
+ls
+cd
+env -u HOME= ls
+env -u HOME= ls
+env -u HOME= ls
+env -u HOME= ./21sh
+ls
+env -i ./21sh
+ls
+ls
+env -i nae="lol"
+env-i naze=ezaf
+env -i naze=ezaf
+env -i naze="ezaf"
+ls
+echo "\\"
+ls
+env
+eeee 
+eeee a
+ls
+eeee a
+eeee 
+eeee a
+@›à¿ÿ
+ðà¿ÿ
+echo lol
+À†à¿ÿ
+ls
+ÀQ}Íÿ
+°ì™ãÿ
+À’™ãÿ
+ð™™ãÿ
+@!ÖÕÿ
+echo a
+ls
+clear
+echo \a
+echo \a
+ls
+echo \a
+echo \a
+echo \a
+echo "\a"
+echo \a
+echo "\  "
+echo \a
+echo "\a"
+echo "\""
+echo "\""
+echo "\""
+echo "\""
+echo \"
+echo \'
+echo '\'
+echo \&
+echo \&\&
+\ls
+echo \a
+echo "\""
+echo "\"\"'"
+cat
+cat -e 
+cat -e 
+clear
+ls
+env
+echo lol 2>&- 1>&2
+echo lol 2>&- 1>&2
+echo lol 2>&- 1>&2
+echo 2>&1
+echo lol 2>&1
+echo lol 2>&1 >&-
+echo lol >&- 2>&1
+echo lol 2>&- 1>&2
+ls . zefaz >&- 1>&2
+ls . zefaz 1>&2 2>&-
+ls . zefaz >&- 1>&2
+ls
+ls . zaefaze 2>&- 1>&2
+ls|rev
+clear
+ls
+exit
+jobs
+exit
+./21sh
+./21sh
+ls
+ls
+clear
+ls
+cat TODO
+clear
+ls
+ls
+clear
+cat << eoi
+l
+s
+cat << eoi
+l
+cat << eoi
+l
+cat << eoi
+lol
+l
+cat <<eoi
+lol
+ls
+exit
+ls
+clear
+env
+cat 
+cat << eoi
+l
+s
+cat << eoi
+LAUL
+clar
+clear
+ls
+cat << eoi
+ls
+echo ls | ./21sh
+clear
+ls
+env
+cat << eoi
+laul
+cat << eoi
+l
+l
+cat << eoi
+l
+ls
+cl
+alias
+cat << eoi
+cat << eoi
+ls
+ls
+cat << eoi
+lol
+ls
+ls
+clear
+env
+clear
+cat << eoi
+laum
+ls
+ls
+cat << eoi
+laul
+ls
+ls
+ls
+clear
+cat<<eoi
+cal
+l
+ls
+clear
+cat < file
+cat << eoi
+lul
+l
+ls
+cat << eoi
+l
+cat << eoi
+l
+s
+cat << eoi
+laul
+ls
+ls -l
+clear
+env
+clear
+ls
+cl
+env
+alias
+env
+ls |rev
+clear
+ls
+env
+cat
+clear
+env
+cat | cat
+ls | rev
+echo $PW
+echo $PWD
+echo $PWDR
+echo $PWD/lol
+clear
+ls
+env
+env | grep PWD
+env
+unsetenv -all

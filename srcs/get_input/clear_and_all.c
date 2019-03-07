@@ -26,6 +26,7 @@ void	entry_key(t_edit *e)
 	error[6] = "parenth";
 	eval = lexer(e->input);
 	ft_strdel(&eval.eval);
+	ft_strdel(&eval.s);
 	if (eval.err > 1)
 	{
 		ft_printf("\n\033[00;31m%s\033[00m >\n", error[eval.err - 2]);

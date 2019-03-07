@@ -12,22 +12,17 @@
 
 #include "../../includes/shell42.h"
 
-char	*heredoc_get_input(char *eoi)
+char	*heredoc_get_input(char *eoi, t_shell *sh)
 {
 	char	*ret;
-	t_shell *sh;
 
-	sh = ft_get_set_shell(NULL);
 	ft_putstr("\033[00;34mheredoc>\n\033[00m");
-	sh->heredoc = 1;
 	ret = get_input();
 	if (!ft_strequ(ret, eoi) && sh->heredoc == 1)
 		return (ft_strjoin_fr(ft_stradd_char(ret, '\n')
-		, heredoc_get_input(eoi)));
-	else
-	{
-		ft_strdel(&ret);
-		sh->heredoc = 0;
-		return (ret);
-	}
+		, heredoc_get_input(eoi, sh)));
+	ft_strdel(&ret);
+	sh->heredoc = 0;
+	printf("END OF HEREDOC\n");
+	return (ret);
 }

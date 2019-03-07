@@ -26,6 +26,7 @@
 # include "structures.h"
 # include <pwd.h>
 
+char		*ft_update_pwd(t_shell *sh);
 t_redirect	*parse_heredoc(t_redirect *new, t_word *w);
 void		init_env(t_shell *sh, char **argv);
 t_word		*ft_deltword(t_word *prev, t_word *src);
@@ -117,7 +118,7 @@ t_word		*ft_get_words(t_eval *e);
 t_eval		lexer(char *src);
 t_word		*eval_line(char *input);
 t_word		*new_tword(void);
-char		*heredoc_get_input(char *eoi);
+char		*heredoc_get_input(char *eoi, t_shell *sh);
 t_word		*o_get_input(int type);
 char		*q_get_input(char c);
 char		*p_get_input(char c);

@@ -27,11 +27,17 @@ int			ft_twordlen(t_word *w)
 
 t_redirect	*parse_heredoc(t_redirect *new, t_word *w)
 {
+	t_shell *sh;
+
+	sh = ft_get_set_shell(NULL);
 	if (w->next && w->next->word)
 	{
 		new->path = ft_strdup(w->next->word);
-		new->heredoc = heredoc_get_input(new->path);
-		return (new);
+		sh->heredoc = 1;
+		new->heredoc = heredoc_get_input(new->path, sh);
+		if (sh->heredoc != -1)
+			return (new);
+		sh->heredoc = 0;
 	}
 	ft_free_redirection(new);
 	return (NULL);

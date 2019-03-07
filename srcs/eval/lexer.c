@@ -88,7 +88,7 @@ t_eval	lexer(char *src)
 
 	e.curr = 0;
 	e.err = OK;
-	e.s = src;
+	e.s = ft_strdup(src);
 	if (!(e.eval = ft_strnew(ft_strlen(e.s) + 1)))
 		return (e);
 	while (e.s[e.curr])

@@ -20,10 +20,9 @@ static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 		{
 			execve(p->cmd, p->argv, p->env);
 			warning("execve fucked up", p->cmd);
-			ft_putstrarr(p->argv);
 		}
 		else
-			error("unknow command", t->cmd->word);
+			error("command not found", t->cmd->word);
 	}
 	ft_free_tshell(sh);
 	ft_free_tree(t);

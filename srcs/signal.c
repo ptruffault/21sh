@@ -33,15 +33,17 @@ void		ft_sigint(t_shell *sh)
 	if (!(sh && sh->process
 	&& kill_running_fg_process(sh->process, SIGINT)))
 	{
-		if (sh->heredoc == 0)
-			ft_putchar_fd('\n', 0);
 		if (isatty(0) && sh->e.input)
 		{
 			ft_strdel(&sh->e.input);
 			sh->e = init_tedit(sh);
 		}
-		if (sh->heredoc == 0)
-			ft_disp(sh);
+		if (sh->heredoc != 0)
+		{
+			sh->heredoc = -1;
+			sh->e.edited = TRUE;
+		}
+		ft_disp(sh);
 	}
 }
 
@@ -55,14 +57,16 @@ void		sig_handler(int sig)
 		ft_sigint(sh);
 	if (sig == SIGWINCH)
 		ft_update_windows(&sh->e);
-	if (sig == SIGTSTP && sh && sh->process)
+	if (sig == SIGTSTP && sh->process)
 		kill_running_fg_process(sh->process, SIGTSTP);
-	if (sig == SIGCHLD && sh && sh->process
+	if (sig == SIGCHLD && sh->process
 	&& (tmp = ft_wait_background(sh->process)))
 	{
 		ft_reset_fd(tmp);
 		tmp->status = DONE;
 	}
+	if (sig == SIGKILL)
+		ft_exit("9");
 }
 
 void		set_signals(void)
@@ -71,4 +75,5 @@ void		set_signals(void)
 	signal(SIGTSTP, sig_handler);
 	signal(SIGCHLD, sig_handler);
 	signal(SIGWINCH, sig_handler);
+	signal(SIGKILL, sig_handler);
 }

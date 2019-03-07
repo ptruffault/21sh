@@ -1,1 +1,1 @@
-sys/.21history
+alias ls "ls --color=tty"
