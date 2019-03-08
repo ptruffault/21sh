@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 14:36:00 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/06/21 14:36:31 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:33:37 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ void			ft_get_file_inf(t_file *f, struct dirent *t_dir, char *path)
 	struct group	*grp;
 	struct passwd	*owner;
 
-	if ((!(f->name = ft_strdup(t_dir->d_name))) ||
-	!(f->path = ft_new_path(path, f->name)) ||
-	(lstat(f->path, &buf) < 0) ||
-	((f->type = find_type(buf.st_mode)) == '0') ||
-	(!(owner = getpwuid(buf.st_uid)) ||
-	!(f->owner = ft_strdup(owner->pw_name))) ||
-	(!(grp = getgrgid(buf.st_gid)) ||
-	!(f->group = ft_strdup(grp->gr_name))) ||
-	!(f->mode = find_mode(buf.st_mode)))
+	if ((!(f->name = ft_strdup(t_dir->d_name)))
+	|| !(f->path = ft_new_path(path, f->name))
+	|| (lstat(f->path, &buf) < 0)
+	|| ((f->type = find_type(buf.st_mode)) == '0')
+	|| (!(owner = getpwuid(buf.st_uid))
+	|| !(f->owner = ft_strdup(owner->pw_name)))
+	|| (!(grp = getgrgid(buf.st_gid))
+	|| !(f->group = ft_strdup(grp->gr_name)))
+	|| !(f->mode = find_mode(buf.st_mode)))
 		warning("impossible to take all the file's info", path);
 	f->modif_time = buf.st_mtime;
 	f->access_time = buf.st_atime;
