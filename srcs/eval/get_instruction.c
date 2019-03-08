@@ -89,8 +89,8 @@ t_tree			*get_tree(char *input)
 		return (NULL);
 	if (!(head = new_tree()))
 		return (NULL);
-	if (ft_check_grammar(w))
-		head = ft_get_set_tree(built_tree(head, w));
+	if (ft_check_grammar(w) && (head = built_tree(head, w)))
+		ft_get_set_tree(head);
 	ft_free_tword(w);
 	return (head);
 }

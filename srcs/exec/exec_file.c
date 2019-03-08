@@ -24,7 +24,7 @@ int		exec_fd(t_shell *sh, int fd)
 		{
 			if (*sh->txt[i] && *sh->txt[i] != '#'
 			&& (t = get_tree(sh->txt[i])))
-				ft_free_tree(exec_tree(ft_get_set_tree(t)));
+				ft_free_tree(exec_tree(t));
 			i++;
 		}
 		ft_freestrarr(sh->txt);
