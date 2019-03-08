@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:16:51 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/03/08 13:36:38 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/08 17:43:24 by ptruffau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char	**ft_get_txt(int fd)
 		ft_strdel(&tmp);
 	}
 	if (i == 0)
+	{
 		free(ret);
+		return (NULL);
+	}
 	ret[i] = NULL;
 	return (ret);
 }
