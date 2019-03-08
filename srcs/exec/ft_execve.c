@@ -21,7 +21,7 @@ static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 	exit(-1);
 }
 
-int		ft_execve(t_process *p, t_shell *sh, t_tree *t)
+int			ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
 	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
@@ -42,4 +42,3 @@ int		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 	}
 	return (-1);
 }
-

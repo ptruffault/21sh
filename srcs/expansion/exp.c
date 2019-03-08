@@ -50,7 +50,7 @@ char		*ft_exp_var(char *ret, t_shell *sh)
 		if ((ret && ret[i] == '~'
 		&& !(ret = ft_exp_home_var(ret, &ret[i], sh->env)))
 		|| (ret && ret[i] == '$' && ret[i + 1] == '{'
-		&& (!(ret = ft_exp_param(ret, sh, &ret[i])) || (i = 0)))
+		&& !(ret = ft_exp_param(ret, sh, &ret[i])))
 		|| (ret && ret[i] == '$' && ret[i + 1] && ft_strchr("$!?", ret[i + 1])
 		&& !(ret = ft_exp_spec(ret, &ret[i], sh)))
 		|| (ret && ret[i] == '$' && ret[i + 1] && !ft_strchr("$!?{", ret[i + 1])

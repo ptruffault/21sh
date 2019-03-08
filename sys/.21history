@@ -2590,3 +2590,52 @@ cat << eoi
 LAUL
 la
 unsetenv -all
+ls
+ls| rev
+\r
+ll
+ll| rev
+<
+<
+>
+<
+ls
+weq
+ls <
+<
+>
+<
+>
+ll
+clear
+ll
+< < < < 
+<><><><><>
+clear
+< > < |rev
+ls | << | rev
+LAUL
+ls | < | rev
+ls
+ll
+>>
+clear
+ls | rev
+cat << eoi
+|rev
+<< eoi >?21sh
+<< eoi ./21sh
+LAUL
+ls
+ll
+env
+ls > file
+rm -rf file
+ls
+env
+cat <auteur
+clear
+ls > file
+echo end >> file
+rm -rf file
+ls

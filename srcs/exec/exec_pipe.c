@@ -12,7 +12,6 @@
 
 #include "../../includes/shell42.h"
 
-
 static t_tree	*ft_end(t_tree *t, t_process *p1, t_process *p2, int pip[2])
 {
 	ft_close(pip[0]);

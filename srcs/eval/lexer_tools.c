@@ -65,23 +65,6 @@ void	ft_lex_var(t_eval *e)
 	}
 }
 
-char 	ft_parse_back(char c)
-{
-	if (c == 'n')
-		return ('\n');
-	if (c == 't')
-		return ('\t');
-	if (c == 'a')
-		return ('\a');
-	if (c == 'f')
-		return ('\f');
-	if (c == 'r')
-		return ('\r');
-	if (c == 'v')
-		return ('\v');
-	return (c);
-}
-
 void	ft_lex_dquote(t_eval *e)
 {
 	ft_delete_char(e);

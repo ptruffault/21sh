@@ -59,7 +59,7 @@ void	clear_term(t_edit *e)
 	ft_putstr(e->input);
 }
 
-void reset_get_input(t_edit *e)
+void	reset_get_input(t_edit *e)
 {
 	ft_strdel(&e->input);
 }

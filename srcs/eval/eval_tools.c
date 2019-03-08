@@ -59,6 +59,23 @@ t_redirect	*parse_heredoc(t_redirect *new, t_word *w)
 	return (NULL);
 }
 
+char		ft_parse_back(char c)
+{
+	if (c == 'n')
+		return ('\n');
+	if (c == 't')
+		return ('\t');
+	if (c == 'a')
+		return ('\a');
+	if (c == 'f')
+		return ('\f');
+	if (c == 'r')
+		return ('\r');
+	if (c == 'v')
+		return ('\v');
+	return (c);
+}
+
 char		**ft_twordto_arr(t_word *w)
 {
 	char	**arr;

@@ -55,16 +55,26 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 	return (head);
 }
 
-int ft_check_grammar(t_word *w)
+int				ft_check_grammar(t_word *w)
 {
+	int cmd;
+
+	cmd = 0;
 	while (w)
 	{
-		if (w->type == OPERATEUR && w->next && w->next->type== OPERATEUR)
+		if (w->type == OPERATEUR && w->next && w->next->type == OPERATEUR)
 		{
 			error("syntax error near", w->word);
 			return (0);
 		}
+		if (w->type == CMD)
+			cmd++;
 		w = w->next;
+	}
+	if (!cmd)
+	{
+		warning("nothing to do", NULL);
+		return (0);
 	}
 	return (1);
 }
