@@ -48,7 +48,8 @@ int		ft_setup_edit_term(t_shell *sh)
 	if (((term = get_tenvv_val(sh->env, "TERM")) && !tgetent(NULL, term)))
 		tgetent(NULL, "xterm-256color");
 	ft_memcpy(&sh->term, sh->saved_term, sizeof(struct termios));
-	sh->term.c_lflag &= ~(ICANON | ECHO | ECHOK | ECHOKE | ECHONL | ECHOCTL);
+	sh->term.c_lflag &= ~(ICANON | ECHO | ECHOK | ECHOKE
+		 | ECHONL | ECHOCTL | ISIG);
 	sh->term.c_cc[VMIN] = 1;
 	sh->term.c_cc[VTIME] = 0;
 	sh->term.c_cc[VINTR] = 3;
