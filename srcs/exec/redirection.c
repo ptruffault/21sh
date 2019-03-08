@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:09:28 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/18 14:05:10 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:26:00 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ static void	ft_heredoc_content(t_redirect *r, t_shell *sh)
 int			get_destination_fd(t_redirect *r)
 {
 	r->path = ft_exp_var(r->path, ft_get_set_shell(NULL));
-	if ((r->t == R_RIGHT && r->to == -2 && r->path &&
-	(r->to = open(r->path, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU)) == -1)
-	|| (r->t == R_DRIGHT && r->to == -2 && r->path &&
-	(r->to = open(r->path, O_RDWR | O_APPEND | O_CREAT, S_IRWXU)) == -1)
-	|| (r->t == R_LEFT && r->to == -2 && r->path &&
-	(r->to = open(r->path, O_RDWR, S_IRWXU)) == -1))
+	if ((r->t == R_RIGHT && r->to == -2 && r->path
+	&& (r->to = open(r->path, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU)) == -1)
+	|| (r->t == R_DRIGHT && r->to == -2 && r->path
+	&& (r->to = open(r->path, O_RDWR | O_APPEND | O_CREAT, S_IRWXU)) == -1)
+	|| (r->t == R_LEFT && r->to == -2 && r->path
+	&& (r->to = open(r->path, O_RDWR, S_IRWXU)) == -1))
 	{
 		warning("can't open this file", r->path);
 		perror(NULL);
