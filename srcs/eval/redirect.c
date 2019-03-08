@@ -28,7 +28,6 @@ static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
 	else if (w->next && w->next->word &&
 	(new->path = ft_strdup(w->next->word)))
 		return (new);
-	ft_free_redirection(new);
 	return (NULL);
 }
 
@@ -46,10 +45,7 @@ static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
 	else if (w->next && w->next->word)
 		new->path = ft_strdup(w->next->word);
 	else
-	{
-		ft_free_redirection(new);
 		return (NULL);
-	}
 	return (new);
 }
 
@@ -76,7 +72,7 @@ static t_redirect	*get_redirection(t_word *w)
 		|| ((new->t == R_LEFT || new->t == R_DLEFT)
 		&& !(new = parse_left_redirect(new, w))))
 		{
-			error("invalid redirection", "argument needed");
+			ft_free_redirection(new);
 			return (NULL);
 		}
 	}

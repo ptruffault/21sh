@@ -30,15 +30,17 @@ int			fd_dup(int fd1, int fd2, t_process *p, int close)
 	int ret;
 
 	ret = 0;
-	if (fd1 == fd2)
+	if (fd1 == fd2 || (fd1 = check_fd(p, fd1)) == -2)
 		return (-1);
-	if ((fd1 = check_fd(p, fd1)) == -2)
-		return (-1);
-	if (fd1 == -1)
-		fd1 = open("/dev/null", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
-	ret = dup2(fd1, fd2);
-	if (close && !IS_STD(fd1))
-		ft_close(fd1);
+	if (fd1 == -1
+	&& (fd1 = open("/dev/null", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU)) < 0)
+		warning("can't open this file", "dev/null");
+	else
+	{
+		ret = dup2(fd1, fd2);
+		if (close && !IS_STD(fd1))
+			ft_close(fd1);
+	}
 	return (ret);
 }
 

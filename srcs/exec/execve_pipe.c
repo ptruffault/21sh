@@ -12,18 +12,18 @@
 
 #include "../../includes/shell42.h"
 
-void	ft_exec_son(t_process *p, t_tree *t)
+void	ft_exec_son(t_process *p, t_tree *t, t_shell *sh)
 {
 	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
 		if (p->builtins == TRUE)
-			run_builtin(t, p->argv);
+			run_builtin(t, p->argv, sh);
 		else if (p->cmd)
 		{
 			execve(p->cmd, p->argv, p->env);
 			error("execve fucked up", p->cmd);
 		}
 		else
-			error("command not found", t->cmd->word);
+			error("command not found", *p->argv);
 	}
 }

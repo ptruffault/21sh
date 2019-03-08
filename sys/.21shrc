@@ -1,8 +1,8 @@
 export PATH=${PATH:-/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin}
 export USER=${USER:-ptruffau}
 alias cl /usr/bin/clear
-alias la "ls -aG" ll "ls -lG" ls "ls -G"
-#alias la "ls -a --color=tty" ll "ls -l --color=tty" ls "ls --color=tty"
+#alias la "ls -aG" ll "ls -lG" ls "ls -G"
+alias la "ls -a --color=tty" ll "ls -l --color=tty" ls "ls --color=tty"
 alias gitall "git add -A && git commit -m 'gitall' && git push"
 /usr/bin/clear
 echo '        :::      ::::::::          ::::::::  :::    :::'

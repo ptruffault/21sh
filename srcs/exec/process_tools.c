@@ -12,33 +12,6 @@
 
 #include "../../includes/shell42.h"
 
-void		ft_delete_process(int pid)
-{
-	t_shell		*sh;
-	t_process	*p;
-	t_process	*tmp;
-
-	sh = ft_get_set_shell(NULL);
-	if ((p = sh->process) && p->pid == pid)
-	{
-		sh->process = p->next;
-		p->next = NULL;
-		ft_free_tprocess(p);
-	}
-	else
-		while (p && p->next)
-		{
-			if (p->next->pid == pid)
-			{
-				tmp = p->next;
-				p->next = tmp->next;
-				tmp->next = NULL;
-				ft_free_tprocess(tmp);
-			}
-			p = p->next;
-		}
-}
-
 t_process	*ft_get_process(t_process *s, int pid)
 {
 	t_process *ret;
@@ -71,6 +44,7 @@ int			kill_running_fg_process(t_process *p, int sig)
 		if (sig == SIGTSTP)
 			p->status = SUSPENDED;
 		kill(p->pid, sig);
+		p->ret = sig;
 		return (1);
 	}
 	return (0);

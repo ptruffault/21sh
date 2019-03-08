@@ -22,7 +22,7 @@ char	*ft_strpull(char *src, char *ptr, int len, char *value)
 	if (ptr - src > 0)
 	{
 		p1 = ft_strndup(src, ptr - src);
-		p2 = ft_strjoin(value, ptr + len);
+		p2 = ft_strjoin(value, ptr + len + 1);
 		return (ft_strjoin_fr(p1, p2));
 	}
 	return (NULL);

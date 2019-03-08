@@ -62,7 +62,7 @@ static char	*sub_get_param_value(char *old_parenth, t_shell *sh)
 		value = ft_strdup(parenth);
 	ft_strdel(&parenth);
 	ptr = ft_strpull(old_parenth, old_parenth,
-	get_content_size(old_parenth) + 2, value);
+	get_content_size(old_parenth) + 3, value);
 	return (ptr);
 }
 

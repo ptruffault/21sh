@@ -22,6 +22,7 @@ int		exec_fd(t_shell *sh, int fd)
 	{
 		while (sh->txt[i])
 		{
+			printf("--> %s\n",sh->txt[i] );
 			if (*sh->txt[i] && *sh->txt[i] != '#'
 			&& (t = get_tree(sh->txt[i])))
 				ft_free_tree(exec_tree(ft_get_set_tree(t)));

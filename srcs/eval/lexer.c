@@ -65,7 +65,7 @@ void	ft_lexword(t_eval *e)
 {
 	while (ft_isspace(e->s[e->curr]))
 		e->eval[e->curr++] = ' ';
-	if (e->s[e->curr] == '\"')
+	if (e->s[e->curr] == '"')
 		ft_lex_dquote(e);
 	else if (e->s[e->curr] == '\'')
 		ft_lex_quote(e);

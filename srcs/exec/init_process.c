@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-static void			ft_init_fd(t_process *new, t_tree *t)
+static void			ft_init_fd(t_process *new)
 {
 	new->save[0] = 0;
 	new->save[1] = 1;
@@ -20,8 +20,8 @@ static void			ft_init_fd(t_process *new, t_tree *t)
 	new->fd[0] = 0;
 	new->fd[1] = 1;
 	new->fd[2] = 2;
-	new->status = t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG;
-	new->ret = 0;
+	new->status = RUNNING_FG;
+	new->ret = -1;
 	new->argv = NULL;
 	new->pid = 0;
 	new->env = NULL;
@@ -45,7 +45,8 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 	new = NULL;
 	if ((new = (t_process *)malloc(sizeof(t_process))))
 	{
-		ft_init_fd(new, t);
+		ft_init_fd(new);
+		ft_update_pwd(sh);
 		new->env = tenvv_to_tab(sh->env);
 		if (!(new->argv = ft_twordto_arr(t->cmd)))
 			return (ft_abort(new));

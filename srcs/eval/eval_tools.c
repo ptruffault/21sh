@@ -32,7 +32,7 @@ void		ft_delete_char(t_eval *e)
 
 	i = e->curr;
 	len = ft_strlen(e->s);
-	while (i < len && e->s[i + 1])
+	while (i < len && e->s[e->curr] && e->s[i + 1])
 	{
 		e->s[i] = e->s[i + 1];
 		i++;

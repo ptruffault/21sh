@@ -47,7 +47,7 @@ void		ft_reset_fd(t_process *p)
 	i = -1;
 	while (++i <= 2)
 	{
-		if (p->save[i] != i)
+		if (p && p->save[i] != i)
 		{
 			p->fd[i] = dup2(p->save[i], i);
 			ft_close(p->save[i]);

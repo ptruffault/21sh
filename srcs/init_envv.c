@@ -63,7 +63,7 @@ char		*ft_update_pwd(t_shell *sh)
 
 	pwd = getcwd(buff, 4096);
 	sh->env = ft_new_envv(sh->env, "PWD", pwd);
-	return (ft_strdup(pwd));
+	return (get_tenvv_val(sh->env, "PWD"));
 }
 
 void		init_env(t_shell *sh, char **argv)
@@ -73,7 +73,7 @@ void		init_env(t_shell *sh, char **argv)
 	char *pwd;
 
 	sh->env = ft_new_envv(sh->env, "TERM", "xterm-256color");
-	if ((pwd = ft_update_pwd(sh)))
+	if ((pwd = ft_strdup(ft_update_pwd(sh))))
 	{
 		if ((shell_path = get_shell_path(*argv, pwd)))
 		{

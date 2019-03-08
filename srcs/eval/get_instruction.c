@@ -24,7 +24,7 @@ static t_word	*get_argv(t_tree *t, t_word *w)
 
 static t_tree	*ft_syntax(t_tree *t)
 {
-	error("syntax error", t->cmd->word);
+	error("syntax error", NULL);
 	ft_free_tree(t);
 	return (NULL);
 }

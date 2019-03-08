@@ -44,18 +44,19 @@ t_tree			*exec_instruction(t_tree *t)
 
 	sh = ft_get_set_shell(NULL);
 	if (t->o_type == O_PIPE && t->next)
-		t = exec_pipe(t);
-	else if ((p = init_process(t, sh)))
+		return (exec_pipe(t));
+	else if ((p = init_process(t, sh))
+	&& (t->ret = ft_execve(p, sh, t))
+	&& (t->ret == -2 && p->status == RUNNING_FG))
 	{
-		ft_execve(p, sh, t);
-		if (p->status == RUNNING_FG)
-		{
-			if (p->builtins == FALSE)
-				wait(&p->ret);
-			ft_reset_fd(p);
-			if (p->status != KILLED)
-				p->status = DONE;
-		}
+		waitpid(p->pid, &p->ret, 0);
+		t->ret = p->ret;
+	}
+	if (p)
+	{
+		ft_reset_fd(p);
+		if (p->status != KILLED)
+			p->status = DONE;
 	}
 	return (t);
 }

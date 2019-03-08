@@ -15,6 +15,7 @@
 static void	ft_null(t_shell *sh, char **envv)
 {
 	ft_get_set_shell(sh);
+	sh->pid = getpid();
 	sh->heredoc = 0;
 	sh->intern = NULL;
 	sh->saved_term = NULL;

@@ -12,11 +12,8 @@
 
 #include "../../includes/get_input.h"
 
-void	entry_key(t_edit *e)
+void	setup_key(char *error[7])
 {
-	t_eval	eval;
-	char	*error[7];
-
 	error[0] = "cmdand";
 	error[1] = "cmdor";
 	error[2] = "pipe";
@@ -24,13 +21,30 @@ void	entry_key(t_edit *e)
 	error[4] = "dquote";
 	error[5] = "backslash";
 	error[6] = "parenth";
+}
+
+void	entry_key(t_edit *e)
+{
+	t_eval	eval;
+	char	*error[7];
+
+	setup_key(error);
 	eval = lexer(e->input);
 	ft_strdel(&eval.eval);
 	ft_strdel(&eval.s);
 	if (eval.err > 1)
 	{
-		ft_printf("\n\033[00;31m%s\033[00m >\n", error[eval.err - 2]);
-		ft_putstr(e->input);
+		if (eval.err == 6 || eval.err == 5)
+		{
+			ft_add_char('\\', e);
+			ft_add_char('n', e);
+			ft_delete_line(e);
+		}
+		else
+		{
+			ft_printf("\n\033[00;31m%s\033[00m >\n", error[eval.err - 2]);
+			ft_putstr(e->input);
+		}
 		e->pos = ft_strlen(e->input);
 		e->curr = e->pos;
 	}

@@ -41,12 +41,17 @@ t_word			*ft_check_alias(t_word *head, t_shell *sh)
 {
 	t_word	*tmp_w;
 	char	*val;
+	int		i;
 
 	tmp_w = head;
+	i = 0;
 	while (tmp_w)
 	{
-		if (tmp_w->type == CMD && (val = get_tenvv_val(sh->alias, tmp_w->word)))
+		if (tmp_w->type == OPERATEUR)
+			i = 0;
+		if (i == 0 && (val = get_tenvv_val(sh->alias, tmp_w->word)))
 			tmp_w = ft_alias_to_tword(tmp_w, val);
+		i++;
 		tmp_w = tmp_w->next;
 	}
 	return (head);

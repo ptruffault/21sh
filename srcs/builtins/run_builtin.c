@@ -50,11 +50,8 @@ static int	change_envv(char **argv, t_shell *sh)
 	return (0);
 }
 
-int			run_builtin(t_tree *t, char **argv)
+int			run_builtin(t_tree *t, char **argv, t_shell *sh)
 {
-	t_shell *sh;
-
-	sh = ft_get_set_shell(NULL);
 	if (ft_strequ(*argv, "exit"))
 		ft_exit(argv[1]);
 	else if (ft_strequ(*argv, "env"))

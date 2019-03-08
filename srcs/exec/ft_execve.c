@@ -14,29 +14,32 @@
 
 static void	ft_son(t_tree *t, t_process *p, t_shell *sh)
 {
-	if (p->cmd)
-	{
-		execve(p->cmd, p->argv, p->env);
-		warning("execve fucked up", p->cmd);
-	}
-	else
-		error("command not found", t->cmd->word);
+	execve(p->cmd, p->argv, p->env);
+	warning("execve fucked up", p->cmd);
 	ft_free_tshell(sh);
 	ft_free_tree(t);
 	exit(-1);
 }
 
-void		ft_execve(t_process *p, t_shell *sh, t_tree *t)
+int		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
-	if (t->r && !ft_redirect_builtin(t, p))
-			return ;
-	if (p->builtins == TRUE)
+	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
-		p->ret = run_builtin(t, p->argv);
+		if (p->cmd)
+		{
+			if (p->builtins == TRUE)
+			{
+				t->ret = run_builtin(t, p->argv, sh);
+				p->ret = t->ret;
+				return (p->ret);
+			}
+			else if ((p->pid = fork()) == 0)
+				ft_son(t, p, sh);
+			return (-2);
+		}
+		else
+			error("command not found", *p->argv);
 	}
-	else if ((p->pid = fork()) == -1)
-		warning("fork failed to create a new process", p->cmd);
-	else if (p->pid == 0)
-		ft_son(t, p, sh);
+	return (-1);
 }
 

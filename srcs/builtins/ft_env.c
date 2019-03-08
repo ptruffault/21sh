@@ -70,12 +70,12 @@ static t_envv	*ft_env_option(t_envv *tmp, char **input, int *i)
 	{
 		if (!input[*i + 1])
 		{
-			error("option need an argument", "-u");
+			warning("option need an argument", "-u");
 			return (tmp);
 		}
 		if (!tmp)
 		{
-			error("useless -u option", "void environement");
+			warning("useless -u option", "void environement");
 			return (tmp);
 		}
 		*i = *i + 1;
