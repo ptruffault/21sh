@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:57:04 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 15:57:05 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:30:16 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static char	*sub_handle_modifier(char *parenth, char *ptr, t_shell *sh)
 		val = ft_strdup((get_tenvv(sh->env, v1) ? v2 : NULL));
 	if (*ptr == '?' && !(val = ft_strdup((get_tenvv(sh->env, v1) ? v1 : NULL))))
 		error(v1, v2);
-	else if (*ptr == '=' &&
-	!(val = ft_strdup((get_tenvv(sh->env, v1) ? v1 : NULL))) && v2 &&
-	(sh->env = ft_new_envv(sh->env, v1, v2)))
+	else if (*ptr == '='
+	&& !(val = ft_strdup((get_tenvv(sh->env, v1) ? v1 : NULL))) && v2
+	&& (sh->env = ft_new_envv(sh->env, v1, v2)))
 		val = ft_strdup(v2);
 	ft_strdel(&v1);
 	ft_strdel(&v2);
