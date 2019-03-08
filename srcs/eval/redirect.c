@@ -75,7 +75,10 @@ static t_redirect	*get_redirection(t_word *w)
 		&& !(new = parse_right_redirect(new, w)))
 		|| ((new->t == R_LEFT || new->t == R_DLEFT)
 		&& !(new = parse_left_redirect(new, w))))
+		{
+			warning("redirections need an argument", w->word);
 			return (NULL);
+		}
 	}
 	return (new);
 }
