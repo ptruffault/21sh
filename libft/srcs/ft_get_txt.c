@@ -19,9 +19,7 @@ char	**ft_get_txt(int fd)
 	int		i;
 
 	i = 0;
-	if (fd < 0)
-		return (NULL);
-	if (!(ret = (char **)malloc(sizeof(char *))))
+	if (fd < 0 || !(ret = (char **)malloc(sizeof(char *))))
 		return (NULL);
 	tmp = NULL;
 	while (get_next_line(fd, &tmp))
@@ -35,10 +33,7 @@ char	**ft_get_txt(int fd)
 		ft_strdel(&tmp);
 	}
 	if (i == 0)
-	{
 		free(ret);
-		return (NULL);
-	}
 	ret[i] = NULL;
 	return (ret);
 }

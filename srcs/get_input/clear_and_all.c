@@ -38,15 +38,14 @@ void	entry_key(t_edit *e)
 		{
 			ft_add_char('\\', e);
 			ft_add_char('n', e);
-			ft_delete_line(e);
 		}
 		else
 		{
 			ft_printf("\n\033[00;31m%s\033[00m >\n", error[eval.err - 2]);
 			ft_putstr(e->input);
+			e->pos = ft_strlen(e->input);
 		}
-		e->pos = ft_strlen(e->input);
-		e->curr = e->pos;
+		e->curr = ft_strlen(e->input);
 	}
 	else
 		e->edited = TRUE;
