@@ -24,11 +24,14 @@ char	**ft_get_txt(int fd)
 	if (!(ret = (char **)malloc(sizeof(char *))))
 		return (NULL);
 	tmp = NULL;
-	while (get_next_line(fd, &tmp) && tmp && !ft_isempty(tmp))
+	while (get_next_line(fd, &tmp))
 	{
 		ret = ft_realloc(ret, (i + 1) * sizeof(char *),
 		(i + 2) * sizeof(char *));
-		ret[i++] = ft_strdup(tmp);
+		if (!tmp)
+			ret[i++] = ft_strdup(" ");
+		else
+			ret[i++] = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}
 	if (i == 0)
