@@ -67,7 +67,7 @@ int				ft_check_grammar(t_word *w)
 			error("syntax error near", w->word);
 			return (0);
 		}
-		if (w->type == CMD)
+		if (IS_CMD(w->type))
 			cmd++;
 		w = w->next;
 	}
@@ -84,8 +84,8 @@ t_tree			*get_tree(char *input)
 	t_tree	*head;
 	t_word	*w;
 
-	if (!input || ft_isempty(input) || !ft_check_ascii(input) ||
-	!(w = eval_line(input)))
+	if (!input || ft_isempty(input) || !ft_check_ascii(input) 
+	|| !(w = eval_line(input)))
 		return (NULL);
 	if (!(head = new_tree()))
 		return (NULL);
