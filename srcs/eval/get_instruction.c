@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:20:35 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 14:15:16 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:12:48 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_tree			*get_tree(char *input)
 	t_tree	*head;
 	t_word	*w;
 
-	if (!input || ft_isempty(input) || !ft_check_ascii(input) 
+	if (!input || ft_isempty(input) || !ft_check_ascii(input)
 	|| !(w = eval_line(input)))
 		return (NULL);
 	if (!(head = new_tree()))

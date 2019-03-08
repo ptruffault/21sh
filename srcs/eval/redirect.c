@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:20:35 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 14:33:40 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:16:23 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
 			new->to = -1;
 		return (new);
 	}
-	else if (w->next && w->next->word &&
-	(new->path = ft_strdup(w->next->word)))
+	else if (w->next && w->next->word
+	&& (new->path = ft_strdup(w->next->word)))
 		return (new);
 	ft_free_redirection(new);
 	return (NULL);

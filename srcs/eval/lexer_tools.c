@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:28:34 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 15:28:36 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:20:42 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ft_lex_var(t_eval *e)
 			e->eval[e->curr++] = 'v';
 		else
 		{
-			while (e->s[e->curr] && (ft_isalpha(e->s[e->curr]) ||
-			e->s[e->curr] == '_'))
+			while (e->s[e->curr] && (ft_isalpha(e->s[e->curr])
+			|| e->s[e->curr] == '_'))
 				e->eval[e->curr++] = 'v';
 		}
 	}

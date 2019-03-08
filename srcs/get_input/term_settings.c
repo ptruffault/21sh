@@ -6,7 +6,7 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 12:32:55 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/08 13:40:33 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:13:07 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_setup_edit_term(t_shell *sh)
 		tgetent(NULL, "xterm-256color");
 	ft_memcpy(&sh->term, sh->saved_term, sizeof(struct termios));
 	sh->term.c_lflag &= ~(ICANON | ECHO | ECHOK | ECHOKE
-		 | ECHONL | ECHOCTL | ISIG);
+			| ECHONL | ECHOCTL | ISIG);
 	sh->term.c_cc[VMIN] = 1;
 	sh->term.c_cc[VTIME] = 0;
 	sh->term.c_cc[VINTR] = 3;
