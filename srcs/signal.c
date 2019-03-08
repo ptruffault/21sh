@@ -28,28 +28,20 @@ t_process	*ft_wait_background(t_process *p)
 	return (NULL);
 }
 
-void		ft_sigint(t_shell *sh)
-{
-	if (!(sh && sh->process
-	&& kill_running_fg_process(sh->process, SIGINT)))
-	{
-		ft_disp(sh);
-	}
-}
-
 void		sig_handler(int sig)
 {
 	t_shell		*sh;
 	t_process	*tmp;
 
 	sh = ft_get_set_shell(NULL);
-	if (sig == SIGINT)
-		ft_sigint(sh);
-	if (sig == SIGWINCH)
+	if (sig == SIGINT && !(sh && sh->process
+	&& kill_running_fg_process(sh->process, SIGINT)))
+		ft_disp(sh);
+	if (sig == SIGWINCH && sh)
 		ft_update_windows(&sh->e);
-	if (sig == SIGTSTP && sh->process)
+	if (sig == SIGTSTP && sh && sh->process)
 		kill_running_fg_process(sh->process, SIGTSTP);
-	if (sig == SIGCHLD && sh->process
+	if (sig == SIGCHLD && sh && sh->process
 	&& (tmp = ft_wait_background(sh->process)))
 	{
 		ft_reset_fd(tmp);

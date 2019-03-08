@@ -18,7 +18,7 @@ void	ft_exec_son(t_process *p, t_tree *t, t_shell *sh)
 	{
 		if (p->builtins == TRUE)
 			run_builtin(t, p->argv, sh);
-		else if (p->cmd)
+		else if (p->cmd && !ft_isempty(p->cmd))
 		{
 			execve(p->cmd, p->argv, p->env);
 			error("execve fucked up", p->cmd);

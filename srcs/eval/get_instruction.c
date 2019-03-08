@@ -55,6 +55,20 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 	return (head);
 }
 
+int ft_check_grammar(t_word *w)
+{
+	while (w)
+	{
+		if (w->type == OPERATEUR && w->next && w->next->type== OPERATEUR)
+		{
+			error("syntax error near", w->word);
+			return (0);
+		}
+		w = w->next;
+	}
+	return (1);
+}
+
 t_tree			*get_tree(char *input)
 {
 	t_tree	*head;
@@ -65,8 +79,8 @@ t_tree			*get_tree(char *input)
 		return (NULL);
 	if (!(head = new_tree()))
 		return (NULL);
-	head = built_tree(head, w);
+	if (ft_check_grammar(w))
+		head = ft_get_set_tree(built_tree(head, w));
 	ft_free_tword(w);
-	ft_get_set_tree(head);
 	return (head);
 }

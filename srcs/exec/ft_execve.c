@@ -25,7 +25,7 @@ int		ft_execve(t_process *p, t_shell *sh, t_tree *t)
 {
 	if (!t->r || (t->r && ft_redirect_builtin(t, p)))
 	{
-		if (p->cmd)
+		if (p->cmd && !ft_isempty(p->cmd))
 		{
 			if (p->builtins == TRUE)
 			{

@@ -71,7 +71,7 @@ char		**ft_twordto_arr(t_word *w)
 		return (NULL);
 	while (w)
 	{
-		if (w->word && !ft_isempty(w->word) && (arr[i] = ft_strdup(w->word)))
+		if (w->word && (arr[i] = ft_strdup(w->word)))
 			i++;
 		w = w->next;
 	}
