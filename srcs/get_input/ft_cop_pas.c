@@ -6,7 +6,7 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 13:01:07 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/09 11:20:47 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/08 13:31:23 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_paste(t_edit *e)
 	char	*tmp;
 
 	sh = ft_get_set_shell(NULL);
-	if (sh->clipboard &&
-	(tmp = ft_strnew(ft_strlen(e->input) + ft_strlen(sh->clipboard) + 1)))
+	if (sh->clipboard
+	&& (tmp = ft_strnew(ft_strlen(e->input) + ft_strlen(sh->clipboard) + 1)))
 	{
 		b = 0;
 		x = 0;
