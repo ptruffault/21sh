@@ -12,7 +12,7 @@
 
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
-FLAG		=	-g
+FLAG		=		-Wall -Werror -Wextra
 OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
@@ -116,38 +116,38 @@ $(NAME): bin $(OBJ) Makefile
 	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
 
 
-bin/%.o: srcs/%.c
+bin/%.o: srcs/%.c  includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 
-bin/%.o: srcs/eval/%.c
+bin/%.o: srcs/eval/%.c  includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/builtins/%.c
+bin/%.o: srcs/builtins/%.c includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/exec/%.c
+bin/%.o: srcs/exec/%.c includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/exec/%.c
+bin/%.o: srcs/exec/%.c includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/expansion/%.c
+bin/%.o: srcs/expansion/%.c includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/get_input/%.c
+bin/%.o: srcs/get_input/%.c includes/shell42.h includes/structures.h includes/get_input.h  
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"

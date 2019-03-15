@@ -24,8 +24,8 @@ char	**ft_strarrjoin(char **src, char **to_add)
 		return (src);
 	if (!src && !to_add)
 		return (NULL);
-	if (!(new = (char **)malloc(sizeof(char *) *
-	ft_strarrlen(src) + ft_strarrlen(to_add) + 1)))
+	if (!(new = (char **)malloc(sizeof(char *)
+	* ft_strarrlen(src) + ft_strarrlen(to_add) + 1)))
 		return (NULL);
 	i = -1;
 	while ((src) && src[++i])

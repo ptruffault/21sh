@@ -20,7 +20,6 @@
 # include <signal.h>
 # include <dirent.h>
 # include "../libft/includes/libft.h"
-# include "termios.h"
 # include <termios.h>
 # include <term.h>
 # include "structures.h"
