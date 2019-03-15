@@ -26,9 +26,7 @@ char	**ft_get_txt(int fd)
 	{
 		ret = ft_realloc(ret, (size_t)(i + 1) * sizeof(char *),
 		(size_t)(i + 2) * sizeof(char *));
-		if (!tmp)
-			ret[i++] = ft_strdup(" ");
-		else
+		if (tmp)
 			ret[i++] = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}

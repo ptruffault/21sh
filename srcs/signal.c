@@ -57,5 +57,5 @@ void		set_signals(void)
 	signal(SIGTSTP, sig_handler);
 	signal(SIGCHLD, sig_handler);
 	signal(SIGWINCH, sig_handler);
-	signal(SIGKILL, sig_handler);
+	signal(SIGKILL, SIG_IGN);
 }

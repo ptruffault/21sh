@@ -23,7 +23,7 @@ static void	ft_kill_all_running_process(t_process *p, int sig)
 	}
 }
 
-void	ft_exit(char *nbr)
+void		ft_exit(char *nbr)
 {
 	t_shell	*sh;
 	int		exit_code;
