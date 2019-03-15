@@ -40,7 +40,7 @@ static t_word	*ft_alias_to_tword(t_word *w, char *val)
 t_word			*ft_check_alias(t_word *head, t_shell *sh)
 {
 	t_word	*tmp_w;
-	t_word 	*save;
+	t_word	*save;
 	char	*val;
 	int		i;
 
