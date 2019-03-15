@@ -33,10 +33,7 @@ char	**ft_get_txt(int fd)
 		ft_strdel(&tmp);
 	}
 	if (i == 0)
-	{
-		free(ret);
-		return (NULL);
-	}
-	ret[i] = NULL;
+		return (ft_freestrarr(ret));
+	ret[i] = tmp;
 	return (ret);
 }

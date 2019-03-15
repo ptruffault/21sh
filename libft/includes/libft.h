@@ -109,7 +109,7 @@ char	*ft_new_path(char *s1, char *s2);
 char	*ft_get_prev_path(char *path);
 int		get_next_line(const int fd, char **line);
 int		ft_strcmp_castless(char *s1, char *s2);
-void	ft_freestrarr(char **arr);
+char 	**ft_freestrarr(char **arr);
 void	*ft_realloc(void *ptr, size_t prev_size, size_t new_size);
 int		ft_str_startwith(char *s1, char *s2);
 int		ft_str_endwith(char *s1, char *s2);

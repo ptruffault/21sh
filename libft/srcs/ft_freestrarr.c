@@ -12,14 +12,15 @@
 
 #include "../includes/libft.h"
 
-void	ft_freestrarr(char **arr)
+char	**ft_freestrarr(char **arr)
 {
 	int i;
 
 	i = 0;
-	if (!arr || !*arr)
-		return ;
+	if (!arr)
+		return (NULL);
 	while (arr[i] != NULL)
 		ft_strdel(&arr[i++]);
 	free(arr);
+	return (NULL);
 }

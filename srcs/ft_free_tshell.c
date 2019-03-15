@@ -19,6 +19,7 @@ void	ft_free_tshell(t_shell *sh)
 	ft_free_tenvv(sh->alias);
 	ft_free_tprocess(sh->process);
 	ft_free_thist(sh->hist);
+	ft_freestrarr(sh->txt);
 	ft_strdel(&sh->clipboard);
 	free(sh->saved_term);
 }

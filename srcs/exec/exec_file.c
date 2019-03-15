@@ -27,7 +27,7 @@ int		exec_fd(t_shell *sh, int fd)
 				ft_free_tree(exec_tree(t));
 			i++;
 		}
-		ft_freestrarr(sh->txt);
+		sh->txt = ft_freestrarr(sh->txt);
 	}
 	return (i);
 }

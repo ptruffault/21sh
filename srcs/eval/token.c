@@ -30,10 +30,11 @@ static t_word	*find_type(t_word *w, char c, int *pos)
 			w->type = CMD;
 		else
 			w->type = ARG;
-		*pos = *pos + 1;
 	}
 	else
 		w->type = 0;
+	if (!IS_SYNTAX(w->type))
+		*pos = *pos + 1;
 	return (w);
 }
 
@@ -44,16 +45,16 @@ static t_word	*g_n_w(t_word *w, t_eval *e, int *i, int *pos)
 
 	begin = *i;
 	c = e->eval[*i];
-	if (e->eval[*i] == 'o' || e->eval[*i] == 'r')
+	if (e->eval[*i] == 'o')
 	{
+		*pos = 0;
 		while (e->eval[*i] && e->eval[*i] == c)
 			*i = *i + 1;
-		*pos = 0;
 	}
 	else
 	{
 		while (e->eval[*i] && e->eval[*i] != ' '
-				&& e->eval[*i] != 'o' && e->eval[*i] != 'r')
+				&& e->eval[*i] != 'o')
 			*i = *i + 1;
 	}
 	if (!(w->word = ft_strndup(e->s + begin, *i - begin)))

@@ -15,6 +15,7 @@
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_CMD(x) (1 <= x && x <= 5)
 # define IS_EXP(x) (1 <= x && x <= 4)
+# define IS_SYNTAX(x) (x == REDIRECT || x == OPERATEUR)
 
 enum	e_rtype{
 	UNDEF = 0,
