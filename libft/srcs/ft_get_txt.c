@@ -24,16 +24,20 @@ char	**ft_get_txt(int fd)
 	tmp = NULL;
 	while (get_next_line(fd, &tmp))
 	{
-		ret = ft_realloc(ret, (i + 1) * sizeof(char *),
-		(i + 2) * sizeof(char *));
+		ret = ft_realloc(ret, (size_t)(i + 1) * sizeof(char *),
+		(size_t)(i + 2) * sizeof(char *));
 		if (!tmp)
 			ret[i++] = ft_strdup(" ");
 		else
 			ret[i++] = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}
-	if (i == 0)
-		return (ft_freestrarr(ret));
 	ret[i] = tmp;
+	if (i == 0)
+	{
+		ft_strdel(&ret[i]);
+		free(ret);
+		return (NULL);
+	}
 	return (ret);
 }

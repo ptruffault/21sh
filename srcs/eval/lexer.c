@@ -72,7 +72,7 @@ void	ft_lexword(t_eval *e)
 	else if (e->s[e->curr] == '\\')
 		ft_lex_backslash(e);
 	else if (e->s[e->curr] == '&'
-				|| e->s[e->curr] == '|' || e->s[e->curr] == ';')
+	|| e->s[e->curr] == '|' || e->s[e->curr] == ';')
 		ft_lex_operateur(e);
 	else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 		ft_lex_var(e);

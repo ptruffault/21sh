@@ -12,7 +12,7 @@
 
 #include "../../includes/shell42.h"
 
-void	ft_kill_all_running_process(t_process *p, int sig)
+static void	ft_kill_all_running_process(t_process *p, int sig)
 {
 	while (p)
 	{
@@ -37,7 +37,7 @@ void	ft_exit(char *nbr)
 	ft_set_old_term(sh);
 	ft_free_tshell(sh);
 	ft_free_tree(ft_get_set_tree(NULL));
-	ft_putstr_fd("\033[00;31m21sh get killed\033[00m\n-> ", 2);
+	ft_putstr_fd("\033[00;31m21sh get killed\033[00m ->  ", 2);
 	ft_putnbr_fd(exit_code, 2);
 	ft_putchar_fd('\n', 2);
 	exit(exit_code);

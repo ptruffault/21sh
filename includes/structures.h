@@ -61,7 +61,7 @@ enum	e_error
 	Q_MISS = 5,
 	DQ_MISS = 6,
 	B_MISS = 7,
-	P_MISS = 8,
+	P_MISS = 8
 };
 
 typedef struct	s_hist

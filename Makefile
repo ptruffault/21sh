@@ -12,7 +12,7 @@
 
 NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/21sh.git
-FLAG		=		-Wall -Werror -Wextra -g
+FLAG		=	-g
 OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
@@ -163,7 +163,7 @@ clean:
 	@make -C ./libft clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) sys/21history
 	@make -C ./libft fclean
 
 re: fclean all

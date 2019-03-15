@@ -38,8 +38,8 @@ void		ft_delete_char(t_eval *e)
 		i++;
 	}
 	e->s[i] = 0;
-	e->s = ft_realloc(e->s, len + 1, len);
-	e->eval = ft_realloc(e->eval, len + 1, len);
+	e->s = ft_realloc(e->s, (size_t)len + 1, (size_t)len);
+	e->eval = ft_realloc(e->eval, (size_t)len + 1, (size_t)len);
 }
 
 t_redirect	*parse_heredoc(t_redirect *new, t_word *w)

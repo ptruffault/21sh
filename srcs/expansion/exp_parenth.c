@@ -86,8 +86,8 @@ char		*ft_exp_param(char *ret, t_shell *sh, char *ptr)
 			len = 1;
 			parenth = tmp;
 		}
-		if ((value = ft_get_param_value(sh, parenth)))
-			ft_strdel(&parenth);
+		value = ft_get_param_value(sh, parenth);
+		ft_strdel(&parenth);
 		if (len == 1)
 			value = ft_get_len(value);
 	}

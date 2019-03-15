@@ -53,7 +53,7 @@ char		*ft_exp_var(char *ret, t_shell *sh)
 		&& !(ret = ft_exp_param(ret, sh, &ret[i])))
 		|| (ret && ret[i] == '$' && ret[i + 1] && ft_strchr("$!?", ret[i + 1])
 		&& !(ret = ft_exp_spec(ret, &ret[i], sh)))
-		|| (ret && ret[i] == '$' && ret[i + 1] && !ft_strchr("$!?{", ret[i + 1])
+		|| (ret && ret[i] == '$' && ret[i + 1] && !ft_strchr("$!?{(", ret[i + 1])
 		&& !(ret = ft_exp_envv_var(ret, &ret[i], sh))))
 			return (NULL);
 		i++;
@@ -72,8 +72,7 @@ t_word		*ft_expention(t_word *w)
 	while (w)
 	{
 		if (IS_EXP(w->type) && w->word)
-			if (!(w->word = ft_exp_var(w->word, sh)))
-				return (head);
+			w->word = ft_exp_var(w->word, sh);
 		w = w->next;
 	}
 	return (head);

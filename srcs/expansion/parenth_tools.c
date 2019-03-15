@@ -16,7 +16,13 @@ char	*ft_exp_end(char *ret, char *ptr, char *value, char *parenth)
 {
 	char *tmp;
 
+	if (value && ft_isempty(value))
+	{
+		ft_strdel(&value);
+	}
 	tmp = ft_strpull(ret, ptr, get_content_size(ptr) + 2, value);
+	if (ft_isempty(tmp))
+		ft_strdel(&tmp);
 	ft_strdel(&ret);
 	ft_strdel(&value);
 	ft_strdel(&parenth);

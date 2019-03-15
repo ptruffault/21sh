@@ -44,8 +44,8 @@ void	entry_key(t_edit *e)
 			ft_printf("\n\033[00;31m%s\033[00m >\n", error[eval.err - 2]);
 			ft_putstr(e->input);
 			e->pos = ft_strlen(e->input);
+			e->curr = ft_strlen(e->input);
 		}
-		e->curr = ft_strlen(e->input);
 	}
 	else
 		e->edited = TRUE;

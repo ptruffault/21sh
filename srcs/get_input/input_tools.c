@@ -32,7 +32,7 @@ void		ft_add_char(char buf, t_edit *e)
 		i--;
 	}
 	e->input[e->curr] = buf;
-	e->input = ft_realloc(e->input, size, size + 1);
+	e->input = ft_realloc(e->input, (size_t)size, (size_t)size + 1);
 	e->input[size] = '\0';
 	e->curr++;
 	if (e->select != -1)
