@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:38:45 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
+/*   Updated: 2019/03/22 17:41:29 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		*ft_update_pwd(t_shell *sh)
 	return (NULL);
 }
 
-int		init_env(t_shell *sh, char **argv, char **envv)
+int			init_env(t_shell *sh, char **argv, char **envv)
 {
 	char *shell_fold;
 	char *shell_path;
