@@ -68,6 +68,6 @@ void		ft_print_fast(t_edit *e)
 
 void		ft_print_line(t_edit *e)
 {
-	//if (e && e->hist && e->hist->s)
+	if (e && e->hist && e->hist->s)
 		e->print_modes[e->mode](e);
 }

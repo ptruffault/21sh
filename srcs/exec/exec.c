@@ -59,7 +59,6 @@ t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 		sh->process = p;
 		ft_execve(p, sh, t, 1);
 		ft_wait(p, sh);
-		ft_reset_fd(sh);
 		t->ret = p->ret;
 	}
 	return (t);

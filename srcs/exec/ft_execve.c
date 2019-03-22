@@ -53,4 +53,5 @@ void			ft_execve(t_process *p, t_shell *sh, t_tree *t, int frk)
 		else
 			error("command not found", *p->argv);
 	}
+	ft_reset_fd(sh);
 }
