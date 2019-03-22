@@ -66,7 +66,7 @@ char		*search_in_envv(char *input, t_envv *envv)
 			ft_freestrarr(&path);
 			return (NULL);
 		}
-		if (lstat(bin_path, &inf))
+		if (!lstat(bin_path, &inf))
 		{
 			ft_freestrarr(&path);
 			return (check_exe(bin_path, inf));
