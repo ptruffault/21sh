@@ -50,8 +50,11 @@ int			ft_update_hist(t_shell *sh)
 			sh->e.hist = sh->e.hist->prev;
 		ft_strdel(&sh->e.hist->s);
 		sh->e.hist = sh->e.hist->next;
-		free(sh->e.hist->prev);
-		sh->e.hist->prev = NULL;
+		if (sh->e.hist && sh->e.hist->prev)
+		{
+			free(sh->e.hist->prev);
+			sh->e.hist->prev = NULL;
+		}
 	}
 	return (ft_set_old_term(sh, SUCCESS));
 }
