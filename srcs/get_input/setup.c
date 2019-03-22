@@ -74,10 +74,8 @@ static	void	ft_init_inputs_tab(t_edit *e, int x)
 	e->ft_tab[x++] = ft_select_end;
 }
 
-static int		ft_init_input_link(t_shell *sh)
+static int		ft_init_input_link(t_shell *sh, t_hist *tmp)
 {
-	t_hist	*tmp;
-
 	sh->e.hist = tmp;
 	if (sh->hist)
 	{
@@ -94,6 +92,8 @@ static int		ft_init_input_link(t_shell *sh)
 
 int				init_tedit(t_shell *sh)
 {
+	t_hist *tmp;
+
 	ft_update_windows(&sh->e);
 	ft_init_inputs_tab(&sh->e, 0);
 	sh->e.edited = FALSE;
@@ -103,7 +103,7 @@ int				init_tedit(t_shell *sh)
 	sh->e.select_pos = 0;
 	sh->e.mode = 0;
 	sh->e.hist = NULL;
-	if ((tmp = new_hist()) || ft_init_input_link(sh) == FAILURE)
+	if ((tmp = new_hist()) || ft_init_input_link(sh, tmp) == FAILURE)
 		return (FAILURE);
 	else
 		return (FAILURE);
