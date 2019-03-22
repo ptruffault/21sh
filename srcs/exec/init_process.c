@@ -93,9 +93,9 @@ t_process			*init_pipe_process(t_tree *t, t_shell *sh)
 			if (t && (tmp->grp = init_process(t, sh)))
 			{
 				tmp = tmp->grp;
-				if (tmp->cmd && t->o_type == O_PIPE && t->next
-					&& (pipe(tmp->pipe) < 0))
-					return (ft_abort(head, "broken pipe", tmp));
+				if (!tmp->cmd || (t->o_type == O_PIPE && t->next
+					&& (pipe(tmp->pipe) < 0)))
+					return (ft_abort(head, "command not found", tmp));
 			}
 		}
 	}
