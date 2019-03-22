@@ -17,7 +17,6 @@ static void			ft_init_fd(t_process *ret, t_shell *sh)
 	ret->fd[0] = sh->std[0];
 	ret->fd[1] = sh->std[1];
 	ret->fd[2] = sh->std[2];
-	ret->pgid = 0;
 	ret->pipe[0] = -1;
 	ret->pipe[1] = -1;
 	ret->status = INIT;
@@ -71,10 +70,7 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 		{
 			ret->env = tenvv_to_tab(sh->env);
 			if ((ret->cmd = get_bin_path(*ret->argv, sh->env)))
-			{
 				sh->env = ft_new_envv(sh->env, "_", ret->cmd);
-				
-			}
 		}
 	}
 	return (ret);

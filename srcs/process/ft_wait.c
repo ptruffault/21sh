@@ -2,12 +2,12 @@
 
 static const t_sig_msg	g_signal_msg[] = {
 		{.sig = SIGHUP, .rtn = 129, .msg = "Hangup"},
-		{.sig = SIGINT, .rtn = 1, .msg = "Interupted"},
+		{.sig = SIGINT, .rtn = 1, .msg = "SIGINT"},
 		{.sig = SIGQUIT, .rtn = 131, .msg = "Quit"},
 		{.sig = SIGILL, .rtn = 132, .msg = "Illegal instruction"},
 		{.sig = SIGTRAP, .rtn = 133, .msg = "Trace/BPT trap"},
 		{.sig = SIGABRT, .rtn = 134, .msg = "Abort"},
-	//	{.sig = SIGEMT, .rtn = 135, .msg = "emulate instruction executed"},
+		{.sig = SIGEMT, .rtn = 135, .msg = "emulate instruction executed"},
 		{.sig = SIGFPE, .rtn = 136, .msg = "Floating exception"},
 		{.sig = SIGKILL, .rtn = 137, .msg = "Killed"},
 		{.sig = SIGBUS, .rtn = 138, .msg = "Bus error"},
@@ -41,23 +41,19 @@ static void	ft_signal_check(t_process *p)
 		p->status = RUNNING_FG;
 	else
 		p->status = KILLED;
+	ft_printf("{%i} %s killed by signal %i %s\n", 
+		p->pid, p->cmd, WTERMSIG(p->ret), g_signal_msg[WTERMSIG(p->ret) - 1].msg);
 	p->ret = g_signal_msg[WTERMSIG(p->ret) - 1].rtn;
 }
 
 void	ft_wait(t_process *p, t_shell *sh)
 {
-	int prompt;
 	(void)sh;
 
-	prompt = 0;
-	ft_printf("WAIT\n");
 	while (p)
 	{
-		if ((p->pid == 0
-				|| (p->status == SUSPENDED && waitpid(p->pid , &p->ret, WNOHANG))
-				|| (p->status == RUNNING_FG && waitpid(p->pid, &p->ret, WUNTRACED) > 0)
-			 	|| (p->status == RUNNING_BG && waitpid(p->pid, &p->ret, WUNTRACED ) > 0))
-				&& IS_RUNNING(p->status))
+		if (p->pid == 0
+			|| (p->status == RUNNING_FG && waitpid(p->pid, &p->ret, WUNTRACED) > 0))
 		{
 			if (p->ret > 0 && WIFEXITED(p->ret))
 			{
@@ -68,23 +64,7 @@ void	ft_wait(t_process *p, t_shell *sh)
 				ft_signal_check(p);
 			else 
 				p->status = DONE;
-			if (prompt)
-				ft_put_process(p);
 		}
 		p = p->grp;
 	}
 }
-
-void ft_wait_background(t_shell *sh)
-{
-	t_process *tmp;
-
-	tmp = sh->process;
-	while (tmp)
-	{
-		if (tmp->status == RUNNING_BG)
-			ft_wait(tmp, sh);
-		tmp = tmp->next;
-	}
-}
-

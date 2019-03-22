@@ -25,12 +25,8 @@ static void	ft_init_builtins_tab(char *builtins[17])
 	builtins[8] = "echo";
 	builtins[9] = "set";
 	builtins[10] = "type";
-	builtins[11] = "jobs";
-	builtins[12] = "env";
-	builtins[13] = "hi";
-	builtins[14] = "fg";
-	builtins[15] = "bg";
-	builtins[16] = NULL;
+	builtins[11] = "env";
+	builtins[12] = NULL;
 }
 
 int			check_builtin(char *input)
@@ -44,7 +40,7 @@ int			check_builtin(char *input)
 		return (0);
 	if (ft_isequal(input))
 		return (1);
-	while (i < 16 && builtins[i])
+	while (i < 12 && builtins[i])
 		if (ft_strequ(builtins[i++], input))
 			return (1);
 	return (0);

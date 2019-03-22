@@ -12,7 +12,7 @@
 
 #include <shell42.h>
 
-t_word	*ft_free_tword(t_word *w)
+t_word		*ft_free_tword(t_word *w)
 {
 	t_word	*tmp;
 
@@ -43,7 +43,7 @@ t_redirect	*ft_free_redirection(t_redirect *r)
 	return (NULL);
 }
 
-t_tree	*ft_free_tree(t_tree *t)
+t_tree		*ft_free_tree(t_tree *t)
 {
 	t_tree	*tmp;
 
@@ -59,7 +59,7 @@ t_tree	*ft_free_tree(t_tree *t)
 	return (NULL);
 }
 
-t_hist	*ft_free_thist(t_hist *h)
+t_hist		*ft_free_thist(t_hist *h)
 {
 	t_hist *tmp;
 

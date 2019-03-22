@@ -26,7 +26,6 @@ static void	ft_null(t_shell *sh)
 	sh->std[0] = STDIN_FILENO;
 	sh->std[1] = STDOUT_FILENO;
 	sh->std[2] = STDERR_FILENO;
-	sh->pgid = 0;
 	sh->env = NULL;
 	sh->intern = NULL;
 }
@@ -51,11 +50,6 @@ int			init_shell(t_shell *sh, char **envv, char **argv)
 	sh->interactive = TRUE;
 	set_signals();
 	if (!init_termcaps(sh))
-		return (0);/*
-	int pgid;
-		pgid = getpid();
-	if (setpgid(pgid, pgid) < 0)
-		perror("0st setgpid");
-	tcsetpgrp(0, pgid);*/
+		return (0);
 	return (1);
 }

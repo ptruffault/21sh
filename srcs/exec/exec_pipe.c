@@ -35,43 +35,6 @@ static int		ft_close_pipe(int pipe[2])
 	return (1);
 }
 
-/* 
-static int		ft_exec_son(t_process *p, t_tree *t, t_shell *sh)
-{
-	int exit_code;
-
-	exit_code = -1;
-	if (!t->r || (t->r && ft_redirect_builtin(t, p, sh)))
-	{
-		if (p->builtins == TRUE)
-			exit_code = run_builtin(t, p->argv, sh);
-		else if (p->cmd && !ft_isempty(p->cmd))
-		{
-			execve(p->cmd, p->argv, p->env);
-			error("execve fucked up", p->cmd);
-		}
-		else
-			error("command not found", *p->argv);
-	}
-	ft_free_tshell(sh);
-	ft_free_tree(t);
-	exit(exit_code);
-}*/
-
-int 	ft_get_pgid(int pgid, t_process *p, t_process *prev)
-{
-	if (pgid == 0 && !prev)
-		pgid = getpid();
-	if ((!prev && pgid > 0 && (setpgid(pgid, 0)) < 0)
-		|| (prev && pgid > 0 && setpgid(0, pgid) < 0))
-	{
-		warning("can't set pgid", p->cmd);
-		perror(p->cmd);
-	}
-	return (pgid);
-}
-
-
 t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
 {
 	t_process	*prev;

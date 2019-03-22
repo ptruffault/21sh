@@ -12,25 +12,14 @@
 
 #include <shell42.h>
 
-// FONCTION POUR RESTE TOUT LES SIGNAUX (ENV ET EXECVE)
-
 void	ft_disp(t_shell *sh)
 {
 	char *pwd;
 
 	pwd = ft_update_pwd(sh);
-	ft_putstr("\033[1;32m42sh\033[00m:[\033[01;34m\033[04m");
+	ft_putstr("\033[1;32m21sh\033[00m:[\033[01;34m\033[04m");
 	ft_putstr(pwd);
 	ft_putstr("\033[00m]\n");
-}
-
-int		ft_quit(int exit_code, t_shell *sh)
-{
-	kill_process(sh->process, SIGKILL, SUSPENDED);
-	kill_process(sh->process, SIGKILL, RUNNING_FG);
-	kill_process(sh->process, SIGKILL, RUNNING_BG);
-	ft_free_tshell(sh);
-	return (exit_code);
 }
 
 int		main(int argc, char **argv, char **envv)

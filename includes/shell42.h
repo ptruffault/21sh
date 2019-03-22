@@ -37,7 +37,8 @@ int			ft_hi(t_shell *sh);
 void 		ft_process_tab_status(char *stat[6]);
 void	ft_put_process(t_process *p);
 
-void			ft_exit_son(t_tree *t, t_shell *sh, int exit_code);
+int			ft_quit(int exit_code, t_shell *sh);
+void		ft_exit_son(t_tree *t, t_shell *sh, int exit_code);
 char		ft_parse_back(char c);
 void		ft_execve_pip(t_process *p, t_shell *sh, t_tree *t, int mode);
 void		ft_delete_char(t_eval *e);

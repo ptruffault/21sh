@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		42sh
+NAME		=		21sh
 GIT 		=		https://github.com/ptruffault/$(NAME).git
 FLAG		=		-Wall -Werror -Wextra -g -pedantic
 INCLUDES	=		includes/shell42.h includes/get_input.h includes/structures.h
@@ -45,7 +45,6 @@ EVAL		=		eval_tools.c \
 					t_word_tools.c \
 
 BUILTINS	=		ft_echo.c \
-					fg_bg.c \
 					ft_cd.c \
 					run_builtin.c \
 					ft_env.c \
@@ -54,7 +53,6 @@ BUILTINS	=		ft_echo.c \
 					ft_exit.c \
 					type_tools.c \
 					ft_alias.c \
-					ft_jobs.c \
 					check_builtins.c
 
 GET_INPUT	=		curs_move.c	\
