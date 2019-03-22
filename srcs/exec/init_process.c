@@ -76,7 +76,7 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 	return (ret);
 }
 
-t_process *init_pipe_process(t_tree *t, t_shell *sh)
+t_process			*init_pipe_process(t_tree *t, t_shell *sh)
 {
 	t_process *head;
 	t_process *tmp;
@@ -88,19 +88,14 @@ t_process *init_pipe_process(t_tree *t, t_shell *sh)
 		if (!head->cmd)
 			return (ft_abort(head, "command not found", head));
 		while (t->o_type == O_PIPE)
-		{	
+		{
 			t = t->next;
 			if (t && (tmp->grp = init_process(t, sh)))
-		 	{
-		 		tmp = tmp->grp;
-		 		if (tmp->cmd)
-		 		{
-		 			if (t->o_type == O_PIPE && t->next 
-		 				&& (pipe(tmp->pipe) < 0))
-						return (ft_abort(head, "broken pipe", tmp));
-		 		}
-		 		else
-		 			return (ft_abort(head, "command not found", tmp));
+			{
+				tmp = tmp->grp;
+				if (tmp->cmd && t->o_type == O_PIPE && t->next
+					&& (pipe(tmp->pipe) < 0))
+					return (ft_abort(head, "broken pipe", tmp));
 			}
 		}
 	}

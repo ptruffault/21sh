@@ -47,14 +47,11 @@ t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 		{
 			p->next = sh->process;
 			sh->process = p;
-			return (exec_pipe(t, p, sh));
+			t = exec_pipe(t, p, sh);
 		}
 		else
-		{
 			while (t->o_type == O_PIPE)
 				t = t->next;
-			return (t);
-		}
 	}
 	else if ((p = init_process(t, sh)))
 	{

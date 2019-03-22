@@ -12,7 +12,6 @@
 
 #include <shell42.h>
 
-
 static int		ft_link_stdin(int pipe[2])
 {
 	if (dup2(pipe[0], STDIN_FILENO) < 0)
@@ -35,6 +34,19 @@ static int		ft_close_pipe(int pipe[2])
 	return (1);
 }
 
+static void		ft_son(t_process *prev, t_process *tmp, t_tree *t, t_shell *sh)
+{
+	if (tmp->cmd && (tmp->pid = fork()) == 0)
+	{
+		if ((prev && !ft_link_stdin(prev->pipe))
+			|| (tmp->grp && !ft_link_stdout(tmp->pipe)))
+			ft_exit_son(t, sh, -1);
+		ft_execve(tmp, sh, t, 0);
+	}
+	else if (tmp->pid < 0)
+		error("fork fucked up", tmp->cmd);
+}
+
 t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
 {
 	t_process	*prev;
@@ -44,16 +56,8 @@ t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
 	tmp = p;
 	while (tmp)
 	{
+		ft_son(prev, tmp, t, sh);
 		tmp->status = RUNNING_FG;
-		if (tmp->cmd && (tmp->pid = fork()) == 0)
-		{
-			if  ((prev && !ft_link_stdin(prev->pipe))
-			|| (tmp->grp && !ft_link_stdout(tmp->pipe)))
-				ft_exit_son(t, sh, -1);
-			ft_execve(tmp, sh, t, 0);
-		}
-		else if (tmp->pid < 0)
-			error("fork fucked up", tmp->cmd);
 		if (prev)
 			ft_close_pipe(prev->pipe);
 		prev = tmp;
@@ -65,4 +69,3 @@ t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
 	ft_reset_fd(sh);
 	return (t);
 }
-

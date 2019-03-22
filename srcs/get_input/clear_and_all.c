@@ -71,13 +71,13 @@ void	just_exit(t_edit *e)
 	t_shell *sh;
 
 	sh = ft_get_set_shell(NULL);
-	if (sh->heredoc == 1)
-	{
-		sh->heredoc = 0;
-		sh->e.edited = TRUE;
-	}
 	if (!e->hist || !e->hist->s || !*e->hist->s)
 	{
+		if (sh->heredoc == 1)
+		{
+			sh->heredoc = 0;
+			sh->e.edited = TRUE;
+		}
 		ft_strdel(&e->hist->s);
 		free(e->hist);
 		e->hist = NULL;

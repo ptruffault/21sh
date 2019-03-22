@@ -12,7 +12,7 @@
 
 #include <shell42.h>
 
-char	*ft_strappend(char **str, const char *end)
+static char	*ft_strappend(char **str, const char *end)
 {
 	char	*rtn;
 
@@ -22,31 +22,35 @@ char	*ft_strappend(char **str, const char *end)
 	return (rtn);
 }
 
-char	*heredoc_get_input(char *eoi, t_shell *sh)
+static char	*ft_heredoc_clear(char *in, char *ret)
+{
+	ft_strdel(&in);
+	ft_strdel(&ret);
+	return (NULL);
+}
+
+char		*heredoc_get_input(char *eoi, t_shell *sh)
 {
 	char	*ret;
 	char	*in;
-	int d;
+	int		d;
 
 	ret = NULL;
 	in = NULL;
 	d = 0;
 	ft_putstr("\033[00;34mheredoc>\n\033[00m");
-	if (get_input(&in))
+	if (get_input(&in) != 4)
 	{
 		while (!ft_strequ(in, eoi) && sh->heredoc == 1)
 		{
-			if (!(in = ft_strappend(&in, "\n")) || !(ret = ft_strappend(&ret, in)))
+			if (!(in = ft_strappend(&in, "\n"))
+				|| !(ret = ft_strappend(&ret, in)))
 				break ;
 			ft_putstr("\033[00;34mheredoc>\n\033[00m");
 			if ((d = get_input(&in)) == 4)
-			{
-				ft_strdel(&in);
-				ft_strdel(&ret);
-				return (NULL);
-			}
+				return (ft_heredoc_clear(in, ret));
 		}
-		ft_strdel(&in);
 	}
+	ft_strdel(&in);
 	return (ret);
 }
