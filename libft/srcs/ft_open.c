@@ -14,7 +14,7 @@
 
 int	ft_open(char *path, int flag, mode_t mode)
 {
-	int fd;
+	int			fd;
 	struct stat	inf;
 
 	fd = -1;

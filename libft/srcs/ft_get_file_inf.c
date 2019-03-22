@@ -71,7 +71,7 @@ void			ft_get_file_inf(t_file *f, struct dirent *t_dir, char *path)
 	f->block = (int)buf.st_blocks;
 	f->nb_of_l = buf.st_nlink;
 	f->size = buf.st_size;
-	if (f->type == 'l' && (!(f->link = ft_strnew(BUFF_SIZE)) 
+	if (f->type == 'l' && (!(f->link = ft_strnew(BUFF_SIZE))
 	|| readlink(f->path, f->link, BUFF_SIZE) < 0))
 		warning("impossible to read the link", path);
 }

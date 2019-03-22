@@ -46,7 +46,6 @@ static char		*ft_strjoin_gnl(char const *s1, char const *s2)
 	return (new);
 }
 
-
 static	int		ft_check_charriot(char *buff, char **res)
 {
 	char	*tmp;

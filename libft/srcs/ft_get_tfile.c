@@ -21,7 +21,7 @@ static void	read_all_dir(t_file *f, char *path, DIR *dir, int recursive)
 		f->next = ft_new_tfile();
 		f = f->next;
 		ft_get_file_inf(f, t_dir, path);
-		if (recursive != 0 && f->type == 'd' 
+		if (recursive != 0 && f->type == 'd'
 		&& ft_strcmp(f->name, ".") != 0 && ft_strcmp(f->name, "..") != 0)
 			f->sdir = ft_get_tfile(f->path, recursive);
 	}

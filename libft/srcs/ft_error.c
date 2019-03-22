@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-int		error(char *descript, char *opts)
+int	error(char *descript, char *opts)
 {
 	ft_putstr_fd("\a\033[04m\033[00;31mError: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
