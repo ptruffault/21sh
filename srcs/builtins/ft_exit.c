@@ -14,7 +14,6 @@
 
 int		ft_quit(int exit_code, t_shell *sh)
 {
-	kill_process(sh->process, SIGKILL, RUNNING_FG);
 	if (sh->interactive == TRUE && isatty(0))
 		ft_set_old_term(sh, 0);
 	ft_free_tshell(sh);
