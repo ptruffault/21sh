@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 16:50:42 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 16:50:48 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:02:07 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void			ft_select_left(t_edit *e);
 void			ft_select_end(t_edit *e);
 void			ft_select_home(t_edit *e);
 void			ft_home_key(t_edit *e);
-void	ft_select_line_down(t_edit *e);
-void ft_select_line_up(t_edit *e);
+void			ft_select_line_down(t_edit *e);
+void			ft_select_line_up(t_edit *e);
 
 void			ft_jump_line_down(t_edit *e);
 void			ft_jump_line_up(t_edit *e);
@@ -101,8 +101,8 @@ void			ft_jp_word_left(t_edit *e);
 int				term_actions(char *cmd);
 int				term_goto(char *cmd, int row, int col);
 
-void ft_print_fast(t_edit *e);
-void ft_print_edited(t_edit *e);
+void			ft_print_fast(t_edit *e);
+void			ft_print_edited(t_edit *e);
 void			ft_print_line(t_edit *e);
 void			ft_delete_line(t_edit *e);
 

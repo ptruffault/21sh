@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 16:02:36 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/03/20 15:09:42 by stdenis          ###   ########.fr       */
+/*   Updated: 2019/03/22 18:05:27 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@
 # include <pwd.h>
 
 void		ft_sigcont(t_process *tmp);
-void 		ft_wait_background(t_shell *sh);
+void		ft_wait_background(t_shell *sh);
 void		ft_wait(t_process *p, t_shell *sh);
 void		ft_set_background(t_process *p);
-int 		ft_bg(t_shell *sh, char **argv);
-int 		ft_fg(t_shell *sh, char **argv);
+int			ft_bg(t_shell *sh, char **argv);
+int			ft_fg(t_shell *sh, char **argv);
 int			ft_hi(t_shell *sh);
-void 		ft_process_tab_status(char *stat[6]);
-void	ft_put_process(t_process *p);
+void		ft_process_tab_status(char *stat[6]);
+void		ft_put_process(t_process *p);
 
 int			ft_quit(int exit_code, t_shell *sh);
 void		ft_exit_son(t_tree *t, t_shell *sh, int exit_code);
@@ -79,7 +79,7 @@ int			init_shell(t_shell *sh, char **envv, char **argv);
 void		set_signals(void);
 void		set_signals_ni(void);
 void		ft_execve(t_process *p, t_shell *sh, t_tree *t, int fork);
-int 		ft_get_pgid(int pgid, t_process *p, t_process *prev);
+int			ft_get_pgid(int pgid, t_process *p, t_process *prev);
 t_tree		*exec_pipe(t_tree *t, t_process *p, t_shell *sh);
 t_tree		*exec_instruction(t_tree *t, t_shell *sh);
 int			run_builtin(t_tree *t, char **argv, t_shell *sh);
@@ -96,7 +96,7 @@ char		*get_bin_path(char *input, t_envv *envv);
 int			ft_check_ascii(char *input);
 int			ft_isparenth(char c);
 int			ft_setup_edit_term(t_shell *sh);
-int		ft_set_old_term(t_shell *sh, int error);
+int			ft_set_old_term(t_shell *sh, int error);
 void		ft_update_windows(t_edit *e);
 int			init_termcaps(t_shell *sh);
 int			check_builtin(char *input);
@@ -141,5 +141,5 @@ char		*backslash_get_input(void);
 t_process	*init_process(t_tree *t, t_shell *sh);
 t_process	*init_pipe_process(t_tree *t, t_shell *sh);
 void		ft_delete_process(int pid);
-char 		*ft_split_equal(char *str, char **aft);
+char		*ft_split_equal(char *str, char **aft);
 #endif
