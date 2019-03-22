@@ -47,9 +47,9 @@ int			init_shell(t_shell *sh, char **envv, char **argv)
 		exec_file(argv[1], sh);
 		return (0);
 	}
-	sh->interactive = TRUE;
 	set_signals();
 	if (!init_termcaps(sh))
 		return (0);
+	sh->interactive = TRUE;
 	return (1);
 }

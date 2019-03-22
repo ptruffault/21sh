@@ -20,6 +20,13 @@ int		ft_quit(int exit_code, t_shell *sh)
 	return (exit_code);
 }
 
+int		ft_quit_no_term(int exit_code, t_shell *sh)
+{
+	ft_free_tshell(sh);
+	return (exit_code);
+}
+
+
 void	ft_exit(char *nbr, t_shell *sh)
 {
 	int		exit_code;

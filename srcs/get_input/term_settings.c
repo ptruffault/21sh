@@ -27,6 +27,8 @@ int		init_termcaps(t_shell *sh)
 	char *term;
 
 	term = NULL;
+	if (!(term = get_tenvv_val(sh->env, "TERM")))
+		return (error("unset var", "TERM"));
 	if (((term = get_tenvv_val(sh->env, "TERM")) && !tgetent(NULL, term)))
 		return (error("can't retrieve terminal informations", term));
 	if (!(tgetstr("ch", NULL))
