@@ -103,9 +103,7 @@ int				init_tedit(t_shell *sh)
 	sh->e.select_pos = 0;
 	sh->e.mode = 0;
 	sh->e.hist = NULL;
-	if ((tmp = new_hist()) || ft_init_input_link(sh, tmp) == FAILURE)
-		return (FAILURE);
-	else
+	if (!(tmp = new_hist()) || ft_init_input_link(sh, tmp) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
