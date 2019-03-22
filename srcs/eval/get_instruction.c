@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:20:35 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/03/08 13:12:48 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 static t_word	*get_argv(t_tree *t, t_word *w)
 {
@@ -48,7 +48,8 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 		}
 		else if (tmp && tmp->type == OPERATEUR)
 		{
-			tree = add_newttree(tree, tmp);
+			if (!(tree = add_newttree(tree, tmp)))
+				return (ft_syntax(head));
 			tmp = tmp->next;
 		}
 	}
@@ -62,20 +63,17 @@ int				ft_check_grammar(t_word *w)
 	cmd = 0;
 	while (w)
 	{
-		if (w->type == OPERATEUR && w->next && w->next->type == OPERATEUR)
-		{
-			error("syntax error near", w->word);
-			return (0);
-		}
+		if ((w->type == OPERATEUR && w->next && w->next->type == OPERATEUR)
+			|| (w->type == OPERATEUR && ft_strlen(w->word) > 2)
+			|| (w->type == OPERATEUR && *w->word == ';' && ft_strlen(w->word) > 1)
+			|| (w->type == REDIRECT && ft_strchr(w->word, '<') && ft_strchr(w->word, '>')))
+			return (error("syntax error near", w->word));
 		if (IS_CMD(w->type))
 			cmd++;
 		w = w->next;
 	}
 	if (!cmd)
-	{
-		warning("nothing to do", NULL);
-		return (0);
-	}
+		return (warning("nothing to do", NULL));
 	return (1);
 }
 
@@ -85,12 +83,12 @@ t_tree			*get_tree(char *input)
 	t_word	*w;
 
 	if (!input || ft_isempty(input) || !ft_check_ascii(input)
-	|| !(w = eval_line(input)))
+		|| !(w = eval_line(input)))
 		return (NULL);
 	if (!(head = new_tree()))
 		return (NULL);
 	if (ft_check_grammar(w) && (head = built_tree(head, w)))
 		ft_get_set_tree(head);
-	ft_free_tword(w);
+	w = ft_free_tword(w);
 	return (head);
 }

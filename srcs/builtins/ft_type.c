@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:35:47 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 12:35:48 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 static t_word	*init_opts(char opts[4], t_word *w)
 {
@@ -60,8 +60,8 @@ static int		handle_opts(t_word *w, char opts[4], t_shell *sh)
 		return (ret);
 	}
 	else if (!putword(w, opts[1]) && !putalias(w, sh->alias, opts[1])
-	&& !putbuiltin(w, opts[1]) && !putfile(w, sh->env, opts[1])
-	&& !putcmd(w, sh->env, opts[1]))
+		&& !putbuiltin(w, opts[1]) && !putfile(w, sh->env, opts[1])
+		&& !putcmd(w, sh->env, opts[1]))
 		return (0);
 	return (1);
 }
@@ -78,7 +78,7 @@ int				ft_type(t_word *w)
 	sh = ft_get_set_shell(NULL);
 	while (w)
 	{
-		if (!handle_opts(w, opts, sh) && ++ret)
+		if (w->word && !handle_opts(w, opts, sh) && ++ret)
 			warning("not found", w->word);
 		w = w->next;
 	}

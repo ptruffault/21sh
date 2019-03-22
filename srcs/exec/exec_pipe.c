@@ -6,78 +6,100 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 13:53:23 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/18 13:51:14 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
-static t_tree	*ft_end(t_tree *t, t_process *p1, t_process *p2, int pip[2])
+
+static int		ft_link_stdin(int pipe[2])
 {
-	ft_close(pip[0]);
-	ft_close(pip[1]);
-	if (p1 && p2 && p1->pid > 0 && p2->pid > 0)
+	if (dup2(pipe[0], STDIN_FILENO) < 0)
+		return (-1);
+	return (ft_close(pipe[1]));
+}
+
+static int		ft_link_stdout(int pipe[2])
+{
+	if (dup2(pipe[1], STDOUT_FILENO) < 0)
+		return (-1);
+	return (ft_close(pipe[0]));
+}
+
+static int		ft_close_pipe(int pipe[2])
+{
+	if (!ft_close(pipe[0])
+	|| !ft_close(pipe[1]))
+		return (0);
+	return (1);
+}
+
+/* 
+static int		ft_exec_son(t_process *p, t_tree *t, t_shell *sh)
+{
+	int exit_code;
+
+	exit_code = -1;
+	if (!t->r || (t->r && ft_redirect_builtin(t, p, sh)))
 	{
-		waitpid(p1->pid, &p1->ret, 0);
-		p1->status = DONE;
-		waitpid(p2->pid, &p2->ret, 0);
-		p2->status = DONE;
+		if (p->builtins == TRUE)
+			exit_code = run_builtin(t, p->argv, sh);
+		else if (p->cmd && !ft_isempty(p->cmd))
+		{
+			execve(p->cmd, p->argv, p->env);
+			error("execve fucked up", p->cmd);
+		}
+		else
+			error("command not found", *p->argv);
 	}
-	while (t->o_type == O_PIPE)
+	ft_free_tshell(sh);
+	ft_free_tree(t);
+	exit(exit_code);
+}*/
+
+int 	ft_get_pgid(int pgid, t_process *p, t_process *prev)
+{
+	if (pgid == 0 && !prev)
+		pgid = getpid();
+	if ((!prev && pgid > 0 && (setpgid(pgid, 0)) < 0)
+		|| (prev && pgid > 0 && setpgid(0, pgid) < 0))
+	{
+		warning("can't set pgid", p->cmd);
+		perror(p->cmd);
+	}
+	return (pgid);
+}
+
+
+t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
+{
+	t_process	*prev;
+	t_process	*tmp;
+
+	prev = NULL;
+	tmp = p;
+	while (tmp)
+	{
+		tmp->status = RUNNING_FG;
+		if (tmp->cmd && (tmp->pid = fork()) == 0)
+		{
+			if  ((prev && !ft_link_stdin(prev->pipe))
+			|| (tmp->grp && !ft_link_stdout(tmp->pipe)))
+				ft_exit_son(t, sh, -1);
+			ft_execve(tmp, sh, t, 0);
+		}
+		else if (tmp->pid < 0)
+			error("fork fucked up", tmp->cmd);
+		if (prev)
+			ft_close_pipe(prev->pipe);
+		prev = tmp;
+		tmp = tmp->grp;
 		t = t->next;
+	}
+	tmp = p;
+	ft_wait(p, sh);
+	ft_reset_fd(sh);
 	return (t);
 }
 
-static void		ft_exec_right(t_tree *t, int pip[2], t_shell *sh, t_process *p)
-{
-	if (dup2(pip[0], STDIN_FILENO) >= 0)
-	{
-		ft_close(pip[1]);
-		if (t->next->o_type == O_PIPE && t->next->next)
-			exec_pipe(t->next);
-		else
-			ft_exec_son(p, t->next, sh);
-		ft_free_tshell(sh);
-		ft_free_tree(ft_get_set_tree(NULL));
-		ft_close(pip[0]);
-		exit(-1);
-	}
-}
-
-static void		ft_exec_left(t_tree *t, t_process *p, int pip[2], t_shell *sh)
-{
-	if (dup2(pip[1], STDOUT_FILENO) >= 0)
-	{
-		ft_close(pip[0]);
-		ft_exec_son(p, t, sh);
-		ft_free_tshell(sh);
-		ft_free_tree(ft_get_set_tree(NULL));
-		ft_close(pip[1]);
-		exit(-1);
-	}
-}
-
-t_tree			*exec_pipe(t_tree *t)
-{
-	int			pipes[2];
-	t_process	*p1;
-	t_process	*p2;
-	t_shell		*sh;
-
-	sh = ft_get_set_shell(NULL);
-	if (pipe(pipes) != 0)
-		return (t);
-	p1 = NULL;
-	p2 = NULL;
-	if (!(p1 = init_process(t, sh))
-	|| (p1->pid = fork()) < 0)
-		return (ft_end(t, p1, p2, pipes));
-	else if (p1->pid == 0)
-		ft_exec_left(t, p1, pipes, sh);
-	if (!(p2 = init_process(t->next, sh))
-	|| (p2->pid = fork()) < 0)
-		return (ft_end(t, p1, p2, pipes));
-	else if (p2->pid == 0)
-		ft_exec_right(t, pipes, sh, p2);
-	return (ft_end(t, p1, p2, pipes));
-}

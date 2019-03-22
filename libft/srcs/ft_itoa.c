@@ -10,44 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include <libft.h>
 
-static char	*ft_test(int n, int len)
+static int	ft_length_nbr(int nb)
 {
-	char	*ret;
+	int i;
 
-	ret = 0;
-	if (n == -2147483648)
+	i = 1;
+	while (nb != 0)
 	{
-		ret = ft_strnew(11);
-		ret = "-2147483648";
+		nb = nb / 10;
+		i++;
 	}
-	else
-		ret = ft_strnew(len + 1);
-	return (ret);
+	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(int nbr)
 {
+	char	*res;
 	int		len;
-	int		buf;
-	char	*ret;
+	int		neg;
 
-	len = (n < 0) ? 1 : 0;
-	buf = n;
-	while (n /= 10)
+	neg = (nbr < 0) ? 1 : 0;
+	len = ft_length_nbr(nbr);
+	if (len == 1 && nbr == 0)
 		len++;
-	while (n <= -10)
-		len++;
-	ret = ft_test(n, len);
-	if (!ret)
+	if (!(res = (char*)malloc(sizeof(char) * (len + neg))))
 		return (NULL);
-	while (buf >= 10 || buf <= -10)
+	res[--len + neg] = '\0';
+	if (neg > 0)
+		res[0] = '-';
+	while (--len >= 0)
 	{
-		ret[len--] = (buf < 0) ? -(buf % 10) + '0' : buf % 10 + '0';
-		buf /= 10;
+		if (nbr < 0)
+			res[len + neg] = -(nbr % 10) + '0';
+		else
+			res[len + neg] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 	}
-	ret[0] = (buf < 0) ? '-' : buf + '0';
-	ret[1] = (buf < 0) ? -buf + '0' : ret[1];
-	return (ret);
+	return (res);
 }

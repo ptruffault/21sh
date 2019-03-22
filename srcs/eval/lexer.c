@@ -6,11 +6,11 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:21:33 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/08 14:27:18 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/21 12:59:15 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 void	ft_lex_redirect(t_eval *e)
 {
@@ -72,7 +72,7 @@ void	ft_lexword(t_eval *e)
 	else if (e->s[e->curr] == '\\')
 		ft_lex_backslash(e);
 	else if (e->s[e->curr] == '&'
-	|| e->s[e->curr] == '|' || e->s[e->curr] == ';')
+		|| e->s[e->curr] == '|' || e->s[e->curr] == ';')
 		ft_lex_operateur(e);
 	else if (e->s[e->curr] == '$' || e->s[e->curr] == '~')
 		ft_lex_var(e);
@@ -82,17 +82,21 @@ void	ft_lexword(t_eval *e)
 		e->eval[e->curr++] = 'e';
 }
 
-t_eval	lexer(char *src)
+void	lexer(t_eval *e, char *src)
 {
-	t_eval	e;
-
-	e.curr = 0;
-	e.err = OK;
-	e.s = ft_strdup(src);
-	if (!(e.eval = ft_strnew(ft_strlen(e.s) + 1)))
-		return (e);
-	while (e.s[e.curr])
-		ft_lexword(&e);
-	e.eval[e.curr] = 0;
-	return (e);
+	e->curr = 0;
+	e->err = OK;
+	e->eval = NULL;
+	e->s = NULL;
+	if ((e->s = ft_strdup(src)))
+	{
+		if ((e->eval = ft_strnew(ft_strlen(e->s))))
+		{
+			while (e->s[e->curr])
+				ft_lexword(e);
+			e->eval[e->curr] = 0;
+		}
+		else
+			ft_strdel(&e->s);
+	}
 }

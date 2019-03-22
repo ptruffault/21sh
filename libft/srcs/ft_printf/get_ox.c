@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include <ft_printf.h>
 
 char	*get_ox(t_param *p, char *tmp_val)
 {

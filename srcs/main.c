@@ -6,33 +6,50 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:33:46 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/18 15:36:03 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/shell42.h"
+#include <shell42.h>
+
+// FONCTION POUR RESTE TOUT LES SIGNAUX (ENV ET EXECVE)
 
 void	ft_disp(t_shell *sh)
 {
-	ft_printf("\033[1;32m21sh\033[00m:[\033[01;34m\033[04m%s\033[00m]\n",
-	get_tenvv_val(sh->env, "PWD"));
+	char *pwd;
+
+	pwd = ft_update_pwd(sh);
+	ft_putstr("\033[1;32m42sh\033[00m:[\033[01;34m\033[04m");
+	ft_putstr(pwd);
+	ft_putstr("\033[00m]\n");
+}
+
+int		ft_quit(int exit_code, t_shell *sh)
+{
+	kill_process(sh->process, SIGKILL, SUSPENDED);
+	kill_process(sh->process, SIGKILL, RUNNING_FG);
+	kill_process(sh->process, SIGKILL, RUNNING_BG);
+	ft_free_tshell(sh);
+	return (exit_code);
 }
 
 int		main(int argc, char **argv, char **envv)
 {
 	t_shell	sh;
 	t_tree	*t;
-	char	*in;
 
 	(void)argc;
-	init_shell(&sh, envv, argv);
-	while (42)
+	if (!init_shell(&sh, envv, argv))
+		return (ft_quit(1, &sh));
+	while (isatty(0))
 	{
 		ft_disp(&sh);
-		in = get_input();
-		if ((t = get_tree(in)))
-			ft_free_tree(exec_tree(ft_get_set_tree(t)));
-		ft_strdel(&in);
+		if (!(get_input(&sh.txt)))
+			return (ft_quit(1, &sh));
+		if ((t = get_tree(sh.txt)))
+			ft_free_tree(exec_tree(t, &sh));
+		ft_strdel(&sh.txt);
 	}
-	return (0);
+	ft_printf("stdin no longer tty\n");
+	return (ft_quit(1, &sh));
 }

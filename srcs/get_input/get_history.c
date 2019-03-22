@@ -6,13 +6,13 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 17:47:37 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/01 17:51:58 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/22 15:30:45 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
-int		ft_isparenth(char c)
+int				ft_isparenth(char c)
 {
 	if (c == '{' || c == '(')
 		return (1);
@@ -21,7 +21,7 @@ int		ft_isparenth(char c)
 	return (0);
 }
 
-t_hist	*new_hist(void)
+t_hist			*new_hist(void)
 {
 	t_hist	*n;
 
@@ -29,58 +29,35 @@ t_hist	*new_hist(void)
 		return (NULL);
 	n->s = NULL;
 	n->next = NULL;
+	n->prev = NULL;
 	return (n);
 }
 
-t_hist	*add_hist(t_hist *head, char *s)
+t_hist			*init_hist(char *hist)
 {
-	t_hist	*new;
-
-	if (!(new = new_hist()))
-		return (NULL);
-	new->s = ft_strdup(s);
-	new->next = head;
-	return (new);
-}
-
-t_hist	*ft_read_hist(int i, char **arr)
-{
-	t_hist *new;
-	t_hist *tmp;
-
-	if (!(new = new_hist()))
-		return (NULL);
-	tmp = new;
-	while (i >= 0)
-	{
-		if ((tmp->s = ft_strdup(arr[i--])))
-		{
-			tmp->next = new_hist();
-			tmp = tmp->next;
-		}
-	}
-	return (new);
-}
-
-t_hist	*init_hist(char *hist)
-{
-	t_hist	*new;
+	t_hist	*ret;
+	t_hist	*tmp;
 	int		fd;
-	char	**arr;
-	int		i;
+	char	*line;
 
-	new = NULL;
-	if ((fd = open(hist, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO)) >= 0)
+	ret = NULL;
+	tmp = NULL;
+	if ((fd = ft_open(hist, O_RDWR | O_CREAT | O_NOFOLLOW, 511)) >= 0)
 	{
-		if ((arr = ft_get_txt(fd)))
+		while (get_next_line(fd, &line) > 0)
 		{
-			if ((i = ft_strarrlen(arr) - 1) > 0)
-				new = ft_read_hist(i, arr);
-			ft_freestrarr(arr);
+			if (!(tmp = new_hist()))
+				return (ft_free_thist(ret));
+			if (line)
+				tmp->s = line;
+			else if (!(tmp->s = ft_strnew(0)))
+				return (ft_free_thist(ret));
+			tmp->next = !ret ? NULL : ret;
+			if (tmp->next)
+				tmp->next->prev = tmp;
+			ret = tmp;
 		}
 		ft_close(fd);
 	}
-	else
-		perror(hist);
-	return (new);
+	return (tmp);
 }

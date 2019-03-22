@@ -6,22 +6,22 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:28:34 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/03/08 13:20:42 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 void	ft_lex_backslash(t_eval *e)
 {
 	ft_delete_char(e);
-	if (!(e->s[e->curr]))
+	if (e->s[e->curr])
+		e->eval[e->curr++] = 'B';
+	else
 	{
 		e->err = B_MISS;
 		e->c = '\\';
 	}
-	else
-		e->eval[e->curr++] = 'e';
 }
 
 void	ft_lex_parenth(t_eval *e)
@@ -32,7 +32,7 @@ void	ft_lex_parenth(t_eval *e)
 	save = e->curr;
 	c = e->s[save];
 	while (e->s[e->curr] && ((c == '(' && e->s[e->curr] != ')')
-	|| (c == '{' && e->s[e->curr] != '}')))
+		|| (c == '{' && e->s[e->curr] != '}')))
 	{
 		e->eval[e->curr++] = 'v';
 		if (e->s[e->curr] == '(' || e->s[e->curr] == '{')
@@ -59,7 +59,7 @@ void	ft_lex_var(t_eval *e)
 		else
 		{
 			while (e->s[e->curr] && (ft_isalpha(e->s[e->curr])
-			|| e->s[e->curr] == '_'))
+				|| e->s[e->curr] == '_'))
 				e->eval[e->curr++] = 'v';
 		}
 	}
@@ -75,12 +75,6 @@ void	ft_lex_dquote(t_eval *e)
 			ft_delete_char(e);
 			if (e->s[e->curr])
 				e->s[e->curr] = ft_parse_back(e->s[e->curr]);
-			{
-				if (e->s[e->curr] == 'n')
-					e->s[e->curr] = '\n';
-				if (e->s[e->curr] == 't')
-					e->s[e->curr] = '\t';
-			}
 		}
 		e->eval[e->curr++] = 'q';
 	}

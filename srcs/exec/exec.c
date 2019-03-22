@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:26:09 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/19 12:40:38 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 static t_tree	*next_instruction(t_tree *t)
 {
@@ -23,7 +23,7 @@ static t_tree	*next_instruction(t_tree *t)
 		if (t->o_type == O_AND || t->o_type == O_OR)
 		{
 			if ((t->o_type == O_AND && t->ret == 0)
-			|| (t->o_type == O_OR && t->ret != 0))
+				|| (t->o_type == O_OR && t->ret != 0))
 				return (t->next);
 			else
 			{
@@ -37,31 +37,38 @@ static t_tree	*next_instruction(t_tree *t)
 	return (NULL);
 }
 
-t_tree			*exec_instruction(t_tree *t)
+t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 {
 	t_process	*p;
-	t_shell		*sh;
 
-	sh = ft_get_set_shell(NULL);
-	if (t->o_type == O_PIPE && t->next)
-		return (exec_pipe(t));
-	else if ((p = init_process(t, sh))
-	&& (t->ret = ft_execve(p, sh, t))
-	&& (t->ret == -2 && p->status == RUNNING_FG))
+	if (t->o_type == O_PIPE)
 	{
-		waitpid(p->pid, &p->ret, 0);
-		t->ret = p->ret;
+		if (t->next && (p = init_pipe_process(t, sh)))
+		{
+			p->next = sh->process;
+			sh->process = p;
+			return (exec_pipe(t, p, sh));
+		}
+		else
+		{
+			while (t->o_type == O_PIPE)
+				t = t->next;
+			return (t);
+		}
 	}
-	if (p)
+	else if ((p = init_process(t, sh)))
 	{
-		ft_reset_fd(p);
-		if (p->status != KILLED)
-			p->status = DONE;
+		p->next = sh->process;
+		sh->process = p;
+		ft_execve(p, sh, t, 1);
+		ft_wait(p, sh);
+		ft_reset_fd(sh);
+		t->ret = p->ret;
 	}
 	return (t);
 }
 
-t_tree			*exec_tree(t_tree *t)
+t_tree			*exec_tree(t_tree *t, t_shell *sh)
 {
 	t_tree *tmp;
 
@@ -71,18 +78,18 @@ t_tree			*exec_tree(t_tree *t)
 		if (!tmp->cmd || !tmp->cmd->word)
 		{
 			if (tmp->o_type == O_SEP || tmp->o_type == 0
-			|| tmp->o_type == O_BACK)
+				|| tmp->o_type == O_BACK)
 				tmp = tmp->next;
 			else
 			{
-				error("syntax error near", tmp->next->cmd->word);
+				error("parse error", NULL);
 				break ;
 			}
 		}
 		else
 		{
-			tmp = exec_instruction(tmp);
-			tmp = next_instruction(tmp);
+			if ((tmp = exec_instruction(tmp, sh)))
+				tmp = next_instruction(tmp);
 		}
 	}
 	return (t);

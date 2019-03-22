@@ -1,0 +1,7 @@
+export PATH=${PATH:-/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin}
+alias cl /usr/bin/clear
+alias la "ls -aG" ll "ls -lG" ls "ls -G" lR "ls -RG ~"
+alias gitall "git add -A && git commit -m 'gitall' && git push"
+/usr/bin/clear
+cat $SHELL_FOLD/sys/header
+cat $SHELL_FOLD/auteur

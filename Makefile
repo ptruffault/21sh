@@ -10,9 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		21sh
-GIT 		=		https://github.com/ptruffault/21sh.git
-FLAG		=		-Wall -Werror -Wextra
+NAME		=		42sh
+GIT 		=		https://github.com/ptruffault/$(NAME).git
+FLAG		=		-Wall -Werror -Wextra -g -pedantic
+INCLUDES	=		includes/shell42.h includes/get_input.h includes/structures.h
 OBJ_FOLDER 	= 		./bin/
 
 FILES		=		main.c \
@@ -25,12 +26,10 @@ FILES		=		main.c \
 EXEC 		=		ft_execve.c \
 					exec.c \
 					exec_pipe.c\
-					execve_pipe.c \
 					exec_file.c \
 					redirection.c \
 					redirect_builtins.c \
 					bin_search.c \
-					process_tools.c \
 					init_process.c
 
 EVAL		=		eval_tools.c \
@@ -46,6 +45,7 @@ EVAL		=		eval_tools.c \
 					t_word_tools.c \
 
 BUILTINS	=		ft_echo.c \
+					fg_bg.c \
 					ft_cd.c \
 					run_builtin.c \
 					ft_env.c \
@@ -82,6 +82,10 @@ EXPANSION	=		exp_var.c \
 					cut_string.c\
 					parenth_tools.c
 
+PROCESS		=		kill_process.c \
+					ft_wait.c \
+					process_tools.c \
+
 
 
 SRC			= 		$(addprefix "./srcs/", $(FILES)) \
@@ -89,14 +93,16 @@ SRC			= 		$(addprefix "./srcs/", $(FILES)) \
 					$(addprefix ./srcs/builtins/, $(BUILTINS))  	\
 					$(addprefix "./srcs/exec/", $(EXEC)) \
 					$(addprefix "./srcs/expansion/", $(EXPANSION))	\
-					$(addprefix "./srcs/get_input/", $(GET_INPUT))
+					$(addprefix "./srcs/get_input/", $(GET_INPUT)) \
+					$(addprefix "./srcs/process/", $(PROCESS))	
 
-OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o)) \
-					$(addprefix $(OBJ_FOLDER), $(EXEC:.c=.o)) \
+OBJ			= 		$(addprefix $(OBJ_FOLDER), $(FILES:.c=.o)) 		\
+					$(addprefix $(OBJ_FOLDER), $(EVAL:.c=.o)) 		\
+					$(addprefix $(OBJ_FOLDER), $(BUILTINS:.c=.o)) 	\
+					$(addprefix $(OBJ_FOLDER), $(EXEC:.c=.o)) 		\
 					$(addprefix $(OBJ_FOLDER), $(GET_INPUT:.c=.o))	\
-					$(addprefix $(OBJ_FOLDER), $(EXPANSION:.c=.o))
+					$(addprefix $(OBJ_FOLDER), $(EXPANSION:.c=.o))	\
+					$(addprefix $(OBJ_FOLDER), $(PROCESS:.c=.o))
 
 COLOR		= 		\033[01;34m
 NO_COLOR	= 		\033[00m
@@ -109,45 +115,50 @@ all: $(NAME)
 bin:
 	@mkdir $@
 
-$(NAME): bin $(OBJ) Makefile
+$(NAME): bin $(OBJ) $(INCLUDES) Makefile
 	@make -C libft all
 	@echo "$(OP_COLOR) building $(NAME)$(NO_COLOR)"
 	@gcc  $(FLAG) $(OBJ) -I includes -Llibft -lft -ltermcap -o $(NAME)
 	@printf "$(DONE)$(OP_COLOR)$(NAME)$(NO_COLOR)  \n"
 
 
-bin/%.o: srcs/%.c  includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
 
-bin/%.o: srcs/eval/%.c  includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/eval/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/builtins/%.c includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/builtins/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/exec/%.c includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/exec/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/exec/%.c includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/exec/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/expansion/%.c includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/expansion/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
 
-bin/%.o: srcs/get_input/%.c includes/shell42.h includes/structures.h includes/get_input.h  
+bin/%.o: srcs/get_input/%.c
+	@printf "$(COLOR)$<$(NO_COLOR) -> "
+	@touch $<
+	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
+
+bin/%.o: srcs/process/%.c
 	@printf "$(COLOR)$<$(NO_COLOR) -> "
 	@touch $<
 	@gcc $(FLAG) -I includes -c $< -o $@ && printf "$(DONE)\n" || printf "$(KO)\n"
@@ -163,7 +174,7 @@ clean:
 	@make -C ./libft clean
 
 fclean: clean
-	rm -rf $(NAME) sys/21history
+	rm -rf $(NAME)
 	@make -C ./libft fclean
 
 re: fclean all
@@ -174,9 +185,11 @@ exe: fre
 	./$(NAME)
 
 val: all
-	@valgrind --leak-check=full -v ./$(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all -v ./$(NAME)
 
 save: fclean clear
-	@git add -A && git commit -m "make save" && git push 
+	@echo > sys/.42history
+	@git add -A && git commit -m "make save" && git push \
+	&& printf "$(COLOR)save$(NO_COLOR) : $(DONE)\n" || printf"$(OP_COLOR)save : KO\n$(NO_COLOR)"
 
 .PHONY: clear sclean clean fclean save

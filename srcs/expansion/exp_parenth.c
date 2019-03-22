@@ -6,11 +6,11 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:26:29 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/18 15:31:36 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh, char *val2)
 {
@@ -65,13 +65,14 @@ char		*ft_get_param_value(t_shell *sh, char *parenth)
 		}
 		else if (parenth[i] == '#' || parenth[i] == '%')
 			val = ft_get_cutted_value(parenth, sh, val, &i);
-	return (!val ? ft_strdup(get_tenvv_val(sh->env, parenth)) : val);
+	if (!val && !(val = ft_strdup(get_tenvv_val(sh->env, parenth))))
+		return (NULL);
+	return (val);
 }
 
 char		*ft_exp_param(char *ret, t_shell *sh, char *ptr)
 {
 	char	*value;
-	char	*tmp;
 	char	*parenth;
 	int		len;
 
@@ -80,13 +81,8 @@ char		*ft_exp_param(char *ret, t_shell *sh, char *ptr)
 	if ((parenth = ft_strsub(ret, ptr - ret + 2, get_content_size(ptr))))
 	{
 		if (*parenth == '#')
-		{
-			tmp = ft_strdup(parenth + 1);
-			ft_strdel(&parenth);
 			len = 1;
-			parenth = tmp;
-		}
-		value = ft_get_param_value(sh, parenth);
+		value = ft_get_param_value(sh, &parenth[len]);
 		ft_strdel(&parenth);
 		if (len == 1)
 			value = ft_get_len(value);

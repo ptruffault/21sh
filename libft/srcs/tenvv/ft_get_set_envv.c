@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/tenvv.h"
+#include <tenvv.h>
 
 t_envv	*ft_get_set_envv(t_envv *t)
 {

@@ -6,21 +6,24 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 10:57:04 by ptruffau          #+#    #+#             */
-/*   Updated: 2017/11/16 11:11:47 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:39:15 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include <libft.h>
 
-char	**ft_freestrarr(char **arr)
+void	ft_freestrarr(char ***arr)
 {
-	int i;
+	size_t	i;
 
+	if (!*arr || !**arr)
+		return ;
 	i = 0;
-	if (!arr)
-		return (NULL);
-	while (arr[i] != NULL)
-		ft_strdel(&arr[i++]);
-	free(arr);
-	return (NULL);
+	while ((*arr)[i] != 0)
+	{
+		free((*arr)[i]);
+		i++;
+	}
+	free(*arr);
+	*arr = NULL;
 }

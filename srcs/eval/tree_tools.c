@@ -6,28 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:54 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 15:30:56 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
-
-static int	find_operateur(char *op)
-{
-	char	*operateur[5];
-	int		i;
-
-	operateur[0] = "&&";
-	operateur[1] = "||";
-	operateur[2] = ";";
-	operateur[3] = "|";
-	operateur[4] = "&";
-	i = 0;
-	while (i < 5)
-		if (ft_strequ(operateur[i++], op))
-			return (i);
-	return (0);
-}
+#include <shell42.h>
 
 int			ft_check_ascii(char *input)
 {
@@ -56,17 +39,34 @@ t_tree		*new_tree(void)
 
 t_redirect	*new_redirection(void)
 {
-	t_redirect	*new;
+	t_redirect	*ret;
 
-	if (!(new = (t_redirect *)malloc(sizeof(t_redirect))))
+	if (!(ret = (t_redirect *)malloc(sizeof(t_redirect))))
 		return (NULL);
-	new->t = 0;
-	new->to = -2;
-	new->from = -2;
-	new->path = NULL;
-	new->heredoc = NULL;
-	new->next = NULL;
-	return (new);
+	ret->t = 0;
+	ret->to = -2;
+	ret->from = -2;
+	ret->path = NULL;
+	ret->heredoc = NULL;
+	ret->next = NULL;
+	return (ret);
+}
+
+static int	find_operateur(char *op)
+{
+	char	*operateur[5];
+	int		i;
+
+	operateur[0] = "&&";
+	operateur[1] = "||";
+	operateur[2] = ";";
+	operateur[3] = "|";
+	operateur[4] = "&";
+	i = 0;
+	while (i < 5)
+		if (ft_strequ(operateur[i++], op))
+			return (i);
+	return (0);
 }
 
 t_tree		*add_newttree(t_tree *tree, t_word *w)

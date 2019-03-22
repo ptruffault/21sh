@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 14:11:52 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:11:54 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:09:42 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/tenvv.h"
+#include <tenvv.h>
 
 t_envv	*ft_tenvv_cpy(t_envv *src)
 {
@@ -20,11 +20,11 @@ t_envv	*ft_tenvv_cpy(t_envv *src)
 	if (!(ret = new_tenvv()))
 		return (NULL);
 	tmp = ret;
-	while (src && src->name)
+	while (src)
 	{
-		if (!(tmp->name = ft_strdup(src->name)) ||
-		!(tmp->value = ft_strdup(src->value)))
-			return (ret);
+		if (!(tmp->name = ft_strdup(src->name)) 
+		|| !(tmp->value = ft_strdup(src->value)))
+			return (ft_free_tenvv(ret));
 		src = src->next;
 		if (src)
 		{
@@ -35,17 +35,19 @@ t_envv	*ft_tenvv_cpy(t_envv *src)
 	return (ret);
 }
 
-void	del_tenvv(t_envv *envv)
+t_envv	*del_tenvv(t_envv *envv)
 {
-	if (!envv)
-		return ;
-	ft_strdel(&envv->name);
-	ft_strdel(&envv->value);
-	envv->next = NULL;
-	free(envv);
+	if (envv)
+	{
+		ft_strdel(&envv->name);
+		ft_strdel(&envv->value);
+		envv->next = NULL;
+		free(envv);
+	}
+	return (NULL);
 }
 
-void	ft_free_tenvv(t_envv *envv)
+t_envv	*ft_free_tenvv(t_envv *envv)
 {
 	t_envv *tmp;
 
@@ -53,6 +55,7 @@ void	ft_free_tenvv(t_envv *envv)
 	{
 		tmp = envv;
 		envv = envv->next;
-		del_tenvv(tmp);
+		tmp = del_tenvv(tmp);
 	}
+	return (NULL);
 }

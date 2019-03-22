@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include <libft.h>
 
 static void	f(uintmax_t value, unsigned int base, char *str, int *i)
 {

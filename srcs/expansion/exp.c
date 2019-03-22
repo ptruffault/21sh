@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 16:10:38 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 16:10:39 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 t_process	*get_last_done_process(t_process *p)
 {
@@ -53,8 +53,7 @@ char		*ft_exp_var(char *ret, t_shell *sh)
 		&& !(ret = ft_exp_param(ret, sh, &ret[i])))
 		|| (ret && ret[i] == '$' && ret[i + 1] && ft_strchr("$!?", ret[i + 1])
 		&& !(ret = ft_exp_spec(ret, &ret[i], sh)))
-		|| (ret && ret[i] == '$' && ret[i + 1]
-		&& !ft_strchr("$!?{(", ret[i + 1])
+		|| (ret && ret[i] == '$' && ret[i + 1] && !ft_strchr("$!?{", ret[i + 1])
 		&& !(ret = ft_exp_envv_var(ret, &ret[i], sh))))
 			return (NULL);
 		i++;

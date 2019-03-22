@@ -29,16 +29,18 @@
 # include <stdint.h>
 # include "tenvv.h"
 # define BUFF_SIZE 256
+# define FAILURE 0
+# define SUCCESS 1
 
-# define BLEUCLAIR 	"\033[01;34m"
-# define ROUGE 		"\033[00;31m"
-# define BLEU 		"\033[00;34m"
-# define SOULIGNE 	"\033[04m"
-# define NORMAL 	"\033[00m"
-# define VERT  		"\033[1;32m"
-# define CYAN 		"\033[1;36m"
-# define MAGENTA 	"\033[1;35m"
-# define JAUNE		"\033[1;39m"
+# define BLEUCLAIR 	"\x1B[01;34m"
+# define ROUGE 		"\x1B[00;31m"
+# define BLEU 		"\x1B[00;34m"
+# define SOULIGNE 	"\x1B[04m"
+# define NORMAL 	"\x1B[00m"
+# define VERT  		"\x1B[1;32m"
+# define CYAN 		"\x1B[1;36m"
+# define MAGENTA 	"\x1B[1;35m"
+# define JAUNE		"\x1B[1;39m"
 
 typedef enum	e_boolen {
 	FALSE = 0,
@@ -65,6 +67,7 @@ struct	s_file
 	t_file		*next;
 };
 
+int		ft_open(char *path, int flag, mode_t mode);
 int		ft_printf(char *format, ...);
 char	*ft_strchr_end(const char *src, char c);
 int		ft_close(int fd);
@@ -73,9 +76,6 @@ char	**ft_strarrjoin(char **src, char **to_add);
 char	**ft_strarrjoin_fr(char **src, char **to_add);
 int		ft_match(char *s1, char *s2);
 void	ft_write_in_file(char *path, char *str);
-char	*ft_get_line_in_file(char *path, int n);
-int		ft_open(char *path);
-char	*ft_search_line_in_file(char *path, char *src);
 void	ft_putstrarr_fd(char **t, int fd);
 void	ft_strdel_from_arr(int n, void *arr, size_t width, int len);
 char	*ft_get_next_word(char *str);
@@ -83,11 +83,11 @@ void	ft_putchar_color(char c, char *color);
 void	ft_putchar_color_fd(char c, char *color, int fd);
 size_t	ft_strarrlen(char **arr);
 char	**ft_strsplit_word(char *str);
-void	warning(char *descript, char *opts);
-void	error(char *descript, char *opts);
-void	warning_c(char *descript, char opts);
-void	error_c(char *descript, char opts);
-void	error_i(char *descrpt, int i);
+int		warning(char *descript, char *opts);
+int		error(char *descript, char *opts);
+int		warning_c(char *descript, char opts);
+int		error_c(char *descript, char opts);
+int		error_i(char *descrpt, int i);
 char	*ft_char_to_str(char c);
 char	*ft_itoa_base(intmax_t value, int base);
 char	*ft_itoa_base_u(uintmax_t value, int base);
@@ -109,8 +109,8 @@ char	*ft_new_path(char *s1, char *s2);
 char	*ft_get_prev_path(char *path);
 int		get_next_line(const int fd, char **line);
 int		ft_strcmp_castless(char *s1, char *s2);
-char	**ft_freestrarr(char **arr);
-void	*ft_realloc(void *ptr, size_t prev_size, size_t new_size);
+void	ft_freestrarr(char ***arr);
+void	*ft_realloc(void *ptr, int prev_size, int new_size);
 int		ft_str_startwith(char *s1, char *s2);
 int		ft_str_endwith(char *s1, char *s2);
 char	**ft_get_txt(int fd);

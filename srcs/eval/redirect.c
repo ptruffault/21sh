@@ -6,51 +6,45 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:20:35 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/03/08 13:16:23 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
-static t_redirect	*parse_right_redirect(t_redirect *new, t_word *w)
+static t_redirect	*parse_right_redirect(t_redirect *ret, t_word *w)
 {
 	char	*ptr;
 
-	new->from = (ft_isdigit(w->word[0]) ? ft_atoi(w->word) : 1);
+	ret->from = (ft_isdigit(w->word[0]) ? ft_atoi(w->word) : 1);
 	if ((ptr = ft_strchr(w->word, '&')))
 	{
 		if (ft_isdigit(*(ptr + 1)))
-			new->to = ft_atoi(ptr + 1);
+			ret->to = ft_atoi(ptr + 1);
 		else if (*(ptr + 1) == '-')
-			new->to = -1;
-		return (new);
+			ret->to = -1;
+		return (ret);
 	}
 	else if (w->next && w->next->word
-	&& (new->path = ft_strdup(w->next->word)))
-		return (new);
-	ft_free_redirection(new);
-	return (NULL);
+		&& (ret->path = ft_strdup(w->next->word)))
+		return (ret);
+	return (ft_free_redirection(ret));
 }
 
-static t_redirect	*parse_left_redirect(t_redirect *new, t_word *w)
+static t_redirect	*parse_left_redirect(t_redirect *ret, t_word *w)
 {
 	char	*ptr;
 
-	new->from = STDIN_FILENO;
-	if (new->t == R_DLEFT)
-		return (parse_heredoc(new, w));
+	ret->from = STDIN_FILENO;
+	if (ret->t == R_DLEFT)
+		return (parse_heredoc(ret, w));
 	else if ((ptr = ft_strchr(w->word, '&')) && ft_isdigit(*(ptr + 1)))
-		new->to = ft_atoi(ptr + 1);
+		ret->to = ft_atoi(ptr + 1);
 	else if ((ptr = ft_strchr(w->word, '&')) && *(ptr + 1) == '-')
-		new->to = -1;
-	else if (w->next && w->next->word)
-		new->path = ft_strdup(w->next->word);
-	else
-	{
-		ft_free_redirection(new);
-		return (NULL);
-	}
-	return (new);
+		ret->to = -1;
+	else if (!(w->next && w->next->word && (ret->path = ft_strdup(w->next->word))))
+		return (ft_free_redirection(ret));
+	return (ret);
 }
 
 static int			ft_find_redirect_type(char *red)
@@ -66,41 +60,43 @@ static int			ft_find_redirect_type(char *red)
 
 static t_redirect	*get_redirection(t_word *w)
 {
-	t_redirect *new;
+	t_redirect *ret;
 
-	if ((new = new_redirection()))
+	ret = NULL;
+	if ((ret = new_redirection()))
 	{
-		new->t = ft_find_redirect_type(w->word);
-		if (((new->t == R_RIGHT || new->t == R_DRIGHT)
-		&& !(new = parse_right_redirect(new, w)))
-		|| ((new->t == R_LEFT || new->t == R_DLEFT)
-		&& !(new = parse_left_redirect(new, w))))
+		ret->t = ft_find_redirect_type(w->word);
+		if (((ret->t == R_RIGHT || ret->t == R_DRIGHT)
+			&& !(ret = parse_right_redirect(ret, w)))
+			|| ((ret->t == R_LEFT || ret->t == R_DLEFT)
+			&& !(ret = parse_left_redirect(ret, w))))
 		{
 			warning("redirections need an argument", w->word);
 			return (NULL);
 		}
 	}
-	return (new);
+	return (ret);
 }
 
 t_word				*get_redirections(t_tree *t, t_word *w)
 {
 	t_redirect	*tmp;
-	t_redirect	*new;
+	t_redirect	*ret;
 
-	if ((new = get_redirection(w)))
+	ret = NULL;
+	if ((ret = get_redirection(w)))
 	{
-		if (new->path)
+		if (ret->path)
 			w = ft_deltword(w, w->next);
 		if (t->r)
 		{
 			tmp = t->r;
 			while (tmp->next)
 				tmp = tmp->next;
-			tmp->next = new;
+			tmp->next = ret;
 		}
 		else
-			t->r = new;
+			t->r = ret;
 		return (w);
 	}
 	return (NULL);

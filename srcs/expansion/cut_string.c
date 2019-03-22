@@ -6,11 +6,11 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:05:53 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/03/08 13:28:48 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 char		*ft_get_secondvalue(char *src)
 {
@@ -25,8 +25,8 @@ char		*ft_get_secondvalue(char *src)
 		if (*src == '$')
 			cpy = ft_exp_var(cpy, ft_get_set_shell(NULL));
 		while (cpy && cpy[i] && !((cpy[i] == ':'
-		&& cpy[i + 1] && ft_strchr("?=+-", cpy[i + 1]))
-		|| (cpy[i] == '#' || cpy[i] == '%') || cpy[i] == '}'))
+			&& cpy[i + 1] && ft_strchr("?=+-", cpy[i + 1]))
+			|| (cpy[i] == '#' || cpy[i] == '%') || cpy[i] == '}'))
 			i++;
 		ret = ft_strndup(cpy, i);
 		ft_strdel(&cpy);

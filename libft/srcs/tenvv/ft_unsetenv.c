@@ -22,7 +22,7 @@ t_envv		*ft_del_envv(t_envv *envv, char *name)
 	if (ft_strequ(envv->name, name))
 	{
 		tmp = envv->next;
-		del_tenvv(envv);
+		envv = del_tenvv(envv);
 		return (tmp);
 	}
 	while (tmp)
@@ -30,7 +30,7 @@ t_envv		*ft_del_envv(t_envv *envv, char *name)
 		if (ft_strequ(tmp->name, name))
 		{
 			prev->next = tmp->next;
-			del_tenvv(tmp);
+			tmp = del_tenvv(tmp);
 			return (envv);
 		}
 		prev = tmp;
@@ -47,10 +47,7 @@ t_envv		*ft_unsetenv(t_envv *envv, char **t)
 	if (!envv)
 		return (NULL);
 	if (ft_strequ(*t, "-all"))
-	{
-		ft_free_tenvv(envv);
-		return (NULL);
-	}
+		return (ft_free_tenvv(envv));
 	while (t[i])
 		envv = ft_del_envv(envv, t[i++]);
 	return (envv);

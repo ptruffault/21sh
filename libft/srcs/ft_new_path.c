@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include <libft.h>
 
 char	*ft_new_path(char *s1, char *s2)
 {
@@ -22,9 +22,11 @@ char	*ft_new_path(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
+	new_path = NULL;
 	path_len = ft_strlen(s1);
-	len = path_len + ft_strlen(s2) + 2;
-	new_path = ft_strnew(len);
+	len = path_len + ft_strlen(s2) + 1;
+	if (!(new_path = ft_strnew(len)))
+		return (NULL);
 	while (i < len)
 	{
 		if (i < path_len)

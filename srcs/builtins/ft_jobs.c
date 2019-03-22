@@ -6,29 +6,63 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:42:19 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/19 13:10:50 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
-void		ft_jobs(t_shell *sh)
+static void ft_job_prompt(t_process *tmp, char *stat[6], int id)
+{
+	t_process *grp;
+
+	ft_printf("ID % -5i%-25s%i %-20s%i\033[00m\n",
+	id, stat[tmp->status], tmp->ret, tmp->cmd, tmp->pid);
+	if (tmp->grp)
+	{
+		grp = tmp->grp;
+		while (grp)
+		{
+			if (grp->cmd)
+				ft_printf(" |       %-25s%i %-20s%i\033[00m\n",
+				stat[grp->status], grp->ret, grp->cmd, grp->pid);
+			grp = grp->grp;
+		}
+	}
+}
+
+int		ft_hi(t_shell *sh)
 {
 	t_process	*tmp;
-	char		*stat[5];
-	int			i;
+	char 		*stat[6];
+	int			id;
 
-	i = 0;
-	stat[0] = "running foreground";
-	stat[1] = "running background";
-	stat[2] = "done";
-	stat[3] = "suspended";
-	stat[4] = "killed";
+	id = 0;
+	tmp = sh->process;
+	ft_process_tab_status(stat);
+	while (tmp)
+	{
+		if (tmp->cmd)
+			ft_job_prompt(tmp, stat, id++);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int 	ft_jobs(t_shell *sh)
+{
+	t_process	*tmp;
+	char 		*stat[6];
+	int			id;
+
+	id = 0;
+	 ft_process_tab_status(stat);
 	tmp = sh->process;
 	while (tmp)
 	{
-		ft_printf("[%i]\t%s -> %3i\t%s {%i}\n",
-		i++, stat[tmp->status], tmp->ret, tmp->cmd, tmp->pid);
+		if (tmp->status == RUNNING_BG || tmp->status == SUSPENDED)
+			ft_job_prompt(tmp, stat, id++);
 		tmp = tmp->next;
 	}
+	return (0);
 }

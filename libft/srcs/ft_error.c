@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include <libft.h>
 
-void	error(char *descript, char *opts)
+int		error(char *descript, char *opts)
 {
 	ft_putstr_fd("\a\033[04m\033[00;31mError: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
@@ -23,27 +23,30 @@ void	error(char *descript, char *opts)
 		ft_putstr_fd("\033[1;32m)\033[00m", STDERR_FILENO);
 	}
 	ft_putchar_fd('\n', STDERR_FILENO);
+	return (0);
 }
 
-void	error_c(char *descript, char opts)
+int	error_c(char *descript, char opts)
 {
 	ft_putstr_fd("\a\033[04m\033[00;31mError: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
 	ft_putstr_fd(" \033[1;32m(\033[00m", STDERR_FILENO);
 	ft_putchar_fd(opts, STDERR_FILENO);
 	ft_putstr_fd("\033[1;32m)\033[00m\n", STDERR_FILENO);
+	return (0);
 }
 
-void	error_i(char *descript, int i)
+int	error_i(char *descript, int i)
 {
 	ft_putstr_fd("\a\033[04m\033[00;31mError: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
 	ft_putstr_fd("  --> \033[1;32m", STDERR_FILENO);
 	ft_putnbr_fd(i, STDERR_FILENO);
 	ft_putstr_fd("\033[00m\n", STDERR_FILENO);
+	return (0);
 }
 
-void	warning(char *descript, char *opts)
+int	warning(char *descript, char *opts)
 {
 	ft_putstr_fd("\a\033[04m\033[1;35mWarning: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
@@ -54,13 +57,15 @@ void	warning(char *descript, char *opts)
 		ft_putstr_fd("\033[1;32m)\033[00m", STDERR_FILENO);
 	}
 	ft_putchar_fd('\n', STDERR_FILENO);
+	return (0);
 }
 
-void	warning_c(char *descript, char opts)
+int	warning_c(char *descript, char opts)
 {
 	ft_putstr_fd("\a\033[04m\033[1;35mWarning: \033[00m", STDERR_FILENO);
 	ft_putstr_fd(descript, STDERR_FILENO);
 	ft_putstr_fd(" \033[1;32m(\033[00m", STDERR_FILENO);
 	ft_putchar_fd(opts, STDERR_FILENO);
 	ft_putstr_fd("\033[1;32m)\033[00m\n", STDERR_FILENO);
+	return (0);
 }

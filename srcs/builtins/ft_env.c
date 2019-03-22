@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 15:04:08 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/08/20 15:04:10 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 static void		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 {
@@ -29,7 +29,7 @@ static void		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 		warning("{env} execve fucked up", *arr);
 	}
 	ft_strdel(&path);
-	ft_freestrarr(e);
+	ft_freestrarr(&e);
 	wait(&pid);
 }
 
@@ -40,12 +40,9 @@ static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
 	char	*v;
 
 	ret = NULL;
-	if (!(n = get_name(equal))
-	|| !(v = get_value(equal))
-	|| !(ret = ft_new_envv(tmp, n, v)))
+	n = ft_split_equal(equal, &v);
+	if (!(ret = ft_new_envv(tmp, n, v)))
 		warning("impossible to create tmp envv value", NULL);
-	ft_strdel(&n);
-	ft_strdel(&v);
 	return (ret);
 }
 
@@ -82,10 +79,7 @@ static t_envv	*ft_env_option(t_envv *tmp, char **input, int *i)
 		tmp = ft_del_envv(tmp, input[*i]);
 	}
 	else if (input[*i][1] == 'i')
-	{
-		ft_free_tenvv(tmp);
-		tmp = NULL;
-	}
+		return (ft_free_tenvv(tmp));
 	return (tmp);
 }
 
@@ -95,7 +89,7 @@ int				ft_env(t_envv *envv, char **argv)
 	int		i;
 
 	if (!(tmp = init(&i, envv)))
-		return (-1);
+		return (2);
 	while (argv[i])
 	{
 		if (argv[i][0] == '-')

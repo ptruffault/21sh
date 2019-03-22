@@ -6,11 +6,11 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:36:54 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/02/18 15:38:08 by adi-rosa         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 static char	*ft_get_varname(char *s)
 {
@@ -34,15 +34,15 @@ char		*ft_exp_envv_var(char *ret, char *ptr, t_shell *sh)
 	name = NULL;
 	value = NULL;
 	if ((name = ft_get_varname(ptr))
-	&& !(value = get_tenvv_val(sh->env, name)))
-		value = get_tenvv_val(sh->intern, name);
-	if ((tmp = ft_strpull(ret, ptr, ft_strlen(name), value)))
+	&& !(value = get_tenvv_val(sh->env, name))
+	&& !(value = get_tenvv_val(sh->intern, name)))
+		ft_strdel(&ret);
+	else if ((tmp = ft_strpull(ret, ptr, ft_strlen(name), value)))
 	{
 		ft_strdel(&ret);
 		ret = tmp;
 	}
-	if (name)
-		ft_strdel(&name);
+	ft_strdel(&name);
 	return (ret);
 }
 
@@ -51,12 +51,13 @@ char		*ft_exp_home_var(char *ret, char *ptr, t_envv *envv)
 	char	*tmp;
 	char	*val;
 
-	if (!(val = get_tenvv_val(envv, "HOME")))
-		ft_strdel(&ret);
-	else if ((tmp = ft_strpull(ret, ptr, 0, val)))
+	tmp = NULL;
+	if ((val = get_tenvv_val(envv, "HOME"))
+	&& (tmp = ft_strpull(ret, ptr, 0, val)))
 	{
 		ft_strdel(&ret);
 		return (tmp);
 	}
+	ft_strdel(&ret);
 	return (NULL);
 }

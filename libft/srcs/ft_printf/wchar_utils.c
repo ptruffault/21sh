@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include <ft_printf.h>
 
 char	*ft_wchar(int wchar)
 {
@@ -50,7 +50,7 @@ char	*ft_wstr(int *arr)
 	while (arr[++counter])
 	{
 		symb = ft_wchar(arr[counter]);
-		str = ft_realloc(str, (size_t)len, (size_t)len + ft_strlen(symb));
+		str = ft_realloc(str, len, len + ft_strlen(symb));
 		len += ft_strlen(symb);
 		str = ft_strcat(str, symb);
 		ft_strdel(&symb);

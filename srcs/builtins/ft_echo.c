@@ -6,11 +6,11 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 14:10:52 by ptruffau          #+#    #+#             */
-/*   Updated: 2018/07/04 14:10:54 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 int		ft_echo(char **input)
 {
@@ -19,7 +19,7 @@ int		ft_echo(char **input)
 
 	i = 0;
 	opts_n = 0;
-	if (*input && ft_strequ(input[i], "-n") && input[++i])
+	if (*input && ft_strequ(input[i], "-n"))
 		opts_n = 1;
 	while (input && input[i])
 	{
@@ -27,9 +27,7 @@ int		ft_echo(char **input)
 			ft_putstr("    ");
 		ft_putstr(input[i++]);
 	}
-	if (opts_n)
-		ft_putchar(0);
-	else
+	if (opts_n == 0)
 		ft_putchar('\n');
 	return (0);
 }

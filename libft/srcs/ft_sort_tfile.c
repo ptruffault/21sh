@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include <libft.h>
 
 static t_file	*test_upper(t_file *file, int (*f)(t_file *file, t_file *tmp))
 {

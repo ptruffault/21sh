@@ -15,8 +15,9 @@
 # define IS_STD(x) (0 <= x && x <= 2)
 # define IS_CMD(x) (1 <= x && x <= 5)
 # define IS_EXP(x) (1 <= x && x <= 4)
-# define IS_SYNTAX(x) (x == REDIRECT || x == OPERATEUR)
-
+# define IS_RUNNING(x) (x == RUNNING_FG || x == RUNNING_BG)
+# define NUMBER_OF_KEYS 23
+# define NUMBER_OF_PRINT_MODES 2
 enum	e_rtype{
 	UNDEF = 0,
 	R_LEFT = 1,
@@ -24,6 +25,7 @@ enum	e_rtype{
 	R_DLEFT = 3,
 	R_DRIGHT = 4
 };
+
 enum	e_otype{
 	UN = 0,
 	O_AND = 1,
@@ -44,11 +46,12 @@ enum	e_wtype{
 };
 
 enum	e_pstatus{
-	RUNNING_FG = 0,
-	RUNNING_BG = 1,
-	DONE = 2,
-	SUSPENDED = 3,
-	KILLED = 4
+	INIT = 0,
+	RUNNING_FG = 1,
+	RUNNING_BG = 2,
+	DONE = 3,
+	SUSPENDED = 4,
+	KILLED = 5
 };
 
 enum	e_error
@@ -61,24 +64,36 @@ enum	e_error
 	Q_MISS = 5,
 	DQ_MISS = 6,
 	B_MISS = 7,
-	P_MISS = 8
+	P_MISS = 8,
 };
+
+typedef struct s_sig_msg
+{
+	pid_t sig;
+	const char *msg;
+	uint8_t rtn;
+}				t_sig_msg;
 
 typedef struct	s_hist
 {
 	char			*s;
+	size_t nb;
 	struct s_hist	*next;
+	struct s_hist *prev;
 }				t_hist;
 
 typedef struct	s_edit
 {
 	t_bool		edited;
-	char		*input;
-	int			curr;
-	int			pos;
-	int			width;
-	int			pos_hist;
-	int			select;
+	size_t			curr;
+	size_t			pos;
+	size_t			width;
+	size_t			select_pos;
+	short				select;
+	unsigned short		mode;
+	unsigned long kval[NUMBER_OF_KEYS];
+	void (*ft_tab[NUMBER_OF_KEYS])(struct s_edit *e);
+	void (*print_modes[NUMBER_OF_PRINT_MODES])(struct s_edit *e);
 	t_hist		*hist;
 }				t_edit;
 
@@ -119,23 +134,27 @@ typedef struct	s_tree
 
 typedef struct	s_process
 {
-	int					save[3];
 	char				**env;
 	int					fd[3];
 	t_bool				builtins;
 	char				*cmd;
 	enum e_pstatus		status;
 	char				**argv;
-	int					pid;
+	pid_t				pid;
+	pid_t				pgid;
 	int					ret;
+	int					pipe[2];
+	struct s_process	*grp;
 	struct s_process	*next;
 }				t_process;
 
 typedef struct	s_shell
 {
-	int				pipes[2];
 	int				pid;
-	char			**txt;
+	int				pgid;
+	int				std[3];
+	t_bool			interactive;
+	char			*txt;
 	int				heredoc;
 	t_envv			*env;
 	t_envv			*intern;
@@ -145,6 +164,6 @@ typedef struct	s_shell
 	t_edit			e;
 	char			*clipboard;
 	struct termios	term;
-	struct termios	*saved_term;
+	struct termios	saved_term;
 }				t_shell;
 #endif

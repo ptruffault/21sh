@@ -16,8 +16,7 @@ void	ft_write_in_file(char *path, char *str)
 {
 	int fd;
 
-	if ((fd = open(path, O_RDWR | O_CREAT | O_APPEND
-					, S_IRWXU | S_IRWXG | S_IRWXO)) < 0)
+	if ((fd = ft_open(path, O_RDWR | O_CREAT | O_APPEND, S_IWUSR)) < 0)
 		return ;
 	ft_putendl_fd(str, fd);
 	ft_close(fd);

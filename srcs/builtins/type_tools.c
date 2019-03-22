@@ -6,17 +6,17 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:56:45 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/08 12:56:46 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:11:13 by stdenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/shell42.h"
+#include <shell42.h>
 
 int	putword(t_word *w, int t)
 {
 	if (ft_strequ(w->word, ";") || ft_strequ(w->word, "&&")
-	|| ft_strequ(w->word, "||") || ft_strequ(w->word, "||")
-	|| ft_strequ(w->word, "|"))
+		|| ft_strequ(w->word, "||") || ft_strequ(w->word, "||")
+		|| ft_strequ(w->word, "|"))
 	{
 		if (t)
 			ft_printf("keyword\n");

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include <ft_printf.h>
 
 static int		ft_tools_2(char *src)
 {
