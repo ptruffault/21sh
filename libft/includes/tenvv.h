@@ -6,7 +6,7 @@
 /*   By: adi-rosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:44:14 by adi-rosa          #+#    #+#             */
-/*   Updated: 2019/03/20 15:09:42 by stdenis          ###   ########.fr       */
+/*   Updated: 2019/03/22 18:09:57 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ char	*get_tenvv_val(t_envv *envv, char *name);
 t_envv	*get_tenvv(t_envv *envv, char *name);
 t_envv	*ft_tenvv_cpy(t_envv *src);
 char	**tenvv_to_tab(t_envv *envv);
-t_envv 	*ft_new_envv_equ(t_envv *envv, char *eq);
+t_envv	*ft_new_envv_equ(t_envv *envv, char *eq);
 
 #endif
