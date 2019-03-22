@@ -12,8 +12,7 @@
 
 #include <tenvv.h>
 
-
-char 	*ft_split_equal(char *str, char **aft)
+char	*ft_split_equal(char *str, char **aft)
 {
 	size_t	i;
 
@@ -30,7 +29,6 @@ char 	*ft_split_equal(char *str, char **aft)
 	return (str);
 }
 
-
 t_envv	*ft_new_envv(t_envv *envv, char *name, char *value)
 {
 	t_envv	*ret;
@@ -45,7 +43,7 @@ t_envv	*ft_new_envv(t_envv *envv, char *name, char *value)
 	}
 	if (!name || !value || !(ret = new_tenvv()))
 		return (envv);
-	if (!(ret->name = ft_strdup(name)) 
+	if (!(ret->name = ft_strdup(name))
 		|| !(ret->value = ft_strdup(value)))
 	{
 		del_tenvv(ret);
@@ -55,7 +53,7 @@ t_envv	*ft_new_envv(t_envv *envv, char *name, char *value)
 	return (ret);
 }
 
-t_envv *ft_new_envv_equ(t_envv *envv, char *eq)
+t_envv	*ft_new_envv_equ(t_envv *envv, char *eq)
 {
 	char *value;
 	char *name;
