@@ -6,7 +6,7 @@
 /*   By: ptruffau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:16:37 by ptruffau          #+#    #+#             */
-/*   Updated: 2019/02/07 16:16:39 by ptruffau         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:03:59 by adi-rosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define IS_RUNNING(x) (x == RUNNING_FG || x == RUNNING_BG)
 # define NUMBER_OF_KEYS 23
 # define NUMBER_OF_PRINT_MODES 2
+
 enum	e_rtype{
 	UNDEF = 0,
 	R_LEFT = 1,
@@ -34,6 +35,7 @@ enum	e_otype{
 	O_PIPE = 4,
 	O_BACK = 5
 };
+
 enum	e_wtype{
 	undef = 0,
 	CMD = 1,
@@ -67,34 +69,34 @@ enum	e_error
 	P_MISS = 8,
 };
 
-typedef struct s_sig_msg
+typedef struct	s_sig_msg
 {
-	pid_t sig;
-	const char *msg;
-	uint8_t rtn;
+	pid_t		sig;
+	const char	*msg;
+	uint8_t		rtn;
 }				t_sig_msg;
 
 typedef struct	s_hist
 {
 	char			*s;
-	size_t nb;
+	size_t			nb;
 	struct s_hist	*next;
-	struct s_hist *prev;
+	struct s_hist	*prev;
 }				t_hist;
 
 typedef struct	s_edit
 {
-	t_bool		edited;
+	t_bool			edited;
 	size_t			curr;
 	size_t			pos;
 	size_t			width;
 	size_t			select_pos;
-	short				select;
-	unsigned short		mode;
-	unsigned long kval[NUMBER_OF_KEYS];
-	void (*ft_tab[NUMBER_OF_KEYS])(struct s_edit *e);
-	void (*print_modes[NUMBER_OF_PRINT_MODES])(struct s_edit *e);
-	t_hist		*hist;
+	short			select;
+	unsigned short	mode;
+	unsigned long	kval[NUMBER_OF_KEYS];
+	void			(*ft_tab[NUMBER_OF_KEYS])(struct s_edit *e);
+	void			(*print_modes[NUMBER_OF_PRINT_MODES])(struct s_edit *e);
+	t_hist			*hist;
 }				t_edit;
 
 typedef struct	s_eval
