@@ -14,18 +14,9 @@
 
 int		ft_quit(int exit_code, t_shell *sh)
 {
-	if (sh->interactive == TRUE && isatty(0))
-		ft_set_old_term(sh, 0);
 	ft_free_tshell(sh);
 	return (exit_code);
 }
-
-int		ft_quit_no_term(int exit_code, t_shell *sh)
-{
-	ft_free_tshell(sh);
-	return (exit_code);
-}
-
 
 void	ft_exit(char *nbr, t_shell *sh)
 {

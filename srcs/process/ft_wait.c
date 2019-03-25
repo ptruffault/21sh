@@ -55,7 +55,8 @@ static void	ft_signal_check(t_process *p)
 		p->status = RUNNING_FG;
 	else
 		p->status = KILLED;
-	ft_printf("{\x1B[01;34m%i\x1B[00m} %s killed by signal %i %s\n",
+	if (WTERMSIG(p->ret) != SIGPIPE)
+		ft_printf("{\x1B[01;34m%i\x1B[00m} %s killed by signal %i %s\n",
 		p->pid, p->cmd, WTERMSIG(p->ret),
 		g_signal_msg[WTERMSIG(p->ret) - 1].msg);
 	p->ret = g_signal_msg[WTERMSIG(p->ret) - 1].rtn;
