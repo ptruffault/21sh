@@ -100,6 +100,7 @@ t_word			*eval_line(char *input)
 	if (!input || !*input || ft_isempty(input))
 		return (NULL);
 	lexer(&e, input);
+	
 	if (e.s && e.eval && (head = ft_get_words(&e)))
 		ft_check_alias(head, sh);
 	ft_strdel(&e.eval);

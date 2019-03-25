@@ -40,18 +40,11 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 	{
 		if (tmp && IS_CMD(tmp->type))
 			tmp = get_argv(tree, tmp);
-		else if (tmp && tmp->type == REDIRECT)
-		{
-			if (!(tmp = get_redirections(tree, tmp)))
+		else if (tmp && ((tmp->type == REDIRECT && !(tmp = get_redirections(tree, tmp)))
+			|| (tmp->type == OPERATEUR && !(tree = add_newttree(tree, tmp)))))
 				return (ft_syntax(head));
+		if (tmp)
 			tmp = tmp->next;
-		}
-		else if (tmp && tmp->type == OPERATEUR)
-		{
-			if (!(tree = add_newttree(tree, tmp)))
-				return (ft_syntax(head));
-			tmp = tmp->next;
-		}
 	}
 	return (head);
 }
