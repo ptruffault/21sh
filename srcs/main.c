@@ -36,10 +36,7 @@ int		main(int argc, char **argv, char **envv)
 		if (!(get_input(&sh.txt)))
 			return (ft_quit(1, &sh));
 		if ((t = get_tree(sh.txt)))
-		{
-			ft_printf("HERE I AM");
 			ft_free_tree(exec_tree(t, &sh));
-		}
 		ft_strdel(&sh.txt);
 	}
 	ft_printf("stdin no longer tty\n");
