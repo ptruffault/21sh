@@ -70,7 +70,6 @@ static int	delete_multiple_left(t_edit *e, int stop)
 	size_t	x;
 	size_t	size;
 
-	i = 0;
 	i = (e->curr > e->select_pos ? e->curr : e->select_pos);
 	if (!(tmp = ft_strnew(ft_strlen(e->hist->s) - (i - stop))))
 		return (FAILURE);

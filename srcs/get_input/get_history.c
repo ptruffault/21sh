@@ -48,13 +48,13 @@ t_hist			*init_hist(char *hist)
 		{
 			if (!(tmp = new_hist()))
 				return (ft_free_thist(ret));
-			if (line)
-				tmp->s = line;
-			else if (!(tmp->s = ft_strnew(0)))
-				return (ft_free_thist(ret));
 			tmp->next = !ret ? NULL : ret;
 			if (tmp->next)
 				tmp->next->prev = tmp;
+			if (line)
+				tmp->s = line;
+			else if (!(tmp->s = ft_strnew(0)))
+				return (ft_free_thist(tmp));
 			ret = tmp;
 		}
 		ft_close(fd);
