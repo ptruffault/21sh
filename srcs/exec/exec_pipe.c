@@ -40,7 +40,7 @@ static void		ft_son(t_process *prev, t_process *tmp, t_tree *t, t_shell *sh)
 	{
 		if ((prev && !ft_link_stdin(prev->pipe))
 			|| (tmp->grp && !ft_link_stdout(tmp->pipe)))
-			ft_exit_son(t, sh, -1);
+			ft_exit_son(sh, 1);
 		ft_execve(tmp, sh, t, 0);
 	}
 	else if (tmp->pid < 0)

@@ -35,7 +35,6 @@ int			init_shell(t_shell *sh, char **envv, char **argv)
 	ft_null(sh);
 	if (!(init_env(sh, argv, envv)))
 		return (0);
-	sh->intern = ft_tenvv_cpy(sh->env);
 	if (!isatty(0))
 	{
 		if (exec_fd(sh, 0) == 0)

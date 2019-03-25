@@ -72,6 +72,17 @@ static int		ft_check_grammar(t_word *w)
 	return (1);
 }
 
+int 			ft_check_redirect(t_tree *t)
+{
+	while (t)
+	{
+		if (t->r && !t->cmd)
+			return (error("useless redirect", NULL));
+		t = t->next;
+	}
+	return (1);
+}
+
 t_tree			*get_tree(char *input)
 {
 	t_tree	*head;
@@ -83,7 +94,14 @@ t_tree			*get_tree(char *input)
 	if (!(head = new_tree()))
 		return (NULL);
 	if (ft_check_grammar(w) && (head = built_tree(head, w)))
+	{
+		if (!ft_check_redirect(head))
+		{
+			ft_free_tword(w);
+			return (ft_free_tree(head));
+		}
 		ft_get_set_tree(head);
+	}
 	w = ft_free_tword(w);
 	return (head);
 }

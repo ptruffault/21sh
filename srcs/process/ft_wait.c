@@ -49,17 +49,12 @@ static const	t_sig_msg	g_signal_msg[] = {
 
 static void	ft_signal_check(t_process *p)
 {
-	if (WIFSTOPPED(p->ret))
-		p->status = SUSPENDED;
-	else if (WIFCONTINUED(p->ret))
-		p->status = RUNNING_FG;
-	else
-		p->status = KILLED;
+	p->status = KILLED;
 	if (WTERMSIG(p->ret) != SIGPIPE)
 		ft_printf("{\x1B[01;34m%i\x1B[00m} %s killed by signal %i %s\n",
 		p->pid, p->cmd, WTERMSIG(p->ret),
 		g_signal_msg[WTERMSIG(p->ret) - 1].msg);
-	p->ret = g_signal_msg[WTERMSIG(p->ret) - 1].rtn;
+	p->ret = p->ret + 128;
 }
 
 void		ft_wait(t_process *p, t_shell *sh)
@@ -71,7 +66,7 @@ void		ft_wait(t_process *p, t_shell *sh)
 			|| (p->status == RUNNING_FG
 			&& waitpid(p->pid, &p->ret, WUNTRACED) > 0))
 		{
-			if (p->ret > 0 && WIFEXITED(p->ret))
+			if (WIFEXITED(p->ret))
 			{
 				p->ret = WEXITSTATUS(p->ret);
 				p->status = DONE;
