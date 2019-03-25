@@ -33,11 +33,9 @@ char		*heredoc_get_input(char *eoi, t_shell *sh)
 {
 	char	*ret;
 	char	*in;
-	int		d;
 
 	ret = NULL;
 	in = NULL;
-	d = 0;
 	ft_putstr("\033[00;34mheredoc>\n\033[00m");
 	if (get_input(&in) != 4)
 	{
@@ -47,7 +45,7 @@ char		*heredoc_get_input(char *eoi, t_shell *sh)
 				|| !(ret = ft_strappend(&ret, in)))
 				break ;
 			ft_putstr("\033[00;34mheredoc>\n\033[00m");
-			if ((d = get_input(&in)) == 4)
+			if (get_input(&in) == 4)
 				return (ft_heredoc_clear(in, ret));
 		}
 	}
