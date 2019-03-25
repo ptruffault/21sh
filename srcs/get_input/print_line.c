@@ -45,7 +45,6 @@ void		ft_print_fast(t_edit *e)
 	size_t i;
 
 	ft_delete_line(e);
-	pos = 0;
 	size = 1;
 	term_actions((e->curr == ft_strlen(e->hist->s)) ? "ve" : "vi");
 	i = ft_strlen(e->hist->s);
