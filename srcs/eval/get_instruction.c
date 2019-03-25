@@ -22,13 +22,6 @@ static t_word	*get_argv(t_tree *t, t_word *w)
 	return (w);
 }
 
-static t_tree	*ft_syntax(t_tree *t)
-{
-	error("syntax error", NULL);
-	ft_free_tree(t);
-	return (NULL);
-}
-
 static t_tree	*built_tree(t_tree *head, t_word *w)
 {
 	t_word	*tmp;
@@ -43,7 +36,10 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 		if (tmp && ((tmp->type == REDIRECT
 			&& !(tmp = get_redirections(tree, tmp)))
 			|| (tmp->type == OPERATEUR && !(tree = add_newttree(tree, tmp)))))
-			return (ft_syntax(head));
+		{
+			error("syntax error", NULL);
+			return (ft_free_tree(head));
+		}
 		if (tmp)
 			tmp = tmp->next;
 	}
@@ -72,7 +68,7 @@ static int		ft_check_grammar(t_word *w)
 	return (1);
 }
 
-int 			ft_check_redirect(t_tree *t)
+int				ft_check_redirect(t_tree *t)
 {
 	while (t)
 	{

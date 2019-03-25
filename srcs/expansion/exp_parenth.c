@@ -12,13 +12,13 @@
 
 #include <shell42.h>
 
-static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh, char *val2)
+static char		*handle_modifier(char *par, char *ptr, t_shell *sh, char *val2)
 {
 	char *val;
 	char *val1;
 
 	val = NULL;
-	val1 = ft_get_secondvalue(parenth);
+	val1 = ft_get_secondvalue(par);
 	if (*ptr == '-' && !(val = ft_strdup(get_tenvv_val(sh->env, val1))))
 		val = ft_strdup(val2);
 	if (*ptr == '+')
@@ -32,17 +32,17 @@ static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh, char *val2)
 	return (val);
 }
 
-static char		*ft_get_cutted_value(char *parenth, t_shell *sh, char *val, int *i)
+static char		*ft_get_cutted_value(char *par, t_shell *sh, char *val, int *i)
 {
 	char *param;
 
 	if (!val)
 	{
-		param = ft_get_secondvalue(parenth);
+		param = ft_get_secondvalue(par);
 		val = ft_strdup(get_tenvv_val(sh->env, param));
 		ft_strdel(&param);
 	}
-	val = ft_cut_string(parenth, val, i);
+	val = ft_cut_string(par, val, i);
 	return (val);
 }
 
@@ -70,7 +70,7 @@ static char		*ft_get_param_value(t_shell *sh, char *parenth)
 	return (val);
 }
 
-char		*ft_exp_param(char *ret, t_shell *sh, char *ptr)
+char			*ft_exp_param(char *ret, t_shell *sh, char *ptr)
 {
 	char	*value;
 	char	*parenth;
