@@ -12,7 +12,7 @@
 
 #include <shell42.h>
 
-t_process	*get_last_done_process(t_process *p)
+static t_process	*get_last_done_process(t_process *p)
 {
 	while (p)
 	{
@@ -23,7 +23,7 @@ t_process	*get_last_done_process(t_process *p)
 	return (NULL);
 }
 
-char		*ft_exp_spec(char *ret, char *ptr, t_shell *sh)
+static char			*ft_exp_spec(char *ret, char *ptr, t_shell *sh)
 {
 	char		*val;
 	t_process	*p;
@@ -40,7 +40,7 @@ char		*ft_exp_spec(char *ret, char *ptr, t_shell *sh)
 	return (ptr);
 }
 
-char		*ft_exp_var(char *ret, t_shell *sh)
+char				*ft_exp_var(char *ret, t_shell *sh)
 {
 	int i;
 
@@ -61,7 +61,7 @@ char		*ft_exp_var(char *ret, t_shell *sh)
 	return (ret);
 }
 
-t_word		*ft_expention(t_word *w)
+t_word				*ft_expention(t_word *w)
 {
 	t_shell	*sh;
 	t_word	*head;

@@ -12,7 +12,7 @@
 
 #include <get_input.h>
 
-void	setup_key(char *error[7])
+static void	setup_key(char *error[7])
 {
 	error[0] = "cmdand";
 	error[1] = "cmdor";
@@ -23,7 +23,7 @@ void	setup_key(char *error[7])
 	error[6] = "parenth";
 }
 
-void	entry_key(t_edit *e)
+void		entry_key(t_edit *e)
 {
 	t_eval	eval;
 	t_shell *sh;
@@ -51,14 +51,14 @@ void	entry_key(t_edit *e)
 		e->edited = TRUE;
 }
 
-void	clear_term(t_edit *e)
+void		clear_term(t_edit *e)
 {
 	term_actions(HOME_POS);
 	term_actions(CLEAR);
 	e->pos = 0;
 }
 
-void	reset_get_input(t_edit *e)
+void		reset_get_input(t_edit *e)
 {
 	while (e->hist->prev)
 		e->hist = e->hist->prev;
@@ -68,7 +68,7 @@ void	reset_get_input(t_edit *e)
 	free(e->hist);
 }
 
-void	just_exit(t_edit *e)
+void		just_exit(t_edit *e)
 {
 	t_shell *sh;
 

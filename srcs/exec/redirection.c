@@ -12,7 +12,7 @@
 
 #include <shell42.h>
 
-int			check_fd(t_process *p, int fd)
+static int	check_fd(t_process *p, int fd)
 {
 	if (IS_STD(fd))
 	{

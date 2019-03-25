@@ -32,7 +32,7 @@ static char	*handle_modifier(char *parenth, char *ptr, t_shell *sh, char *val2)
 	return (val);
 }
 
-char		*ft_get_cutted_value(char *parenth, t_shell *sh, char *val, int *i)
+static char		*ft_get_cutted_value(char *parenth, t_shell *sh, char *val, int *i)
 {
 	char *param;
 
@@ -46,7 +46,7 @@ char		*ft_get_cutted_value(char *parenth, t_shell *sh, char *val, int *i)
 	return (val);
 }
 
-char		*ft_get_param_value(t_shell *sh, char *parenth)
+static char		*ft_get_param_value(t_shell *sh, char *parenth)
 {
 	int		i;
 	char	*val;

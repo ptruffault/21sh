@@ -12,7 +12,7 @@
 
 #include <shell42.h>
 
-int			ft_twordlen(t_word *w)
+static int	ft_twordlen(t_word *w)
 {
 	int	i;
 

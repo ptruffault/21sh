@@ -73,7 +73,7 @@ char		*ftp_get_value(t_param *p, va_list *ap)
 		ft_strdel(&tmp_val);
 		return (prefix);
 	}
-	if (*tmp_val == '-')
+	if (tmp_val && *tmp_val == '-')
 	{
 		s = ft_strdup(&tmp_val[1]);
 		ft_strdel(&tmp_val);

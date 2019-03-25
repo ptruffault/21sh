@@ -13,7 +13,7 @@
 #include <shell42.h>
 #include "../includes/get_input.h"
 
-void		sig_handler(int sig)
+static void	sig_handler(int sig)
 {
 	t_shell		*sh;
 

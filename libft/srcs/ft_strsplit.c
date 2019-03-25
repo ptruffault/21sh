@@ -12,65 +12,90 @@
 
 #include <libft.h>
 
-static int		ft_countwords(char const *str, char c)
+static void		ft_free_tab(char **tab, int w)
 {
-	int count;
-	int	i;
+	int i;
 
 	i = 0;
-	count = 0;
-	while (str[i])
+	while (i < w)
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != c && str[i] != '\0')
-			count++;
-		while (str[i] != c && str[i] != '\0')
-			i++;
+		ft_strdel(&tab[w]);
+		w--;
 	}
-	return (count);
+	ft_strdel(&*tab);
 }
 
-static int		get_word_len(char const *str, char c)
+static void		ft_fill_tab(char *s, char c, char **tab, int l)
 {
-	int	i;
-	int	len;
+	int t;
+	int i;
+	int j;
+
+	t = 0;
+	i = 0;
+	j = 0;
+	while (t < l)
+	{
+		s = s + i + j;
+		i = 0;
+		j = 0;
+		while (s[j + i] == c)
+			j++;
+		while (s[i + j] != '\0' && s[i + j] != c)
+			i++;
+		tab[t] = ft_strsub(s, j, i);
+		if (tab[t] == NULL)
+		{
+			ft_free_tab(tab, t - 1);
+			break ;
+		}
+		t++;
+	}
+}
+
+static int		ft_count_words_by(char *s, char c)
+{
+	int i;
+	int j;
+	int count;
 
 	i = 0;
-	len = 0;
-	while (str[i] == c)
-		i++;
-	while (str[i] != c && str[i] != '\0')
+	j = 0;
+	count = 0;
+	while (s[j] == c)
+		j++;
+	while (s[i + j] != '\0')
 	{
+		if (s[i + j] == c)
+		{
+			count += ft_count_words_by(s + i + j, c);
+			break ;
+		}
 		i++;
-		len++;
 	}
-	return (len);
+	if (s[i + j] != '\0' || (s[i + j - 1] != c && s[i + j - 1] != 0))
+		count++;
+	return (count);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**str2;
+	char		**tab;
+	int			length;
 
-	if (!s || !(str2 = (char **)malloc(sizeof(*str2)
-	* (ft_countwords(s, c) + 1))))
+	tab = 0;
+	if (s == NULL)
 		return (NULL);
-	i = -1;
-	j = 0;
-	while (++i < ft_countwords(s, c))
+	length = ft_count_words_by((char*)s, c);
+	if (!(tab = (char**)malloc(sizeof(char*) * (length + 1))))
+		return (NULL);
+	if (length == 0)
 	{
-		k = 0;
-		if (!(str2[i] = ft_strnew(get_word_len(&s[j], c) + 1)))
-			str2[i] = NULL;
-		while (s[j] == c)
-			j++;
-		while (s[j] != c && s[j])
-			str2[i][k++] = s[j++];
-		str2[i][k] = '\0';
+		tab[0] = 0;
+		return (tab);
 	}
-	str2[i] = 0;
-	return (str2);
+	ft_fill_tab((char*)s, c, tab, length);
+	if (tab != NULL)
+		tab[length] = 0;
+	return (tab);
 }

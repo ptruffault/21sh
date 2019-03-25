@@ -50,7 +50,7 @@ static t_tree	*built_tree(t_tree *head, t_word *w)
 	return (head);
 }
 
-int				ft_check_grammar(t_word *w)
+static int		ft_check_grammar(t_word *w)
 {
 	int cmd;
 

@@ -47,7 +47,6 @@ int					kill_process(t_process *p, int sig, unsigned int status)
 		i++;
 		if (sig == SIGINT || sig == SIGKILL)
 			tmp->status = KILLED;
-		ft_printf("signal %i send to %s\n", sig, tmp->cmd);
 		kill(tmp->pid, sig);
 	}
 	return (i);
