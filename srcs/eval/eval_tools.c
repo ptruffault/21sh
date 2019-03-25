@@ -45,7 +45,8 @@ t_redirect	*parse_heredoc(t_redirect *ret, t_word *w)
 	t_shell *sh;
 
 	sh = ft_get_set_shell(NULL);
-	if (w->next && w->next->word)
+	if (w->next && w->next->word && w->next->type != OPERATEUR
+	&& w->next->type != REDIRECT)
 	{
 		if (!(ret->path = ft_strdup(w->next->word)))
 			return (ft_free_redirection(ret));

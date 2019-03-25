@@ -87,7 +87,7 @@ t_process			*init_pipe_process(t_tree *t, t_shell *sh)
 		tmp = head;
 		if (!head->cmd)
 			return (ft_abort(head, "command not found", head));
-		while (t->o_type == O_PIPE)
+		while (t && t->o_type == O_PIPE)
 		{
 			t = t->next;
 			if (t && (tmp->grp = init_process(t, sh)))

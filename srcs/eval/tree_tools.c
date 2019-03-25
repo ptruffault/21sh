@@ -52,7 +52,7 @@ t_redirect	*new_redirection(void)
 	return (ret);
 }
 
-static int	find_operateur(char *op)
+int			find_operateur(char *op)
 {
 	char	*operateur[5];
 	int		i;
@@ -71,13 +71,8 @@ static int	find_operateur(char *op)
 
 t_tree		*add_newttree(t_tree *tree, t_word *w)
 {
-	ft_printf("ADD TREE");
 	tree->o_type = find_operateur(w->word);
-	if (w->type != 0)
-	{
-		if (!(tree->next = new_tree()))
+	if (w->type != 0 && !(tree->next = new_tree()))
 			return (NULL);
-		w = w->next;
-	}
 	return (tree->next);
 }

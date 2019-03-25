@@ -26,13 +26,15 @@ void	setup_key(char *error[7])
 void	entry_key(t_edit *e)
 {
 	t_eval	eval;
+	t_shell *sh;
 	char	*error[7];
 
 	setup_key(error);
 	lexer(&eval, e->hist->s);
 	ft_strdel(&eval.eval);
 	ft_strdel(&eval.s);
-	if (eval.err > 1)
+	sh = ft_get_set_shell(NULL);
+	if (sh->heredoc == 0 && eval.err > 1)
 	{
 		if (eval.err == 6 || eval.err == 5)
 		{

@@ -34,4 +34,5 @@ void		set_signals(void)
 	signal(SIGINT, sig_handler);
 	signal(SIGCHLD, sig_handler);
 	signal(SIGWINCH, sig_handler);
+	signal(SIGTSTP, SIG_IGN);
 }

@@ -25,7 +25,8 @@ static t_redirect	*parse_right_redirect(t_redirect *ret, t_word *w)
 			ret->to = -1;
 		return (ret);
 	}
-	else if (w->next && w->next->word
+	else if (w->next && w->next->word && w->next->type != OPERATEUR
+		&& w->next->type != REDIRECT
 		&& (ret->path = ft_strdup(w->next->word)))
 		return (ret);
 	return (ft_free_redirection(ret));
@@ -42,7 +43,8 @@ static t_redirect	*parse_left_redirect(t_redirect *ret, t_word *w)
 		ret->to = ft_atoi(ptr + 1);
 	else if ((ptr = ft_strchr(w->word, '&')) && *(ptr + 1) == '-')
 		ret->to = -1;
-	else if (!(w->next && w->next->word
+	else if (!(w->next && w->next->word && w->next->type != OPERATEUR
+	&& w->next->type != REDIRECT
 	&& (ret->path = ft_strdup(w->next->word))))
 		return (ft_free_redirection(ret));
 	return (ret);

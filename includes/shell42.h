@@ -27,6 +27,7 @@
 # include "structures.h"
 # include <pwd.h>
 
+int			find_operateur(char *op);
 void		ft_sigcont(t_process *tmp);
 void		ft_wait_background(t_shell *sh);
 void		ft_wait(t_process *p, t_shell *sh);
