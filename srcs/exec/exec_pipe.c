@@ -59,10 +59,13 @@ t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
 		ft_son(prev, tmp, t, sh);
 		tmp->status = RUNNING_FG;
 		if (prev)
+		{
+			t = t->next;
 			ft_close_pipe(prev->pipe);
+		}
 		prev = tmp;
 		tmp = tmp->grp;
-		t = t->next;
+
 	}
 	tmp = p;
 	ft_reset_fd(sh);

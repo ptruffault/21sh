@@ -41,19 +41,22 @@ char		*heredoc_get_input(char *eoi, t_shell *sh)
 
 	ret = NULL;
 	in = NULL;
-	ft_putstr("\033[00;34mheredoc>\n\033[00m");
-	if (get_input(&in) != 4)
+	if (sh->interactive == TRUE)
 	{
-		while (!ft_strequ(in, eoi) && sh->heredoc == 1)
+		ft_putstr("\033[00;34mheredoc>\n\033[00m");
+		if (get_input(&in) != 4)
 		{
-			if (!(in = ft_strappend(&in, NULL, 0))
-				|| !(ret = ft_strappend(&ret, &in, 1)))
-				break ;
-			ft_putstr("\033[00;34mheredoc>\n\033[00m");
-			if (get_input(&in) == 4)
-				return (ft_heredoc_clear(in, ret));
+			while (!ft_strequ(in, eoi) && sh->heredoc == 1)
+			{
+				if (!(in = ft_strappend(&in, NULL, 0))
+					|| !(ret = ft_strappend(&ret, &in, 1)))
+					break ;
+				ft_putstr("\033[00;34mheredoc>\n\033[00m");
+				if (get_input(&in) == 4)
+					return (ft_heredoc_clear(in, ret));
+			}
 		}
+		ft_strdel(&in);
 	}
-	ft_strdel(&in);
 	return (ret);
 }
