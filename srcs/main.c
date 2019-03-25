@@ -29,7 +29,7 @@ int		main(int argc, char **argv, char **envv)
 
 	(void)argc;
 	if (!init_shell(&sh, envv, argv))
-		return (ft_quit(1, &sh));
+		return (ft_quit(0, &sh));
 	while (isatty(0))
 	{
 		ft_disp(&sh);
