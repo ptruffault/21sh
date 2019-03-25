@@ -29,7 +29,7 @@ static t_tree	*ft_syntax(t_tree *t)
 	return (NULL);
 }
 
-static t_tree	*built_tree(t_tree *head, t_word *w)
+static t_tree	 *built_tree(t_tree *head, t_word *w)
 {
 	t_word	*tmp;
 	t_tree	*tree;
