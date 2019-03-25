@@ -71,6 +71,7 @@ static int	find_operateur(char *op)
 
 t_tree		*add_newttree(t_tree *tree, t_word *w)
 {
+	ft_printf("ADD TREE");
 	tree->o_type = find_operateur(w->word);
 	if (w->type != 0)
 	{
