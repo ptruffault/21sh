@@ -12,6 +12,23 @@
 
 #include <shell42.h>
 
+static int	find_operateur(char *op)
+{
+	char	*operateur[5];
+	int		i;
+
+	operateur[0] = "&&";
+	operateur[1] = "||";
+	operateur[2] = ";";
+	operateur[3] = "|";
+	operateur[4] = "&";
+	i = 0;
+	while (i < 5)
+		if (ft_strequ(operateur[i++], op))
+			return (i);
+	return (0);
+}
+
 int			ft_check_ascii(char *input)
 {
 	int i;
@@ -50,23 +67,6 @@ t_redirect	*new_redirection(void)
 	ret->heredoc = NULL;
 	ret->next = NULL;
 	return (ret);
-}
-
-int			find_operateur(char *op)
-{
-	char	*operateur[5];
-	int		i;
-
-	operateur[0] = "&&";
-	operateur[1] = "||";
-	operateur[2] = ";";
-	operateur[3] = "|";
-	operateur[4] = "&";
-	i = 0;
-	while (i < 5)
-		if (ft_strequ(operateur[i++], op))
-			return (i);
-	return (0);
 }
 
 t_tree		*add_newttree(t_tree *tree, t_word *w)

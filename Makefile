@@ -53,8 +53,7 @@ BUILTINS	=		ft_echo.c \
 					ft_exit.c \
 					type_tools.c \
 					ft_alias.c \
-					check_builtins.c \
-					hi.c
+					check_builtins.c 
 
 GET_INPUT	=		curs_move.c	\
 					get_input.c	\
@@ -82,8 +81,7 @@ EXPANSION	=		exp_var.c \
 					parenth_tools.c
 
 PROCESS		=		kill_process.c \
-					ft_wait.c \
-					process_tools.c \
+					ft_wait.c 
 
 
 

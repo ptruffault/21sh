@@ -28,12 +28,7 @@
 # include <pwd.h>
 
 void		ft_put_process(t_process *p);
-int			ft_signal_check(t_process *p);
-int			find_operateur(char *op);
 void		ft_wait(t_process *p);
-int			ft_hi(t_shell *sh);
-void		ft_process_tab_status(char *stat[6]);
-void 		ft_job_prompt(t_process *tmp, int id);
 int			ft_quit(int exit_code, t_shell *sh);
 void		ft_exit_son(t_shell *sh, int exit_code);
 char		ft_parse_back(char c);

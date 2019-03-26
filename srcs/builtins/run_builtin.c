@@ -54,7 +54,5 @@ int			run_builtin(t_tree *t, char **argv, t_shell *sh)
 		return (ft_echo(&argv[1]));
 	else if (ft_strequ(*argv, "type"))
 		return (ft_type(t->cmd->next, sh));
-	else if (ft_strequ(*argv, "hi"))
-		return (ft_hi(sh));
 	return (change_envv(argv, sh));
 }

@@ -41,11 +41,12 @@ t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 {
 	t_process	*p;
 
-	if (t->o_type == O_PIPE)
+	if (t && t->o_type == O_PIPE)
 	{
 		if (t->next && (p = init_pipe_process(t, sh)))
 		{
-			p->next = sh->process;
+			if (sh->process)
+				p->next = sh->process;
 			sh->process = p;
 			t = exec_pipe(t, p, sh);
 		}
@@ -53,7 +54,7 @@ t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 			while (t && t->o_type == O_PIPE)
 				t = t->next;
 	}
-	else if ((p = init_process(t, sh)))
+	else if (t && (p = init_process(t, sh)))
 	{
 		p->next = sh->process;
 		sh->process = p;

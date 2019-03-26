@@ -19,13 +19,14 @@ static const	t_sig_msg	g_signal_msg[] = {
 	{.sig = SIGILL, .rtn = 132, .msg = "Illegal instruction"},
 	{.sig = SIGTRAP, .rtn = 133, .msg = "Trace/BPT trap"},
 	{.sig = SIGABRT, .rtn = 134, .msg = "Abort"},
-	//{.sig = SIGEMT, .rtn = 135, .msg = "emulate instruction executed"},
+	{.sig = SIGEMT, .rtn = 135, .msg = "emulate instruction executed"},
 	{.sig = SIGFPE, .rtn = 136, .msg = "Floating exception"},
 	{.sig = SIGKILL, .rtn = 137, .msg = "Killed"},
 	{.sig = SIGBUS, .rtn = 138, .msg = "Bus error"},
 	{.sig = SIGSEGV, .rtn = 139, .msg = "Segmentation fault"},
 	{.sig = SIGSYS, .rtn = 140, .msg = "Bad system call"},
-	{.sig = SIGPIPE, .rtn = 141, .msg = "write one pipe with no one to read it"},
+	{.sig = SIGPIPE, .rtn = 141,
+		.msg = "write one pipe with no one to read it"},
 	{.sig = SIGALRM, .rtn = 142, .msg = "Alarm clock"},
 	{.sig = SIGTERM, .rtn = 143, .msg = "Terminated"},
 	{.sig = SIGURG, .rtn = 0, .msg = ""},
@@ -47,7 +48,17 @@ static const	t_sig_msg	g_signal_msg[] = {
 	{.msg = NULL}
 };
 
-int	ft_signal_check(t_process *p)
+static void		ft_process_tab_status(char *stat[6])
+{
+	stat[0] = "\x1B[00;31minitialised\x1B[00m";
+	stat[1] = "\x1B[00;34mrunning fg\x1B[00m";
+	stat[2] = "\x1B[00;34mrunning bg\x1B[00m";
+	stat[3] = "\x1B[1;32mdone\x1B[00m";
+	stat[4] = "\x1B[1;36msuspended\x1B[00m";
+	stat[5] = "\x1B[00;31mkilled\033[00m";
+}
+
+static int		ft_signal_check(t_process *p)
 {
 	int i;
 
@@ -66,7 +77,41 @@ int	ft_signal_check(t_process *p)
 	return (0);
 }
 
-void		ft_wait(t_process *p)
+static void		ft_putpid_ret(t_process *p)
+{
+	t_shell *sh;
+
+	if (p->builtins == FALSE)
+		ft_printf("\x1B[00;31m{\x1B[00m%i\x1B[00;31m}\x1B[00m ", p->pid);
+	else if ((sh = ft_get_set_shell(NULL)))
+		ft_printf("\x1B[00;31m{\x1B[01;36m%i\x1B[00;31m}\x1B[00m ", sh->pid);
+	if (p->status == DONE || p->status == SUSPENDED || p->status == KILLED)
+	{
+		if (p->ret == 0)
+			ft_printf("\x1b[1;32;42m  0  \x1B[00m ", p->ret);
+		else
+			ft_printf("\x1b[1;34;41m%-4i \x1B[00m ", p->ret);
+	}
+	else
+		ft_printf("      ");
+}
+
+void			ft_put_process(t_process *p)
+{
+	char *stat[6];
+
+	ft_process_tab_status(stat);
+	ft_putpid_ret(p);
+	ft_printf("%-25s", stat[p->status]);
+	if (p->builtins == TRUE)
+		ft_printf(" \x1B[1;36m%-17s\x1B[00;31m", p->cmd);
+	else
+		ft_printf(" %-17s\x1B[00;31m", p->cmd);
+	ft_signal_check(p);
+	ft_putstr("\x1B[00m\n");
+}
+
+void			ft_wait(t_process *p)
 {
 	while (p)
 	{

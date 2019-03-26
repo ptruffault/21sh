@@ -23,6 +23,7 @@ static void			ft_init_fd(t_process *ret, t_shell *sh)
 	ret->ret = -1;
 	ret->sig = 0;
 	ret->argv = NULL;
+	ret->cmd = NULL;
 	ret->grp = NULL;
 	ret->next = NULL;
 	ret->pid = -1;
@@ -57,10 +58,7 @@ t_process			*init_process(t_tree *t, t_shell *sh)
 	{
 		ft_init_fd(ret, sh);
 		if (!(ret->argv = ft_twordto_arr(t->cmd)))
-		{
-			free(ret);
-			return (ret = NULL);
-		}
+			return (ft_free_tprocess(ret));
 		if (check_builtin(*ret->argv))
 		{
 			ret->builtins = TRUE;

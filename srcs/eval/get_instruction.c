@@ -73,7 +73,7 @@ int				ft_check_redirect(t_tree *t)
 	while (t)
 	{
 		if (t->r && !t->cmd)
-			return (error("useless redirect", NULL));
+			return (error("useless redirection", NULL));
 		t = t->next;
 	}
 	return (1);

@@ -144,7 +144,6 @@ typedef struct	s_process
 	enum e_pstatus		status;
 	char				**argv;
 	pid_t				pid;
-	pid_t				pgid;
 	int					ret;
 	int					pipe[2];
 	struct s_process	*grp;
@@ -154,7 +153,6 @@ typedef struct	s_process
 typedef struct	s_shell
 {
 	int				pid;
-	int				pgid;
 	int				std[3];
 	t_bool			interactive;
 	char			*txt;

@@ -14,7 +14,7 @@
 
 static void	ft_kill(t_process *p, int sig)
 {
-	if (p && p->status != DONE && p->status != KILLED 
+	if (p && p->status != DONE && p->status != KILLED
 	&& 1 <= sig && sig <= 31)
 	{
 		p->sig = sig;

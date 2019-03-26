@@ -33,7 +33,7 @@ static void		ft_env_exec(char **arr, t_envv *tmp, t_envv *envv)
 	}
 	ft_strdel(&path);
 	ft_freestrarr(&e);
-	wait(&pid);
+	waitpid(pid, 0, 0);
 }
 
 static t_envv	*ft_tmpsetenv(t_envv *tmp, char *equal)
