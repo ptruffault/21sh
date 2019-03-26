@@ -41,6 +41,7 @@ t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 {
 	t_process	*p;
 
+	p = NULL;
 	if (t && t->o_type == O_PIPE)
 	{
 		if (t->next && (p = init_pipe_process(t, sh)))
@@ -59,10 +60,9 @@ t_tree			*exec_instruction(t_tree *t, t_shell *sh)
 		p->next = sh->process;
 		sh->process = p;
 		ft_execve(p, sh, t, 1);
-		ft_wait(p);
-		ft_reset_fd(sh);
-		t->ret = p->ret;
 	}
+	t->ret = (p ? ft_wait(p) : 1);
+	ft_reset_fd(sh);
 	return (t);
 }
 

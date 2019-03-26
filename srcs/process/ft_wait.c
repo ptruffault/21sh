@@ -111,8 +111,11 @@ void			ft_put_process(t_process *p)
 	ft_putstr("\x1B[00m\n");
 }
 
-void			ft_wait(t_process *p)
+int				ft_wait(t_process *p)
 {
+	int ret;
+
+	ret = 0;
 	while (p)
 	{
 		if ((p->builtins == TRUE && p->status == RUNNING_FG)
@@ -130,7 +133,9 @@ void			ft_wait(t_process *p)
 				p->ret = WEXITSTATUS(p->ret);
 			if (p->status != KILLED)
 				p->status = DONE;
+			ret = ret + p->ret;
 		}
 		p = p->grp;
 	}
+	return (ret);
 }

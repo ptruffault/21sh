@@ -66,7 +66,5 @@ t_tree			*exec_pipe(t_tree *t, t_process *p, t_shell *sh)
 			t = t->next;
 	}
 	tmp = p;
-	ft_wait(p);
-	ft_reset_fd(sh);
 	return (t);
 }

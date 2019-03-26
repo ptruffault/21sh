@@ -28,7 +28,7 @@
 # include <pwd.h>
 
 void		ft_put_process(t_process *p);
-void		ft_wait(t_process *p);
+int			ft_wait(t_process *p);
 int			ft_quit(int exit_code, t_shell *sh);
 void		ft_exit_son(t_shell *sh, int exit_code);
 char		ft_parse_back(char c);
