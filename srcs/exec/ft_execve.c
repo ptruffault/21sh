@@ -39,7 +39,7 @@ void			ft_execve(t_process *p, t_shell *sh, t_tree *t, int frk)
 	{
 		if (p->cmd && !ft_isempty(p->cmd))
 		{
-			p->status = (t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG);
+			p->status = RUNNING_FG;
 			if (!ft_builtins(sh, p, t, frk) && (!frk || (p->pid = fork()) == 0))
 			{
 				p->ret = 0;
