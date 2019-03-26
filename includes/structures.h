@@ -137,6 +137,7 @@ typedef struct	s_tree
 typedef struct	s_process
 {
 	char				**env;
+	int					sig;
 	int					fd[3];
 	t_bool				builtins;
 	char				*cmd;

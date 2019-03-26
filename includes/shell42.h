@@ -27,16 +27,13 @@
 # include "structures.h"
 # include <pwd.h>
 
+void		ft_put_process(t_process *p);
+int			ft_signal_check(t_process *p);
 int			find_operateur(char *op);
-void		ft_sigcont(t_process *tmp);
-void		ft_wait_background(t_shell *sh);
-void		ft_wait(t_process *p, t_shell *sh);
-void		ft_set_background(t_process *p);
-int			ft_bg(t_shell *sh, char **argv);
-int			ft_fg(t_shell *sh, char **argv);
+void		ft_wait(t_process *p);
 int			ft_hi(t_shell *sh);
 void		ft_process_tab_status(char *stat[6]);
-void		ft_put_process(t_process *p);
+void 		ft_job_prompt(t_process *tmp, int id);
 int			ft_quit(int exit_code, t_shell *sh);
 void		ft_exit_son(t_shell *sh, int exit_code);
 char		ft_parse_back(char c);
@@ -108,7 +105,7 @@ int			ft_env(t_envv *envv, char **argv);
 t_envv		*ft_export(t_shell *sh, char **argv);
 void		ft_alias(t_shell *sh, char **argv);
 int			ft_jobs(t_shell *sh);
-int			ft_type(t_word *w);
+int			ft_type(t_word *w, t_shell *sh);
 int			putword(t_word *w, int t);
 int			putfile(t_word *w, t_envv *env, int t);
 int			putcmd(t_word *w, t_envv *env, int t);

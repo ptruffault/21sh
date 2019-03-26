@@ -53,7 +53,8 @@ BUILTINS	=		ft_echo.c \
 					ft_exit.c \
 					type_tools.c \
 					ft_alias.c \
-					check_builtins.c
+					check_builtins.c \
+					hi.c
 
 GET_INPUT	=		curs_move.c	\
 					get_input.c	\

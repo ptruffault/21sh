@@ -19,13 +19,13 @@ static const	t_sig_msg	g_signal_msg[] = {
 	{.sig = SIGILL, .rtn = 132, .msg = "Illegal instruction"},
 	{.sig = SIGTRAP, .rtn = 133, .msg = "Trace/BPT trap"},
 	{.sig = SIGABRT, .rtn = 134, .msg = "Abort"},
-	{.sig = SIGEMT, .rtn = 135, .msg = "emulate instruction executed"},
+	//{.sig = SIGEMT, .rtn = 135, .msg = "emulate instruction executed"},
 	{.sig = SIGFPE, .rtn = 136, .msg = "Floating exception"},
 	{.sig = SIGKILL, .rtn = 137, .msg = "Killed"},
 	{.sig = SIGBUS, .rtn = 138, .msg = "Bus error"},
 	{.sig = SIGSEGV, .rtn = 139, .msg = "Segmentation fault"},
 	{.sig = SIGSYS, .rtn = 140, .msg = "Bad system call"},
-	{.sig = SIGPIPE, .rtn = 141, .msg = "Broken pipe"},
+	{.sig = SIGPIPE, .rtn = 141, .msg = "write one pipe with no one to read it"},
 	{.sig = SIGALRM, .rtn = 142, .msg = "Alarm clock"},
 	{.sig = SIGTERM, .rtn = 143, .msg = "Terminated"},
 	{.sig = SIGURG, .rtn = 0, .msg = ""},
@@ -47,33 +47,43 @@ static const	t_sig_msg	g_signal_msg[] = {
 	{.msg = NULL}
 };
 
-static void	ft_signal_check(t_process *p)
+int	ft_signal_check(t_process *p)
 {
-	p->status = KILLED;
-	if (WTERMSIG(p->ret) != SIGPIPE)
-		ft_printf("{\x1B[01;34m%i\x1B[00m} %s killed by signal %i %s\n",
-		p->pid, p->cmd, WTERMSIG(p->ret),
-		g_signal_msg[WTERMSIG(p->ret) - 1].msg);
-	p->ret = p->ret + 128;
+	int i;
+
+	i = 0;
+	if (p->sig <= 0)
+		return (0);
+	while (g_signal_msg[i].msg != NULL)
+	{
+		if (g_signal_msg[i].sig == p->sig)
+		{
+			ft_putstr(g_signal_msg[i].msg);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
 
-void		ft_wait(t_process *p, t_shell *sh)
+void		ft_wait(t_process *p)
 {
-	(void)sh;
 	while (p)
 	{
-		if (p->pid == 0
+		if ((p->builtins == TRUE && p->status == RUNNING_FG)
 			|| (p->status == RUNNING_FG
-			&& waitpid(p->pid, &p->ret, WUNTRACED) > 0))
+			&& waitpid(p->pid, &p->ret, 0) > 0))
 		{
-			if (WIFEXITED(p->ret))
+			if (p->builtins == FALSE && (WIFSIGNALED(p->ret) || p->sig > 0))
 			{
-				p->ret = WEXITSTATUS(p->ret);
-				p->status = DONE;
+				p->status = KILLED;
+				p->sig = (p->sig > 0 ? p->sig : WTERMSIG(p->ret));
+				p->ret = p->sig + 128;
+				ft_put_process(p);
 			}
-			else if (WIFSIGNALED(p->ret))
-				ft_signal_check(p);
-			else
+			else if (WIFEXITED(p->ret))
+				p->ret = WEXITSTATUS(p->ret);
+			if (p->status != KILLED)
 				p->status = DONE;
 		}
 		p = p->grp;

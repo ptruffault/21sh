@@ -14,15 +14,11 @@
 
 static void	set_var(char **argv, t_shell *sh)
 {
-	t_envv *head;
-	t_envv *end;
+	int i;
 
-	head = ft_setenv(new_tenvv(), argv, 0);
-	end = head;
-	while (end->next)
-		end = end->next;
-	end->next = sh->intern;
-	sh->intern = head;
+	i = 0;
+	while (ft_isequal(argv[i]))
+		sh->intern = ft_new_envv_equ(sh->intern, argv[i++]);
 }
 
 static int	change_envv(char **argv, t_shell *sh)
@@ -57,6 +53,8 @@ int			run_builtin(t_tree *t, char **argv, t_shell *sh)
 	else if (ft_strequ(*argv, "echo"))
 		return (ft_echo(&argv[1]));
 	else if (ft_strequ(*argv, "type"))
-		return (ft_type(t->cmd->next));
+		return (ft_type(t->cmd->next, sh));
+	else if (ft_strequ(*argv, "hi"))
+		return (ft_hi(sh));
 	return (change_envv(argv, sh));
 }

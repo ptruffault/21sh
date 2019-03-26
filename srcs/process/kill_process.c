@@ -12,42 +12,39 @@
 
 #include <shell42.h>
 
-static t_process	*ft_get_process(t_process *p, unsigned int status)
+static void	ft_kill(t_process *p, int sig)
 {
-	t_process *tmp;
-
-	while (p)
+	if (p && p->status != DONE && p->status != KILLED 
+	&& 1 <= sig && sig <= 31)
 	{
-		if (p->status == status && p->pid > 0 && !ft_strequ(p->cmd, "exit"))
-			return (p);
-		if (p->grp)
-		{
-			tmp = p->grp;
-			while (tmp)
-			{
-				if (tmp->status == status
-					&& p->pid > 0 && !ft_strequ(tmp->cmd, "exit"))
-					return (tmp);
-				tmp = tmp->grp;
-			}
-		}
-		p = p->next;
+		p->sig = sig;
+		if (p->builtins == FALSE && p->pid > 0)
+			kill(p->pid, sig);
 	}
-	return (NULL);
 }
 
-int					kill_process(t_process *p, int sig, unsigned int status)
+static void	ft_killgrp(t_process *p, int sig)
 {
-	t_process	*tmp;
-	int			i;
+	while (p)
+	{
+		ft_kill(p, sig);
+		p = p->grp;
+	}
+}
+
+int			kill_process(t_process *p, int sig, unsigned int status)
+{
+	int i;
 
 	i = 0;
-	while (p && (tmp = ft_get_process(p, status)))
+	while (p)
 	{
-		i++;
-		if (sig == SIGINT || sig == SIGKILL)
-			tmp->status = KILLED;
-		kill(tmp->pid, sig);
+		if (p->status == status)
+		{
+			ft_killgrp(p, sig);
+			i++;
+		}
+		p = p->next;
 	}
 	return (i);
 }

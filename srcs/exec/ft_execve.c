@@ -42,6 +42,7 @@ void			ft_execve(t_process *p, t_shell *sh, t_tree *t, int frk)
 			p->status = (t->o_type == O_BACK ? RUNNING_BG : RUNNING_FG);
 			if (!ft_builtins(sh, p, t, frk) && (!frk || (p->pid = fork()) == 0))
 			{
+				p->ret = 0;
 				execve(p->cmd, p->argv, p->env);
 				error("execve fucked up", p->cmd);
 				ft_exit_son(sh, 1);

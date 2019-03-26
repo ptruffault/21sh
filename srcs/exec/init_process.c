@@ -21,6 +21,7 @@ static void			ft_init_fd(t_process *ret, t_shell *sh)
 	ret->pipe[1] = -1;
 	ret->status = INIT;
 	ret->ret = -1;
+	ret->sig = 0;
 	ret->argv = NULL;
 	ret->grp = NULL;
 	ret->next = NULL;
